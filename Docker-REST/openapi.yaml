@@ -1,0 +1,38 @@
+openapi: 3.0.0
+info:
+  title: Iris Predicition API
+  description: Predict Iris Class
+  version: 0.1.0
+
+paths:
+  /model:
+    get:
+      summary: Return Model Description
+      responses:
+        '200':
+          description: JSON with Model Description
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    example: Decision Tree Classifier
+                  accuracy:
+                    type: number
+                    example: 0.8
+  /predicition:
+    post:
+      summary: Predict Iris Class by attributes
+      responses:
+        '200':
+          description: Prediction
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  class:
+                    type: string
+                    example: setosa

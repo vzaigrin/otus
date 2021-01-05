@@ -1,2 +1,4 @@
 *.class
 *.log
+Docker-REST/app/.idea
+Docker-REST/app/__pycache__
