@@ -2,3 +2,14 @@
 *.log
 Docker-REST/app/.idea
 Docker-REST/app/__pycache__
+SparkStreaming/NetworkWordCount/.bsp
+SparkStreaming/NetworkWordCount/.idea
+SparkStreaming/NetworkWordCount/project/project
+SparkStreaming/NetworkWordCount/project/target
+SparkStreaming/NetworkWordCount/target/task-temp-directory
+SparkStreaming/NetworkWordCount/target/scala-2.12/update
+SparkStreaming/NetworkWordCount/target/scala-2.12/zinc
+SparkStreaming/NetworkWordCount/target/scala-2.12/classes
+SparkStreaming/NetworkWordCount/target/global-logging
+SparkStreaming/NetworkWordCount/target/streams
+SparkStreaming/NetworkWordCount/target/.history3
