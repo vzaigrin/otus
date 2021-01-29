@@ -35,3 +35,14 @@ SparkStreaming/StructuredNetworkWordCount/target/scala-2.12/classes
 SparkStreaming/StructuredNetworkWordCount/target/global-logging
 SparkStreaming/StructuredNetworkWordCount/target/streams
 SparkStreaming/StructuredNetworkWordCount/target/.history3
+SparkStreaming/StructuredNetworkWordCountWindowed/.bsp
+SparkStreaming/StructuredNetworkWordCountWindowed/.idea
+SparkStreaming/StructuredNetworkWordCountWindowed/project/project
+SparkStreaming/StructuredNetworkWordCountWindowed/project/target
+SparkStreaming/StructuredNetworkWordCountWindowed/target/task-temp-directory
+SparkStreaming/StructuredNetworkWordCountWindowed/target/scala-2.12/update
+SparkStreaming/StructuredNetworkWordCountWindowed/target/scala-2.12/zinc
+SparkStreaming/StructuredNetworkWordCountWindowed/target/scala-2.12/classes
+SparkStreaming/StructuredNetworkWordCountWindowed/target/global-logging
+SparkStreaming/StructuredNetworkWordCountWindowed/target/streams
+SparkStreaming/StructuredNetworkWordCountWindowed/target/.history3
