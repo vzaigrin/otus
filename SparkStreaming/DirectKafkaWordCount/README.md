@@ -1,4 +1,4 @@
-# Network Word Count
+# Direct Kafka Word Count
 
 Пример простого приложения Spark Streaming, которое читает данные из Kafka
 
