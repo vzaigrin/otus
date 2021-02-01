@@ -57,3 +57,14 @@ SparkStreaming/StructuredKafkaWordCount/target/scala-2.12/classes
 SparkStreaming/StructuredKafkaWordCount/target/global-logging
 SparkStreaming/StructuredKafkaWordCount/target/streams
 SparkStreaming/StructuredKafkaWordCount/target/.history3
+SparkStreaming/MLStreaming/.bsp
+SparkStreaming/MLStreaming/.idea
+SparkStreaming/MLStreaming/project/project
+SparkStreaming/MLStreaming/project/target
+SparkStreaming/MLStreaming/target/task-temp-directory
+SparkStreaming/MLStreaming/target/scala-2.12/update
+SparkStreaming/MLStreaming/target/scala-2.12/zinc
+SparkStreaming/MLStreaming/target/scala-2.12/classes
+SparkStreaming/MLStreaming/target/global-logging
+SparkStreaming/MLStreaming/target/streams
+SparkStreaming/MLStreaming/target/.history3

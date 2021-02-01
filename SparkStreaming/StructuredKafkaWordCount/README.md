@@ -7,4 +7,4 @@
 * Запускаем Kafka
 * Создаем тему *words*
 * В первом терминале запускаем *usr/local/kafka/bin/kafka-console-producer.sh --topic words --bootstrap-server localhost:9092* и вводим слова, разделённые пробелом
-* Во втором терминале запустит *spark-submit StructuredKafkaWordCount-assembly-1.0.jar localhost:9092 subscribe words*
+* Во втором терминале запускаем *spark-submit StructuredKafkaWordCount-assembly-1.0.jar localhost:9092 subscribe words*
