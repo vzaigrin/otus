@@ -5,7 +5,7 @@ import org.apache.spark.ml.PipelineModel
 
 object ProdML {
   def main(args: Array[String]): Unit = {
-    if (args.isEmpty || args.length != 3) {
+    if (args.length != 3) {
       println("Usage: ProdML <path-to-model> <path-to-input> <path-to-output>")
       sys.exit(-1)
     }
