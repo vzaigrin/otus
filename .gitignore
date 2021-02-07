@@ -79,3 +79,14 @@ SparkStreaming/NetworkWordCountWindowed/target/scala-2.12/classes
 SparkStreaming/NetworkWordCountWindowed/target/global-logging
 SparkStreaming/NetworkWordCountWindowed/target/streams
 SparkStreaming/NetworkWordCountWindowed/target/.history3
+SparkStreaming/IrisMLStreaming/.bsp
+SparkStreaming/IrisMLStreaming/.idea
+SparkStreaming/IrisMLStreaming/project/project
+SparkStreaming/IrisMLStreaming/project/target
+SparkStreaming/IrisMLStreaming/target/task-temp-directory
+SparkStreaming/IrisMLStreaming/target/scala-2.12/update
+SparkStreaming/IrisMLStreaming/target/scala-2.12/zinc
+SparkStreaming/IrisMLStreaming/target/scala-2.12/classes
+SparkStreaming/IrisMLStreaming/target/global-logging
+SparkStreaming/IrisMLStreaming/target/streams
+SparkStreaming/IrisMLStreaming/target/.history3
