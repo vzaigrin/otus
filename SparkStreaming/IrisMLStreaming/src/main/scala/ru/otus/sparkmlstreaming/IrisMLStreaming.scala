@@ -86,7 +86,11 @@ object IrisMLStreaming {
         val prediction = model.predict(rdd).map(names)
         rdd.zip(prediction).foreachPartition { partition =>
           val producer = new KafkaProducer(props, new StringSerializer, new StringSerializer)
-          partition.foreach { record => producer.send(new ProducerRecord(predictionTopic, record.toString)) }
+//          partition.foreach { record => producer.send(new ProducerRecord(predictionTopic, record.toString)) }
+          partition.foreach { record =>
+            val vector = record._1.toArray.mkString(",")
+            producer.send(new ProducerRecord(predictionTopic, s"$vector,${record._2}"))
+          }
           producer.close()
         }
       }
