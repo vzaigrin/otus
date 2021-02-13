@@ -1,4 +1,4 @@
-package ru.otus.sparkmlstreaming
+package ru.otus.sparkstreaming
 
 import org.apache.spark.SparkConf
 import org.apache.spark.storage.StorageLevel
