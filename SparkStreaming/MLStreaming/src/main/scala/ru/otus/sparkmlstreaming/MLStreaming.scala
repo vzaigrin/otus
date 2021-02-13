@@ -59,7 +59,12 @@ object MLStreaming {
 
     // Обрабатываем каждый входной набор
     lines.foreachRDD { rdd =>
+      /*
       val spark = SparkSession.builder.config(rdd.sparkContext.getConf).getOrCreate()
+      import spark.implicits._
+       */
+      // Get the singleton instance of SparkSession
+      val spark = SparkSessionSingleton.getInstance(rdd.sparkContext.getConf)
       import spark.implicits._
 
       // Преобразовываем RDD в DataFrame
@@ -95,8 +100,6 @@ object MLStreaming {
           $"input" (22).cast(DoubleType)
         )
         .drop("input")
-        .na
-        .drop
 
       // Если получили непустой набор данных, передаем входные данные в модель, вычисляем и выводим ID клиента и результат
       if (data.count > 0) {
@@ -109,5 +112,18 @@ object MLStreaming {
 
     streamingContext.start()
     streamingContext.awaitTermination()
+  }
+
+  /** Lazily instantiated singleton instance of SparkSession */
+  object SparkSessionSingleton {
+    @transient private var instance: SparkSession = _
+    def getInstance(sparkConf: SparkConf): SparkSession = {
+      if (instance == null) {
+        instance = SparkSession.builder
+          .config(sparkConf)
+          .getOrCreate()
+      }
+      instance
+    }
   }
 }
