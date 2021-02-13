@@ -90,3 +90,14 @@ SparkStreaming/IrisMLStreaming/target/scala-2.12/classes
 SparkStreaming/IrisMLStreaming/target/global-logging
 SparkStreaming/IrisMLStreaming/target/streams
 SparkStreaming/IrisMLStreaming/target/.history3
+SparkStreaming/MLStructuredStreaming/.bsp
+SparkStreaming/MLStructuredStreaming/.idea
+SparkStreaming/MLStructuredStreaming/project/project
+SparkStreaming/MLStructuredStreaming/project/target
+SparkStreaming/MLStructuredStreaming/target/task-temp-directory
+SparkStreaming/MLStructuredStreaming/target/scala-2.12/update
+SparkStreaming/MLStructuredStreaming/target/scala-2.12/zinc
+SparkStreaming/MLStructuredStreaming/target/scala-2.12/classes
+SparkStreaming/MLStructuredStreaming/target/global-logging
+SparkStreaming/MLStructuredStreaming/target/streams
+SparkStreaming/MLStructuredStreaming/target/.history3
