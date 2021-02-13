@@ -59,10 +59,6 @@ object MLStreaming {
 
     // Обрабатываем каждый входной набор
     lines.foreachRDD { rdd =>
-      /*
-      val spark = SparkSession.builder.config(rdd.sparkContext.getConf).getOrCreate()
-      import spark.implicits._
-       */
       // Get the singleton instance of SparkSession
       val spark = SparkSessionSingleton.getInstance(rdd.sparkContext.getConf)
       import spark.implicits._
