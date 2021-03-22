@@ -1,0 +1,311 @@
+﻿{
+  "paragraphs": [
+    {
+      "text": "val filename = \"/usr/local/spark/README.md\"\nval file = sc.textFile(filename)",
+      "user": "anonymous",
+      "dateUpdated": "2021-03-22T15:06:08+0300",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mfilename\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m = /usr/local/spark/README.md\n\u001b[1m\u001b[34mfile\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.rdd.RDD[String]\u001b[0m = /usr/local/spark/README.md MapPartitionsRDD[57] at textFile at <console>:28\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616411997532_1610802139",
+      "id": "paragraph_1616411997532_1610802139",
+      "dateCreated": "2021-03-22T14:19:57+0300",
+      "dateStarted": "2021-03-22T15:06:08+0300",
+      "dateFinished": "2021-03-22T15:06:08+0300",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:460"
+    },
+    {
+      "text": "file.count",
+      "user": "anonymous",
+      "dateUpdated": "2021-03-22T15:06:08+0300",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mres20\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 108\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=27",
+              "$$hashKey": "object:688"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616412136473_1447463848",
+      "id": "paragraph_1616412136473_1447463848",
+      "dateCreated": "2021-03-22T14:22:16+0300",
+      "dateStarted": "2021-03-22T15:06:08+0300",
+      "dateFinished": "2021-03-22T15:06:08+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:461"
+    },
+    {
+      "text": "file.take(10)",
+      "user": "anonymous",
+      "dateUpdated": "2021-03-22T15:06:08+0300",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mres21\u001b[0m: \u001b[1m\u001b[32mArray[String]\u001b[0m = Array(# Apache Spark, \"\", Spark is a unified analytics engine for large-scale data processing. It provides, high-level APIs in Scala, Java, Python, and R, and an optimized engine that, supports general computation graphs for data analysis. It also supports a, rich set of higher-level tools including Spark SQL for SQL and DataFrames,, MLlib for machine learning, GraphX for graph processing,, and Structured Streaming for stream processing., \"\", <https://spark.apache.org/>)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=28",
+              "$$hashKey": "object:734"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616412069819_1839509579",
+      "id": "paragraph_1616412069819_1839509579",
+      "dateCreated": "2021-03-22T14:21:09+0300",
+      "dateStarted": "2021-03-22T15:06:08+0300",
+      "dateFinished": "2021-03-22T15:06:08+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:462"
+    },
+    {
+      "text": "val counts = file\n        .map(line => line.replaceAll(\"\\\\W\", \" \").replaceAll(\"\\\\s+\", \" \").trim)\n        .flatMap(line => line.split(\" \"))\n        .filter(_.nonEmpty)\n        .map(word => (word, 1))\n        .reduceByKey(_ + _)",
+      "user": "anonymous",
+      "dateUpdated": "2021-03-22T15:06:08+0300",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mcounts\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.rdd.RDD[(String, Int)]\u001b[0m = ShuffledRDD[62] at reduceByKey at <console>:30\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616412092255_1021799309",
+      "id": "paragraph_1616412092255_1021799309",
+      "dateCreated": "2021-03-22T14:21:32+0300",
+      "dateStarted": "2021-03-22T15:06:08+0300",
+      "dateFinished": "2021-03-22T15:06:09+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:463"
+    },
+    {
+      "text": "counts.sortBy(_._1).take(50).foreach(println)",
+      "user": "anonymous",
+      "dateUpdated": "2021-03-22T15:06:09+0300",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 69
+              },
+              "state": {}
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "(000,6)\n(1,2)\n(1000,6)\n(2,4)\n(20coverage,1)\n(2F,1)\n(2Fbody,1)\n(2Fdiv,2)\n(2Fh1,1)\n(2Fhtml,1)\n(2Fpyspark,1)\n(2Fspan,1)\n(2Fspark,1)\n(3,2)\n(3A,1)\n(5B1,1)\n(5D,1)\n(7,2)\n(7077,1)\n(A,1)\n(APIs,1)\n(About,1)\n(Alternatively,1)\n(And,1)\n(Apache,2)\n(ApacheSoftwareFoundation,2)\n(AppVeyor,1)\n(Because,1)\n(Build,2)\n(Building,2)\n(Configuration,2)\n(Contributing,1)\n(Contribution,1)\n(Coverage,1)\n(DataFrames,1)\n(Developer,1)\n(Documentation,1)\n(DskipTests,1)\n(Enabling,1)\n(Example,1)\n(For,3)\n(GraphX,1)\n(Guide,1)\n(HDFS,1)\n(Hadoop,6)\n(Hive,2)\n(IDE,1)\n(Interactive,2)\n(It,2)\n(Java,1)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=29",
+              "$$hashKey": "object:820"
+            },
+            {
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=30",
+              "$$hashKey": "object:821"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616412212798_1666827445",
+      "id": "paragraph_1616412212798_1666827445",
+      "dateCreated": "2021-03-22T14:23:32+0300",
+      "dateStarted": "2021-03-22T15:06:09+0300",
+      "dateFinished": "2021-03-22T15:06:09+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:464"
+    },
+    {
+      "text": "",
+      "user": "anonymous",
+      "dateUpdated": "2021-03-22T15:06:09+0300",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616412391360_1811566392",
+      "id": "paragraph_1616412391360_1811566392",
+      "dateCreated": "2021-03-22T14:26:31+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:465"
+    }
+  ],
+  "name": "WordCount",
+  "id": "2G39D9B1K",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.9.0-preview2",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {
+    "isRunning": false
+  },
+  "path": "/WordCount"
+}
