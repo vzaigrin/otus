@@ -1,0 +1,1150 @@
+﻿{
+  "paragraphs": [
+    {
+      "text": "val tripPath = \"/home/vadim/Projects/otus/Spark/NYCTaxi/data/trips\"\nval tripsRaw = spark.read.option(\"header\", \"true\").option(\"inferSchema\", \"true\").csv(tripPath)",
+      "user": "anonymous",
+      "dateUpdated": "2021-03-22T17:10:47+0300",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 92
+              },
+              "state": {}
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mtripPath\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m = /home/vadim/Projects/otus/Spark/NYCTaxi/data/trips\n\u001b[1m\u001b[34mtripsRaw\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [VendorID: int, tpep_pickup_datetime: string ... 16 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=42",
+              "$$hashKey": "object:2265"
+            },
+            {
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=43",
+              "$$hashKey": "object:2266"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616421114704_1390825437",
+      "id": "paragraph_1616421114704_1390825437",
+      "dateCreated": "2021-03-22T16:51:54+0300",
+      "dateStarted": "2021-03-22T17:10:47+0300",
+      "dateFinished": "2021-03-22T17:11:49+0300",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:1730"
+    },
+    {
+      "text": "tripsRaw.show(10, truncate = false)",
+      "user": "anonymous",
+      "dateUpdated": "2021-03-22T17:11:52+0300",
+      "config": {
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false
+            }
+          }
+        ],
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 375
+              },
+              "state": {
+                "currentPage": "Table",
+                "chart": {
+                  "series": [
+                    {
+                      "type": "Line",
+                      "x": {
+                        "column": "tolls_amount",
+                        "index": 14
+                      },
+                      "y": {
+                        "column": "VendorID",
+                        "index": 0
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------+--------------------+---------------------+---------------+-------------+----------+------------------+------------+------------+------------+-----------+-----+-------+----------+------------+---------------------+------------+--------------------+\n|VendorID|tpep_pickup_datetime|tpep_dropoff_datetime|passenger_count|trip_distance|RatecodeID|store_and_fwd_flag|PULocationID|DOLocationID|payment_type|fare_amount|extra|mta_tax|tip_amount|tolls_amount|improvement_surcharge|total_amount|congestion_surcharge|\n+--------+--------------------+---------------------+---------------+-------------+----------+------------------+------------+------------+------------+-----------+-----+-------+----------+------------+---------------------+------------+--------------------+\n|1       |2020-01-01 00:28:15 |2020-01-01 00:33:03  |1              |1.2          |1         |N                 |238         |239         |1           |6.0        |3.0  |0.5    |1.47      |0.0         |0.3                  |11.27       |2.5                 |\n|1       |2020-01-01 00:35:39 |2020-01-01 00:43:04  |1              |1.2          |1         |N                 |239         |238         |1           |7.0        |3.0  |0.5    |1.5       |0.0         |0.3                  |12.3        |2.5                 |\n|1       |2020-01-01 00:47:41 |2020-01-01 00:53:52  |1              |0.6          |1         |N                 |238         |238         |1           |6.0        |3.0  |0.5    |1.0       |0.0         |0.3                  |10.8        |2.5                 |\n|1       |2020-01-01 00:55:23 |2020-01-01 01:00:14  |1              |0.8          |1         |N                 |238         |151         |1           |5.5        |0.5  |0.5    |1.36      |0.0         |0.3                  |8.16        |0.0                 |\n|2       |2020-01-01 00:01:58 |2020-01-01 00:04:16  |1              |0.0          |1         |N                 |193         |193         |2           |3.5        |0.5  |0.5    |0.0       |0.0         |0.3                  |4.8         |0.0                 |\n|2       |2020-01-01 00:09:44 |2020-01-01 00:10:37  |1              |0.03         |1         |N                 |7           |193         |2           |2.5        |0.5  |0.5    |0.0       |0.0         |0.3                  |3.8         |0.0                 |\n|2       |2020-01-01 00:39:25 |2020-01-01 00:39:29  |1              |0.0          |1         |N                 |193         |193         |1           |2.5        |0.5  |0.5    |0.01      |0.0         |0.3                  |3.81        |0.0                 |\n|2       |2019-12-18 15:27:49 |2019-12-18 15:28:59  |1              |0.0          |5         |N                 |193         |193         |1           |0.01       |0.0  |0.0    |0.0       |0.0         |0.3                  |2.81        |2.5                 |\n|2       |2019-12-18 15:30:35 |2019-12-18 15:31:35  |4              |0.0          |1         |N                 |193         |193         |1           |2.5        |0.5  |0.5    |0.0       |0.0         |0.3                  |6.3         |2.5                 |\n|1       |2020-01-01 00:29:01 |2020-01-01 00:40:28  |2              |0.7          |1         |N                 |246         |48          |1           |8.0        |3.0  |0.5    |2.35      |0.0         |0.3                  |14.15       |2.5                 |\n+--------+--------------------+---------------------+---------------+-------------+----------+------------------+------------+------------+------------+-----------+-----+-------+----------+------------+---------------------+------------+--------------------+\nonly showing top 10 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=44",
+              "$$hashKey": "object:2328"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616421727601_418137708",
+      "id": "paragraph_1616421727601_418137708",
+      "dateCreated": "2021-03-22T17:02:07+0300",
+      "dateStarted": "2021-03-22T17:10:58+0300",
+      "dateFinished": "2021-03-22T17:11:49+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:1731"
+    },
+    {
+      "text": "tripsRaw.printSchema",
+      "user": "anonymous",
+      "dateUpdated": "2021-03-22T17:12:01+0300",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 445
+              },
+              "state": {}
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- VendorID: integer (nullable = true)\n |-- tpep_pickup_datetime: string (nullable = true)\n |-- tpep_dropoff_datetime: string (nullable = true)\n |-- passenger_count: integer (nullable = true)\n |-- trip_distance: double (nullable = true)\n |-- RatecodeID: integer (nullable = true)\n |-- store_and_fwd_flag: string (nullable = true)\n |-- PULocationID: integer (nullable = true)\n |-- DOLocationID: integer (nullable = true)\n |-- payment_type: integer (nullable = true)\n |-- fare_amount: double (nullable = true)\n |-- extra: double (nullable = true)\n |-- mta_tax: double (nullable = true)\n |-- tip_amount: double (nullable = true)\n |-- tolls_amount: double (nullable = true)\n |-- improvement_surcharge: double (nullable = true)\n |-- total_amount: double (nullable = true)\n |-- congestion_surcharge: double (nullable = true)\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616421251642_839653435",
+      "id": "paragraph_1616421251642_839653435",
+      "dateCreated": "2021-03-22T16:54:11+0300",
+      "dateStarted": "2021-03-22T17:11:57+0300",
+      "dateFinished": "2021-03-22T17:11:57+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:1732"
+    },
+    {
+      "text": "val trips = tripsRaw\n        .filter($\"trip_distance\" > 1)\n        .filter($\"passenger_count\" > 0)\n        .drop(\"VendorID\", \"RatecodeID\", \"store_and_fwd_flag\", \"fare_amount\", \"extra\", \"mta_tax\", \"tip_amount\", \"tolls_amount\", \"improvement_surcharge\", \"congestion_surcharge\")\n        .withColumn(\"pickup_dt\", to_timestamp($\"tpep_pickup_datetime\", \"yyyy-MM-dd HH:mm:ss\"))\n        .withColumn(\"dropoff_dt\", to_timestamp($\"tpep_dropoff_datetime\", \"yyyy-MM-dd HH:mm:ss\"))\n        .drop(\"tpep_pickup_datetime\", \"tpep_dropoff_datetime\")\n        .filter($\"dropoff_dt\" > $\"pickup_dt\")\n        .withColumn(\"pickup_year\", year($\"pickup_dt\"))\n        .withColumn(\"pickup_month\", month($\"pickup_dt\"))\n        .withColumn(\"pickup_day\", dayofmonth($\"pickup_dt\"))\n        .withColumn(\"pickup_weekofyear\", weekofyear($\"pickup_dt\"))\n        .withColumn(\"pickup_hour\", hour($\"pickup_dt\"))\n        .withColumn(\"dropoff_year\", year($\"dropoff_dt\"))\n        .withColumn(\"dropoff_month\", month($\"dropoff_dt\"))\n        .withColumn(\"dropoff_day\", dayofmonth($\"dropoff_dt\"))\n        .withColumn(\"dropoff_weekofyear\", weekofyear($\"dropoff_dt\"))\n        .withColumn(\"dropoff_hour\", hour($\"dropoff_dt\"))\n        .filter($\"pickup_year\" > 2018 && $\"pickup_year\" < 2021)\n        .filter($\"dropoff_year\" > 2018 && $\"dropoff_year\" < 2022)",
+      "user": "anonymous",
+      "dateUpdated": "2021-03-22T18:19:13+0300",
+      "config": {
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false
+            }
+          }
+        ],
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 68
+              },
+              "state": {}
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mtrips\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m = [passenger_count: int, trip_distance: double ... 16 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616421706738_1227221309",
+      "id": "paragraph_1616421706738_1227221309",
+      "dateCreated": "2021-03-22T17:01:46+0300",
+      "dateStarted": "2021-03-22T18:19:13+0300",
+      "dateFinished": "2021-03-22T18:19:13+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:1733"
+    },
+    {
+      "text": "trips.printSchema",
+      "user": "anonymous",
+      "dateUpdated": "2021-03-22T17:59:52+0300",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 447
+              },
+              "state": {}
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- passenger_count: integer (nullable = true)\n |-- trip_distance: double (nullable = true)\n |-- PULocationID: integer (nullable = true)\n |-- DOLocationID: integer (nullable = true)\n |-- payment_type: integer (nullable = true)\n |-- total_amount: double (nullable = true)\n |-- pickup_dt: timestamp (nullable = true)\n |-- dropoff_dt: timestamp (nullable = true)\n |-- pickup_year: integer (nullable = true)\n |-- pickup_month: integer (nullable = true)\n |-- pickup_day: integer (nullable = true)\n |-- pickup_weekofyear: integer (nullable = true)\n |-- pickup_hour: integer (nullable = true)\n |-- dropoff_year: integer (nullable = true)\n |-- dropoff_month: integer (nullable = true)\n |-- dropoff_day: integer (nullable = true)\n |-- dropoff_weekofyear: integer (nullable = true)\n |-- dropoff_hour: integer (nullable = true)\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616423854397_900212821",
+      "id": "paragraph_1616423854397_900212821",
+      "dateCreated": "2021-03-22T17:37:34+0300",
+      "dateStarted": "2021-03-22T17:59:52+0300",
+      "dateFinished": "2021-03-22T17:59:52+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:1734"
+    },
+    {
+      "text": "trips.show(10, truncate = false)",
+      "user": "anonymous",
+      "dateUpdated": "2021-03-22T18:20:55+0300",
+      "config": {
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false
+            }
+          }
+        ],
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 378
+              },
+              "state": {
+                "currentPage": "Table",
+                "chart": {
+                  "series": [
+                    {
+                      "type": "Line",
+                      "x": {
+                        "column": "pickup_year",
+                        "index": 8
+                      },
+                      "y": {
+                        "column": "passenger_count",
+                        "index": 0
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---------------+-------------+------------+------------+------------+------------+-------------------+-------------------+-----------+------------+----------+-----------------+-----------+------------+-------------+-----------+------------------+------------+\n|passenger_count|trip_distance|PULocationID|DOLocationID|payment_type|total_amount|pickup_dt          |dropoff_dt         |pickup_year|pickup_month|pickup_day|pickup_weekofyear|pickup_hour|dropoff_year|dropoff_month|dropoff_day|dropoff_weekofyear|dropoff_hour|\n+---------------+-------------+------------+------------+------------+------------+-------------------+-------------------+-----------+------------+----------+-----------------+-----------+------------+-------------+-----------+------------------+------------+\n|1              |1.2          |238         |239         |1           |11.27       |2020-01-01 00:28:15|2020-01-01 00:33:03|2020       |1           |1         |1                |0          |2020        |1            |1          |1                 |0           |\n|1              |1.2          |239         |238         |1           |12.3        |2020-01-01 00:35:39|2020-01-01 00:43:04|2020       |1           |1         |1                |0          |2020        |1            |1          |1                 |0           |\n|2              |2.4          |246         |79          |1           |17.55       |2020-01-01 00:55:11|2020-01-01 01:12:03|2020       |1           |1         |1                |0          |2020        |1            |1          |1                 |1           |\n|1              |3.3          |161         |144         |1           |24.95       |2020-01-01 00:56:27|2020-01-01 01:21:44|2020       |1           |1         |1                |0          |2020        |1            |1          |1                 |1           |\n|1              |1.07         |43          |239         |1           |11.76       |2020-01-01 00:21:54|2020-01-01 00:27:31|2020       |1           |1         |1                |0          |2020        |1            |1          |1                 |0           |\n|1              |7.76         |143         |25          |1           |37.14       |2020-01-01 00:38:01|2020-01-01 01:15:21|2020       |1           |1         |1                |0          |2020        |1            |1          |1                 |1           |\n|3              |1.6          |211         |234         |2           |12.8        |2020-01-01 00:15:35|2020-01-01 00:27:06|2020       |1           |1         |1                |0          |2020        |1            |1          |1                 |0           |\n|1              |1.7          |246         |142         |2           |15.3        |2020-01-01 00:56:38|2020-01-01 01:13:34|2020       |1           |1         |1                |0          |2020        |1            |1          |1                 |1           |\n|1              |8.45         |138         |216         |2           |25.8        |2020-01-01 00:08:21|2020-01-01 00:25:29|2020       |1           |1         |1                |0          |2020        |1            |1          |1                 |0           |\n|1              |1.5          |170         |161         |1           |15.95       |2020-01-01 00:28:53|2020-01-01 00:41:59|2020       |1           |1         |1                |0          |2020        |1            |1          |1                 |0           |\n+---------------+-------------+------------+------------+------------+------------+-------------------+-------------------+-----------+------------+----------+-----------------+-----------+------------+-------------+-----------+------------------+------------+\nonly showing top 10 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=93",
+              "$$hashKey": "object:2542"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616421787042_323129748",
+      "id": "paragraph_1616421787042_323129748",
+      "dateCreated": "2021-03-22T17:03:07+0300",
+      "dateStarted": "2021-03-22T18:19:23+0300",
+      "dateFinished": "2021-03-22T18:19:23+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:1735"
+    },
+    {
+      "text": "val paymentTypePath = \"/home/vadim/Projects/otus/Spark/NYCTaxi/data/payment_type.csv\"\nval paymentType = spark.read.option(\"header\", \"true\").option(\"inferSchema\", \"true\").csv(paymentTypePath)\n\npaymentType.show",
+      "user": "anonymous",
+      "dateUpdated": "2021-03-22T23:02:01+0300",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616443321558_88429375",
+      "id": "paragraph_1616443321558_88429375",
+      "dateCreated": "2021-03-22T23:02:01+0300",
+      "status": "READY",
+      "$$hashKey": "object:1736"
+    },
+    {
+      "text": "val zoneLookupPath = \"/home/vadim/Projects/otus/Spark/NYCTaxi/data/taxi_zone_lookup.csv\"\nval zoneLookup = spark.read.option(\"header\", \"true\").option(\"inferSchema\", \"true\").csv(zoneLookupPath).drop(\"service_zone\")\n\nzoneLookup.show(10)",
+      "user": "anonymous",
+      "dateUpdated": "2021-03-22T22:19:40+0300",
+      "config": {
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false
+            }
+          }
+        ],
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 383
+              },
+              "state": {
+                "currentPage": "Console",
+                "table": {
+                  "columnWidths": {
+                    "Zone": 179
+                  }
+                },
+                "chart": {
+                  "series": [
+                    {
+                      "type": "Pie",
+                      "values": {
+                        "column": "LocationID",
+                        "index": 0
+                      },
+                      "labels": {
+                        "column": "Borough",
+                        "index": 1
+                      },
+                      "showPercents": true
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----------+-------------+--------------------+\n|LocationID|      Borough|                Zone|\n+----------+-------------+--------------------+\n|         1|          EWR|      Newark Airport|\n|         2|       Queens|         Jamaica Bay|\n|         3|        Bronx|Allerton/Pelham G...|\n|         4|    Manhattan|       Alphabet City|\n|         5|Staten Island|       Arden Heights|\n|         6|Staten Island|Arrochar/Fort Wad...|\n|         7|       Queens|             Astoria|\n|         8|       Queens|        Astoria Park|\n|         9|       Queens|          Auburndale|\n|        10|       Queens|        Baisley Park|\n+----------+-------------+--------------------+\nonly showing top 10 rows\n\n\u001b[1m\u001b[34mzoneLookupPath\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m = /home/vadim/Projects/otus/Spark/NYCTaxi/data/taxi_zone_lookup.csv\n\u001b[1m\u001b[34mzoneLookup\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [LocationID: int, Borough: string ... 1 more field]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=72",
+              "$$hashKey": "object:2642"
+            },
+            {
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=73",
+              "$$hashKey": "object:2643"
+            },
+            {
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=74",
+              "$$hashKey": "object:2644"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616425295851_1843459876",
+      "id": "paragraph_1616425295851_1843459876",
+      "dateCreated": "2021-03-22T18:01:35+0300",
+      "dateStarted": "2021-03-22T18:04:57+0300",
+      "dateFinished": "2021-03-22T18:04:57+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:1737"
+    },
+    {
+      "text": "val data = trips\n        .join(paymentType, trips(\"payment_type\") === paymentType(\"type_id\"))\n        .drop(\"payment_type\", \"type_id\")\n        .withColumnRenamed(\"type\", \"payment_type\")\n        .join(zoneLookup, trips(\"PULocationID\") === zoneLookup(\"LocationID\"))\n        .drop(\"PULocationID\", \"LocationID\")\n        .withColumnRenamed(\"Borough\", \"PUBorough\")\n        .withColumnRenamed(\"Zone\", \"PUZone\")\n        .join(zoneLookup, trips(\"DOLocationID\") === zoneLookup(\"LocationID\"))\n        .drop(\"DOLocationID\", \"LocationID\")\n        .withColumnRenamed(\"Borough\", \"DOBorough\")\n        .withColumnRenamed(\"Zone\", \"DOZone\")\n        .filter($\"PUBorough\" =!= \"Unknown\")\n        .filter($\"DOBorough\" =!= \"Unknown\")",
+      "user": "anonymous",
+      "dateUpdated": "2021-03-22T20:00:48+0300",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mdata\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m = [passenger_count: int, trip_distance: double ... 18 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616425349709_1087961214",
+      "id": "paragraph_1616425349709_1087961214",
+      "dateCreated": "2021-03-22T18:02:29+0300",
+      "dateStarted": "2021-03-22T20:00:48+0300",
+      "dateFinished": "2021-03-22T20:00:48+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:1738"
+    },
+    {
+      "text": "data.show(10, truncate = false)",
+      "user": "anonymous",
+      "dateUpdated": "2021-03-22T20:28:47+0300",
+      "config": {
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false
+            }
+          }
+        ],
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 388
+              },
+              "state": {
+                "currentPage": "Table",
+                "chart": {
+                  "series": [
+                    {
+                      "type": "Line",
+                      "x": {
+                        "column": "pickup_year",
+                        "index": 5
+                      },
+                      "y": {
+                        "column": "passenger_count",
+                        "index": 0
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---------------+-------------+------------+-------------------+-------------------+-----------+------------+----------+-----------------+-----------+------------+-------------+-----------+------------------+------------+------------+---------+-------------------------+---------+---------------------+\n|passenger_count|trip_distance|total_amount|pickup_dt          |dropoff_dt         |pickup_year|pickup_month|pickup_day|pickup_weekofyear|pickup_hour|dropoff_year|dropoff_month|dropoff_day|dropoff_weekofyear|dropoff_hour|payment_type|PUBorough|PUZone                   |DOBorough|DOZone               |\n+---------------+-------------+------------+-------------------+-------------------+-----------+------------+----------+-----------------+-----------+------------+-------------+-----------+------------------+------------+------------+---------+-------------------------+---------+---------------------+\n|1              |1.2          |11.27       |2020-01-01 00:28:15|2020-01-01 00:33:03|2020       |1           |1         |1                |0          |2020        |1            |1          |1                 |0           |Credit card |Manhattan|Upper West Side North    |Manhattan|Upper West Side South|\n|1              |1.2          |12.3        |2020-01-01 00:35:39|2020-01-01 00:43:04|2020       |1           |1         |1                |0          |2020        |1            |1          |1                 |0           |Credit card |Manhattan|Upper West Side South    |Manhattan|Upper West Side North|\n|2              |2.4          |17.55       |2020-01-01 00:55:11|2020-01-01 01:12:03|2020       |1           |1         |1                |0          |2020        |1            |1          |1                 |1           |Credit card |Manhattan|West Chelsea/Hudson Yards|Manhattan|East Village         |\n|1              |3.3          |24.95       |2020-01-01 00:56:27|2020-01-01 01:21:44|2020       |1           |1         |1                |0          |2020        |1            |1          |1                 |1           |Credit card |Manhattan|Midtown Center           |Manhattan|Little Italy/NoLiTa  |\n|1              |1.07         |11.76       |2020-01-01 00:21:54|2020-01-01 00:27:31|2020       |1           |1         |1                |0          |2020        |1            |1          |1                 |0           |Credit card |Manhattan|Central Park             |Manhattan|Upper West Side South|\n|1              |7.76         |37.14       |2020-01-01 00:38:01|2020-01-01 01:15:21|2020       |1           |1         |1                |0          |2020        |1            |1          |1                 |1           |Credit card |Manhattan|Lincoln Square West      |Brooklyn |Boerum Hill          |\n|3              |1.6          |12.8        |2020-01-01 00:15:35|2020-01-01 00:27:06|2020       |1           |1         |1                |0          |2020        |1            |1          |1                 |0           |Cash        |Manhattan|SoHo                     |Manhattan|Union Sq             |\n|1              |1.7          |15.3        |2020-01-01 00:56:38|2020-01-01 01:13:34|2020       |1           |1         |1                |0          |2020        |1            |1          |1                 |1           |Cash        |Manhattan|West Chelsea/Hudson Yards|Manhattan|Lincoln Square East  |\n|1              |8.45         |25.8        |2020-01-01 00:08:21|2020-01-01 00:25:29|2020       |1           |1         |1                |0          |2020        |1            |1          |1                 |0           |Cash        |Queens   |LaGuardia Airport        |Queens   |South Ozone Park     |\n|1              |1.5          |15.95       |2020-01-01 00:28:53|2020-01-01 00:41:59|2020       |1           |1         |1                |0          |2020        |1            |1          |1                 |0           |Credit card |Manhattan|Murray Hill              |Manhattan|Midtown Center       |\n+---------------+-------------+------------+-------------------+-------------------+-----------+------------+----------+-----------------+-----------+------------+-------------+-----------+------------------+------------+------------+---------+-------------------------+---------+---------------------+\nonly showing top 10 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=128",
+              "$$hashKey": "object:2762"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616425634329_44956892",
+      "id": "paragraph_1616425634329_44956892",
+      "dateCreated": "2021-03-22T18:07:14+0300",
+      "dateStarted": "2021-03-22T20:00:52+0300",
+      "dateFinished": "2021-03-22T20:00:52+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:1739"
+    },
+    {
+      "text": "val tripsGrouped = data\n        .groupBy(\"pickup_year\", \"pickup_month\", \"PUBorough\")\n        .count",
+      "user": "anonymous",
+      "dateUpdated": "2021-03-22T20:00:59+0300",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mtripsGrouped\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [pickup_year: int, pickup_month: int ... 2 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616431633579_1171547311",
+      "id": "paragraph_1616431633579_1171547311",
+      "dateCreated": "2021-03-22T19:47:13+0300",
+      "dateStarted": "2021-03-22T20:00:59+0300",
+      "dateFinished": "2021-03-22T20:00:59+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:1740"
+    },
+    {
+      "text": "tripsGrouped.sort(\"pickup_year\", \"pickup_month\", \"PUBorough\").show(10)",
+      "user": "anonymous",
+      "dateUpdated": "2021-03-22T23:55:23+0300",
+      "config": {
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false
+            }
+          }
+        ],
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 399
+              },
+              "state": {
+                "currentPage": "Table",
+                "chart": {
+                  "series": [
+                    {
+                      "type": "Line",
+                      "x": {
+                        "column": "pickup_year",
+                        "index": 0
+                      },
+                      "y": {
+                        "column": "pickup_month",
+                        "index": 1
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-----------+------------+-------------+-------+\n|pickup_year|pickup_month|    PUBorough|  count|\n+-----------+------------+-------------+-------+\n|       2019|           1|        Bronx|  12489|\n|       2019|           1|     Brooklyn|  67551|\n|       2019|           1|          EWR|     69|\n|       2019|           1|    Manhattan|4681396|\n|       2019|           1|       Queens| 419995|\n|       2019|           1|Staten Island|    232|\n|       2019|           2|        Bronx|  12401|\n|       2019|           2|     Brooklyn|  69735|\n|       2019|           2|          EWR|     51|\n|       2019|           2|    Manhattan|4400549|\n+-----------+------------+-------------+-------+\nonly showing top 10 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=144",
+              "$$hashKey": "object:2872"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616431946779_337662119",
+      "id": "paragraph_1616431946779_337662119",
+      "dateCreated": "2021-03-22T19:52:26+0300",
+      "dateStarted": "2021-03-22T20:23:09+0300",
+      "dateFinished": "2021-03-22T20:25:54+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:1741"
+    },
+    {
+      "text": "val tripsByYM = tripsGrouped\n        .groupBy(\"pickup_month\")\n        .pivot(\"pickup_year\")\n        .sum(\"count\")\n        .sort(\"pickup_month\")",
+      "user": "anonymous",
+      "dateUpdated": "2021-03-22T20:04:06+0300",
+      "config": {
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false
+            }
+          }
+        ],
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 69
+              },
+              "state": {}
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mtripsByYM\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m = [pickup_month: int, 2019: bigint ... 1 more field]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=136",
+              "$$hashKey": "object:2930"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616425662193_1657456063",
+      "id": "paragraph_1616425662193_1657456063",
+      "dateCreated": "2021-03-22T18:07:42+0300",
+      "dateStarted": "2021-03-22T20:04:06+0300",
+      "dateFinished": "2021-03-22T20:06:52+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:1742"
+    },
+    {
+      "text": "tripsByYM.show",
+      "user": "anonymous",
+      "dateUpdated": "2021-03-23T00:31:51+0300",
+      "config": {
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false
+            }
+          }
+        ],
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 599
+              },
+              "state": {
+                "currentPage": "Chart",
+                "chart": {
+                  "series": [
+                    {
+                      "type": "AreaRange",
+                      "x": {
+                        "column": "pickup_month",
+                        "index": 0
+                      },
+                      "yLow": {
+                        "column": "2019",
+                        "index": 1
+                      },
+                      "yHigh": {
+                        "column": "2020",
+                        "index": 2
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+------------+-------+-------+\n|pickup_month|   2019|   2020|\n+------------+-------+-------+\n|           1|5181732|4447008|\n|           2|4873100|4370847|\n|           3|5525212|2104927|\n|           4|5276492| 148014|\n|           5|5376693| 199374|\n|           6|4961526| 352028|\n|           7|4464708| 515287|\n|           8|4336183| 659369|\n|           9|4668843| 894878|\n|          10|5083799|1123369|\n|          11|4807928|1002113|\n|          12|4788694| 952621|\n+------------+-------+-------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=140",
+              "$$hashKey": "object:2988"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616430769598_1534597016",
+      "id": "paragraph_1616430769598_1534597016",
+      "dateCreated": "2021-03-22T19:32:49+0300",
+      "dateStarted": "2021-03-22T20:07:24+0300",
+      "dateFinished": "2021-03-22T20:10:08+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:1743"
+    },
+    {
+      "text": "val tripsByYMBorough = tripsGrouped\n        .groupBy(\"pickup_month\")\n        .pivot(\"PUBorough\")\n        .agg(stddev(\"count\"))\n        .sort(\"pickup_month\")",
+      "user": "anonymous",
+      "dateUpdated": "2021-03-22T22:27:43+0300",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mtripsByYMBorough\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m = [pickup_month: int, Bronx: double ... 5 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=218",
+              "$$hashKey": "object:3046"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616430142449_1495502293",
+      "id": "paragraph_1616430142449_1495502293",
+      "dateCreated": "2021-03-22T19:22:22+0300",
+      "dateStarted": "2021-03-22T22:27:43+0300",
+      "dateFinished": "2021-03-22T22:30:20+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:1744"
+    },
+    {
+      "text": "tripsByYMBorough.show",
+      "user": "anonymous",
+      "dateUpdated": "2021-03-23T00:58:08+0300",
+      "config": {
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false
+            }
+          }
+        ],
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "state": {
+                "currentPage": "Table",
+                "chart": {
+                  "series": [
+                    {
+                      "type": "Line",
+                      "x": {
+                        "column": "pickup_month",
+                        "index": 0
+                      },
+                      "y": {
+                        "column": "Bronx",
+                        "index": 1
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+------------+------------------+------------------+------------------+------------------+------------------+------------------+\n|pickup_month|             Bronx|          Brooklyn|               EWR|         Manhattan|            Queens|     Staten Island|\n+------------+------------------+------------------+------------------+------------------+------------------+------------------+\n|           1|6299.6143135909515|  20404.9803847002| 9.192388155425117| 456288.2277250861| 36529.13631609704|2.8284271247461903|\n|           2| 6370.324991709606|20565.493624029546|2.8284271247461903|285551.63855334464| 42618.03280889441|43.840620433565945|\n|           3| 7788.074087988634| 42280.74287426842|21.920310216782973|2140045.9453390245|228322.65832479263| 47.37615433949868|\n|           4| 5929.090360249201| 48566.92215901683| 63.63961030678928|3252944.3376857834| 318771.5151334887|106.06601717798213|\n|           5| 4938.433759806848| 46943.40498941252| 55.86143571373726|  3273448.31301985|335436.60775249323| 94.75230867899737|\n|           6| 4547.403709810687| 43993.35549830224| 55.86143571373726| 2902101.994491579|308629.48257093003| 79.19595949289332|\n|           7| 3343.907968231183| 33931.22600201767|43.840620433565945| 2474249.358865129| 281025.4480469696| 68.58935777509511|\n|           8|2451.5392103737604|29931.830047626558| 52.32590180780452|  2290272.90232245| 277151.9170996297| 39.59797974644666|\n|           9|2303.0467863245854| 34412.76572000571| 53.74011537017761| 2360759.427591469| 271068.6774610818|1.4142135623730951|\n|          10|1927.5730855145287| 34144.06514315482| 58.68986283848344| 2484030.059862501|280292.17831487913| 5.656854249492381|\n|          11|1916.2593770155438|30043.552919054033| 44.54772721475249|2410216.5971879996|248903.70829800828|7.0710678118654755|\n|          12|1887.2679989868952|30974.812549876715| 54.44722215136416|2417392.3168034805| 262217.8218809698|13.435028842544403|\n+------------+------------------+------------------+------------------+------------------+------------------+------------------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=222",
+              "$$hashKey": "object:3104"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616434280230_2006565813",
+      "id": "paragraph_1616434280230_2006565813",
+      "dateCreated": "2021-03-22T20:31:20+0300",
+      "dateStarted": "2021-03-22T22:55:24+0300",
+      "dateFinished": "2021-03-22T22:58:02+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:1745"
+    },
+    {
+      "user": "anonymous",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616447505148_687632167",
+      "id": "paragraph_1616447505148_687632167",
+      "dateCreated": "2021-03-23T00:11:45+0300",
+      "status": "READY",
+      "$$hashKey": "object:1746"
+    }
+  ],
+  "name": "NYCTaxi",
+  "id": "2G2KTAKCT",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.9.0-preview2",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {},
+  "path": "/NYCTaxi"
+}
