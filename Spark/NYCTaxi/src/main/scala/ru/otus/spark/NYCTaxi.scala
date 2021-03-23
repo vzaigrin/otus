@@ -7,7 +7,7 @@ object NYCTaxi {
   def main(args: Array[String]): Unit = {
     // Проверяем аргументы вызова
     if (args.length != 3) {
-      println("Usage: NYCTaxi <trips> <zones>")
+      println("Usage: NYCTaxi <trips> <payments> <zones>")
       sys.exit(-1)
     }
 
