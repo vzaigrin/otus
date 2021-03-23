@@ -1,0 +1,477 @@
+﻿{
+  "paragraphs": [
+    {
+      "text": "val wine = spark.read\n        .option(\"header\", \"true\")\n        .option(\"inferSchema\", \"true\")\n        .csv(\"/home/vadim/Projects/otus/Spark/WineMag/data/winemag-data-130k-v2.csv\")",
+      "user": "anonymous",
+      "dateUpdated": "2021-03-23T09:35:01+0300",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mwine\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [_c0: int, country: string ... 12 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=299",
+              "$$hashKey": "object:724"
+            },
+            {
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=300",
+              "$$hashKey": "object:725"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616475883262_115400925",
+      "id": "paragraph_1616475883262_115400925",
+      "dateCreated": "2021-03-23T08:04:43+0300",
+      "dateStarted": "2021-03-23T09:35:01+0300",
+      "dateFinished": "2021-03-23T09:35:01+0300",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:505"
+    },
+    {
+      "text": "wine.show",
+      "user": "anonymous",
+      "dateUpdated": "2021-03-23T10:27:19+0300",
+      "config": {
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false
+            }
+          }
+        ],
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "state": {
+                "currentPage": "Table",
+                "chart": {
+                  "series": [
+                    {
+                      "type": "Line",
+                      "x": {
+                        "column": "_c0",
+                        "index": 0
+                      },
+                      "y": {
+                        "column": "points",
+                        "index": 4
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+---------+--------------------+--------------------+------+-----+-----------------+-------------------+-----------------+------------------+---------------------+--------------------+------------------+-------------------+\n|_c0|  country|         description|         designation|points|price|         province|           region_1|         region_2|       taster_name|taster_twitter_handle|               title|           variety|             winery|\n+---+---------+--------------------+--------------------+------+-----+-----------------+-------------------+-----------------+------------------+---------------------+--------------------+------------------+-------------------+\n|  0|    Italy|Aromas include tr...|        Vulkà Bianco|    87| null|Sicily & Sardinia|               Etna|             null|     Kerin O’Keefe|         @kerinokeefe|Nicosia 2013 Vulk...|       White Blend|            Nicosia|\n|  1| Portugal|This is ripe and ...|            Avidagos|    87| 15.0|            Douro|               null|             null|        Roger Voss|           @vossroger|Quinta dos Avidag...|    Portuguese Red|Quinta dos Avidagos|\n|  2|       US|Tart and snappy, ...|                null|    87| 14.0|           Oregon|  Willamette Valley|Willamette Valley|      Paul Gregutt|          @paulgwine |Rainstorm 2013 Pi...|        Pinot Gris|          Rainstorm|\n|  3|       US|Pineapple rind, l...|Reserve Late Harvest|    87| 13.0|         Michigan|Lake Michigan Shore|             null|Alexander Peartree|                 null|St. Julian 2013 R...|          Riesling|         St. Julian|\n|  4|       US|Much like the reg...|Vintner's Reserve...|    87| 65.0|           Oregon|  Willamette Valley|Willamette Valley|      Paul Gregutt|          @paulgwine |Sweet Cheeks 2012...|        Pinot Noir|       Sweet Cheeks|\n|  5|    Spain|Blackberry and ra...|        Ars In Vitro|    87| 15.0|   Northern Spain|            Navarra|             null| Michael Schachner|          @wineschach|Tandem 2011 Ars I...|Tempranillo-Merlot|             Tandem|\n|  6|    Italy|Here's a bright, ...|             Belsito|    87| 16.0|Sicily & Sardinia|           Vittoria|             null|     Kerin O’Keefe|         @kerinokeefe|Terre di Giurfo 2...|          Frappato|    Terre di Giurfo|\n|  7|   France|This dry and rest...|                null|    87| 24.0|           Alsace|             Alsace|             null|        Roger Voss|           @vossroger|Trimbach 2012 Gew...|    Gewürztraminer|           Trimbach|\n|  8|  Germany|Savory dried thym...|               Shine|    87| 12.0|      Rheinhessen|               null|             null|Anna Lee C. Iijima|                 null|Heinz Eifel 2013 ...|    Gewürztraminer|        Heinz Eifel|\n|  9|   France|This has great de...|         Les Natures|    87| 27.0|           Alsace|             Alsace|             null|        Roger Voss|           @vossroger|Jean-Baptiste Ada...|        Pinot Gris| Jean-Baptiste Adam|\n| 10|       US|Soft, supple plum...|      Mountain Cuvée|    87| 19.0|       California|        Napa Valley|             Napa|    Virginie Boone|              @vboone|Kirkland Signatur...|Cabernet Sauvignon| Kirkland Signature|\n| 11|   France|This is a dry win...|                null|    87| 30.0|           Alsace|             Alsace|             null|        Roger Voss|           @vossroger|Leon Beyer 2012 G...|    Gewürztraminer|         Leon Beyer|\n| 12|       US|Slightly reduced,...|                null|    87| 34.0|       California|   Alexander Valley|           Sonoma|    Virginie Boone|              @vboone|Louis M. Martini ...|Cabernet Sauvignon|   Louis M. Martini|\n| 13|    Italy|This is dominated...|               Rosso|    87| null|Sicily & Sardinia|               Etna|             null|     Kerin O’Keefe|         @kerinokeefe|Masseria Settepor...| Nerello Mascalese|Masseria Setteporte|\n| 14|       US|Building on 150 y...|                null|    87| 12.0|       California|      Central Coast|    Central Coast|     Matt Kettmann|        @mattkettmann|Mirassou 2012 Cha...|        Chardonnay|           Mirassou|\n| 15|  Germany|Zesty orange peel...|               Devon|    87| 24.0|            Mosel|               null|             null|Anna Lee C. Iijima|                 null|Richard Böcking 2...|          Riesling|    Richard Böcking|\n| 16|Argentina|Baked plum, molas...|               Felix|    87| 30.0|            Other|           Cafayate|             null| Michael Schachner|          @wineschach|Felix Lavaque 201...|            Malbec|      Felix Lavaque|\n| 17|Argentina|Raw black-cherry ...| Winemaker Selection|    87| 13.0| Mendoza Province|            Mendoza|             null| Michael Schachner|          @wineschach|Gaucho Andino 201...|            Malbec|      Gaucho Andino|\n| 18|    Spain|Desiccated blackb...|Vendimia Seleccio...|    87| 28.0|   Northern Spain|   Ribera del Duero|             null| Michael Schachner|          @wineschach|Pradorey 2010 Ven...| Tempranillo Blend|           Pradorey|\n| 19|       US|Red fruit aromas ...|                null|    87| 32.0|         Virginia|           Virginia|             null|Alexander Peartree|                 null|Quiévremont 2012 ...|          Meritage|        Quiévremont|\n+---+---------+--------------------+--------------------+------+-----+-----------------+-------------------+-----------------+------------------+---------------------+--------------------+------------------+-------------------+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=301",
+              "$$hashKey": "object:775"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616477842505_1651134739",
+      "id": "paragraph_1616477842505_1651134739",
+      "dateCreated": "2021-03-23T08:37:22+0300",
+      "dateStarted": "2021-03-23T09:35:01+0300",
+      "dateFinished": "2021-03-23T09:35:02+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:506"
+    },
+    {
+      "text": "wine.printSchema",
+      "user": "anonymous",
+      "dateUpdated": "2021-03-23T09:37:00+0300",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 365
+              },
+              "state": {}
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- _c0: integer (nullable = true)\n |-- country: string (nullable = true)\n |-- description: string (nullable = true)\n |-- designation: string (nullable = true)\n |-- points: string (nullable = true)\n |-- price: string (nullable = true)\n |-- province: string (nullable = true)\n |-- region_1: string (nullable = true)\n |-- region_2: string (nullable = true)\n |-- taster_name: string (nullable = true)\n |-- taster_twitter_handle: string (nullable = true)\n |-- title: string (nullable = true)\n |-- variety: string (nullable = true)\n |-- winery: string (nullable = true)\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616475983398_2044577956",
+      "id": "paragraph_1616475983398_2044577956",
+      "dateCreated": "2021-03-23T08:06:23+0300",
+      "dateStarted": "2021-03-23T09:35:02+0300",
+      "dateFinished": "2021-03-23T09:35:02+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:507"
+    },
+    {
+      "text": "wine.count",
+      "user": "anonymous",
+      "dateUpdated": "2021-03-23T09:35:02+0300",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mres134\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 129971\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=302",
+              "$$hashKey": "object:861"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616476053000_1317813927",
+      "id": "paragraph_1616476053000_1317813927",
+      "dateCreated": "2021-03-23T08:07:33+0300",
+      "dateStarted": "2021-03-23T09:35:02+0300",
+      "dateFinished": "2021-03-23T09:35:02+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:508"
+    },
+    {
+      "text": "wine.describe().show",
+      "user": "anonymous",
+      "dateUpdated": "2021-03-23T09:35:10+0300",
+      "config": {
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false
+            }
+          }
+        ],
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 252
+              },
+              "state": {
+                "currentPage": "Table",
+                "chart": {
+                  "series": [
+                    {
+                      "type": "Line",
+                      "x": {
+                        "column": "summary",
+                        "index": 0
+                      },
+                      "y": {
+                        "column": "_c0",
+                        "index": 1
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------+-----------------+---------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+---------------------+--------------------+--------------------+--------------------+\n|summary|              _c0|  country|         description|         designation|              points|               price|            province|            region_1|            region_2|         taster_name|taster_twitter_handle|               title|             variety|              winery|\n+-------+-----------------+---------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+---------------------+--------------------+--------------------+--------------------+\n|  count|           129971|   129908|              129971|               92511|              129967|              120977|              129909|              108734|               50521|              103726|                98761|              129966|              129965|              129966|\n|   mean|          64985.0|     null|                null|  1494.4644378698224|   88.44692754626958|  35.366344246031744|   44.46153846153846|                83.2|                83.5|                78.0|                 29.4|                59.0|                88.0|            Infinity|\n| stddev|37519.54025571209|     null|                null|   7115.554318030012|  3.0397516103668334|  41.022611002260525|  30.831843345842366|    85.8149171181794|  15.758595538097083|     26.229754097208|    31.24579971772206|   49.49747468305833|                 0.0|                 NaN|\n|    min|                0|Argentina|         \"\"\"Chremisa| a firmly structu...| and it doesn't s...| a lot of other N...| 's a light- to m...| and a lot of wei...| almost sharp dri...| almost severe el...|  a wine that abso...| and a wine to dr...| but balanced and...| but try after 20...|\n|    max|           129970|  Uruguay|“Wow” is the firs...|                 “P”|              Umriss|         Les Charmes|                Župa|        Zonda Valley|   Willamette Valley|      Virginie Boone|               Oregon|Štoka 2011 Izbran...|             Žilavka|               Štoka|\n+-------+-----------------+---------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+---------------------+--------------------+--------------------+--------------------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=303",
+              "$$hashKey": "object:907"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616475999766_1812276179",
+      "id": "paragraph_1616475999766_1812276179",
+      "dateCreated": "2021-03-23T08:06:39+0300",
+      "dateStarted": "2021-03-23T09:35:02+0300",
+      "dateFinished": "2021-03-23T09:35:03+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:509"
+    },
+    {
+      "text": "wine.select($\"country\", $\"price\").na.drop.groupBy($\"country\").agg(mean($\"price\".cast(\"Double\")).as(\"price\")).orderBy(\"country\").show(false)",
+      "user": "anonymous",
+      "dateUpdated": "2021-03-23T09:36:51+0300",
+      "config": {
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false
+            }
+          }
+        ],
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 642
+              },
+              "state": {
+                "currentPage": "Table",
+                "chart": {
+                  "series": [
+                    {
+                      "type": "Line",
+                      "x": {
+                        "column": "country",
+                        "index": 0
+                      },
+                      "y": {
+                        "column": "price",
+                        "index": 1
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----------------------+------------------+\n|country               |price             |\n+----------------------+------------------+\n|Argentina             |24.510117145899894|\n|Armenia               |14.5              |\n|Australia             |35.43766346992153 |\n|Austria               |30.813795568263046|\n|Bosnia and Herzegovina|12.5              |\n|Brazil                |23.76595744680851 |\n|Bulgaria              |14.645390070921986|\n|Canada                |35.71259842519685 |\n|Chile                 |20.786458333333332|\n|China                 |18.0              |\n|Croatia               |25.450704225352112|\n|Cyprus                |16.272727272727273|\n|Czech Republic        |24.25             |\n|England               |51.68115942028985 |\n|France                |41.13777777777778 |\n|Georgia               |19.321428571428573|\n|Germany               |42.25754716981132 |\n|Greece                |22.364425162689805|\n|Hungary               |40.648275862068964|\n|India                 |13.333333333333334|\n+----------------------+------------------+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=304",
+              "$$hashKey": "object:953"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616476011410_1037661396",
+      "id": "paragraph_1616476011410_1037661396",
+      "dateCreated": "2021-03-23T08:06:51+0300",
+      "dateStarted": "2021-03-23T09:35:04+0300",
+      "dateFinished": "2021-03-23T09:35:04+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:510"
+    },
+    {
+      "user": "anonymous",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616481373899_700507655",
+      "id": "paragraph_1616481373899_700507655",
+      "dateCreated": "2021-03-23T09:36:13+0300",
+      "status": "READY",
+      "$$hashKey": "object:511"
+    }
+  ],
+  "name": "WineMag",
+  "id": "2G37ZDPQU",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.9.0-preview2",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {
+    "isRunning": false
+  },
+  "path": "/WineMag"
+}
