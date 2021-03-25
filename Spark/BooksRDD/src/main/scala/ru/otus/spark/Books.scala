@@ -4,6 +4,7 @@ import io.circe.Encoder
 import io.circe.generic.semiauto.deriveEncoder
 import io.circe.syntax.EncoderOps
 import org.apache.commons.csv.{CSVFormat, CSVParser, CSVRecord}
+import org.apache.hadoop.fs.Path
 import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
 import scala.collection.JavaConverters._
@@ -11,8 +12,8 @@ import scala.collection.JavaConverters._
 object Books {
   def main(args: Array[String]): Unit = {
     // Проверяем наличия аргумента вызова
-    if (args.length != 1) {
-      println("Usage: Books <filename>")
+    if (args.length != 2) {
+      println("Usage: Books <input-filename> <result-dir>")
       sys.exit(-1)
     }
 
@@ -39,8 +40,14 @@ object Books {
           Book(record).asJson.noSpaces
         }
 
-      // Выводим результат на экран
-      file.foreach(println)
+      // Если каталог для сохранения результата существует, удаляем его
+      val fs = org.apache.hadoop.fs.FileSystem.get(sc.hadoopConfiguration)
+      if (fs.exists(new org.apache.hadoop.fs.Path(args(1))))
+        fs.delete(new Path(args(1)), true)
+
+      // Сохраняем результат в один файл
+      file.repartition(1).saveAsTextFile(args(1))
+
     } catch {
       // Если что-то пошло не так
       case e: Throwable =>
