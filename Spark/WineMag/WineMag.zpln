@@ -1,9 +1,51 @@
 ﻿{
   "paragraphs": [
     {
-      "text": "val wine = spark.read\n        .option(\"header\", \"true\")\n        .option(\"inferSchema\", \"true\")\n        .csv(\"/home/vadim/Projects/otus/Spark/WineMag/data/winemag-data-130k-v2.csv\")",
       "user": "anonymous",
-      "dateUpdated": "2021-03-23T22:42:20+0300",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616674058698_1258232932",
+      "id": "paragraph_1616674058698_1258232932",
+      "dateCreated": "2021-03-25T15:07:38+0300",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:3278",
+      "text": "val dataDir = \"/home/vadim/Projects/otus/Spark/WineMag/data/\"",
+      "dateUpdated": "2021-03-25T15:08:08+0300",
+      "dateFinished": "2021-03-25T15:08:08+0300",
+      "dateStarted": "2021-03-25T15:08:08+0300",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mdataDir\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m = /home/vadim/Projects/otus/Spark/WineMag/data/\n"
+          }
+        ]
+      }
+    },
+    {
+      "text": "val wine = spark.read\n        .option(\"header\", \"true\")\n        .option(\"inferSchema\", \"true\")\n        .csv(dataDir + \"winemag-data-130k-v2.csv\")",
+      "user": "anonymous",
+      "dateUpdated": "2021-03-25T15:08:08+0300",
       "config": {
         "colWidth": 12,
         "fontSize": 9,
@@ -48,12 +90,12 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=328",
-              "$$hashKey": "object:6759"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=33",
+              "$$hashKey": "object:3540"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=329",
-              "$$hashKey": "object:6760"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=34",
+              "$$hashKey": "object:3541"
             }
           ],
           "interpreterSettingId": "spark"
@@ -63,16 +105,16 @@
       "jobName": "paragraph_1616475883262_115400925",
       "id": "paragraph_1616475883262_115400925",
       "dateCreated": "2021-03-23T08:04:43+0300",
-      "dateStarted": "2021-03-23T11:25:21+0300",
-      "dateFinished": "2021-03-23T11:27:54+0300",
+      "dateStarted": "2021-03-25T15:08:08+0300",
+      "dateFinished": "2021-03-25T15:08:08+0300",
       "status": "FINISHED",
       "focus": true,
-      "$$hashKey": "object:6530"
+      "$$hashKey": "object:2663"
     },
     {
       "text": "wine.show",
       "user": "anonymous",
-      "dateUpdated": "2021-03-23T22:42:26+0300",
+      "dateUpdated": "2021-03-25T15:08:08+0300",
       "config": {
         "results": [
           {
@@ -142,8 +184,8 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=334",
-              "$$hashKey": "object:6822"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=35",
+              "$$hashKey": "object:3590"
             }
           ],
           "interpreterSettingId": "spark"
@@ -153,15 +195,15 @@
       "jobName": "paragraph_1616477842505_1651134739",
       "id": "paragraph_1616477842505_1651134739",
       "dateCreated": "2021-03-23T08:37:22+0300",
-      "dateStarted": "2021-03-23T11:27:54+0300",
-      "dateFinished": "2021-03-23T11:30:45+0300",
+      "dateStarted": "2021-03-25T15:08:08+0300",
+      "dateFinished": "2021-03-25T15:08:09+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:6531"
+      "$$hashKey": "object:2664"
     },
     {
       "text": "wine.printSchema",
       "user": "anonymous",
-      "dateUpdated": "2021-03-23T22:42:29+0300",
+      "dateUpdated": "2021-03-25T15:08:09+0300",
       "config": {
         "colWidth": 12,
         "fontSize": 9,
@@ -203,15 +245,15 @@
       "jobName": "paragraph_1616475983398_2044577956",
       "id": "paragraph_1616475983398_2044577956",
       "dateCreated": "2021-03-23T08:06:23+0300",
-      "dateStarted": "2021-03-23T11:30:46+0300",
-      "dateFinished": "2021-03-23T11:33:25+0300",
+      "dateStarted": "2021-03-25T15:08:09+0300",
+      "dateFinished": "2021-03-25T15:08:09+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:6532"
+      "$$hashKey": "object:2665"
     },
     {
       "text": "wine.count",
       "user": "anonymous",
-      "dateUpdated": "2021-03-23T22:42:31+0300",
+      "dateUpdated": "2021-03-25T15:08:09+0300",
       "config": {
         "colWidth": 12,
         "fontSize": 9,
@@ -243,7 +285,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\u001b[1m\u001b[34mres153\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 129971\n"
+            "data": "\u001b[1m\u001b[34mres13\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 129971\n"
           }
         ]
       },
@@ -256,8 +298,8 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=343",
-              "$$hashKey": "object:6932"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=36",
+              "$$hashKey": "object:3651"
             }
           ],
           "interpreterSettingId": "spark"
@@ -267,15 +309,15 @@
       "jobName": "paragraph_1616476053000_1317813927",
       "id": "paragraph_1616476053000_1317813927",
       "dateCreated": "2021-03-23T08:07:33+0300",
-      "dateStarted": "2021-03-23T11:33:26+0300",
-      "dateFinished": "2021-03-23T11:36:09+0300",
+      "dateStarted": "2021-03-25T15:08:09+0300",
+      "dateFinished": "2021-03-25T15:08:09+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:6533"
+      "$$hashKey": "object:2666"
     },
     {
       "text": "wine.describe().show",
       "user": "anonymous",
-      "dateUpdated": "2021-03-23T22:42:36+0300",
+      "dateUpdated": "2021-03-25T15:08:09+0300",
       "config": {
         "results": [
           {
@@ -345,8 +387,8 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=348",
-              "$$hashKey": "object:6990"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=37",
+              "$$hashKey": "object:3698"
             }
           ],
           "interpreterSettingId": "spark"
@@ -356,15 +398,15 @@
       "jobName": "paragraph_1616475999766_1812276179",
       "id": "paragraph_1616475999766_1812276179",
       "dateCreated": "2021-03-23T08:06:39+0300",
-      "dateStarted": "2021-03-23T11:36:09+0300",
-      "dateFinished": "2021-03-23T11:38:51+0300",
+      "dateStarted": "2021-03-25T15:08:09+0300",
+      "dateFinished": "2021-03-25T15:08:12+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:6534"
+      "$$hashKey": "object:2667"
     },
     {
       "text": "wine.select($\"country\", $\"price\").na.drop.groupBy($\"country\").agg(mean($\"price\".cast(\"Double\")).as(\"price\")).orderBy(\"country\").show(false)",
       "user": "anonymous",
-      "dateUpdated": "2021-03-23T22:42:43+0300",
+      "dateUpdated": "2021-03-25T15:08:12+0300",
       "config": {
         "results": [
           {
@@ -434,8 +476,8 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=349",
-              "$$hashKey": "object:7048"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=38",
+              "$$hashKey": "object:3745"
             }
           ],
           "interpreterSettingId": "spark"
@@ -445,10 +487,10 @@
       "jobName": "paragraph_1616476011410_1037661396",
       "id": "paragraph_1616476011410_1037661396",
       "dateCreated": "2021-03-23T08:06:51+0300",
-      "dateStarted": "2021-03-23T11:38:51+0300",
-      "dateFinished": "2021-03-23T11:38:51+0300",
+      "dateStarted": "2021-03-25T15:08:12+0300",
+      "dateFinished": "2021-03-25T15:08:13+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:6535"
+      "$$hashKey": "object:2668"
     },
     {
       "text": "",
@@ -478,7 +520,7 @@
       "id": "paragraph_1616481373899_700507655",
       "dateCreated": "2021-03-23T09:36:13+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:6536"
+      "$$hashKey": "object:2669"
     }
   ],
   "name": "WineMag",
@@ -493,8 +535,6 @@
     "looknfeel": "default",
     "personalizedMode": "false"
   },
-  "info": {
-    "isRunning": false
-  },
+  "info": {},
   "path": "/WineMag"
 }

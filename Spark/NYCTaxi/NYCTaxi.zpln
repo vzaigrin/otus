@@ -1,9 +1,51 @@
 ﻿{
   "paragraphs": [
     {
-      "text": "val tripPath = \"/home/vadim/Projects/otus/Spark/NYCTaxi/data/trips\"\nval tripsRaw = spark.read.option(\"header\", \"true\").option(\"inferSchema\", \"true\").csv(tripPath)",
+      "text": "val dataDir = \"/home/vadim/Projects/otus/Spark/NYCTaxi/data/\"",
       "user": "anonymous",
-      "dateUpdated": "2021-03-23T22:43:22+0300",
+      "dateUpdated": "2021-03-25T14:34:35+0300",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mdataDir\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m = /home/vadim/Projects/otus/Spark/NYCTaxi/data/\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1616671733700_1189967519",
+      "id": "paragraph_1616671733700_1189967519",
+      "dateCreated": "2021-03-25T14:28:53+0300",
+      "dateStarted": "2021-03-25T14:34:35+0300",
+      "dateFinished": "2021-03-25T14:34:44+0300",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:184"
+    },
+    {
+      "text": "val tripPath = dataDir + \"trips\"\nval tripsRaw = spark.read.option(\"header\", \"true\").option(\"inferSchema\", \"true\").csv(tripPath)",
+      "user": "anonymous",
+      "dateUpdated": "2021-03-25T14:34:44+0300",
       "config": {
         "colWidth": 12,
         "fontSize": 9,
@@ -48,12 +90,12 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=311",
-              "$$hashKey": "object:8101"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=0",
+              "$$hashKey": "object:1943"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=312",
-              "$$hashKey": "object:8102"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=1",
+              "$$hashKey": "object:1944"
             }
           ],
           "interpreterSettingId": "spark"
@@ -63,16 +105,15 @@
       "jobName": "paragraph_1616421114704_1390825437",
       "id": "paragraph_1616421114704_1390825437",
       "dateCreated": "2021-03-22T16:51:54+0300",
-      "dateStarted": "2021-03-23T11:23:59+0300",
-      "dateFinished": "2021-03-23T11:25:06+0300",
+      "dateStarted": "2021-03-25T14:34:44+0300",
+      "dateFinished": "2021-03-25T14:35:54+0300",
       "status": "FINISHED",
-      "focus": true,
-      "$$hashKey": "object:7562"
+      "$$hashKey": "object:185"
     },
     {
       "text": "tripsRaw.show(10, truncate = false)",
       "user": "anonymous",
-      "dateUpdated": "2021-03-23T22:43:26+0300",
+      "dateUpdated": "2021-03-25T14:35:54+0300",
       "config": {
         "results": [
           {
@@ -142,8 +183,8 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=313",
-              "$$hashKey": "object:8164"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=2",
+              "$$hashKey": "object:1965"
             }
           ],
           "interpreterSettingId": "spark"
@@ -153,15 +194,15 @@
       "jobName": "paragraph_1616421727601_418137708",
       "id": "paragraph_1616421727601_418137708",
       "dateCreated": "2021-03-22T17:02:07+0300",
-      "dateStarted": "2021-03-23T11:25:06+0300",
-      "dateFinished": "2021-03-23T11:25:06+0300",
+      "dateStarted": "2021-03-25T14:35:54+0300",
+      "dateFinished": "2021-03-25T14:35:54+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:7563"
+      "$$hashKey": "object:186"
     },
     {
       "text": "tripsRaw.printSchema",
       "user": "anonymous",
-      "dateUpdated": "2021-03-23T22:43:30+0300",
+      "dateUpdated": "2021-03-25T14:35:54+0300",
       "config": {
         "colWidth": 12,
         "fontSize": 9,
@@ -203,15 +244,15 @@
       "jobName": "paragraph_1616421251642_839653435",
       "id": "paragraph_1616421251642_839653435",
       "dateCreated": "2021-03-22T16:54:11+0300",
-      "dateStarted": "2021-03-23T11:25:06+0300",
-      "dateFinished": "2021-03-23T11:25:06+0300",
+      "dateStarted": "2021-03-25T14:35:54+0300",
+      "dateFinished": "2021-03-25T14:35:54+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:7564"
+      "$$hashKey": "object:187"
     },
     {
       "text": "val trips = tripsRaw\n        .filter($\"trip_distance\" > 1)\n        .filter($\"passenger_count\" > 0)\n        .drop(\"VendorID\", \"RatecodeID\", \"store_and_fwd_flag\", \"fare_amount\", \"extra\", \"mta_tax\", \"tip_amount\", \"tolls_amount\", \"improvement_surcharge\", \"congestion_surcharge\")\n        .withColumn(\"pickup_dt\", to_timestamp($\"tpep_pickup_datetime\", \"yyyy-MM-dd HH:mm:ss\"))\n        .withColumn(\"dropoff_dt\", to_timestamp($\"tpep_dropoff_datetime\", \"yyyy-MM-dd HH:mm:ss\"))\n        .drop(\"tpep_pickup_datetime\", \"tpep_dropoff_datetime\")\n        .filter($\"dropoff_dt\" > $\"pickup_dt\")\n        .withColumn(\"pickup_year\", year($\"pickup_dt\"))\n        .withColumn(\"pickup_month\", month($\"pickup_dt\"))\n        .withColumn(\"pickup_day\", dayofmonth($\"pickup_dt\"))\n        .withColumn(\"pickup_weekofyear\", weekofyear($\"pickup_dt\"))\n        .withColumn(\"pickup_hour\", hour($\"pickup_dt\"))\n        .withColumn(\"dropoff_year\", year($\"dropoff_dt\"))\n        .withColumn(\"dropoff_month\", month($\"dropoff_dt\"))\n        .withColumn(\"dropoff_day\", dayofmonth($\"dropoff_dt\"))\n        .withColumn(\"dropoff_weekofyear\", weekofyear($\"dropoff_dt\"))\n        .withColumn(\"dropoff_hour\", hour($\"dropoff_dt\"))\n        .filter($\"pickup_year\" > 2018 && $\"pickup_year\" < 2021)\n        .filter($\"dropoff_year\" > 2018 && $\"dropoff_year\" < 2021)",
       "user": "anonymous",
-      "dateUpdated": "2021-03-23T22:43:33+0300",
+      "dateUpdated": "2021-03-25T14:35:54+0300",
       "config": {
         "results": [
           {
@@ -261,15 +302,15 @@
       "jobName": "paragraph_1616421706738_1227221309",
       "id": "paragraph_1616421706738_1227221309",
       "dateCreated": "2021-03-22T17:01:46+0300",
-      "dateStarted": "2021-03-23T11:25:06+0300",
-      "dateFinished": "2021-03-23T11:25:06+0300",
+      "dateStarted": "2021-03-25T14:35:54+0300",
+      "dateFinished": "2021-03-25T14:35:55+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:7565"
+      "$$hashKey": "object:188"
     },
     {
       "text": "trips.printSchema",
       "user": "anonymous",
-      "dateUpdated": "2021-03-23T22:43:38+0300",
+      "dateUpdated": "2021-03-25T14:35:55+0300",
       "config": {
         "colWidth": 12,
         "fontSize": 9,
@@ -311,15 +352,15 @@
       "jobName": "paragraph_1616423854397_900212821",
       "id": "paragraph_1616423854397_900212821",
       "dateCreated": "2021-03-22T17:37:34+0300",
-      "dateStarted": "2021-03-23T11:25:06+0300",
-      "dateFinished": "2021-03-23T11:25:06+0300",
+      "dateStarted": "2021-03-25T14:35:55+0300",
+      "dateFinished": "2021-03-25T14:35:55+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:7566"
+      "$$hashKey": "object:189"
     },
     {
       "text": "trips.show(10, truncate = false)",
       "user": "anonymous",
-      "dateUpdated": "2021-03-23T22:43:42+0300",
+      "dateUpdated": "2021-03-25T14:35:55+0300",
       "config": {
         "results": [
           {
@@ -389,8 +430,8 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=314",
-              "$$hashKey": "object:8378"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=3",
+              "$$hashKey": "object:2023"
             }
           ],
           "interpreterSettingId": "spark"
@@ -400,15 +441,15 @@
       "jobName": "paragraph_1616421787042_323129748",
       "id": "paragraph_1616421787042_323129748",
       "dateCreated": "2021-03-22T17:03:07+0300",
-      "dateStarted": "2021-03-23T11:25:06+0300",
-      "dateFinished": "2021-03-23T11:25:07+0300",
+      "dateStarted": "2021-03-25T14:35:55+0300",
+      "dateFinished": "2021-03-25T14:35:56+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:7567"
+      "$$hashKey": "object:190"
     },
     {
-      "text": "val paymentTypePath = \"/home/vadim/Projects/otus/Spark/NYCTaxi/data/payment_type.csv\"\nval paymentType = spark.read.option(\"header\", \"true\").option(\"inferSchema\", \"true\").csv(paymentTypePath)\n\npaymentType.show",
+      "text": "val paymentTypePath = dataDir + \"payment_type.csv\"\nval paymentType = spark.read.option(\"header\", \"true\").option(\"inferSchema\", \"true\").csv(paymentTypePath)\n\npaymentType.show",
       "user": "anonymous",
-      "dateUpdated": "2021-03-23T22:42:54+0300",
+      "dateUpdated": "2021-03-25T14:35:56+0300",
       "config": {
         "results": [
           {
@@ -485,16 +526,16 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=315",
-              "$$hashKey": "object:8436"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=4",
+              "$$hashKey": "object:2057"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=316",
-              "$$hashKey": "object:8437"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=5",
+              "$$hashKey": "object:2058"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=317",
-              "$$hashKey": "object:8438"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=6",
+              "$$hashKey": "object:2059"
             }
           ],
           "interpreterSettingId": "spark"
@@ -504,15 +545,15 @@
       "jobName": "paragraph_1616443321558_88429375",
       "id": "paragraph_1616443321558_88429375",
       "dateCreated": "2021-03-22T23:02:01+0300",
-      "dateStarted": "2021-03-23T11:25:07+0300",
-      "dateFinished": "2021-03-23T11:25:07+0300",
+      "dateStarted": "2021-03-25T14:35:56+0300",
+      "dateFinished": "2021-03-25T14:35:56+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:7568"
+      "$$hashKey": "object:191"
     },
     {
-      "text": "val zoneLookupPath = \"/home/vadim/Projects/otus/Spark/NYCTaxi/data/taxi_zone_lookup.csv\"\nval zoneLookup = spark.read.option(\"header\", \"true\").option(\"inferSchema\", \"true\").csv(zoneLookupPath).drop(\"service_zone\")\n\nzoneLookup.show(10)",
+      "text": "val zoneLookupPath = dataDir + \"taxi_zone_lookup.csv\"\nval zoneLookup = spark.read.option(\"header\", \"true\").option(\"inferSchema\", \"true\").csv(zoneLookupPath).drop(\"service_zone\")\n\nzoneLookup.show(10)",
       "user": "anonymous",
-      "dateUpdated": "2021-03-23T22:43:55+0300",
+      "dateUpdated": "2021-03-25T14:35:56+0300",
       "config": {
         "results": [
           {
@@ -590,16 +631,16 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=318",
-              "$$hashKey": "object:8504"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=7",
+              "$$hashKey": "object:2097"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=319",
-              "$$hashKey": "object:8505"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=8",
+              "$$hashKey": "object:2098"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=320",
-              "$$hashKey": "object:8506"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=9",
+              "$$hashKey": "object:2099"
             }
           ],
           "interpreterSettingId": "spark"
@@ -609,15 +650,15 @@
       "jobName": "paragraph_1616425295851_1843459876",
       "id": "paragraph_1616425295851_1843459876",
       "dateCreated": "2021-03-22T18:01:35+0300",
-      "dateStarted": "2021-03-23T11:25:07+0300",
-      "dateFinished": "2021-03-23T11:25:07+0300",
+      "dateStarted": "2021-03-25T14:35:56+0300",
+      "dateFinished": "2021-03-25T14:35:57+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:7569"
+      "$$hashKey": "object:192"
     },
     {
       "text": "val data = trips\n        .join(paymentType, trips(\"payment_type\") === paymentType(\"type_id\"))\n        .drop(\"payment_type\", \"type_id\")\n        .withColumnRenamed(\"type\", \"payment_type\")\n        .join(zoneLookup, trips(\"PULocationID\") === zoneLookup(\"LocationID\"))\n        .drop(\"PULocationID\", \"LocationID\")\n        .withColumnRenamed(\"Borough\", \"PUBorough\")\n        .withColumnRenamed(\"Zone\", \"PUZone\")\n        .join(zoneLookup, trips(\"DOLocationID\") === zoneLookup(\"LocationID\"))\n        .drop(\"DOLocationID\", \"LocationID\")\n        .withColumnRenamed(\"Borough\", \"DOBorough\")\n        .withColumnRenamed(\"Zone\", \"DOZone\")\n        .filter($\"PUBorough\" =!= \"Unknown\")\n        .filter($\"DOBorough\" =!= \"Unknown\")",
       "user": "anonymous",
-      "dateUpdated": "2021-03-23T22:43:58+0300",
+      "dateUpdated": "2021-03-25T14:35:57+0300",
       "config": {
         "colWidth": 12,
         "fontSize": 9,
@@ -659,15 +700,15 @@
       "jobName": "paragraph_1616425349709_1087961214",
       "id": "paragraph_1616425349709_1087961214",
       "dateCreated": "2021-03-22T18:02:29+0300",
-      "dateStarted": "2021-03-23T11:25:07+0300",
-      "dateFinished": "2021-03-23T11:25:07+0300",
+      "dateStarted": "2021-03-25T14:35:57+0300",
+      "dateFinished": "2021-03-25T14:35:57+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:7570"
+      "$$hashKey": "object:193"
     },
     {
       "text": "data.show(10, truncate = false)",
       "user": "anonymous",
-      "dateUpdated": "2021-03-23T22:44:02+0300",
+      "dateUpdated": "2021-03-25T14:35:57+0300",
       "config": {
         "results": [
           {
@@ -737,8 +778,8 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=323",
-              "$$hashKey": "object:8624"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=12",
+              "$$hashKey": "object:2135"
             }
           ],
           "interpreterSettingId": "spark"
@@ -748,15 +789,15 @@
       "jobName": "paragraph_1616425634329_44956892",
       "id": "paragraph_1616425634329_44956892",
       "dateCreated": "2021-03-22T18:07:14+0300",
-      "dateStarted": "2021-03-23T11:25:07+0300",
-      "dateFinished": "2021-03-23T11:25:07+0300",
+      "dateStarted": "2021-03-25T14:35:57+0300",
+      "dateFinished": "2021-03-25T14:35:58+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:7571"
+      "$$hashKey": "object:194"
     },
     {
       "text": "val tripsGrouped = data\n        .groupBy(\"pickup_year\", \"pickup_month\", \"PUBorough\")\n        .count",
       "user": "anonymous",
-      "dateUpdated": "2021-03-23T22:44:04+0300",
+      "dateUpdated": "2021-03-25T14:35:58+0300",
       "config": {
         "colWidth": 12,
         "fontSize": 9,
@@ -798,15 +839,15 @@
       "jobName": "paragraph_1616431633579_1171547311",
       "id": "paragraph_1616431633579_1171547311",
       "dateCreated": "2021-03-22T19:47:13+0300",
-      "dateStarted": "2021-03-23T11:25:07+0300",
-      "dateFinished": "2021-03-23T11:25:08+0300",
+      "dateStarted": "2021-03-25T14:35:58+0300",
+      "dateFinished": "2021-03-25T14:35:58+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:7572"
+      "$$hashKey": "object:195"
     },
     {
       "text": "tripsGrouped.sort(\"pickup_year\", \"pickup_month\", \"PUBorough\").show(10)",
       "user": "anonymous",
-      "dateUpdated": "2021-03-23T22:44:07+0300",
+      "dateUpdated": "2021-03-25T14:35:58+0300",
       "config": {
         "results": [
           {
@@ -884,8 +925,8 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=327",
-              "$$hashKey": "object:8734"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=16",
+              "$$hashKey": "object:2168"
             }
           ],
           "interpreterSettingId": "spark"
@@ -895,15 +936,15 @@
       "jobName": "paragraph_1616431946779_337662119",
       "id": "paragraph_1616431946779_337662119",
       "dateCreated": "2021-03-22T19:52:26+0300",
-      "dateStarted": "2021-03-23T11:25:08+0300",
-      "dateFinished": "2021-03-23T11:27:54+0300",
+      "dateStarted": "2021-03-25T14:35:58+0300",
+      "dateFinished": "2021-03-25T14:38:50+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:7573"
+      "$$hashKey": "object:196"
     },
     {
       "text": "val tripsByYM = tripsGrouped\n        .groupBy(\"pickup_month\")\n        .pivot(\"pickup_year\")\n        .sum(\"count\")\n        .sort(\"pickup_month\")",
       "user": "anonymous",
-      "dateUpdated": "2021-03-23T22:44:09+0300",
+      "dateUpdated": "2021-03-25T14:38:50+0300",
       "config": {
         "results": [
           {
@@ -956,8 +997,8 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=333",
-              "$$hashKey": "object:8792"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=20",
+              "$$hashKey": "object:2188"
             }
           ],
           "interpreterSettingId": "spark"
@@ -967,15 +1008,15 @@
       "jobName": "paragraph_1616425662193_1657456063",
       "id": "paragraph_1616425662193_1657456063",
       "dateCreated": "2021-03-22T18:07:42+0300",
-      "dateStarted": "2021-03-23T11:27:54+0300",
-      "dateFinished": "2021-03-23T11:30:45+0300",
+      "dateStarted": "2021-03-25T14:38:50+0300",
+      "dateFinished": "2021-03-25T14:41:51+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:7574"
+      "$$hashKey": "object:197"
     },
     {
       "text": "tripsByYM.show",
       "user": "anonymous",
-      "dateUpdated": "2021-03-23T22:42:54+0300",
+      "dateUpdated": "2021-03-25T14:41:51+0300",
       "config": {
         "results": [
           {
@@ -1042,7 +1083,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "+------------+-------+-------+\n|pickup_month|   2019|   2020|\n+------------+-------+-------+\n|           1|5181732|4447008|\n|           2|4873100|4370847|\n|           3|5525212|2104927|\n|           4|5276492| 148014|\n|           5|5376693| 199374|\n|           6|4961526| 352028|\n|           7|4464708| 515287|\n|           8|4336183| 659369|\n|           9|4668843| 894878|\n|          10|5083799|1123369|\n|          11|4807928|1002113|\n|          12|4788694| 952621|\n+------------+-------+-------+\n\n"
+            "data": "+------------+-------+-------+\n|pickup_month|   2019|   2020|\n+------------+-------+-------+\n|           1|5181732|4447008|\n|           2|4873100|4370847|\n|           3|5525212|2104927|\n|           4|5276492| 148014|\n|           5|5376693| 199374|\n|           6|4961526| 352028|\n|           7|4464708| 515287|\n|           8|4336183| 659369|\n|           9|4668843| 894878|\n|          10|5083799|1123369|\n|          11|4807928|1002113|\n|          12|4788694| 952475|\n+------------+-------+-------+\n\n"
           }
         ]
       },
@@ -1055,8 +1096,8 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=338",
-              "$$hashKey": "object:8850"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=24",
+              "$$hashKey": "object:2208"
             }
           ],
           "interpreterSettingId": "spark"
@@ -1066,15 +1107,15 @@
       "jobName": "paragraph_1616430769598_1534597016",
       "id": "paragraph_1616430769598_1534597016",
       "dateCreated": "2021-03-22T19:32:49+0300",
-      "dateStarted": "2021-03-23T11:30:45+0300",
-      "dateFinished": "2021-03-23T11:33:25+0300",
+      "dateStarted": "2021-03-25T14:41:51+0300",
+      "dateFinished": "2021-03-25T14:44:39+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:7575"
+      "$$hashKey": "object:198"
     },
     {
       "text": "val tripsByYMBorough = tripsGrouped\n        .groupBy(\"pickup_month\")\n        .pivot(\"PUBorough\")\n        .agg(stddev(\"count\"))\n        .sort(\"pickup_month\")",
       "user": "anonymous",
-      "dateUpdated": "2021-03-23T22:44:17+0300",
+      "dateUpdated": "2021-03-25T14:44:39+0300",
       "config": {
         "colWidth": 12,
         "fontSize": 9,
@@ -1119,8 +1160,8 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=342",
-              "$$hashKey": "object:8908"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=28",
+              "$$hashKey": "object:2228"
             }
           ],
           "interpreterSettingId": "spark"
@@ -1130,15 +1171,15 @@
       "jobName": "paragraph_1616430142449_1495502293",
       "id": "paragraph_1616430142449_1495502293",
       "dateCreated": "2021-03-22T19:22:22+0300",
-      "dateStarted": "2021-03-23T11:33:25+0300",
-      "dateFinished": "2021-03-23T11:36:09+0300",
+      "dateStarted": "2021-03-25T14:44:39+0300",
+      "dateFinished": "2021-03-25T14:47:22+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:7576"
+      "$$hashKey": "object:199"
     },
     {
       "text": "tripsByYMBorough.show",
       "user": "anonymous",
-      "dateUpdated": "2021-03-23T22:44:24+0300",
+      "dateUpdated": "2021-03-25T14:47:22+0300",
       "config": {
         "results": [
           {
@@ -1195,7 +1236,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "+------------+------------------+------------------+------------------+------------------+------------------+------------------+\n|pickup_month|             Bronx|          Brooklyn|               EWR|         Manhattan|            Queens|     Staten Island|\n+------------+------------------+------------------+------------------+------------------+------------------+------------------+\n|           1|6299.6143135909515|  20404.9803847002| 9.192388155425117| 456288.2277250861| 36529.13631609704|2.8284271247461903|\n|           2| 6370.324991709606|20565.493624029546|2.8284271247461903|285551.63855334464| 42618.03280889441|43.840620433565945|\n|           3| 7788.074087988634| 42280.74287426842|21.920310216782973|2140045.9453390245|228322.65832479263| 47.37615433949868|\n|           4| 5929.090360249201| 48566.92215901683| 63.63961030678928|3252944.3376857834| 318771.5151334887|106.06601717798213|\n|           5| 4938.433759806848| 46943.40498941252| 55.86143571373726|  3273448.31301985|335436.60775249323| 94.75230867899737|\n|           6| 4547.403709810687| 43993.35549830224| 55.86143571373726| 2902101.994491579|308629.48257093003| 79.19595949289332|\n|           7| 3343.907968231183| 33931.22600201767|43.840620433565945| 2474249.358865129| 281025.4480469696| 68.58935777509511|\n|           8|2451.5392103737604|29931.830047626558| 52.32590180780452|  2290272.90232245| 277151.9170996297| 39.59797974644666|\n|           9|2303.0467863245854| 34412.76572000571| 53.74011537017761| 2360759.427591469| 271068.6774610818|1.4142135623730951|\n|          10|1927.5730855145287| 34144.06514315482| 58.68986283848344| 2484030.059862501|280292.17831487913| 5.656854249492381|\n|          11|1916.2593770155438|30043.552919054033| 44.54772721475249|2410216.5971879996|248903.70829800828|7.0710678118654755|\n|          12|1887.2679989868952|30974.812549876715| 54.44722215136416|2417392.3168034805| 262217.8218809698|13.435028842544403|\n+------------+------------------+------------------+------------------+------------------+------------------+------------------+\n\n"
+            "data": "+------------+------------------+------------------+------------------+------------------+------------------+------------------+\n|pickup_month|             Bronx|          Brooklyn|               EWR|         Manhattan|            Queens|     Staten Island|\n+------------+------------------+------------------+------------------+------------------+------------------+------------------+\n|           1|6299.6143135909515|  20404.9803847002| 9.192388155425117| 456288.2277250861| 36529.13631609704|2.8284271247461903|\n|           2| 6370.324991709606|20565.493624029546|2.8284271247461903|285551.63855334464| 42618.03280889441|43.840620433565945|\n|           3| 7788.074087988634| 42280.74287426842|21.920310216782973|2140045.9453390245|228322.65832479263| 47.37615433949868|\n|           4| 5929.090360249201| 48566.92215901683| 63.63961030678928|3252944.3376857834| 318771.5151334887|106.06601717798213|\n|           5| 4938.433759806848| 46943.40498941252| 55.86143571373726|  3273448.31301985|335436.60775249323| 94.75230867899737|\n|           6| 4547.403709810687| 43993.35549830224| 55.86143571373726| 2902101.994491579|308629.48257093003| 79.19595949289332|\n|           7| 3343.907968231183| 33931.22600201767|43.840620433565945| 2474249.358865129| 281025.4480469696| 68.58935777509511|\n|           8|2451.5392103737604|29931.830047626558| 52.32590180780452|  2290272.90232245| 277151.9170996297| 39.59797974644666|\n|           9|2303.0467863245854| 34412.76572000571| 53.74011537017761| 2360759.427591469| 271068.6774610818|1.4142135623730951|\n|          10|1927.5730855145287| 34144.06514315482| 58.68986283848344| 2484030.059862501|280292.17831487913| 5.656854249492381|\n|          11|1916.2593770155438|30043.552919054033| 44.54772721475249|2410216.5971879996|248903.70829800828|7.0710678118654755|\n|          12| 1887.975105768082|30976.933870220273| 54.44722215136416| 2417476.462510442| 262234.0853369371|13.435028842544403|\n+------------+------------------+------------------+------------------+------------------+------------------+------------------+\n\n"
           }
         ]
       },
@@ -1208,8 +1249,8 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=347",
-              "$$hashKey": "object:8966"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=32",
+              "$$hashKey": "object:2249"
             }
           ],
           "interpreterSettingId": "spark"
@@ -1219,15 +1260,15 @@
       "jobName": "paragraph_1616434280230_2006565813",
       "id": "paragraph_1616434280230_2006565813",
       "dateCreated": "2021-03-22T20:31:20+0300",
-      "dateStarted": "2021-03-23T11:36:09+0300",
-      "dateFinished": "2021-03-23T11:38:49+0300",
+      "dateStarted": "2021-03-25T14:47:22+0300",
+      "dateFinished": "2021-03-25T14:50:18+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:7577"
+      "$$hashKey": "object:200"
     },
     {
       "text": "",
       "user": "anonymous",
-      "dateUpdated": "2021-03-23T11:38:49+0300",
+      "dateUpdated": "2021-03-25T14:30:30+0300",
       "config": {
         "colWidth": 12,
         "fontSize": 9,
@@ -1252,7 +1293,7 @@
       "id": "paragraph_1616447505148_687632167",
       "dateCreated": "2021-03-23T00:11:45+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:7578"
+      "$$hashKey": "object:201"
     }
   ],
   "name": "NYCTaxi",
@@ -1267,8 +1308,6 @@
     "looknfeel": "default",
     "personalizedMode": "false"
   },
-  "info": {
-    "isRunning": false
-  },
+  "info": {},
   "path": "/NYCTaxi"
 }
