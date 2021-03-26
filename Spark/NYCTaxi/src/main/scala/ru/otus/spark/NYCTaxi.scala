@@ -2,6 +2,7 @@ package ru.otus.spark
 
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions._
+import org.apache.spark.storage.StorageLevel
 
 object NYCTaxi {
   def main(args: Array[String]): Unit = {
@@ -96,7 +97,7 @@ object NYCTaxi {
       val tripsGrouped = data
         .groupBy("pickup_year", "pickup_month", "PUBorough")
         .count
-        .cache
+        .persist(StorageLevel.MEMORY_ONLY)
 
       // Выгружаем сгруппированные данные
       val tripsGroupedC: Array[TripsGrouped] = tripsGrouped.collect.map { r => TripsGrouped(r) }
