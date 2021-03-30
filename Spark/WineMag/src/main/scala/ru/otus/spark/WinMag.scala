@@ -32,9 +32,10 @@ object WinMag {
       wine
         .filter(_.country.nonEmpty)
         .filter(_.price.nonEmpty)
-        .select("country", "price")
-        .groupBy("country")
+        .select(col("country").as[String], col("price").as[Double])
+        .groupBy(col("country"))
         .agg(max("price").as("max_price"))
+        .as[(String, Double)]
         .orderBy($"max_price".desc)
         .show(10, truncate = false)
 
