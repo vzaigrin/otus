@@ -9,5 +9,5 @@
 * Запускаем Kafka
 * Создаем темы *input* и *prediction*
 * В первом терминале запускаем *kafka-console-consumer.sh --topic prediction --bootstrap-server localhost:9092*
-* Во втором терминале запускаем *spark-submit IrisMLStreaming-assembly-1.0.jar /home/vadim/work/otus/IrisML/RandomForestClassificationModel localhost:9092 group1 input prediction*
-* В третьем терминале запускаем *awk -F ',' 'NR > 1 { print $1 "," $2 "," $3 "," $4 }' < iris.csv | kafka-console-producer.sh --topic input --bootstrap-server localhost:9092*
+* Во втором терминале запускаем *spark-submit target/scala-2.12/IrisMLStreaming-assembly-1.0.jar model/RandomForestClassificationModel localhost:9092 group1 input prediction*
+* В третьем терминале запускаем *awk -F ',' 'NR > 1 { print $1 "," $2 "," $3 "," $4 }' < data/iris.csv | kafka-console-producer.sh --topic input --bootstrap-server localhost:9092*
