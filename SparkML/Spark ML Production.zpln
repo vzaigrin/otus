@@ -4,7 +4,7 @@
       "title": "Spark ML Production",
       "text": "%md\n# Spark ML Production",
       "user": "anonymous",
-      "dateUpdated": "2021-04-14T11:16:18+0300",
+      "dateUpdated": "2021-05-07T14:18:07+0300",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -25,6 +25,9 @@
         "params": {
           "bdtMeta": {
             "inlay": {
+              "size": {
+                "height": 104
+              },
               "state": {}
             }
           }
@@ -46,17 +49,17 @@
       "jobName": "paragraph_1606995930958_1482052156",
       "id": "paragraph_1606995930958_1482052156",
       "dateCreated": "2020-12-03T14:45:30+0300",
-      "dateStarted": "2021-04-14T11:16:18+0300",
-      "dateFinished": "2021-04-14T11:16:18+0300",
+      "dateStarted": "2021-05-07T14:17:45+0300",
+      "dateFinished": "2021-05-07T14:17:46+0300",
       "status": "FINISHED",
       "focus": true,
-      "$$hashKey": "object:24047"
+      "$$hashKey": "object:559"
     },
     {
       "title": "Загружаем данные",
       "text": "%md\n## Загружаем данные",
       "user": "anonymous",
-      "dateUpdated": "2021-04-14T11:16:18+0300",
+      "dateUpdated": "2021-05-07T14:18:07+0300",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -77,6 +80,9 @@
         "params": {
           "bdtMeta": {
             "inlay": {
+              "size": {
+                "height": 103
+              },
               "state": {}
             }
           }
@@ -98,15 +104,15 @@
       "jobName": "paragraph_1606995964724_1574639267",
       "id": "paragraph_1606995964724_1574639267",
       "dateCreated": "2020-12-03T14:46:04+0300",
-      "dateStarted": "2021-04-14T11:16:18+0300",
-      "dateFinished": "2021-04-14T11:16:18+0300",
+      "dateStarted": "2021-05-07T14:17:46+0300",
+      "dateFinished": "2021-05-07T14:17:46+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:24048"
+      "$$hashKey": "object:560"
     },
     {
       "text": "val dataPath = \"/home/vadim/work/otus/sparkml\"",
       "user": "anonymous",
-      "dateUpdated": "2021-04-14T11:16:18+0300",
+      "dateUpdated": "2021-05-07T14:17:46+0300",
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -139,15 +145,15 @@
       "jobName": "paragraph_1618238626984_1729274874",
       "id": "paragraph_1618238626984_1729274874",
       "dateCreated": "2021-04-12T17:43:46+0300",
-      "dateStarted": "2021-04-14T11:16:18+0300",
-      "dateFinished": "2021-04-14T11:16:18+0300",
+      "dateStarted": "2021-05-07T14:17:46+0300",
+      "dateFinished": "2021-05-07T14:17:56+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:24049"
+      "$$hashKey": "object:561"
     },
     {
       "text": "val data = spark\n        .read\n        .option(\"header\", \"true\")\n        .option(\"inferSchema\", \"true\")\n        .csv(dataPath + \"/BankChurners.csv\")",
       "user": "anonymous",
-      "dateUpdated": "2021-04-14T11:16:21+0300",
+      "dateUpdated": "2021-05-07T14:18:07+0300",
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -166,7 +172,7 @@
           "bdtMeta": {
             "inlay": {
               "size": {
-                "height": 100
+                "height": 72
               },
               "state": {}
             }
@@ -192,12 +198,12 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=7836",
-              "$$hashKey": "object:24611"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=0",
+              "$$hashKey": "object:1063"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=7837",
-              "$$hashKey": "object:24612"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=1",
+              "$$hashKey": "object:1064"
             }
           ],
           "interpreterSettingId": "spark"
@@ -207,16 +213,16 @@
       "jobName": "paragraph_1606995986350_99406471",
       "id": "paragraph_1606995986350_99406471",
       "dateCreated": "2020-12-03T14:46:26+0300",
-      "dateStarted": "2021-04-14T11:16:19+0300",
-      "dateFinished": "2021-04-14T11:16:19+0300",
+      "dateStarted": "2021-05-07T14:17:56+0300",
+      "dateFinished": "2021-05-07T14:18:00+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:24050"
+      "$$hashKey": "object:562"
     },
     {
       "title": "Загружаем модель",
       "text": "%md\n## Загружаем модель",
       "user": "anonymous",
-      "dateUpdated": "2021-04-14T11:16:19+0300",
+      "dateUpdated": "2021-05-07T14:18:15+0300",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -237,6 +243,9 @@
         "params": {
           "bdtMeta": {
             "inlay": {
+              "size": {
+                "height": 98
+              },
               "state": {}
             }
           }
@@ -258,15 +267,15 @@
       "jobName": "paragraph_1606996237633_1836911260",
       "id": "paragraph_1606996237633_1836911260",
       "dateCreated": "2020-12-03T14:50:37+0300",
-      "dateStarted": "2021-04-14T11:16:19+0300",
-      "dateFinished": "2021-04-14T11:16:19+0300",
+      "dateStarted": "2021-05-07T14:18:00+0300",
+      "dateFinished": "2021-05-07T14:18:00+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:24051"
+      "$$hashKey": "object:563"
     },
     {
       "text": "import org.apache.spark.ml.PipelineModel\n\nval model = PipelineModel.load(dataPath + \"/pipelineModel\")",
       "user": "anonymous",
-      "dateUpdated": "2021-04-14T11:16:21+0300",
+      "dateUpdated": "2021-05-07T14:18:07+0300",
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -285,7 +294,7 @@
           "bdtMeta": {
             "inlay": {
               "size": {
-                "height": 137
+                "height": 93
               },
               "state": {}
             }
@@ -311,96 +320,96 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=7838",
-              "$$hashKey": "object:24720"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=2",
+              "$$hashKey": "object:1154"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=7839",
-              "$$hashKey": "object:24721"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=3",
+              "$$hashKey": "object:1155"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=7840",
-              "$$hashKey": "object:24722"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=4",
+              "$$hashKey": "object:1156"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=7841",
-              "$$hashKey": "object:24723"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=5",
+              "$$hashKey": "object:1157"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=7842",
-              "$$hashKey": "object:24724"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=6",
+              "$$hashKey": "object:1158"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=7843",
-              "$$hashKey": "object:24725"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=7",
+              "$$hashKey": "object:1159"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=7844",
-              "$$hashKey": "object:24726"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=8",
+              "$$hashKey": "object:1160"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=7845",
-              "$$hashKey": "object:24727"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=9",
+              "$$hashKey": "object:1161"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=7846",
-              "$$hashKey": "object:24728"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=10",
+              "$$hashKey": "object:1162"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=7847",
-              "$$hashKey": "object:24729"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=11",
+              "$$hashKey": "object:1163"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=7848",
-              "$$hashKey": "object:24730"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=12",
+              "$$hashKey": "object:1164"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=7849",
-              "$$hashKey": "object:24731"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=13",
+              "$$hashKey": "object:1165"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=7850",
-              "$$hashKey": "object:24732"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=14",
+              "$$hashKey": "object:1166"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=7851",
-              "$$hashKey": "object:24733"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=15",
+              "$$hashKey": "object:1167"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=7852",
-              "$$hashKey": "object:24734"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=16",
+              "$$hashKey": "object:1168"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=7853",
-              "$$hashKey": "object:24735"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=17",
+              "$$hashKey": "object:1169"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=7854",
-              "$$hashKey": "object:24736"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=18",
+              "$$hashKey": "object:1170"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=7855",
-              "$$hashKey": "object:24737"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=19",
+              "$$hashKey": "object:1171"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=7856",
-              "$$hashKey": "object:24738"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=20",
+              "$$hashKey": "object:1172"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=7857",
-              "$$hashKey": "object:24739"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=21",
+              "$$hashKey": "object:1173"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=7858",
-              "$$hashKey": "object:24740"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=22",
+              "$$hashKey": "object:1174"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=7859",
-              "$$hashKey": "object:24741"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=23",
+              "$$hashKey": "object:1175"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=7860",
-              "$$hashKey": "object:24742"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=24",
+              "$$hashKey": "object:1176"
             }
           ],
           "interpreterSettingId": "spark"
@@ -410,16 +419,16 @@
       "jobName": "paragraph_1606996253065_739575313",
       "id": "paragraph_1606996253065_739575313",
       "dateCreated": "2020-12-03T14:50:53+0300",
-      "dateStarted": "2021-04-14T11:16:19+0300",
-      "dateFinished": "2021-04-14T11:16:20+0300",
+      "dateStarted": "2021-05-07T14:18:00+0300",
+      "dateFinished": "2021-05-07T14:18:02+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:24052"
+      "$$hashKey": "object:564"
     },
     {
       "title": "Вычисляем",
       "text": "%md\n## Вычисляем",
       "user": "anonymous",
-      "dateUpdated": "2021-04-14T11:16:20+0300",
+      "dateUpdated": "2021-05-07T14:18:07+0300",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -440,6 +449,9 @@
         "params": {
           "bdtMeta": {
             "inlay": {
+              "size": {
+                "height": 90
+              },
               "state": {}
             }
           }
@@ -461,15 +473,15 @@
       "jobName": "paragraph_1606996429008_1428308820",
       "id": "paragraph_1606996429008_1428308820",
       "dateCreated": "2020-12-03T14:53:49+0300",
-      "dateStarted": "2021-04-14T11:16:20+0300",
-      "dateFinished": "2021-04-14T11:16:20+0300",
+      "dateStarted": "2021-05-07T14:18:02+0300",
+      "dateFinished": "2021-05-07T14:18:02+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:24053"
+      "$$hashKey": "object:565"
     },
     {
       "text": "val prediction = model.transform(data)",
       "user": "anonymous",
-      "dateUpdated": "2021-04-14T11:16:21+0300",
+      "dateUpdated": "2021-05-07T14:18:07+0300",
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -488,7 +500,7 @@
           "bdtMeta": {
             "inlay": {
               "size": {
-                "height": 109
+                "height": 73
               },
               "state": {}
             }
@@ -511,15 +523,15 @@
       "jobName": "paragraph_1606996336667_144207425",
       "id": "paragraph_1606996336667_144207425",
       "dateCreated": "2020-12-03T14:52:16+0300",
-      "dateStarted": "2021-04-14T11:16:20+0300",
-      "dateFinished": "2021-04-14T11:16:20+0300",
+      "dateStarted": "2021-05-07T14:18:03+0300",
+      "dateFinished": "2021-05-07T14:18:03+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:24054"
+      "$$hashKey": "object:566"
     },
     {
       "text": "prediction.show(10)",
       "user": "anonymous",
-      "dateUpdated": "2021-04-14T11:16:30+0300",
+      "dateUpdated": "2021-05-07T14:18:18+0300",
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -535,7 +547,22 @@
             "graph": {
               "mode": "table",
               "height": 300,
-              "optionOpen": false
+              "optionOpen": false,
+              "keys": [
+                {
+                  "name": "prediction",
+                  "index": 38,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "CLIENTNUM",
+                  "index": 0,
+                  "aggr": "avg"
+                }
+              ]
             }
           }
         ],
@@ -546,25 +573,10 @@
           "bdtMeta": {
             "inlay": {
               "size": {
-                "height": 421
+                "height": 402
               },
               "state": {
-                "currentPage": "Console",
-                "chart": {
-                  "series": [
-                    {
-                      "type": "Line",
-                      "x": {
-                        "column": "prediction",
-                        "index": 38
-                      },
-                      "y": {
-                        "column": "CLIENTNUM",
-                        "index": 0
-                      }
-                    }
-                  ]
-                }
+                "currentPage": "Table"
               }
             }
           }
@@ -589,8 +601,8 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=7861",
-              "$$hashKey": "object:24986"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=25",
+              "$$hashKey": "object:1390"
             }
           ],
           "interpreterSettingId": "spark"
@@ -600,16 +612,16 @@
       "jobName": "paragraph_1606996380000_1057447451",
       "id": "paragraph_1606996380000_1057447451",
       "dateCreated": "2020-12-03T14:53:00+0300",
-      "dateStarted": "2021-04-14T11:16:20+0300",
-      "dateFinished": "2021-04-14T11:16:20+0300",
+      "dateStarted": "2021-05-07T14:18:03+0300",
+      "dateFinished": "2021-05-07T14:18:04+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:24055"
+      "$$hashKey": "object:567"
     },
     {
       "title": "Проверяем результат",
       "text": "%md\n## Проверяем результат",
       "user": "anonymous",
-      "dateUpdated": "2021-04-14T11:16:20+0300",
+      "dateUpdated": "2021-05-07T14:18:21+0300",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -630,6 +642,9 @@
         "params": {
           "bdtMeta": {
             "inlay": {
+              "size": {
+                "height": 102
+              },
               "state": {}
             }
           }
@@ -651,15 +666,15 @@
       "jobName": "paragraph_1606996389512_1541632525",
       "id": "paragraph_1606996389512_1541632525",
       "dateCreated": "2020-12-03T14:53:09+0300",
-      "dateStarted": "2021-04-14T11:16:20+0300",
-      "dateFinished": "2021-04-14T11:16:20+0300",
+      "dateStarted": "2021-05-07T14:18:04+0300",
+      "dateFinished": "2021-05-07T14:18:04+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:24056"
+      "$$hashKey": "object:568"
     },
     {
       "text": "val tp = prediction.filter(($\"Attrition_Flag\" === \"Attrited Customer\") and ($\"prediction\" === 1)).count\nval tn = prediction.filter(($\"Attrition_Flag\" === \"Existing Customer\") and ($\"prediction\" === 0)).count\nval fp = prediction.filter(($\"Attrition_Flag\" === \"Existing Customer\") and ($\"prediction\" === 1)).count\nval fn = prediction.filter(($\"Attrition_Flag\" === \"Attrited Customer\") and ($\"prediction\" === 0)).count\n\nprintln(s\"Confusion Matrix:\\n$tp\\t$fp\\n$fn\\t\\t$tn\\n\")",
       "user": "anonymous",
-      "dateUpdated": "2021-04-14T11:16:33+0300",
+      "dateUpdated": "2021-05-07T14:18:07+0300",
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -678,7 +693,7 @@
           "bdtMeta": {
             "inlay": {
               "size": {
-                "height": 221
+                "height": 223
               },
               "state": {}
             }
@@ -704,20 +719,20 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=7862",
-              "$$hashKey": "object:25090"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=26",
+              "$$hashKey": "object:1476"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=7863",
-              "$$hashKey": "object:25091"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=27",
+              "$$hashKey": "object:1477"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=7864",
-              "$$hashKey": "object:25092"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=28",
+              "$$hashKey": "object:1478"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=7865",
-              "$$hashKey": "object:25093"
+              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=29",
+              "$$hashKey": "object:1479"
             }
           ],
           "interpreterSettingId": "spark"
@@ -727,15 +742,15 @@
       "jobName": "paragraph_1606996537225_1288745764",
       "id": "paragraph_1606996537225_1288745764",
       "dateCreated": "2020-12-03T14:55:37+0300",
-      "dateStarted": "2021-04-14T11:16:20+0300",
-      "dateFinished": "2021-04-14T11:16:21+0300",
+      "dateStarted": "2021-05-07T14:18:04+0300",
+      "dateFinished": "2021-05-07T14:18:06+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:24057"
+      "$$hashKey": "object:569"
     },
     {
       "text": "val accuracy = (tp + tn) / (tp + tn + fp + fn).toDouble\nval precision = tp / (tp + fp).toDouble\nval recall = tp / (tp + fn).toDouble\n\nprintln(s\"Accuracy = $accuracy\")\nprintln(s\"Precision = $precision\")\nprintln(s\"Recall = $recall\\n\")",
       "user": "anonymous",
-      "dateUpdated": "2021-04-14T11:16:21+0300",
+      "dateUpdated": "2021-05-07T14:18:07+0300",
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -777,15 +792,15 @@
       "jobName": "paragraph_1606996842960_2062621536",
       "id": "paragraph_1606996842960_2062621536",
       "dateCreated": "2020-12-03T15:00:42+0300",
-      "dateStarted": "2021-04-14T11:16:21+0300",
-      "dateFinished": "2021-04-14T11:16:21+0300",
+      "dateStarted": "2021-05-07T14:18:06+0300",
+      "dateFinished": "2021-05-07T14:18:06+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:24058"
+      "$$hashKey": "object:570"
     },
     {
       "text": "",
       "user": "anonymous",
-      "dateUpdated": "2021-04-14T11:16:21+0300",
+      "dateUpdated": "2021-05-07T14:18:06+0300",
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -810,7 +825,7 @@
       "id": "paragraph_1606996888015_885751589",
       "dateCreated": "2020-12-03T15:01:28+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:24059"
+      "$$hashKey": "object:571"
     }
   ],
   "name": "Spark ML Production",
