@@ -1,8 +1,8 @@
 package ru.otus.spark
 
 import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.expressions.Window
 import org.apache.spark.sql.functions._
-import org.apache.spark.storage.StorageLevel
 
 object NYCTaxi {
   def main(args: Array[String]): Unit = {
@@ -29,7 +29,7 @@ object NYCTaxi {
 
       // Отфильтровываем некорректные данные, удаляем лишние колонки, преобразуем время
       val trips = tripsRaw
-        .filter($"trip_distance" > 1)
+        .filter($"trip_distance" > 0)
         .filter($"passenger_count" > 0)
         .drop(
           "VendorID",
@@ -38,8 +38,6 @@ object NYCTaxi {
           "fare_amount",
           "extra",
           "mta_tax",
-          "tip_amount",
-          "tolls_amount",
           "improvement_surcharge",
           "congestion_surcharge"
         )
@@ -50,11 +48,13 @@ object NYCTaxi {
         .withColumn("pickup_year", year($"pickup_dt"))
         .withColumn("pickup_month", month($"pickup_dt"))
         .withColumn("pickup_day", dayofmonth($"pickup_dt"))
+        .withColumn("pickup_dayofweek", dayofweek($"pickup_dt"))
         .withColumn("pickup_weekofyear", weekofyear($"pickup_dt"))
         .withColumn("pickup_hour", hour($"pickup_dt"))
         .withColumn("dropoff_year", year($"dropoff_dt"))
         .withColumn("dropoff_month", month($"dropoff_dt"))
         .withColumn("dropoff_day", dayofmonth($"dropoff_dt"))
+        .withColumn("dropoff_dayofweek", dayofweek($"dropoff_dt"))
         .withColumn("dropoff_weekofyear", weekofyear($"dropoff_dt"))
         .withColumn("dropoff_hour", hour($"dropoff_dt"))
         .filter($"pickup_year" > 2018 && $"pickup_year" < 2021)
@@ -64,9 +64,6 @@ object NYCTaxi {
       val paymentType =
         spark.read.option("header", "true").option("inferSchema", "true").csv(args(1))
 
-      // Создаём Broadcast для paymentType
-      val paymentBC = spark.sparkContext.broadcast(paymentType)
-
       // Загружаем информацию о зонах
       val zoneLookup = spark.read
         .option("header", "true")
@@ -74,73 +71,156 @@ object NYCTaxi {
         .csv(args(2))
         .drop("service_zone")
 
-      // Создаём Broadcast для zoneLookup
-      val zoneBC = spark.sparkContext.broadcast(zoneLookup)
-
-      // Объединяем поездки с типами платежей и с зонами посадки и высадки
+      // Формируем наборы данных
+      // "Базовый" набор
       val data = trips
-        .join(paymentBC.value, trips("payment_type") === paymentType("type_id"))
+        .join(paymentType, trips("payment_type") === paymentType("type_id"))
         .drop("payment_type", "type_id")
         .withColumnRenamed("type", "payment_type")
-        .join(zoneBC.value, trips("PULocationID") === zoneLookup("LocationID"))
-        .drop("PULocationID", "LocationID")
+        .join(zoneLookup, trips("PULocationID") === zoneLookup("LocationID"))
+        .drop("LocationID")
         .withColumnRenamed("Borough", "PUBorough")
         .withColumnRenamed("Zone", "PUZone")
-        .join(zoneBC.value, trips("DOLocationID") === zoneLookup("LocationID"))
-        .drop("DOLocationID", "LocationID")
+        .join(zoneLookup, trips("DOLocationID") === zoneLookup("LocationID"))
+        .drop("LocationID")
         .withColumnRenamed("Borough", "DOBorough")
         .withColumnRenamed("Zone", "DOZone")
-        .filter($"PUBorough" =!= "Unknown")
-        .filter($"DOBorough" =!= "Unknown")
+        .cache()
 
-      // Группируем данные по году, месяцу и району посадки
-      val tripsGrouped = data
-        .groupBy("pickup_year", "pickup_month", "PUBorough")
-        .count
-        .persist(StorageLevel.MEMORY_ONLY)
+      // Набор с часовой агрегацией поездок по зоне посадки
+      val hourly = data
+        .groupBy(
+          "pickup_year",
+          "pickup_month",
+          "pickup_day",
+          "pickup_dayofweek",
+          "pickup_weekofyear",
+          "pickup_hour",
+          "PULocationID",
+          "PUZone",
+          "PUBorough"
+        )
+        .agg(sum("passenger_count").as("passengers"), count("pickup_dt").as("trips"))
+        .cache()
 
-      // Выгружаем сгруппированные данные
-      val tripsGroupedC: Array[TripsGrouped] = tripsGrouped.collect.map { r => TripsGrouped(r) }
+      // Набор с месячной агрегацией поездок по зоне посадки
+      val monthly = hourly
+        .groupBy("pickup_year", "pickup_month", "PULocationID", "PUZone", "PUBorough")
+        .agg(sum("passengers").as("passengers"), sum("trips").as("trips"))
+        .cache()
 
-      // Выводим количество поездок по году, месяцу и району посадки
+      // Набор с месячной агрегацией поездок по району посадки
+      val monthlyB = data
+        .groupBy($"pickup_year".as("year"), $"pickup_month".as("month"), $"PUBorough")
+        .agg(count("pickup_dt").as("trips"))
+        .cache()
+
+      // Анализ
+      // Топ-5 зон по количеству посадок для каждого часа
+      val windowH = Window
+        .partitionBy("pickup_year", "pickup_month", "pickup_day", "pickup_hour")
+        .orderBy($"trips".desc)
+
+      val top5H = hourly
+        .withColumn("rn", row_number().over(windowH))
+        .filter($"rn" < 6)
+        .drop("rn")
+        .select(
+          $"pickup_year",
+          $"pickup_month",
+          $"pickup_day",
+          $"pickup_hour",
+          $"PULocationID",
+          $"PUZone",
+          $"PUBorough",
+          $"trips"
+        )
+        .orderBy($"pickup_year", $"pickup_month", $"pickup_day", $"pickup_hour", $"trips".desc)
+
       println
-      println("Количество посадок в районах по году и месяцу")
-      println("Год\tМесяц\t          Район\tКол-во")
-      tripsGroupedC
-        .sortBy(_.pickup_year)
-        .sortBy(_.pickup_month)
-        .sortBy(_.PUBorough)
-        .foreach(println)
-
-      // Группируем количество поездок по году и месяцу
-      val tripsByYM = tripsGrouped
-        .groupBy("pickup_month")
-        .pivot("pickup_year")
-        .sum("count")
-
-      // Выгружаем сгруппированные данные
-      val tripsByYMC: Array[TripsByYM] = tripsByYM.collect.map { r => TripsByYM(r) }
-
-      // Выводим количество поездок по году и месяцу
+      println("Топ-5 зон по количеству посадок для каждого часа")
+      top5H.show(numRows = 20, truncate = false)
       println
-      println("Количество посадок по году и месяцу")
-      println(s"Месяц\t2019\t2020")
-      tripsByYMC.sortBy(_.pickup_month).foreach(println)
 
-      // Вычисляем средние отклонения количества посадок по месяцам и районам по годам
-      val tripsByYMBorough = tripsGrouped
-        .groupBy("pickup_month")
+      // Топ-5 зон по количеству посадок для каждого месяца
+      val windowW = Window
+        .partitionBy("pickup_year", "pickup_month")
+        .orderBy($"trips".desc)
+
+      val top5M = monthly
+        .withColumn("rn", row_number().over(windowW))
+        .filter($"rn" < 6)
+        .drop("rn")
+        .select($"pickup_year", $"pickup_month", $"PULocationID", $"PUZone", $"PUBorough", $"trips")
+        .orderBy($"pickup_year", $"pickup_month", $"trips".desc)
+
+      println("Топ-5 зон по количеству посадок для каждого месяца")
+      top5M.show(numRows = 20, truncate = false)
+      println
+
+      // Топ-5 пар (посадка - высадка) по количеству посадок для каждого месяца
+      val top5MP = data
+        .groupBy(
+          "pickup_year",
+          "pickup_month",
+          "PULocationID",
+          "PUZone",
+          "PUBorough",
+          "DOLocationID",
+          "DOZone",
+          "DOBorough"
+        )
+        .agg(count("pickup_dt").as("trips"))
+        .withColumn("rn", row_number().over(windowW))
+        .filter($"rn" < 6)
+        .drop("rn")
+        .select(
+          "pickup_year",
+          "pickup_month",
+          "PULocationID",
+          "PUZone",
+          "PUBorough",
+          "DOLocationID",
+          "DOZone",
+          "DOBorough",
+          "trips"
+        )
+        .orderBy($"pickup_year", $"pickup_month", $"trips".desc)
+
+      println("Топ-5 пар (посадка - высадка) по количеству посадок для каждого месяца")
+      top5MP.show(numRows = 20, truncate = false)
+      println
+
+      // Суммарное количество поездок в каждый месяц 2019 и 2020 годов
+      val tripsByYM = monthlyB
+        .groupBy("month")
+        .pivot("year")
+        .sum("trips")
+
+      println("Суммарное количество поездок в каждый месяц 2019 и 2020 годов")
+      tripsByYM.orderBy("month").show(numRows = 12, truncate = false)
+      println
+
+      // Изменение количества поездок в каждый месяц 2019 и 2020 годов по районам
+      val tripsByYMBorough = monthlyB
+        .groupBy("month")
         .pivot("PUBorough")
-        .agg(stddev("count"))
+        .agg(stddev("trips"))
+        .orderBy("month")
 
-      // Выгружаем сгруппированные данные
-      val tripsByYMBoroughC = tripsByYMBorough.collect.map { r => TripsByYMBorough(r) }
+      val tripsByYMBoroughDev = tripsByYMBorough.select(
+        Array($"month") ++ tripsByYMBorough.columns.tail.map(col).map(c => round(c, 2)): _*
+      )
 
-      // Выводим средние отклонения
-      println
-      println("Средние отклонения количества посадок по месяцам и районам по годам")
-      println(s"Месяц\tBronx\tBrooklyn\tEWR\tManhattan\tQueens\tStaten Island")
-      tripsByYMBoroughC.sortBy(_.pickup_month).foreach(println)
+      println("Изменение количества поездок в каждый месяц 2019 и 2020 годов по районам")
+
+      tripsByYMBoroughDev
+        .toDF(
+          Array("month") ++ tripsByYMBoroughDev.columns.tail.map(s =>
+            s.substring(4, s.length - 1)
+          ): _*
+        )
+        .show(numRows = 12, truncate = false)
 
     } catch {
       // Если что-то пошло не так
