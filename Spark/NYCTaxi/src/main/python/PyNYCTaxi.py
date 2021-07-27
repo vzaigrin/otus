@@ -167,5 +167,5 @@ if __name__ == '__main__':
     print("Изменение количества поездок в каждый месяц 2019 и 2020 годов по районам")
     tripsByYMBoroughDev.show(12, truncate=False)
 
-    input("Press Enter to exit...")
+    # input("Press Enter to exit...")
     spark.stop()
