@@ -19,33 +19,29 @@ if __name__ == '__main__':
     tripsRaw = spark.read.option("header", "true").option("inferSchema", "true").csv(sys.argv[1])
 
     # Отфильтровываем некорректные данные, удаляем лишние колонки, преобразуем время
-    tripsWithColumn1 = tripsRaw \
+    trips = tripsRaw \
+        .filter(col("trip_distance") > 0) \
+        .filter(col("passenger_count") > 0) \
         .drop("VendorID", "RatecodeID", "store_and_fwd_flag", "fare_amount", "extra", "mta_tax",
               "improvement_surcharge", "congestion_surcharge") \
         .withColumn('pickup_dt', to_timestamp(tripsRaw['tpep_pickup_datetime'], 'yyyy-MM-dd HH:mm:ss')) \
         .withColumn('dropoff_dt', to_timestamp(tripsRaw['tpep_dropoff_datetime'], 'yyyy-MM-dd HH:mm:ss')) \
-        .drop("tpep_pickup_datetime", "tpep_dropoff_datetime")
-
-    tripsWithColumn = tripsWithColumn1 \
-        .withColumn("pickup_year", year(tripsWithColumn1['pickup_dt'])) \
-        .withColumn("pickup_month", month(tripsWithColumn1['pickup_dt'])) \
-        .withColumn("pickup_day", dayofmonth(tripsWithColumn1['pickup_dt'])) \
-        .withColumn("pickup_dayofweek", dayofweek(tripsWithColumn1['pickup_dt'])) \
-        .withColumn("pickup_weekofyear", weekofyear(tripsWithColumn1['pickup_dt'])) \
-        .withColumn("pickup_hour", hour(tripsWithColumn1['pickup_dt'])) \
-        .withColumn("dropoff_year", year(tripsWithColumn1['dropoff_dt'])) \
-        .withColumn("dropoff_month", month(tripsWithColumn1['dropoff_dt'])) \
-        .withColumn("dropoff_day", dayofmonth(tripsWithColumn1['dropoff_dt'])) \
-        .withColumn("dropoff_dayofweek", dayofweek(tripsWithColumn1['dropoff_dt'])) \
-        .withColumn("dropoff_weekofyear", weekofyear(tripsWithColumn1['dropoff_dt'])) \
-        .withColumn("dropoff_hour", hour(tripsWithColumn1['dropoff_dt']))
-
-    trips = tripsWithColumn \
-        .filter(tripsWithColumn.trip_distance > 0) \
-        .filter(tripsWithColumn.passenger_count > 0) \
-        .filter(tripsWithColumn.dropoff_dt > tripsWithColumn.pickup_dt) \
-        .filter((tripsWithColumn.pickup_year > 2018) & (tripsWithColumn.pickup_year < 2021)) \
-        .filter((tripsWithColumn.dropoff_year > 2018) & (tripsWithColumn.dropoff_year < 2021))
+        .drop("tpep_pickup_datetime", "tpep_dropoff_datetime") \
+        .filter(col("dropoff_dt") > col("pickup_dt")) \
+        .withColumn("pickup_year", year(col("pickup_dt"))) \
+        .withColumn("pickup_month", month(col("pickup_dt"))) \
+        .withColumn("pickup_day", dayofmonth(col("pickup_dt"))) \
+        .withColumn("pickup_dayofweek", dayofweek(col("pickup_dt"))) \
+        .withColumn("pickup_weekofyear", weekofyear(col("pickup_dt"))) \
+        .withColumn("pickup_hour", hour(col("pickup_dt"))) \
+        .withColumn("dropoff_year", year(col("dropoff_dt"))) \
+        .withColumn("dropoff_month", month(col("dropoff_dt"))) \
+        .withColumn("dropoff_day", dayofmonth(col("dropoff_dt"))) \
+        .withColumn("dropoff_dayofweek", dayofweek(col("dropoff_dt"))) \
+        .withColumn("dropoff_weekofyear", weekofyear(col("dropoff_dt"))) \
+        .withColumn("dropoff_hour", hour(col("dropoff_dt"))) \
+        .filter((col("pickup_year") > 2018) & (col("pickup_year") < 2021)) \
+        .filter((col("dropoff_year") > 2018) & (col("dropoff_year") < 2021))
 
     # Загружаем типы платежей
     paymentType = spark.read \
@@ -171,4 +167,5 @@ if __name__ == '__main__':
     print("Изменение количества поездок в каждый месяц 2019 и 2020 годов по районам")
     tripsByYMBoroughDev.show(12, truncate=False)
 
+    input("Press Enter to exit...")
     spark.stop()

@@ -44,7 +44,7 @@
       "dateFinished": "2021-07-26T20:39:46+0300",
       "status": "FINISHED",
       "focus": true,
-      "$$hashKey": "object:566"
+      "$$hashKey": "object:20119"
     },
     {
       "text": "%md\n## Загружаем данные",
@@ -86,7 +86,7 @@
       "dateStarted": "2021-07-26T20:39:46+0300",
       "dateFinished": "2021-07-26T20:39:46+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:567"
+      "$$hashKey": "object:20120"
     },
     {
       "text": "// Каталог с данными\nval dataDir = \"/home/vadim/Projects/otus/Spark/NYCTaxi/data/\"",
@@ -136,7 +136,7 @@
       "dateStarted": "2021-07-26T20:39:46+0300",
       "dateFinished": "2021-07-26T20:39:46+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:568"
+      "$$hashKey": "object:20121"
     },
     {
       "text": "%md\n### Данные о поездках за 2019 и 2020 годы",
@@ -178,7 +178,7 @@
       "dateStarted": "2021-07-26T20:39:47+0300",
       "dateFinished": "2021-07-26T20:39:47+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:569"
+      "$$hashKey": "object:20122"
     },
     {
       "text": "val tripPath = dataDir + \"trips\"\nval tripsRaw = spark.read.option(\"header\", \"true\").option(\"inferSchema\", \"true\").csv(tripPath)",
@@ -220,11 +220,11 @@
           "values": [
             {
               "jobUrl": "http://ubuntu:4040/jobs/job?id=47",
-              "$$hashKey": "object:1959"
+              "$$hashKey": "object:21640"
             },
             {
               "jobUrl": "http://ubuntu:4040/jobs/job?id=48",
-              "$$hashKey": "object:1960"
+              "$$hashKey": "object:21641"
             }
           ],
           "interpreterSettingId": "spark"
@@ -237,7 +237,7 @@
       "dateStarted": "2021-07-26T20:39:47+0300",
       "dateFinished": "2021-07-26T20:40:55+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:570"
+      "$$hashKey": "object:20123"
     },
     {
       "text": "tripsRaw.show(10, truncate = false)",
@@ -316,7 +316,7 @@
           "values": [
             {
               "jobUrl": "http://ubuntu:4040/jobs/job?id=49",
-              "$$hashKey": "object:2010"
+              "$$hashKey": "object:21703"
             }
           ],
           "interpreterSettingId": "spark"
@@ -329,7 +329,7 @@
       "dateStarted": "2021-07-26T20:40:55+0300",
       "dateFinished": "2021-07-26T20:40:55+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:571"
+      "$$hashKey": "object:20124"
     },
     {
       "text": "tripsRaw.printSchema",
@@ -379,7 +379,7 @@
       "dateStarted": "2021-07-26T20:40:56+0300",
       "dateFinished": "2021-07-26T20:40:56+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:572"
+      "$$hashKey": "object:20125"
     },
     {
       "text": "%md\n#### Очистка и преобразование даты и времени поездок",
@@ -424,7 +424,7 @@
       "dateStarted": "2021-07-26T20:40:56+0300",
       "dateFinished": "2021-07-26T20:40:56+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:573"
+      "$$hashKey": "object:20126"
     },
     {
       "text": "val trips = tripsRaw\n        .filter($\"trip_distance\" > 0)\n        .filter($\"passenger_count\" > 0)\n        .drop(\"VendorID\", \"RatecodeID\", \"store_and_fwd_flag\", \"fare_amount\", \"extra\", \"mta_tax\", \"improvement_surcharge\", \"congestion_surcharge\")\n        .withColumn(\"pickup_dt\", to_timestamp($\"tpep_pickup_datetime\", \"yyyy-MM-dd HH:mm:ss\"))\n        .withColumn(\"dropoff_dt\", to_timestamp($\"tpep_dropoff_datetime\", \"yyyy-MM-dd HH:mm:ss\"))\n        .drop(\"tpep_pickup_datetime\", \"tpep_dropoff_datetime\")\n        .filter($\"dropoff_dt\" > $\"pickup_dt\")\n        .withColumn(\"pickup_year\", year($\"pickup_dt\"))\n        .withColumn(\"pickup_month\", month($\"pickup_dt\"))\n        .withColumn(\"pickup_day\", dayofmonth($\"pickup_dt\"))\n        .withColumn(\"pickup_dayofweek\", dayofweek($\"pickup_dt\"))\n        .withColumn(\"pickup_weekofyear\", weekofyear($\"pickup_dt\"))\n        .withColumn(\"pickup_hour\", hour($\"pickup_dt\"))\n        .withColumn(\"dropoff_year\", year($\"dropoff_dt\"))\n        .withColumn(\"dropoff_month\", month($\"dropoff_dt\"))\n        .withColumn(\"dropoff_day\", dayofmonth($\"dropoff_dt\"))\n        .withColumn(\"dropoff_dayofweek\", dayofweek($\"dropoff_dt\"))\n        .withColumn(\"dropoff_weekofyear\", weekofyear($\"dropoff_dt\"))\n        .withColumn(\"dropoff_hour\", hour($\"dropoff_dt\"))\n        .filter($\"pickup_year\" > 2018 && $\"pickup_year\" < 2021)\n        .filter($\"dropoff_year\" > 2018 && $\"dropoff_year\" < 2021)",
@@ -482,7 +482,7 @@
       "dateStarted": "2021-07-26T20:40:56+0300",
       "dateFinished": "2021-07-26T20:40:56+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:574"
+      "$$hashKey": "object:20127"
     },
     {
       "text": "trips.show(10, truncate = false)",
@@ -544,7 +544,7 @@
           "values": [
             {
               "jobUrl": "http://ubuntu:4040/jobs/job?id=50",
-              "$$hashKey": "object:2176"
+              "$$hashKey": "object:21911"
             }
           ],
           "interpreterSettingId": "spark"
@@ -557,7 +557,7 @@
       "dateStarted": "2021-07-26T20:40:56+0300",
       "dateFinished": "2021-07-26T20:40:57+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:575"
+      "$$hashKey": "object:20128"
     },
     {
       "text": "trips.printSchema",
@@ -607,7 +607,7 @@
       "dateStarted": "2021-07-26T20:40:57+0300",
       "dateFinished": "2021-07-26T20:40:57+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:576"
+      "$$hashKey": "object:20129"
     },
     {
       "text": "%md\n### Данные о типах платежей",
@@ -649,7 +649,7 @@
       "dateStarted": "2021-07-26T20:40:57+0300",
       "dateFinished": "2021-07-26T20:40:57+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:577"
+      "$$hashKey": "object:20130"
     },
     {
       "text": "val paymentTypePath = dataDir + \"payment_type.csv\"\nval paymentType = spark.read\n        .option(\"header\", \"true\")\n        .option(\"inferSchema\", \"true\")\n        .csv(paymentTypePath)\n\npaymentType.show",
@@ -730,15 +730,15 @@
           "values": [
             {
               "jobUrl": "http://ubuntu:4040/jobs/job?id=51",
-              "$$hashKey": "object:2302"
+              "$$hashKey": "object:22067"
             },
             {
               "jobUrl": "http://ubuntu:4040/jobs/job?id=52",
-              "$$hashKey": "object:2303"
+              "$$hashKey": "object:22068"
             },
             {
               "jobUrl": "http://ubuntu:4040/jobs/job?id=53",
-              "$$hashKey": "object:2304"
+              "$$hashKey": "object:22069"
             }
           ],
           "interpreterSettingId": "spark"
@@ -751,7 +751,7 @@
       "dateStarted": "2021-07-26T20:40:57+0300",
       "dateFinished": "2021-07-26T20:40:57+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:578"
+      "$$hashKey": "object:20131"
     },
     {
       "text": "%md\n### Данные о зонах и районах поездок",
@@ -796,7 +796,7 @@
       "dateStarted": "2021-07-26T20:40:57+0300",
       "dateFinished": "2021-07-26T20:40:57+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:579"
+      "$$hashKey": "object:20132"
     },
     {
       "text": "val zoneLookupPath = dataDir + \"taxi_zone_lookup.csv\"\nval zoneLookup = spark.read\n        .option(\"header\", \"true\")\n        .option(\"inferSchema\", \"true\")\n        .csv(zoneLookupPath)\n        .drop(\"service_zone\")\n\nzoneLookup.show(10, truncate = false)",
@@ -877,15 +877,15 @@
           "values": [
             {
               "jobUrl": "http://ubuntu:4040/jobs/job?id=54",
-              "$$hashKey": "object:2398"
+              "$$hashKey": "object:22181"
             },
             {
               "jobUrl": "http://ubuntu:4040/jobs/job?id=55",
-              "$$hashKey": "object:2399"
+              "$$hashKey": "object:22182"
             },
             {
               "jobUrl": "http://ubuntu:4040/jobs/job?id=56",
-              "$$hashKey": "object:2400"
+              "$$hashKey": "object:22183"
             }
           ],
           "interpreterSettingId": "spark"
@@ -898,7 +898,7 @@
       "dateStarted": "2021-07-26T20:40:58+0300",
       "dateFinished": "2021-07-26T20:40:58+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:580"
+      "$$hashKey": "object:20133"
     },
     {
       "text": "%md\n## Формируем наборы данных\n### \"Базовый\" набор",
@@ -943,7 +943,7 @@
       "dateStarted": "2021-07-26T20:40:58+0300",
       "dateFinished": "2021-07-26T20:40:58+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:581"
+      "$$hashKey": "object:20134"
     },
     {
       "text": "val data = trips\n        .join(paymentType, trips(\"payment_type\") === paymentType(\"type_id\"))\n        .drop(\"payment_type\", \"type_id\")\n        .withColumnRenamed(\"type\", \"payment_type\")\n        .join(zoneLookup, trips(\"PULocationID\") === zoneLookup(\"LocationID\"))\n        .drop(\"LocationID\")\n        .withColumnRenamed(\"Borough\", \"PUBorough\")\n        .withColumnRenamed(\"Zone\", \"PUZone\")\n        .join(zoneLookup, trips(\"DOLocationID\") === zoneLookup(\"LocationID\"))\n        .drop(\"LocationID\")\n        .withColumnRenamed(\"Borough\", \"DOBorough\")\n        .withColumnRenamed(\"Zone\", \"DOZone\")\n        .cache()",
@@ -990,7 +990,7 @@
       "dateStarted": "2021-07-26T20:40:58+0300",
       "dateFinished": "2021-07-26T20:40:58+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:582"
+      "$$hashKey": "object:20135"
     },
     {
       "text": "data.show(10, truncate = false)",
@@ -1069,7 +1069,7 @@
           "values": [
             {
               "jobUrl": "http://ubuntu:4040/jobs/job?id=59",
-              "$$hashKey": "object:2534"
+              "$$hashKey": "object:22347"
             }
           ],
           "interpreterSettingId": "spark"
@@ -1082,7 +1082,7 @@
       "dateStarted": "2021-07-26T20:40:59+0300",
       "dateFinished": "2021-07-26T20:41:23+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:583"
+      "$$hashKey": "object:20136"
     },
     {
       "text": "%md\n### Набор с часовой агрегацией поездок по зоне посадки",
@@ -1127,7 +1127,7 @@
       "dateStarted": "2021-07-26T20:41:23+0300",
       "dateFinished": "2021-07-26T20:41:23+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:584"
+      "$$hashKey": "object:20137"
     },
     {
       "text": "val hourly = data\n        .groupBy(\"pickup_year\", \"pickup_month\", \"pickup_day\", \"pickup_dayofweek\", \"pickup_weekofyear\", \"pickup_hour\", \"PULocationID\", \"PUZone\", \"PUBorough\")\n        .agg(sum(\"passenger_count\").as(\"passengers\"), count(\"pickup_dt\").as(\"trips\"))\n        .cache()",
@@ -1168,7 +1168,7 @@
       "dateStarted": "2021-07-26T20:41:23+0300",
       "dateFinished": "2021-07-26T20:41:23+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:585"
+      "$$hashKey": "object:20138"
     },
     {
       "text": "hourly.orderBy($\"pickup_year\", $\"pickup_month\", $\"pickup_day\", $\"pickup_hour\", $\"trips\".desc).show(10, truncate = false)",
@@ -1230,7 +1230,7 @@
           "values": [
             {
               "jobUrl": "http://ubuntu:4040/jobs/job?id=60",
-              "$$hashKey": "object:2660"
+              "$$hashKey": "object:22503"
             }
           ],
           "interpreterSettingId": "spark"
@@ -1243,7 +1243,7 @@
       "dateStarted": "2021-07-26T20:41:23+0300",
       "dateFinished": "2021-07-26T20:48:40+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:586"
+      "$$hashKey": "object:20139"
     },
     {
       "text": "%md\n### Набор с месячной агрегацией поездок по зоне посадки",
@@ -1285,7 +1285,7 @@
       "dateStarted": "2021-07-26T20:48:40+0300",
       "dateFinished": "2021-07-26T20:48:40+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:587"
+      "$$hashKey": "object:20140"
     },
     {
       "text": "val monthly = hourly\n        .groupBy(\"pickup_year\", \"pickup_month\", \"PULocationID\", \"PUZone\", \"PUBorough\")\n        .agg(sum(\"passengers\").as(\"passengers\"), sum(\"trips\").as(\"trips\"))\n        .cache()",
@@ -1326,7 +1326,7 @@
       "dateStarted": "2021-07-26T20:48:40+0300",
       "dateFinished": "2021-07-26T20:48:40+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:588"
+      "$$hashKey": "object:20141"
     },
     {
       "text": "monthly.orderBy($\"pickup_year\", $\"pickup_month\", $\"trips\".desc).show(10, truncate = false)",
@@ -1383,7 +1383,7 @@
           "values": [
             {
               "jobUrl": "http://ubuntu:4040/jobs/job?id=61",
-              "$$hashKey": "object:2786"
+              "$$hashKey": "object:22659"
             }
           ],
           "interpreterSettingId": "spark"
@@ -1396,7 +1396,7 @@
       "dateStarted": "2021-07-26T20:48:40+0300",
       "dateFinished": "2021-07-26T20:48:43+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:589"
+      "$$hashKey": "object:20142"
     },
     {
       "text": "%md\n### Набор с месячной агрегацией поездок по району посадки",
@@ -1438,7 +1438,7 @@
       "dateStarted": "2021-07-26T20:48:43+0300",
       "dateFinished": "2021-07-26T20:48:43+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:590"
+      "$$hashKey": "object:20143"
     },
     {
       "text": "val monthlyB = data\n        .groupBy($\"pickup_year\".as(\"year\"), $\"pickup_month\".as(\"month\"), $\"PUBorough\")\n        .agg(count(\"pickup_dt\").as(\"trips\"))\n        .cache()",
@@ -1479,7 +1479,7 @@
       "dateStarted": "2021-07-26T20:48:43+0300",
       "dateFinished": "2021-07-26T20:48:43+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:591"
+      "$$hashKey": "object:20144"
     },
     {
       "text": "monthlyB.orderBy(\"year\", \"month\", \"PUBorough\").show(14, truncate = false)",
@@ -1536,7 +1536,7 @@
           "values": [
             {
               "jobUrl": "http://ubuntu:4040/jobs/job?id=62",
-              "$$hashKey": "object:2912"
+              "$$hashKey": "object:22815"
             }
           ],
           "interpreterSettingId": "spark"
@@ -1549,7 +1549,7 @@
       "dateStarted": "2021-07-26T20:48:43+0300",
       "dateFinished": "2021-07-26T20:48:55+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:592"
+      "$$hashKey": "object:20145"
     },
     {
       "text": "%md\n## Анализ\n### Топ-5 зон по количеству посадок для каждого часа",
@@ -1591,7 +1591,7 @@
       "dateStarted": "2021-07-26T20:48:55+0300",
       "dateFinished": "2021-07-26T20:48:55+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:593"
+      "$$hashKey": "object:20146"
     },
     {
       "text": "import org.apache.spark.sql.expressions.Window\n\nval windowH = Window\n        .partitionBy(\"pickup_year\", \"pickup_month\", \"pickup_day\", \"pickup_hour\")\n        .orderBy($\"trips\".desc)\n\nval top5H = hourly\n        .withColumn(\"rn\", row_number().over(windowH))\n        .filter($\"rn\" < 6)\n        .drop(\"rn\")\n        .select($\"pickup_year\", $\"pickup_month\", $\"pickup_day\", $\"pickup_hour\", $\"PULocationID\", $\"PUZone\", $\"PUBorough\", $\"trips\")\n        .orderBy($\"pickup_year\", $\"pickup_month\", $\"pickup_day\", $\"pickup_hour\", $\"trips\".desc)",
@@ -1638,7 +1638,7 @@
       "dateStarted": "2021-07-26T20:48:55+0300",
       "dateFinished": "2021-07-26T20:48:55+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:594"
+      "$$hashKey": "object:20147"
     },
     {
       "text": "top5H.show(20, truncate = false)",
@@ -1695,7 +1695,7 @@
           "values": [
             {
               "jobUrl": "http://ubuntu:4040/jobs/job?id=63",
-              "$$hashKey": "object:3038"
+              "$$hashKey": "object:22971"
             }
           ],
           "interpreterSettingId": "spark"
@@ -1708,7 +1708,7 @@
       "dateStarted": "2021-07-26T20:48:55+0300",
       "dateFinished": "2021-07-26T20:48:58+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:595"
+      "$$hashKey": "object:20148"
     },
     {
       "text": "%md\n### Топ-5 зон по количеству посадок для каждого месяца",
@@ -1750,7 +1750,7 @@
       "dateStarted": "2021-07-26T20:48:58+0300",
       "dateFinished": "2021-07-26T20:48:58+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:596"
+      "$$hashKey": "object:20149"
     },
     {
       "text": "val windowW = Window\n        .partitionBy(\"pickup_year\", \"pickup_month\")\n        .orderBy($\"trips\".desc)\n\nval top5M = monthly\n        .withColumn(\"rn\", row_number().over(windowW))\n        .filter($\"rn\" < 6)\n        .drop(\"rn\")\n        .select($\"pickup_year\", $\"pickup_month\", $\"PULocationID\", $\"PUZone\", $\"PUBorough\", $\"trips\")\n        .orderBy($\"pickup_year\", $\"pickup_month\", $\"trips\".desc)",
@@ -1791,7 +1791,7 @@
       "dateStarted": "2021-07-26T20:48:58+0300",
       "dateFinished": "2021-07-26T20:48:58+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:597"
+      "$$hashKey": "object:20150"
     },
     {
       "text": "top5M.show(20, truncate = false)",
@@ -1848,7 +1848,7 @@
           "values": [
             {
               "jobUrl": "http://ubuntu:4040/jobs/job?id=64",
-              "$$hashKey": "object:3164"
+              "$$hashKey": "object:23127"
             }
           ],
           "interpreterSettingId": "spark"
@@ -1861,7 +1861,7 @@
       "dateStarted": "2021-07-26T20:48:58+0300",
       "dateFinished": "2021-07-26T20:49:00+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:598"
+      "$$hashKey": "object:20151"
     },
     {
       "text": "%md\n### Топ-5 пар (посадка - высадка) по количеству посадок для каждого месяца",
@@ -1903,7 +1903,7 @@
       "dateStarted": "2021-07-26T20:49:00+0300",
       "dateFinished": "2021-07-26T20:49:00+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:599"
+      "$$hashKey": "object:20152"
     },
     {
       "text": "val top5MP = data\n        .groupBy(\"pickup_year\", \"pickup_month\", \"PULocationID\", \"PUZone\", \"PUBorough\", \"DOLocationID\", \"DOZone\", \"DOBorough\")\n        .agg(count(\"pickup_dt\").as(\"trips\"))\n        .withColumn(\"rn\", row_number().over(windowW))\n        .filter($\"rn\" < 6)\n        .drop(\"rn\")\n        .select(\"pickup_year\", \"pickup_month\", \"PULocationID\", \"PUZone\", \"PUBorough\", \"DOLocationID\", \"DOZone\", \"DOBorough\", \"trips\")\n        .orderBy($\"pickup_year\", $\"pickup_month\", $\"trips\".desc)",
@@ -1944,7 +1944,7 @@
       "dateStarted": "2021-07-26T20:49:00+0300",
       "dateFinished": "2021-07-26T20:49:01+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:600"
+      "$$hashKey": "object:20153"
     },
     {
       "text": "top5MP.show(20, truncate = false)",
@@ -2001,7 +2001,7 @@
           "values": [
             {
               "jobUrl": "http://ubuntu:4040/jobs/job?id=65",
-              "$$hashKey": "object:3290"
+              "$$hashKey": "object:23283"
             }
           ],
           "interpreterSettingId": "spark"
@@ -2014,7 +2014,7 @@
       "dateStarted": "2021-07-26T20:49:01+0300",
       "dateFinished": "2021-07-26T20:49:25+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:601"
+      "$$hashKey": "object:20154"
     },
     {
       "text": "%md\n### Суммарное количество поездок в каждый месяц 2019 и 2020 годов",
@@ -2056,7 +2056,7 @@
       "dateStarted": "2021-07-26T20:49:26+0300",
       "dateFinished": "2021-07-26T20:49:26+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:602"
+      "$$hashKey": "object:20155"
     },
     {
       "text": "val tripsByYM = monthlyB\n        .groupBy(\"month\")\n        .pivot(\"year\")\n        .sum(\"trips\")",
@@ -2112,7 +2112,7 @@
           "values": [
             {
               "jobUrl": "http://ubuntu:4040/jobs/job?id=66",
-              "$$hashKey": "object:3376"
+              "$$hashKey": "object:23387"
             }
           ],
           "interpreterSettingId": "spark"
@@ -2125,7 +2125,7 @@
       "dateStarted": "2021-07-26T20:49:26+0300",
       "dateFinished": "2021-07-26T20:49:26+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:603"
+      "$$hashKey": "object:20156"
     },
     {
       "text": "tripsByYM.orderBy(\"month\").show(12, truncate = false)",
@@ -2199,7 +2199,7 @@
           "values": [
             {
               "jobUrl": "http://ubuntu:4040/jobs/job?id=67",
-              "$$hashKey": "object:3422"
+              "$$hashKey": "object:23445"
             }
           ],
           "interpreterSettingId": "spark"
@@ -2212,7 +2212,7 @@
       "dateStarted": "2021-07-26T20:49:26+0300",
       "dateFinished": "2021-07-26T20:49:27+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:604"
+      "$$hashKey": "object:20157"
     },
     {
       "text": "%md\n### Изменение количества поездок в каждый месяц 2019 и 2020 годов по районам",
@@ -2254,7 +2254,7 @@
       "dateStarted": "2021-07-26T20:49:27+0300",
       "dateFinished": "2021-07-26T20:49:27+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:605"
+      "$$hashKey": "object:20158"
     },
     {
       "text": "val tripsByYMBorough = monthlyB\n        .groupBy(\"month\")\n        .pivot(\"PUBorough\")\n        .agg(stddev(\"trips\"))\n        .orderBy(\"month\")",
@@ -2302,7 +2302,7 @@
           "values": [
             {
               "jobUrl": "http://ubuntu:4040/jobs/job?id=68",
-              "$$hashKey": "object:3508"
+              "$$hashKey": "object:23549"
             }
           ],
           "interpreterSettingId": "spark"
@@ -2315,7 +2315,7 @@
       "dateStarted": "2021-07-26T20:49:27+0300",
       "dateFinished": "2021-07-26T20:49:28+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:606"
+      "$$hashKey": "object:20159"
     },
     {
       "text": "tripsByYMBorough.show(12, truncate = false)",
@@ -2389,7 +2389,7 @@
           "values": [
             {
               "jobUrl": "http://ubuntu:4040/jobs/job?id=69",
-              "$$hashKey": "object:3554"
+              "$$hashKey": "object:23607"
             }
           ],
           "interpreterSettingId": "spark"
@@ -2402,7 +2402,7 @@
       "dateStarted": "2021-07-26T20:49:28+0300",
       "dateFinished": "2021-07-26T20:49:29+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:607"
+      "$$hashKey": "object:20160"
     },
     {
       "text": "val tripsByYMBoroughDev = tripsByYMBorough.select(Array($\"month\") ++ tripsByYMBorough.columns.tail.map(col).map(c => round(c, 2)): _*)\n\ntripsByYMBoroughDev\n        .toDF(Array(\"month\") ++ tripsByYMBoroughDev.columns.tail.map(s => s.substring(4, s.length - 1)): _*)\n        .show(12, truncate = false)",
@@ -2484,7 +2484,7 @@
           "values": [
             {
               "jobUrl": "http://ubuntu:4040/jobs/job?id=70",
-              "$$hashKey": "object:3600"
+              "$$hashKey": "object:23665"
             }
           ],
           "interpreterSettingId": "spark"
@@ -2497,7 +2497,7 @@
       "dateStarted": "2021-07-26T20:49:29+0300",
       "dateFinished": "2021-07-26T20:49:30+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:608"
+      "$$hashKey": "object:20161"
     },
     {
       "text": "",
@@ -2527,7 +2527,7 @@
       "id": "paragraph_1627301066743_27864774",
       "dateCreated": "2021-07-26T15:04:26+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:609"
+      "$$hashKey": "object:20162"
     }
   ],
   "name": "NYCTaxi",
@@ -2542,8 +2542,6 @@
     "looknfeel": "default",
     "personalizedMode": "false"
   },
-  "info": {
-    "isRunning": false
-  },
+  "info": {},
   "path": "/otus/NYCTaxi"
 }

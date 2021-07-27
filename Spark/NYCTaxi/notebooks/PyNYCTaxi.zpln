@@ -3,7 +3,7 @@
     {
       "text": "%md\n# NYC Taxi records\nАнализ данных о поездках в \"жёлтом\" такси Нью-Йорка\n\n## Источник данных\nДанные находятся в открытом доступе [здесь](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page).\nКаждый файл представляет собой записи о поездках за месяц.\nОписание данных находится [здесь](https://www1.nyc.gov/assets/tlc/downloads/pdf/trip_record_user_guide.pdf) и [здесь](https://www1.nyc.gov/assets/tlc/downloads/pdf/data_dictionary_trip_records_yellow.pdf).\nВ записях используются идентификаторы зон посадок и высадок. Данные о зонах находятся [здесь](https://s3.amazonaws.com/nyc-tlc/misc/taxi+_zone_lookup.csv).",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T18:55:30+0300",
+      "dateUpdated": "2021-07-27T11:36:54+0300",
       "config": {
         "editorHide": true,
         "colWidth": 12,
@@ -40,16 +40,16 @@
       "jobName": "paragraph_1627312884400_1867488583",
       "id": "paragraph_1627226197153_585566582",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T18:55:30+0300",
-      "dateFinished": "2021-07-26T18:55:30+0300",
+      "dateStarted": "2021-07-27T11:36:54+0300",
+      "dateFinished": "2021-07-27T11:36:55+0300",
       "status": "FINISHED",
       "focus": true,
-      "$$hashKey": "object:4816"
+      "$$hashKey": "object:16126"
     },
     {
       "text": "%md\n## Загружаем данные",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T18:55:35+0300",
+      "dateUpdated": "2021-07-27T11:36:55+0300",
       "config": {
         "editorHide": true,
         "colWidth": 12,
@@ -86,15 +86,15 @@
       "jobName": "paragraph_1627312884400_211012692",
       "id": "paragraph_1627226252512_721023443",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T18:55:32+0300",
-      "dateFinished": "2021-07-26T18:55:32+0300",
+      "dateStarted": "2021-07-27T11:36:55+0300",
+      "dateFinished": "2021-07-27T11:36:55+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4817"
+      "$$hashKey": "object:16127"
     },
     {
       "text": "%pyspark\nfrom pyspark.sql import SparkSession\nfrom pyspark.sql import Column\nfrom pyspark.sql.functions import *\n\n# Каталог с данными\ndataDir = \"/home/vadim/Projects/otus/Spark/NYCTaxi/data/\"",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T18:55:36+0300",
+      "dateUpdated": "2021-07-27T11:36:55+0300",
       "config": {
         "editorSetting": {
           "language": "python",
@@ -128,15 +128,15 @@
       "jobName": "paragraph_1627312884400_747356414",
       "id": "paragraph_1616671733700_1189967519",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T18:55:36+0300",
-      "dateFinished": "2021-07-26T18:55:36+0300",
+      "dateStarted": "2021-07-27T11:36:55+0300",
+      "dateFinished": "2021-07-27T11:37:11+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4818"
+      "$$hashKey": "object:16128"
     },
     {
       "text": "%md\n### Данные о поездках за 2019 и 2020 годы",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T18:55:39+0300",
+      "dateUpdated": "2021-07-27T11:37:11+0300",
       "config": {
         "editorHide": true,
         "colWidth": 12,
@@ -173,15 +173,15 @@
       "jobName": "paragraph_1627312884400_1652622873",
       "id": "paragraph_1627226279722_1158244225",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T18:55:39+0300",
-      "dateFinished": "2021-07-26T18:55:39+0300",
+      "dateStarted": "2021-07-27T11:37:11+0300",
+      "dateFinished": "2021-07-27T11:37:11+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4819"
+      "$$hashKey": "object:16129"
     },
     {
       "text": "%pyspark\ntripPath = dataDir + \"trips\"\ntripsRaw = spark.read.option(\"header\", \"true\").option(\"inferSchema\", \"true\").csv(tripPath)",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T18:55:42+0300",
+      "dateUpdated": "2021-07-27T11:37:11+0300",
       "config": {
         "colWidth": 12,
         "fontSize": 9,
@@ -213,11 +213,11 @@
           "values": [
             {
               "jobUrl": "http://ubuntu:4040/jobs/job?id=0",
-              "$$hashKey": "object:6269"
+              "$$hashKey": "object:17579"
             },
             {
               "jobUrl": "http://ubuntu:4040/jobs/job?id=1",
-              "$$hashKey": "object:6270"
+              "$$hashKey": "object:17580"
             }
           ],
           "interpreterSettingId": "spark"
@@ -227,15 +227,15 @@
       "jobName": "paragraph_1627312884400_1090676493",
       "id": "paragraph_1626967660273_1805125089",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T18:55:42+0300",
-      "dateFinished": "2021-07-26T18:56:52+0300",
+      "dateStarted": "2021-07-27T11:37:11+0300",
+      "dateFinished": "2021-07-27T11:38:14+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4820"
+      "$$hashKey": "object:16130"
     },
     {
       "text": "%pyspark\ntripsRaw.show(10, truncate = False)",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T18:57:30+0300",
+      "dateUpdated": "2021-07-27T11:38:14+0300",
       "config": {
         "editorSetting": {
           "language": "python",
@@ -309,7 +309,7 @@
           "values": [
             {
               "jobUrl": "http://ubuntu:4040/jobs/job?id=2",
-              "$$hashKey": "object:6332"
+              "$$hashKey": "object:17642"
             }
           ],
           "interpreterSettingId": "spark"
@@ -319,15 +319,15 @@
       "jobName": "paragraph_1627312884400_1095427481",
       "id": "paragraph_1616421727601_418137708",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T18:57:27+0300",
-      "dateFinished": "2021-07-26T18:57:28+0300",
+      "dateStarted": "2021-07-27T11:38:14+0300",
+      "dateFinished": "2021-07-27T11:38:15+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4821"
+      "$$hashKey": "object:16131"
     },
     {
       "text": "%pyspark\ntripsRaw.printSchema()",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T18:57:32+0300",
+      "dateUpdated": "2021-07-27T11:38:15+0300",
       "config": {
         "editorSetting": {
           "language": "python",
@@ -369,15 +369,15 @@
       "jobName": "paragraph_1627312884400_236052089",
       "id": "paragraph_1616421251642_839653435",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T18:57:32+0300",
-      "dateFinished": "2021-07-26T18:57:32+0300",
+      "dateStarted": "2021-07-27T11:38:15+0300",
+      "dateFinished": "2021-07-27T11:38:15+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4822"
+      "$$hashKey": "object:16132"
     },
     {
       "text": "%md\n#### Очистка и преобразование даты и времени поездок",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T18:57:38+0300",
+      "dateUpdated": "2021-07-27T11:38:15+0300",
       "config": {
         "editorHide": true,
         "colWidth": 12,
@@ -414,15 +414,15 @@
       "jobName": "paragraph_1627312884400_629386913",
       "id": "paragraph_1627226340122_1825386115",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T18:57:36+0300",
-      "dateFinished": "2021-07-26T18:57:36+0300",
+      "dateStarted": "2021-07-27T11:38:15+0300",
+      "dateFinished": "2021-07-27T11:38:15+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4823"
+      "$$hashKey": "object:16133"
     },
     {
-      "text": "%pyspark\ntripsWithColumn1 = tripsRaw\\\n    .drop(\"VendorID\", \"RatecodeID\", \"store_and_fwd_flag\", \"fare_amount\", \"extra\", \"mta_tax\", \"improvement_surcharge\", \"congestion_surcharge\")\\\n    .withColumn('pickup_dt', to_timestamp(tripsRaw['tpep_pickup_datetime'], 'yyyy-MM-dd HH:mm:ss'))\\\n    .withColumn('dropoff_dt', to_timestamp(tripsRaw['tpep_dropoff_datetime'], 'yyyy-MM-dd HH:mm:ss'))\\\n    .drop(\"tpep_pickup_datetime\", \"tpep_dropoff_datetime\")\n\ntripsWithColumn = tripsWithColumn1\\\n    .withColumn(\"pickup_year\", year(tripsWithColumn1['pickup_dt']))\\\n    .withColumn(\"pickup_month\", month(tripsWithColumn1['pickup_dt']))\\\n    .withColumn(\"pickup_day\", dayofmonth(tripsWithColumn1['pickup_dt']))\\\n    .withColumn(\"pickup_dayofweek\", dayofweek(tripsWithColumn1['pickup_dt']))\\\n    .withColumn(\"pickup_weekofyear\", weekofyear(tripsWithColumn1['pickup_dt']))\\\n    .withColumn(\"pickup_hour\", hour(tripsWithColumn1['pickup_dt']))\\\n    .withColumn(\"dropoff_year\", year(tripsWithColumn1['dropoff_dt']))\\\n    .withColumn(\"dropoff_month\", month(tripsWithColumn1['dropoff_dt']))\\\n    .withColumn(\"dropoff_day\", dayofmonth(tripsWithColumn1['dropoff_dt']))\\\n    .withColumn(\"dropoff_dayofweek\", dayofweek(tripsWithColumn1['dropoff_dt']))\\\n    .withColumn(\"dropoff_weekofyear\", weekofyear(tripsWithColumn1['dropoff_dt']))\\\n    .withColumn(\"dropoff_hour\", hour(tripsWithColumn1['dropoff_dt']))\n\ntrips = tripsWithColumn\\\n    .filter(tripsWithColumn.trip_distance > 0)\\\n    .filter(tripsWithColumn.passenger_count > 0)\\\n    .filter(tripsWithColumn.dropoff_dt > tripsWithColumn.pickup_dt)\\\n    .filter((tripsWithColumn.pickup_year > 2018) & (tripsWithColumn.pickup_year < 2021))\\\n    .filter((tripsWithColumn.dropoff_year > 2018) & (tripsWithColumn.dropoff_year < 2021))",
+      "text": "%pyspark\n    trips = tripsRaw \\\n        .filter(col(\"trip_distance\") > 0) \\\n        .filter(col(\"passenger_count\") > 0) \\\n        .drop(\"VendorID\", \"RatecodeID\", \"store_and_fwd_flag\", \"fare_amount\", \"extra\", \"mta_tax\",\n              \"improvement_surcharge\", \"congestion_surcharge\") \\\n        .withColumn('pickup_dt', to_timestamp(tripsRaw['tpep_pickup_datetime'], 'yyyy-MM-dd HH:mm:ss')) \\\n        .withColumn('dropoff_dt', to_timestamp(tripsRaw['tpep_dropoff_datetime'], 'yyyy-MM-dd HH:mm:ss')) \\\n        .drop(\"tpep_pickup_datetime\", \"tpep_dropoff_datetime\") \\\n        .filter(col(\"dropoff_dt\") > col(\"pickup_dt\")) \\\n        .withColumn(\"pickup_year\", year(col(\"pickup_dt\"))) \\\n        .withColumn(\"pickup_month\", month(col(\"pickup_dt\"))) \\\n        .withColumn(\"pickup_day\", dayofmonth(col(\"pickup_dt\"))) \\\n        .withColumn(\"pickup_dayofweek\", dayofweek(col(\"pickup_dt\"))) \\\n        .withColumn(\"pickup_weekofyear\", weekofyear(col(\"pickup_dt\"))) \\\n        .withColumn(\"pickup_hour\", hour(col(\"pickup_dt\"))) \\\n        .withColumn(\"dropoff_year\", year(col(\"dropoff_dt\"))) \\\n        .withColumn(\"dropoff_month\", month(col(\"dropoff_dt\"))) \\\n        .withColumn(\"dropoff_day\", dayofmonth(col(\"dropoff_dt\"))) \\\n        .withColumn(\"dropoff_dayofweek\", dayofweek(col(\"dropoff_dt\"))) \\\n        .withColumn(\"dropoff_weekofyear\", weekofyear(col(\"dropoff_dt\"))) \\\n        .withColumn(\"dropoff_hour\", hour(col(\"dropoff_dt\"))) \\\n        .filter((col(\"pickup_year\") > 2018) & (col(\"pickup_year\") < 2021)) \\\n        .filter((col(\"dropoff_year\") > 2018) & (col(\"dropoff_year\") < 2021))\n",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T19:08:57+0300",
+      "dateUpdated": "2021-07-27T11:38:15+0300",
       "config": {
         "editorSetting": {
           "language": "python",
@@ -467,15 +467,15 @@
       "jobName": "paragraph_1627312884400_245872683",
       "id": "paragraph_1616421706738_1227221309",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:08:57+0300",
-      "dateFinished": "2021-07-26T19:08:58+0300",
+      "dateStarted": "2021-07-27T11:38:15+0300",
+      "dateFinished": "2021-07-27T11:38:15+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4824"
+      "$$hashKey": "object:16134"
     },
     {
       "text": "%pyspark\ntrips.show(10, truncate = False)",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T19:09:21+0300",
+      "dateUpdated": "2021-07-27T11:38:15+0300",
       "config": {
         "results": [
           {
@@ -531,8 +531,8 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=4",
-              "$$hashKey": "object:6530"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=3",
+              "$$hashKey": "object:17840"
             }
           ],
           "interpreterSettingId": "spark"
@@ -542,15 +542,15 @@
       "jobName": "paragraph_1627312884400_94147591",
       "id": "paragraph_1627226374294_113058675",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:09:16+0300",
-      "dateFinished": "2021-07-26T19:09:17+0300",
+      "dateStarted": "2021-07-27T11:38:15+0300",
+      "dateFinished": "2021-07-27T11:38:16+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4825"
+      "$$hashKey": "object:16135"
     },
     {
       "text": "%pyspark\ntrips.printSchema()",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T19:09:35+0300",
+      "dateUpdated": "2021-07-27T11:38:16+0300",
       "config": {
         "editorSetting": {
           "language": "python",
@@ -592,15 +592,15 @@
       "jobName": "paragraph_1627312884401_39674253",
       "id": "paragraph_1616423854397_900212821",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:09:29+0300",
-      "dateFinished": "2021-07-26T19:09:29+0300",
+      "dateStarted": "2021-07-27T11:38:16+0300",
+      "dateFinished": "2021-07-27T11:38:16+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4826"
+      "$$hashKey": "object:16136"
     },
     {
       "text": "%md\n### Данные о типах платежей",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T19:09:37+0300",
+      "dateUpdated": "2021-07-27T11:38:16+0300",
       "config": {
         "editorHide": true,
         "colWidth": 12,
@@ -634,15 +634,15 @@
       "jobName": "paragraph_1627312884401_1694546948",
       "id": "paragraph_1627226532019_1254258230",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:09:37+0300",
-      "dateFinished": "2021-07-26T19:09:37+0300",
+      "dateStarted": "2021-07-27T11:38:16+0300",
+      "dateFinished": "2021-07-27T11:38:16+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4827"
+      "$$hashKey": "object:16137"
     },
     {
       "text": "%pyspark\npaymentTypePath = dataDir + \"payment_type.csv\"\npaymentType = spark.read\\\n    .option(\"header\", \"true\")\\\n    .option(\"inferSchema\", \"true\")\\\n    .csv(paymentTypePath)\n\npaymentType.show()",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T19:10:14+0300",
+      "dateUpdated": "2021-07-27T11:38:16+0300",
       "config": {
         "editorSetting": {
           "language": "python",
@@ -717,16 +717,16 @@
           "group": "spark",
           "values": [
             {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=4",
+              "$$hashKey": "object:17996"
+            },
+            {
               "jobUrl": "http://ubuntu:4040/jobs/job?id=5",
-              "$$hashKey": "object:6686"
+              "$$hashKey": "object:17997"
             },
             {
               "jobUrl": "http://ubuntu:4040/jobs/job?id=6",
-              "$$hashKey": "object:6687"
-            },
-            {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=7",
-              "$$hashKey": "object:6688"
+              "$$hashKey": "object:17998"
             }
           ],
           "interpreterSettingId": "spark"
@@ -736,15 +736,15 @@
       "jobName": "paragraph_1627312884401_142914712",
       "id": "paragraph_1616443321558_88429375",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:10:10+0300",
-      "dateFinished": "2021-07-26T19:10:11+0300",
+      "dateStarted": "2021-07-27T11:38:16+0300",
+      "dateFinished": "2021-07-27T11:38:17+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4828"
+      "$$hashKey": "object:16138"
     },
     {
       "text": "%md\n### Данные о зонах и районах поездок",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T19:10:19+0300",
+      "dateUpdated": "2021-07-27T11:38:17+0300",
       "config": {
         "editorHide": true,
         "colWidth": 12,
@@ -781,15 +781,15 @@
       "jobName": "paragraph_1627312884401_1432348242",
       "id": "paragraph_1627226557666_690372567",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:10:15+0300",
-      "dateFinished": "2021-07-26T19:10:15+0300",
+      "dateStarted": "2021-07-27T11:38:17+0300",
+      "dateFinished": "2021-07-27T11:38:17+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4829"
+      "$$hashKey": "object:16139"
     },
     {
       "text": "%pyspark\nzoneLookupPath = dataDir + \"taxi_zone_lookup.csv\"\nzoneLookup = spark.read\\\n    .option(\"header\", \"true\")\\\n    .option(\"inferSchema\", \"true\")\\\n    .csv(zoneLookupPath)\\\n    .drop(\"service_zone\")\n\nzoneLookup.show(10, truncate = False)",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T19:10:52+0300",
+      "dateUpdated": "2021-07-27T11:38:17+0300",
       "config": {
         "editorSetting": {
           "language": "python",
@@ -864,16 +864,16 @@
           "group": "spark",
           "values": [
             {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=7",
+              "$$hashKey": "object:18110"
+            },
+            {
               "jobUrl": "http://ubuntu:4040/jobs/job?id=8",
-              "$$hashKey": "object:6800"
+              "$$hashKey": "object:18111"
             },
             {
               "jobUrl": "http://ubuntu:4040/jobs/job?id=9",
-              "$$hashKey": "object:6801"
-            },
-            {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=10",
-              "$$hashKey": "object:6802"
+              "$$hashKey": "object:18112"
             }
           ],
           "interpreterSettingId": "spark"
@@ -883,15 +883,15 @@
       "jobName": "paragraph_1627312884401_330897431",
       "id": "paragraph_1616425295851_1843459876",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:10:47+0300",
-      "dateFinished": "2021-07-26T19:10:48+0300",
+      "dateStarted": "2021-07-27T11:38:17+0300",
+      "dateFinished": "2021-07-27T11:38:17+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4830"
+      "$$hashKey": "object:16140"
     },
     {
       "text": "%md\n## Формируем наборы данных\n### \"Базовый\" набор",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T19:10:56+0300",
+      "dateUpdated": "2021-07-27T11:38:17+0300",
       "config": {
         "editorHide": true,
         "colWidth": 12,
@@ -928,15 +928,15 @@
       "jobName": "paragraph_1627312884401_944703666",
       "id": "paragraph_1627227347749_1282587304",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:10:54+0300",
-      "dateFinished": "2021-07-26T19:10:54+0300",
+      "dateStarted": "2021-07-27T11:38:17+0300",
+      "dateFinished": "2021-07-27T11:38:17+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4831"
+      "$$hashKey": "object:16141"
     },
     {
       "text": "%pyspark\ndata = trips\\\n    .join(paymentType, trips['payment_type'] == paymentType['type_id'])\\\n    .drop(\"payment_type\", \"type_id\")\\\n    .withColumnRenamed(\"type\", \"payment_type\")\\\n    .join(zoneLookup, trips['PULocationID'] == zoneLookup['LocationID'])\\\n    .drop(\"LocationID\")\\\n    .withColumnRenamed(\"Borough\", \"PUBorough\")\\\n    .withColumnRenamed(\"Zone\", \"PUZone\")\\\n    .join(zoneLookup, trips['DOLocationID'] == zoneLookup['LocationID'])\\\n    .drop(\"LocationID\")\\\n    .withColumnRenamed(\"Borough\", \"DOBorough\")\\\n    .withColumnRenamed(\"Zone\", \"DOZone\")\\\n    .cache()",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T19:15:52+0300",
+      "dateUpdated": "2021-07-27T11:38:17+0300",
       "config": {
         "editorSetting": {
           "language": "python",
@@ -973,15 +973,15 @@
       "jobName": "paragraph_1627312884401_2142728911",
       "id": "paragraph_1616425349709_1087961214",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:15:52+0300",
-      "dateFinished": "2021-07-26T19:15:53+0300",
+      "dateStarted": "2021-07-27T11:38:17+0300",
+      "dateFinished": "2021-07-27T11:38:18+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4832"
+      "$$hashKey": "object:16142"
     },
     {
       "text": "%pyspark\ndata.show(10, truncate = False)",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T19:16:52+0300",
+      "dateUpdated": "2021-07-27T11:38:18+0300",
       "config": {
         "editorSetting": {
           "language": "python",
@@ -1054,8 +1054,8 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=13",
-              "$$hashKey": "object:6956"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=12",
+              "$$hashKey": "object:18266"
             }
           ],
           "interpreterSettingId": "spark"
@@ -1065,15 +1065,15 @@
       "jobName": "paragraph_1627312884401_277676611",
       "id": "paragraph_1616425634329_44956892",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:16:05+0300",
-      "dateFinished": "2021-07-26T19:16:28+0300",
+      "dateStarted": "2021-07-27T11:38:18+0300",
+      "dateFinished": "2021-07-27T11:38:38+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4833"
+      "$$hashKey": "object:16143"
     },
     {
       "text": "%md\n### Набор с часовой агрегацией поездок по зоне посадки",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T19:17:01+0300",
+      "dateUpdated": "2021-07-27T11:38:39+0300",
       "config": {
         "editorHide": true,
         "colWidth": 12,
@@ -1110,15 +1110,15 @@
       "jobName": "paragraph_1627312884401_1021574111",
       "id": "paragraph_1627227459391_141261073",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:16:55+0300",
-      "dateFinished": "2021-07-26T19:16:55+0300",
+      "dateStarted": "2021-07-27T11:38:39+0300",
+      "dateFinished": "2021-07-27T11:38:39+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4834"
+      "$$hashKey": "object:16144"
     },
     {
       "text": "%pyspark\nhourly = data\\\n    .groupBy('pickup_year', 'pickup_month', 'pickup_day', 'pickup_dayofweek', 'pickup_weekofyear', 'pickup_hour', 'PULocationID', 'PUZone', 'PUBorough')\\\n    .agg(sum(col('passenger_count')).alias(\"passengers\"), count('pickup_dt').alias(\"trips\"))\\\n    .cache()",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T19:36:07+0300",
+      "dateUpdated": "2021-07-27T11:38:39+0300",
       "config": {
         "colWidth": 12,
         "fontSize": 9,
@@ -1146,15 +1146,15 @@
       "jobName": "paragraph_1627312884401_80044897",
       "id": "paragraph_1627227460025_757279169",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:35:10+0300",
-      "dateFinished": "2021-07-26T19:35:10+0300",
+      "dateStarted": "2021-07-27T11:38:39+0300",
+      "dateFinished": "2021-07-27T11:38:39+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4835"
+      "$$hashKey": "object:16145"
     },
     {
       "text": "%pyspark\nhourly.orderBy(col(\"pickup_year\"), col(\"pickup_month\"), col(\"pickup_day\"), col(\"pickup_hour\"), col(\"trips\").desc()).show(10, truncate = False)",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T19:43:57+0300",
+      "dateUpdated": "2021-07-27T11:38:39+0300",
       "config": {
         "results": [
           {
@@ -1210,8 +1210,8 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=17",
-              "$$hashKey": "object:7102"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=13",
+              "$$hashKey": "object:18412"
             }
           ],
           "interpreterSettingId": "spark"
@@ -1221,15 +1221,15 @@
       "jobName": "paragraph_1627312884401_1324489226",
       "id": "paragraph_1627227460746_1374444385",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:35:37+0300",
-      "dateFinished": "2021-07-26T19:35:38+0300",
+      "dateStarted": "2021-07-27T11:38:39+0300",
+      "dateFinished": "2021-07-27T11:44:42+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4836"
+      "$$hashKey": "object:16146"
     },
     {
       "text": "%md\n### Набор с месячной агрегацией поездок по зоне посадки",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T19:42:05+0300",
+      "dateUpdated": "2021-07-27T11:44:42+0300",
       "config": {
         "editorHide": true,
         "colWidth": 12,
@@ -1266,15 +1266,15 @@
       "jobName": "paragraph_1627312884401_1058119834",
       "id": "paragraph_1627227462306_92752341",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:42:03+0300",
-      "dateFinished": "2021-07-26T19:42:03+0300",
+      "dateStarted": "2021-07-27T11:44:42+0300",
+      "dateFinished": "2021-07-27T11:44:42+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4837"
+      "$$hashKey": "object:16147"
     },
     {
       "text": "%pyspark\nmonthly = hourly\\\n    .groupBy(\"pickup_year\", \"pickup_month\", \"PULocationID\", \"PUZone\", \"PUBorough\")\\\n    .agg(sum(col(\"passengers\")).alias(\"passengers\"), sum(col(\"trips\")).alias(\"trips\"))\\\n    .cache()",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T19:42:54+0300",
+      "dateUpdated": "2021-07-27T11:44:42+0300",
       "config": {
         "colWidth": 12,
         "fontSize": 9,
@@ -1302,15 +1302,15 @@
       "jobName": "paragraph_1627312884401_2112308241",
       "id": "paragraph_1627227462881_1507959613",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:42:54+0300",
-      "dateFinished": "2021-07-26T19:42:54+0300",
+      "dateStarted": "2021-07-27T11:44:42+0300",
+      "dateFinished": "2021-07-27T11:44:42+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4838"
+      "$$hashKey": "object:16148"
     },
     {
       "text": "%pyspark\nmonthly.orderBy(col(\"pickup_year\"), col(\"pickup_month\"), col(\"trips\").desc()).show(10, truncate = False)",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T19:44:04+0300",
+      "dateUpdated": "2021-07-27T11:44:42+0300",
       "config": {
         "results": [
           {
@@ -1366,8 +1366,8 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=18",
-              "$$hashKey": "object:7248"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=14",
+              "$$hashKey": "object:18558"
             }
           ],
           "interpreterSettingId": "spark"
@@ -1377,15 +1377,15 @@
       "jobName": "paragraph_1627312884401_1619277312",
       "id": "paragraph_1627228585541_412336598",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:43:36+0300",
-      "dateFinished": "2021-07-26T19:43:40+0300",
+      "dateStarted": "2021-07-27T11:44:42+0300",
+      "dateFinished": "2021-07-27T11:44:46+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4839"
+      "$$hashKey": "object:16149"
     },
     {
       "text": "%md\n### Набор с месячной агрегацией поездок по району посадки",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T19:44:12+0300",
+      "dateUpdated": "2021-07-27T11:44:46+0300",
       "config": {
         "editorHide": true,
         "colWidth": 12,
@@ -1422,15 +1422,15 @@
       "jobName": "paragraph_1627312884401_1076108020",
       "id": "paragraph_1627294293257_626738894",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:44:10+0300",
-      "dateFinished": "2021-07-26T19:44:10+0300",
+      "dateStarted": "2021-07-27T11:44:46+0300",
+      "dateFinished": "2021-07-27T11:44:46+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4840"
+      "$$hashKey": "object:16150"
     },
     {
       "text": "%pyspark\nmonthlyB = data\\\n    .groupBy(col(\"pickup_year\").alias(\"year\"), col(\"pickup_month\").alias(\"month\"), col(\"PUBorough\"))\\\n    .agg(count(col(\"pickup_dt\")).alias(\"trips\"))\\\n    .cache()",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T19:45:00+0300",
+      "dateUpdated": "2021-07-27T11:44:46+0300",
       "config": {
         "colWidth": 12,
         "fontSize": 9,
@@ -1458,15 +1458,15 @@
       "jobName": "paragraph_1627312884401_2056911232",
       "id": "paragraph_1627294311183_1239592310",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:45:00+0300",
-      "dateFinished": "2021-07-26T19:45:00+0300",
+      "dateStarted": "2021-07-27T11:44:46+0300",
+      "dateFinished": "2021-07-27T11:44:46+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4841"
+      "$$hashKey": "object:16151"
     },
     {
       "text": "%pyspark\nmonthlyB.orderBy(\"year\", \"month\", \"PUBorough\").show(14, truncate = False)",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T19:45:41+0300",
+      "dateUpdated": "2021-07-27T11:44:46+0300",
       "config": {
         "results": [
           {
@@ -1548,8 +1548,8 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=19",
-              "$$hashKey": "object:7394"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=15",
+              "$$hashKey": "object:18704"
             }
           ],
           "interpreterSettingId": "spark"
@@ -1559,15 +1559,15 @@
       "jobName": "paragraph_1627312884401_1315398587",
       "id": "paragraph_1627294666263_228058902",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:45:12+0300",
-      "dateFinished": "2021-07-26T19:45:22+0300",
+      "dateStarted": "2021-07-27T11:44:46+0300",
+      "dateFinished": "2021-07-27T11:44:54+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4842"
+      "$$hashKey": "object:16152"
     },
     {
       "text": "%md\n## Анализ\n### Топ-5 зон по количеству посадок для каждого часа",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T19:45:56+0300",
+      "dateUpdated": "2021-07-27T11:44:54+0300",
       "config": {
         "editorHide": true,
         "colWidth": 12,
@@ -1604,15 +1604,15 @@
       "jobName": "paragraph_1627312884401_2030390848",
       "id": "paragraph_1627229012685_750731805",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:45:53+0300",
-      "dateFinished": "2021-07-26T19:45:53+0300",
+      "dateStarted": "2021-07-27T11:44:54+0300",
+      "dateFinished": "2021-07-27T11:44:54+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4843"
+      "$$hashKey": "object:16153"
     },
     {
       "text": "%pyspark\nfrom pyspark.sql.window import Window\n\nwindowH = Window\\\n    .partitionBy(\"pickup_year\", \"pickup_month\", \"pickup_day\", \"pickup_hour\")\\\n    .orderBy(col(\"trips\").desc())\n\ntop5H = hourly\\\n    .withColumn(\"rn\", row_number().over(windowH))\\\n    .filter(col(\"rn\") < 6)\\\n    .drop(\"rn\")\\\n    .select(\"pickup_year\", \"pickup_month\", \"pickup_day\", \"pickup_hour\", \"PULocationID\", \"PUZone\", \"PUBorough\", \"trips\")\\\n    .orderBy(col(\"pickup_year\"), col(\"pickup_month\"), col(\"pickup_day\"), col(\"pickup_hour\"), col(\"trips\").desc())",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T19:48:44+0300",
+      "dateUpdated": "2021-07-27T11:44:54+0300",
       "config": {
         "colWidth": 12,
         "fontSize": 9,
@@ -1646,15 +1646,15 @@
       "jobName": "paragraph_1627312884401_677406309",
       "id": "paragraph_1627229011693_363564935",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:48:44+0300",
-      "dateFinished": "2021-07-26T19:48:44+0300",
+      "dateStarted": "2021-07-27T11:44:54+0300",
+      "dateFinished": "2021-07-27T11:44:54+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4844"
+      "$$hashKey": "object:16154"
     },
     {
       "text": "%pyspark\ntop5H.show(20, truncate = False)",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T19:49:07+0300",
+      "dateUpdated": "2021-07-27T11:44:54+0300",
       "config": {
         "results": [
           {
@@ -1710,8 +1710,8 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=20",
-              "$$hashKey": "object:7540"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=16",
+              "$$hashKey": "object:18850"
             }
           ],
           "interpreterSettingId": "spark"
@@ -1721,15 +1721,15 @@
       "jobName": "paragraph_1627312884401_1560247864",
       "id": "paragraph_1627229010957_969856496",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:48:57+0300",
-      "dateFinished": "2021-07-26T19:49:01+0300",
+      "dateStarted": "2021-07-27T11:44:54+0300",
+      "dateFinished": "2021-07-27T11:44:57+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4845"
+      "$$hashKey": "object:16155"
     },
     {
       "text": "%md\n### Топ-5 зон по количеству посадок для каждого месяца",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T19:49:19+0300",
+      "dateUpdated": "2021-07-27T11:44:57+0300",
       "config": {
         "editorHide": true,
         "colWidth": 12,
@@ -1766,15 +1766,15 @@
       "jobName": "paragraph_1627312884402_544525259",
       "id": "paragraph_1627229008443_1434676524",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:49:16+0300",
-      "dateFinished": "2021-07-26T19:49:17+0300",
+      "dateStarted": "2021-07-27T11:44:57+0300",
+      "dateFinished": "2021-07-27T11:44:57+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4846"
+      "$$hashKey": "object:16156"
     },
     {
       "text": "%pyspark\nwindowW = Window\\\n    .partitionBy(\"pickup_year\", \"pickup_month\")\\\n    .orderBy(col(\"trips\").desc())\n\ntop5M = monthly\\\n    .withColumn(\"rn\", row_number().over(windowW))\\\n    .filter(col(\"rn\") < 6)\\\n    .drop(\"rn\")\\\n    .select(\"pickup_year\", \"pickup_month\", \"PULocationID\", \"PUZone\", \"PUBorough\", \"trips\")\\\n    .orderBy(col(\"pickup_year\"), col(\"pickup_month\"), col(\"trips\").desc())",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T19:50:28+0300",
+      "dateUpdated": "2021-07-27T11:44:58+0300",
       "config": {
         "colWidth": 12,
         "fontSize": 9,
@@ -1802,15 +1802,15 @@
       "jobName": "paragraph_1627312884402_1646269047",
       "id": "paragraph_1627228583461_501712779",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:50:28+0300",
-      "dateFinished": "2021-07-26T19:50:29+0300",
+      "dateStarted": "2021-07-27T11:44:58+0300",
+      "dateFinished": "2021-07-27T11:44:58+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4847"
+      "$$hashKey": "object:16157"
     },
     {
       "text": "%pyspark\ntop5M.show(20, truncate = False)",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T19:50:52+0300",
+      "dateUpdated": "2021-07-27T11:44:58+0300",
       "config": {
         "results": [
           {
@@ -1866,8 +1866,8 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=21",
-              "$$hashKey": "object:7686"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=17",
+              "$$hashKey": "object:18996"
             }
           ],
           "interpreterSettingId": "spark"
@@ -1877,15 +1877,15 @@
       "jobName": "paragraph_1627312884402_955842540",
       "id": "paragraph_1627227463448_614333616",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:50:39+0300",
-      "dateFinished": "2021-07-26T19:50:41+0300",
+      "dateStarted": "2021-07-27T11:44:58+0300",
+      "dateFinished": "2021-07-27T11:44:59+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4848"
+      "$$hashKey": "object:16158"
     },
     {
       "text": "%md\n### Топ-5 пар (посадка - высадка) по количеству посадок для каждого месяца",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T19:51:08+0300",
+      "dateUpdated": "2021-07-27T11:44:59+0300",
       "config": {
         "editorHide": true,
         "colWidth": 12,
@@ -1919,15 +1919,15 @@
       "jobName": "paragraph_1627312884402_127802343",
       "id": "paragraph_1627233329810_1209475696",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:51:08+0300",
-      "dateFinished": "2021-07-26T19:51:08+0300",
+      "dateStarted": "2021-07-27T11:44:59+0300",
+      "dateFinished": "2021-07-27T11:44:59+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4849"
+      "$$hashKey": "object:16159"
     },
     {
       "text": "%pyspark\ntop5MP = data\\\n    .groupBy(\"pickup_year\", \"pickup_month\", \"PULocationID\", \"PUZone\", \"PUBorough\", \"DOLocationID\", \"DOZone\", \"DOBorough\")\\\n    .agg(count(col(\"pickup_dt\")).alias(\"trips\"))\\\n    .withColumn(\"rn\", row_number().over(windowW))\\\n    .filter(col(\"rn\") < 6)\\\n    .drop(\"rn\")\\\n    .select(\"pickup_year\", \"pickup_month\", \"PULocationID\", \"PUZone\", \"PUBorough\", \"DOLocationID\", \"DOZone\", \"DOBorough\", \"trips\")\\\n    .orderBy(col(\"pickup_year\"), col(\"pickup_month\"), col(\"trips\").desc())",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T19:52:07+0300",
+      "dateUpdated": "2021-07-27T11:44:59+0300",
       "config": {
         "colWidth": 12,
         "fontSize": 9,
@@ -1955,15 +1955,15 @@
       "jobName": "paragraph_1627312884402_234871266",
       "id": "paragraph_1627233332966_1409416902",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:52:07+0300",
-      "dateFinished": "2021-07-26T19:52:08+0300",
+      "dateStarted": "2021-07-27T11:44:59+0300",
+      "dateFinished": "2021-07-27T11:44:59+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4850"
+      "$$hashKey": "object:16160"
     },
     {
       "text": "%pyspark\ntop5MP.show(20, truncate = False)",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T19:53:36+0300",
+      "dateUpdated": "2021-07-27T11:45:00+0300",
       "config": {
         "results": [
           {
@@ -2019,8 +2019,8 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=22",
-              "$$hashKey": "object:7832"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=18",
+              "$$hashKey": "object:19142"
             }
           ],
           "interpreterSettingId": "spark"
@@ -2030,15 +2030,15 @@
       "jobName": "paragraph_1627312884402_410565708",
       "id": "paragraph_1627233334685_808317602",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:52:18+0300",
-      "dateFinished": "2021-07-26T19:52:43+0300",
+      "dateStarted": "2021-07-27T11:45:00+0300",
+      "dateFinished": "2021-07-27T11:45:19+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4851"
+      "$$hashKey": "object:16161"
     },
     {
       "text": "%md\n### Суммарное количество поездок в каждый месяц 2019 и 2020 годов",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T19:53:40+0300",
+      "dateUpdated": "2021-07-27T11:45:19+0300",
       "config": {
         "editorHide": true,
         "colWidth": 12,
@@ -2072,15 +2072,15 @@
       "jobName": "paragraph_1627312884402_1568497514",
       "id": "paragraph_1627233336465_971953518",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:53:40+0300",
-      "dateFinished": "2021-07-26T19:53:40+0300",
+      "dateStarted": "2021-07-27T11:45:19+0300",
+      "dateFinished": "2021-07-27T11:45:19+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4852"
+      "$$hashKey": "object:16162"
     },
     {
       "text": "%pyspark\ntripsByYM = monthlyB\\\n    .groupBy(\"month\")\\\n    .pivot(\"year\")\\\n    .sum(\"trips\")",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T19:53:57+0300",
+      "dateUpdated": "2021-07-27T11:45:19+0300",
       "config": {
         "editorSetting": {
           "language": "python",
@@ -2125,8 +2125,8 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=23",
-              "$$hashKey": "object:7926"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=19",
+              "$$hashKey": "object:19236"
             }
           ],
           "interpreterSettingId": "spark"
@@ -2136,15 +2136,15 @@
       "jobName": "paragraph_1627312884402_1685021787",
       "id": "paragraph_1616425662193_1657456063",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:53:57+0300",
-      "dateFinished": "2021-07-26T19:53:58+0300",
+      "dateStarted": "2021-07-27T11:45:19+0300",
+      "dateFinished": "2021-07-27T11:45:20+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4853"
+      "$$hashKey": "object:16163"
     },
     {
       "text": "%pyspark\ntripsByYM.orderBy(\"month\").show(12, truncate = False)",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T19:54:24+0300",
+      "dateUpdated": "2021-07-27T11:45:20+0300",
       "config": {
         "editorSetting": {
           "language": "python",
@@ -2217,8 +2217,8 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=24",
-              "$$hashKey": "object:7984"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=20",
+              "$$hashKey": "object:19294"
             }
           ],
           "interpreterSettingId": "spark"
@@ -2228,15 +2228,15 @@
       "jobName": "paragraph_1627312884402_1361103199",
       "id": "paragraph_1616430769598_1534597016",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:54:08+0300",
-      "dateFinished": "2021-07-26T19:54:10+0300",
+      "dateStarted": "2021-07-27T11:45:20+0300",
+      "dateFinished": "2021-07-27T11:45:21+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4854"
+      "$$hashKey": "object:16164"
     },
     {
       "text": "%md\n### Изменение количества поездок в каждый месяц 2019 и 2020 годов по районам",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T19:54:33+0300",
+      "dateUpdated": "2021-07-27T11:45:21+0300",
       "config": {
         "editorHide": true,
         "colWidth": 12,
@@ -2273,15 +2273,15 @@
       "jobName": "paragraph_1627312884402_1572880928",
       "id": "paragraph_1627295762252_322229647",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:54:30+0300",
-      "dateFinished": "2021-07-26T19:54:30+0300",
+      "dateStarted": "2021-07-27T11:45:21+0300",
+      "dateFinished": "2021-07-27T11:45:21+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4855"
+      "$$hashKey": "object:16165"
     },
     {
       "text": "%pyspark\ntripsByYMBorough = monthlyB\\\n    .groupBy(\"month\")\\\n    .pivot(\"PUBorough\")\\\n    .agg(stddev(\"trips\"))\\\n    .orderBy(\"month\")",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T19:54:51+0300",
+      "dateUpdated": "2021-07-27T11:45:21+0300",
       "config": {
         "editorSetting": {
           "language": "python",
@@ -2318,8 +2318,8 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=25",
-              "$$hashKey": "object:8078"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=21",
+              "$$hashKey": "object:19388"
             }
           ],
           "interpreterSettingId": "spark"
@@ -2329,15 +2329,15 @@
       "jobName": "paragraph_1627312884402_1477816503",
       "id": "paragraph_1616430142449_1495502293",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:54:51+0300",
-      "dateFinished": "2021-07-26T19:54:52+0300",
+      "dateStarted": "2021-07-27T11:45:21+0300",
+      "dateFinished": "2021-07-27T11:45:22+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4856"
+      "$$hashKey": "object:16166"
     },
     {
       "text": "%pyspark\ntripsByYMBorough.show(12, truncate = False)",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T20:01:51+0300",
+      "dateUpdated": "2021-07-27T11:45:22+0300",
       "config": {
         "editorSetting": {
           "language": "python",
@@ -2410,8 +2410,8 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=26",
-              "$$hashKey": "object:8136"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=22",
+              "$$hashKey": "object:19446"
             }
           ],
           "interpreterSettingId": "spark"
@@ -2421,15 +2421,15 @@
       "jobName": "paragraph_1627312884402_1691069266",
       "id": "paragraph_1616434280230_2006565813",
       "dateCreated": "2021-07-26T18:21:24+0300",
-      "dateStarted": "2021-07-26T19:55:00+0300",
-      "dateFinished": "2021-07-26T19:55:02+0300",
+      "dateStarted": "2021-07-27T11:45:22+0300",
+      "dateFinished": "2021-07-27T11:45:23+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4857"
+      "$$hashKey": "object:16167"
     },
     {
       "text": "%pyspark\nhead, *tail = tripsByYMBorough.columns\ncolumns = [col(head)] + list(map(lambda x: round(x, 2), tail))\n\ntripsByYMBoroughDev = tripsByYMBorough.select(*columns).toDF(*tripsByYMBorough.columns)\ntripsByYMBoroughDev.show(12, truncate = False)",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T20:35:30+0300",
+      "dateUpdated": "2021-07-27T11:45:23+0300",
       "config": {
         "results": [
           {
@@ -2482,8 +2482,8 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=46",
-              "$$hashKey": "object:8194"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=23",
+              "$$hashKey": "object:19504"
             }
           ],
           "interpreterSettingId": "spark"
@@ -2493,15 +2493,15 @@
       "jobName": "paragraph_1627319913133_537882058",
       "id": "paragraph_1627319913133_537882058",
       "dateCreated": "2021-07-26T20:18:33+0300",
-      "dateStarted": "2021-07-26T20:35:30+0300",
-      "dateFinished": "2021-07-26T20:35:31+0300",
+      "dateStarted": "2021-07-27T11:45:23+0300",
+      "dateFinished": "2021-07-27T11:45:24+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:4858"
+      "$$hashKey": "object:16168"
     },
     {
       "text": "%pyspark\n",
       "user": "anonymous",
-      "dateUpdated": "2021-07-26T20:31:57+0300",
+      "dateUpdated": "2021-07-27T11:45:24+0300",
       "config": {
         "colWidth": 12,
         "fontSize": 9,
@@ -2525,8 +2525,8 @@
       "jobName": "paragraph_1627320717955_320452974",
       "id": "paragraph_1627320717955_320452974",
       "dateCreated": "2021-07-26T20:31:57+0300",
-      "status": "READY",
-      "$$hashKey": "object:4859"
+      "status": "FINISHED",
+      "$$hashKey": "object:16169"
     }
   ],
   "name": "PyNYCTaxi",
@@ -2541,6 +2541,8 @@
     "looknfeel": "default",
     "personalizedMode": "false"
   },
-  "info": {},
+  "info": {
+    "isRunning": false
+  },
   "path": "/otus/PyNYCTaxi"
 }
