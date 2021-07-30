@@ -6,12 +6,13 @@ import org.apache.spark.ml.PipelineModel
 object ProdML {
   def main(args: Array[String]): Unit = {
     if (args.length != 3) {
-      println("Usage: ProdML <path-to-model> <path-to-input> <path-to-output>")
+      println("Usage: SparkML <path-to-model> <path-to-input> <path-to-output>")
       sys.exit(-1)
     }
 
     val spark = SparkSession.builder
-      .appName("ProdML")
+      .appName("SparkML")
+      .config("spark.sql.debug.maxToStringFields", 100)
       .getOrCreate()
 
     import spark.implicits._

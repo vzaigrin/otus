@@ -3,7 +3,7 @@
     {
       "text": "%md\n# Строим модель классификации для Ирисов Фишера",
       "user": "anonymous",
-      "dateUpdated": "2021-04-14T11:43:12+0300",
+      "dateUpdated": "2021-07-30T14:52:47+0300",
       "config": {
         "editorSetting": {},
         "colWidth": 12,
@@ -13,7 +13,16 @@
         "enabled": true
       },
       "settings": {
-        "params": {},
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 118
+              },
+              "state": {}
+            }
+          }
+        },
         "forms": {}
       },
       "results": {
@@ -31,17 +40,18 @@
       "jobName": "paragraph_1612615976959_2017139310",
       "id": "paragraph_1612612342493_668753108",
       "dateCreated": "2021-02-06T15:52:56+0300",
-      "dateStarted": "2021-04-14T11:43:12+0300",
-      "dateFinished": "2021-04-14T11:43:12+0300",
+      "dateStarted": "2021-07-30T14:52:47+0300",
+      "dateFinished": "2021-07-30T14:52:47+0300",
       "status": "FINISHED",
       "focus": true,
-      "$$hashKey": "object:532"
+      "$$hashKey": "object:19165"
     },
     {
       "text": "val basePath = \"/home/vadim/Projects/otus/SparkStreaming/IrisMLStreaming\"",
       "user": "anonymous",
-      "dateUpdated": "2021-04-14T11:43:12+0300",
+      "dateUpdated": "2021-07-30T14:52:47+0300",
       "config": {
+        "tableHide": false,
         "editorSetting": {
           "language": "scala",
           "editOnDblClick": false,
@@ -58,9 +68,6 @@
         "params": {
           "bdtMeta": {
             "inlay": {
-              "size": {
-                "height": 494
-              },
               "state": {}
             }
           }
@@ -82,16 +89,17 @@
       "jobName": "paragraph_1617262915639_2054650543",
       "id": "paragraph_1617262915639_2054650543",
       "dateCreated": "2021-04-01T10:41:55+0300",
-      "dateStarted": "2021-04-14T11:43:12+0300",
-      "dateFinished": "2021-04-14T11:43:12+0300",
+      "dateStarted": "2021-07-30T14:52:47+0300",
+      "dateFinished": "2021-07-30T14:52:47+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:533"
+      "$$hashKey": "object:19166"
     },
     {
       "text": "%md\n## Загружаем набор данных [Iris Flower Dataset](https://ru.wikipedia.org/wiki/%D0%98%D1%80%D0%B8%D1%81%D1%8B_%D0%A4%D0%B8%D1%88%D0%B5%D1%80%D0%B0)\nНабор данных доступен в форматах:\n* [CSV](https://www.kaggle.com/arshid/iris-flower-dataset)\n* [LIBSVM](https://github.com/apache/spark/blob/master/data/mllib/iris_libsvm.txt)",
       "user": "anonymous",
-      "dateUpdated": "2021-04-14T11:43:12+0300",
+      "dateUpdated": "2021-07-30T14:53:04+0300",
       "config": {
+        "tableHide": false,
         "editorSetting": {},
         "colWidth": 12,
         "editorHide": true,
@@ -104,7 +112,7 @@
           "bdtMeta": {
             "inlay": {
               "size": {
-                "height": 198
+                "height": 204
               },
               "state": {}
             }
@@ -127,15 +135,15 @@
       "jobName": "paragraph_1612615976959_441376267",
       "id": "paragraph_1612612398798_151968318",
       "dateCreated": "2021-02-06T15:52:56+0300",
-      "dateStarted": "2021-04-14T11:43:12+0300",
-      "dateFinished": "2021-04-14T11:43:12+0300",
+      "dateStarted": "2021-07-30T14:52:47+0300",
+      "dateFinished": "2021-07-30T14:52:47+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:534"
+      "$$hashKey": "object:19167"
     },
     {
-      "text": "import org.apache.spark.mllib.util.MLUtils\n\nval data = MLUtils.loadLibSVMFile(sc, basePath + \"/data/iris_libsvm.txt\")\ndata.take(5)",
+      "text": "import org.apache.spark.mllib.util.MLUtils\n\nval data = MLUtils.loadLibSVMFile(sc, basePath + \"/data/iris_libsvm.txt\")\ndata.take(5).foreach(println)",
       "user": "anonymous",
-      "dateUpdated": "2021-04-14T11:43:12+0300",
+      "dateUpdated": "2021-07-30T14:54:11+0300",
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -154,7 +162,7 @@
           "bdtMeta": {
             "inlay": {
               "size": {
-                "height": 131
+                "height": 198
               },
               "state": {}
             }
@@ -167,7 +175,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "import org.apache.spark.mllib.util.MLUtils\n\u001b[1m\u001b[34mdata\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint]\u001b[0m = MapPartitionsRDD[15360] at map at MLUtils.scala:86\n\u001b[1m\u001b[34mres127\u001b[0m: \u001b[1m\u001b[32mArray[org.apache.spark.mllib.regression.LabeledPoint]\u001b[0m = Array((0.0,(4,[0,1,2,3],[5.1,3.5,1.4,0.2])), (0.0,(4,[0,1,2,3],[4.9,3.0,1.4,0.2])), (0.0,(4,[0,1,2,3],[4.7,3.2,1.3,0.2])), (0.0,(4,[0,1,2,3],[4.6,3.1,1.5,0.2])), (0.0,(4,[0,1,2,3],[5.0,3.6,1.4,0.2])))\n"
+            "data": "(0.0,(4,[0,1,2,3],[5.1,3.5,1.4,0.2]))\n(0.0,(4,[0,1,2,3],[4.9,3.0,1.4,0.2]))\n(0.0,(4,[0,1,2,3],[4.7,3.2,1.3,0.2]))\n(0.0,(4,[0,1,2,3],[4.6,3.1,1.5,0.2]))\n(0.0,(4,[0,1,2,3],[5.0,3.6,1.4,0.2]))\nimport org.apache.spark.mllib.util.MLUtils\n\u001b[1m\u001b[34mdata\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint]\u001b[0m = MapPartitionsRDD[4733] at map at MLUtils.scala:86\n"
           }
         ]
       },
@@ -180,12 +188,12 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=7999",
-              "$$hashKey": "object:1150"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2247",
+              "$$hashKey": "object:19851"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=8000",
-              "$$hashKey": "object:1151"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2248",
+              "$$hashKey": "object:19852"
             }
           ],
           "interpreterSettingId": "spark"
@@ -195,15 +203,15 @@
       "jobName": "paragraph_1612615976960_1257516615",
       "id": "paragraph_1612612538014_346052587",
       "dateCreated": "2021-02-06T15:52:56+0300",
-      "dateStarted": "2021-04-14T11:43:12+0300",
-      "dateFinished": "2021-04-14T11:43:12+0300",
+      "dateStarted": "2021-07-30T14:53:59+0300",
+      "dateFinished": "2021-07-30T14:53:59+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:535"
+      "$$hashKey": "object:19168"
     },
     {
-      "text": "%md\nНазываем классы",
+      "text": "%md\n### Называем классы",
       "user": "anonymous",
-      "dateUpdated": "2021-04-14T11:43:12+0300",
+      "dateUpdated": "2021-07-30T14:53:14+0300",
       "config": {
         "editorSetting": {},
         "colWidth": 12,
@@ -227,7 +235,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<p>Называем классы</p>\n\n</div>"
+            "data": "<div class=\"markdown-body\">\n<h3>Называем классы</h3>\n\n</div>"
           }
         ]
       },
@@ -237,15 +245,15 @@
       "jobName": "paragraph_1612615976960_1240954690",
       "id": "paragraph_1612613990602_1879814067",
       "dateCreated": "2021-02-06T15:52:56+0300",
-      "dateStarted": "2021-04-14T11:43:12+0300",
-      "dateFinished": "2021-04-14T11:43:12+0300",
+      "dateStarted": "2021-07-30T14:53:11+0300",
+      "dateFinished": "2021-07-30T14:53:11+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:536"
+      "$$hashKey": "object:19169"
     },
     {
       "text": "val names = Map(0 -> \"setosa\", 1 -> \"versicolor\", 2 -> \"virginica\")",
       "user": "anonymous",
-      "dateUpdated": "2021-04-14T11:43:12+0300",
+      "dateUpdated": "2021-07-30T14:52:48+0300",
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -263,6 +271,9 @@
         "params": {
           "bdtMeta": {
             "inlay": {
+              "size": {
+                "height": 110
+              },
               "state": {}
             }
           }
@@ -284,15 +295,15 @@
       "jobName": "paragraph_1612615976960_1552221613",
       "id": "paragraph_1612614001906_713583701",
       "dateCreated": "2021-02-06T15:52:56+0300",
-      "dateStarted": "2021-04-14T11:43:12+0300",
-      "dateFinished": "2021-04-14T11:43:12+0300",
+      "dateStarted": "2021-07-30T14:52:48+0300",
+      "dateFinished": "2021-07-30T14:52:48+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:537"
+      "$$hashKey": "object:19170"
     },
     {
       "text": "%md\n## Разбиваем на обучающую и тестовую выборки\n",
       "user": "anonymous",
-      "dateUpdated": "2021-04-14T11:43:13+0300",
+      "dateUpdated": "2021-07-30T14:52:48+0300",
       "config": {
         "editorSetting": {},
         "colWidth": 12,
@@ -329,15 +340,15 @@
       "jobName": "paragraph_1612615976960_767761563",
       "id": "paragraph_1612614471596_518614298",
       "dateCreated": "2021-02-06T15:52:56+0300",
-      "dateStarted": "2021-04-14T11:43:13+0300",
-      "dateFinished": "2021-04-14T11:43:13+0300",
+      "dateStarted": "2021-07-30T14:52:48+0300",
+      "dateFinished": "2021-07-30T14:52:48+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:538"
+      "$$hashKey": "object:19171"
     },
     {
       "text": "val splits = data.randomSplit(Array(0.7, 0.3))\nval (trainingData, testData) = (splits(0), splits(1))",
       "user": "anonymous",
-      "dateUpdated": "2021-04-14T11:43:13+0300",
+      "dateUpdated": "2021-07-30T14:52:48+0300",
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -355,6 +366,9 @@
         "params": {
           "bdtMeta": {
             "inlay": {
+              "size": {
+                "height": 115
+              },
               "state": {}
             }
           }
@@ -366,7 +380,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\u001b[1m\u001b[34msplits\u001b[0m: \u001b[1m\u001b[32mArray[org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint]]\u001b[0m = Array(MapPartitionsRDD[15361] at randomSplit at <console>:121, MapPartitionsRDD[15362] at randomSplit at <console>:121)\n\u001b[1m\u001b[34mtrainingData\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint]\u001b[0m = MapPartitionsRDD[15361] at randomSplit at <console>:121\n\u001b[1m\u001b[34mtestData\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint]\u001b[0m = MapPartitionsRDD[15362] at randomSplit at <console>:121\n"
+            "data": "\u001b[1m\u001b[34msplits\u001b[0m: \u001b[1m\u001b[32mArray[org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint]]\u001b[0m = Array(MapPartitionsRDD[4681] at randomSplit at <console>:48, MapPartitionsRDD[4682] at randomSplit at <console>:48)\n\u001b[1m\u001b[34mtrainingData\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint]\u001b[0m = MapPartitionsRDD[4681] at randomSplit at <console>:48\n\u001b[1m\u001b[34mtestData\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint]\u001b[0m = MapPartitionsRDD[4682] at randomSplit at <console>:48\n"
           }
         ]
       },
@@ -376,15 +390,15 @@
       "jobName": "paragraph_1612615976960_343517500",
       "id": "paragraph_1612614586891_939201402",
       "dateCreated": "2021-02-06T15:52:56+0300",
-      "dateStarted": "2021-04-14T11:43:13+0300",
-      "dateFinished": "2021-04-14T11:43:13+0300",
+      "dateStarted": "2021-07-30T14:52:48+0300",
+      "dateFinished": "2021-07-30T14:52:48+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:539"
+      "$$hashKey": "object:19172"
     },
     {
       "text": "%md\n## Обучаем модель RandomForest\n",
       "user": "anonymous",
-      "dateUpdated": "2021-04-14T11:43:13+0300",
+      "dateUpdated": "2021-07-30T14:52:48+0300",
       "config": {
         "editorSetting": {},
         "colWidth": 12,
@@ -412,15 +426,15 @@
       "jobName": "paragraph_1612615976960_48152940",
       "id": "paragraph_1612614595612_335977083",
       "dateCreated": "2021-02-06T15:52:56+0300",
-      "dateStarted": "2021-04-14T11:43:13+0300",
-      "dateFinished": "2021-04-14T11:43:13+0300",
+      "dateStarted": "2021-07-30T14:52:48+0300",
+      "dateFinished": "2021-07-30T14:52:48+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:540"
+      "$$hashKey": "object:19173"
     },
     {
       "text": "import org.apache.spark.mllib.tree.RandomForest\n\nval numClasses = 3\nval categoricalFeaturesInfo = Map[Int, Int]()\nval numTrees = 1000\nval featureSubsetStrategy = \"auto\" // Let the algorithm choose.\nval impurity = \"gini\"\nval maxDepth = 10\nval maxBins = 32\n\nval model = RandomForest.trainClassifier(trainingData, numClasses, categoricalFeaturesInfo, numTrees, featureSubsetStrategy, impurity, maxDepth, maxBins)\n\n// Применяем модель к тестовому набору\nval predictionAndLabels = testData.map { point =>\n  val prediction = model.predict(point.features)\n  (point.label, prediction)\n}",
       "user": "anonymous",
-      "dateUpdated": "2021-04-14T11:43:15+0300",
+      "dateUpdated": "2021-07-30T14:55:45+0300",
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -439,7 +453,7 @@
           "bdtMeta": {
             "inlay": {
               "size": {
-                "height": 307
+                "height": 421
               },
               "state": {}
             }
@@ -452,7 +466,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "import org.apache.spark.mllib.tree.RandomForest\n\u001b[1m\u001b[34mnumClasses\u001b[0m: \u001b[1m\u001b[32mInt\u001b[0m = 3\n\u001b[1m\u001b[34mcategoricalFeaturesInfo\u001b[0m: \u001b[1m\u001b[32mscala.collection.immutable.Map[Int,Int]\u001b[0m = Map()\n\u001b[1m\u001b[34mnumTrees\u001b[0m: \u001b[1m\u001b[32mInt\u001b[0m = 1000\n\u001b[1m\u001b[34mfeatureSubsetStrategy\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m = auto\n\u001b[1m\u001b[34mimpurity\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m = gini\n\u001b[1m\u001b[34mmaxDepth\u001b[0m: \u001b[1m\u001b[32mInt\u001b[0m = 10\n\u001b[1m\u001b[34mmaxBins\u001b[0m: \u001b[1m\u001b[32mInt\u001b[0m = 32\n\u001b[1m\u001b[34mmodel\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.mllib.tree.model.RandomForestModel\u001b[0m =\nTreeEnsembleModel classifier with 1000 trees\n\n\u001b[1m\u001b[34mpredictionAndLabels\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.rdd.RDD[(Double, Double)]\u001b[0m = MapPartitionsRDD[15396] at map at <console>:142\n"
+            "data": "import org.apache.spark.mllib.tree.RandomForest\n\u001b[1m\u001b[34mnumClasses\u001b[0m: \u001b[1m\u001b[32mInt\u001b[0m = 3\n\u001b[1m\u001b[34mcategoricalFeaturesInfo\u001b[0m: \u001b[1m\u001b[32mscala.collection.immutable.Map[Int,Int]\u001b[0m = Map()\n\u001b[1m\u001b[34mnumTrees\u001b[0m: \u001b[1m\u001b[32mInt\u001b[0m = 1000\n\u001b[1m\u001b[34mfeatureSubsetStrategy\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m = auto\n\u001b[1m\u001b[34mimpurity\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m = gini\n\u001b[1m\u001b[34mmaxDepth\u001b[0m: \u001b[1m\u001b[32mInt\u001b[0m = 10\n\u001b[1m\u001b[34mmaxBins\u001b[0m: \u001b[1m\u001b[32mInt\u001b[0m = 32\n\u001b[1m\u001b[34mmodel\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.mllib.tree.model.RandomForestModel\u001b[0m =\nTreeEnsembleModel classifier with 1000 trees\n\n\u001b[1m\u001b[34mpredictionAndLabels\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.rdd.RDD[(Double, Double)]\u001b[0m = MapPartitionsRDD[4801] at map at <console>:75\n"
           }
         ]
       },
@@ -465,48 +479,48 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=8001",
-              "$$hashKey": "object:1401"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2261",
+              "$$hashKey": "object:20156"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=8002",
-              "$$hashKey": "object:1402"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2262",
+              "$$hashKey": "object:20157"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=8003",
-              "$$hashKey": "object:1403"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2263",
+              "$$hashKey": "object:20158"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=8004",
-              "$$hashKey": "object:1404"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2264",
+              "$$hashKey": "object:20159"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=8005",
-              "$$hashKey": "object:1405"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2265",
+              "$$hashKey": "object:20160"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=8006",
-              "$$hashKey": "object:1406"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2266",
+              "$$hashKey": "object:20161"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=8007",
-              "$$hashKey": "object:1407"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2267",
+              "$$hashKey": "object:20162"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=8008",
-              "$$hashKey": "object:1408"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2268",
+              "$$hashKey": "object:20163"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=8009",
-              "$$hashKey": "object:1409"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2269",
+              "$$hashKey": "object:20164"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=8010",
-              "$$hashKey": "object:1410"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2270",
+              "$$hashKey": "object:20165"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=8011",
-              "$$hashKey": "object:1411"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2271",
+              "$$hashKey": "object:20166"
             }
           ],
           "interpreterSettingId": "spark"
@@ -516,15 +530,15 @@
       "jobName": "paragraph_1612615976960_1652517710",
       "id": "paragraph_1612614671820_363626710",
       "dateCreated": "2021-02-06T15:52:56+0300",
-      "dateStarted": "2021-04-14T11:43:13+0300",
-      "dateFinished": "2021-04-14T11:43:14+0300",
+      "dateStarted": "2021-07-30T14:55:45+0300",
+      "dateFinished": "2021-07-30T14:55:46+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:541"
+      "$$hashKey": "object:19174"
     },
     {
       "text": "%md\n## Оцениваем модель по тестовому набору",
       "user": "anonymous",
-      "dateUpdated": "2021-04-14T11:43:14+0300",
+      "dateUpdated": "2021-07-30T14:52:49+0300",
       "config": {
         "editorSetting": {},
         "colWidth": 12,
@@ -534,7 +548,16 @@
         "enabled": true
       },
       "settings": {
-        "params": {},
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 108
+              },
+              "state": {}
+            }
+          }
+        },
         "forms": {}
       },
       "results": {
@@ -552,15 +575,15 @@
       "jobName": "paragraph_1612615976960_320581209",
       "id": "paragraph_1612614807855_1265182725",
       "dateCreated": "2021-02-06T15:52:56+0300",
-      "dateStarted": "2021-04-14T11:43:14+0300",
-      "dateFinished": "2021-04-14T11:43:14+0300",
+      "dateStarted": "2021-07-30T14:52:49+0300",
+      "dateFinished": "2021-07-30T14:52:49+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:542"
+      "$$hashKey": "object:19175"
     },
     {
       "text": "import org.apache.spark.mllib.evaluation.MulticlassMetrics\n\nval metrics = new MulticlassMetrics(predictionAndLabels)\n\n// Confusion matrix\nprintln(\"Confusion matrix:\")\nprintln(metrics.confusionMatrix)\n\n// Overall Statistics\nval accuracy = metrics.accuracy\nprintln()\nprintln(\"Summary Statistics\")\nprintln(s\"Accuracy = $accuracy\")\n\n// Precision by label\nprintln()\nval labels = metrics.labels\nlabels.foreach { l => println(s\"Precision($l) = \" + metrics.precision(l)) }\n\n// Recall by label\nprintln()\nlabels.foreach { l => println(s\"Recall($l) = \" + metrics.recall(l)) }\n\n// False positive rate by label\nprintln()\nlabels.foreach { l => println(s\"FPR($l) = \" + metrics.falsePositiveRate(l)) }\n\n// F-measure by label\nprintln()\nlabels.foreach { l => println(s\"F1-Score($l) = \" + metrics.fMeasure(l)) }\n\n// Weighted stats\nprintln()\nprintln(s\"Weighted precision: ${metrics.weightedPrecision}\")\nprintln(s\"Weighted recall: ${metrics.weightedRecall}\")\nprintln(s\"Weighted F1 score: ${metrics.weightedFMeasure}\")\nprintln(s\"Weighted false positive rate: ${metrics.weightedFalsePositiveRate}\")\nprintln()",
       "user": "anonymous",
-      "dateUpdated": "2021-04-14T11:46:06+0300",
+      "dateUpdated": "2021-07-30T14:56:42+0300",
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -579,7 +602,7 @@
           "bdtMeta": {
             "inlay": {
               "size": {
-                "height": 462
+                "height": 771
               },
               "state": {}
             }
@@ -592,7 +615,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "Confusion matrix:\n12.0  0.0   0.0   \n0.0   16.0  2.0   \n0.0   1.0   10.0  \n\nSummary Statistics\nAccuracy = 0.926829268292683\n\nPrecision(0.0) = 1.0\nPrecision(1.0) = 0.9411764705882353\nPrecision(2.0) = 0.8333333333333334\n\nRecall(0.0) = 1.0\nRecall(1.0) = 0.8888888888888888\nRecall(2.0) = 0.9090909090909091\n\nFPR(0.0) = 0.0\nFPR(1.0) = 0.043478260869565216\nFPR(2.0) = 0.06666666666666667\n\nF1-Score(0.0) = 1.0\nF1-Score(1.0) = 0.9142857142857143\nF1-Score(2.0) = 0.8695652173913043\n\nWeighted precision: 0.9294595887135342\nWeighted recall: 0.9268292682926829\nWeighted F1 score: 0.9273746402060292\nWeighted false positive rate: 0.036974195828914806\n\nimport org.apache.spark.mllib.evaluation.MulticlassMetrics\n\u001b[1m\u001b[34mmetrics\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.mllib.evaluation.MulticlassMetrics\u001b[0m = org.apache.spark.mllib.evaluation.MulticlassMetrics@1c07c5e3\n\u001b[1m\u001b[34maccuracy\u001b[0m: \u001b[1m\u001b[32mDouble\u001b[0m = 0.926829268292683\n\u001b[1m\u001b[34mlabels\u001b[0m: \u001b[1m\u001b[32mArray[Double]\u001b[0m = Array(0.0, 1.0, 2.0)\n"
+            "data": "Confusion matrix:\n13.0  0.0   0.0   \n0.0   13.0  2.0   \n0.0   1.0   13.0  \n\nSummary Statistics\nAccuracy = 0.9285714285714286\n\nPrecision(0.0) = 1.0\nPrecision(1.0) = 0.9285714285714286\nPrecision(2.0) = 0.8666666666666667\n\nRecall(0.0) = 1.0\nRecall(1.0) = 0.8666666666666667\nRecall(2.0) = 0.9285714285714286\n\nFPR(0.0) = 0.0\nFPR(1.0) = 0.037037037037037035\nFPR(2.0) = 0.07142857142857142\n\nF1-Score(0.0) = 1.0\nF1-Score(1.0) = 0.896551724137931\nF1-Score(2.0) = 0.896551724137931\n\nWeighted precision: 0.9300453514739229\nWeighted recall: 0.9285714285714286\nWeighted F1 score: 0.9285714285714286\nWeighted false positive rate: 0.037037037037037035\n\nimport org.apache.spark.mllib.evaluation.MulticlassMetrics\n\u001b[1m\u001b[34mmetrics\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.mllib.evaluation.MulticlassMetrics\u001b[0m = org.apache.spark.mllib.evaluation.MulticlassMetrics@4673f0e0\n\u001b[1m\u001b[34maccuracy\u001b[0m: \u001b[1m\u001b[32mDouble\u001b[0m = 0.9285714285714286\n\u001b[1m\u001b[34mlabels\u001b[0m: \u001b[1m\u001b[32mArray[Double]\u001b[0m = Array(0.0, 1.0, 2.0)\n"
           }
         ]
       },
@@ -605,8 +628,8 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=8012",
-              "$$hashKey": "object:1537"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2244",
+              "$$hashKey": "object:20310"
             }
           ],
           "interpreterSettingId": "spark"
@@ -616,15 +639,15 @@
       "jobName": "paragraph_1612615976960_1573157243",
       "id": "paragraph_1612615146290_154037009",
       "dateCreated": "2021-02-06T15:52:56+0300",
-      "dateStarted": "2021-04-14T11:43:14+0300",
-      "dateFinished": "2021-04-14T11:43:14+0300",
+      "dateStarted": "2021-07-30T14:52:50+0300",
+      "dateFinished": "2021-07-30T14:52:50+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:543"
+      "$$hashKey": "object:19176"
     },
     {
       "text": "%md\n## Сохраняем модель",
       "user": "anonymous",
-      "dateUpdated": "2021-04-14T11:43:14+0300",
+      "dateUpdated": "2021-07-30T14:52:50+0300",
       "config": {
         "editorSetting": {},
         "colWidth": 12,
@@ -634,7 +657,16 @@
         "enabled": true
       },
       "settings": {
-        "params": {},
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 102
+              },
+              "state": {}
+            }
+          }
+        },
         "forms": {}
       },
       "results": {
@@ -652,15 +684,15 @@
       "jobName": "paragraph_1612615976960_383601967",
       "id": "paragraph_1612615472156_903551511",
       "dateCreated": "2021-02-06T15:52:56+0300",
-      "dateStarted": "2021-04-14T11:43:14+0300",
-      "dateFinished": "2021-04-14T11:43:14+0300",
+      "dateStarted": "2021-07-30T14:52:50+0300",
+      "dateFinished": "2021-07-30T14:52:50+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:544"
+      "$$hashKey": "object:19177"
     },
     {
       "text": "val modelPath = basePath + \"/model/RandomForestClassificationModel\"",
       "user": "anonymous",
-      "dateUpdated": "2021-04-14T11:43:14+0300",
+      "dateUpdated": "2021-07-30T14:56:49+0300",
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -678,6 +710,9 @@
         "params": {
           "bdtMeta": {
             "inlay": {
+              "size": {
+                "height": 73
+              },
               "state": {}
             }
           }
@@ -699,15 +734,15 @@
       "jobName": "paragraph_1612616506045_140679461",
       "id": "paragraph_1612616506045_140679461",
       "dateCreated": "2021-02-06T16:01:46+0300",
-      "dateStarted": "2021-04-14T11:43:14+0300",
-      "dateFinished": "2021-04-14T11:43:14+0300",
+      "dateStarted": "2021-07-30T14:52:50+0300",
+      "dateFinished": "2021-07-30T14:52:50+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:545"
+      "$$hashKey": "object:19178"
     },
     {
       "text": "%md\n#### Удаляем каталог с сохранённой моделью, если он существует",
       "user": "anonymous",
-      "dateUpdated": "2021-04-14T11:43:14+0300",
+      "dateUpdated": "2021-07-30T14:52:50+0300",
       "config": {
         "editorSetting": {},
         "colWidth": 12,
@@ -744,15 +779,15 @@
       "jobName": "paragraph_1612616391440_797322889",
       "id": "paragraph_1612616391440_797322889",
       "dateCreated": "2021-02-06T15:59:51+0300",
-      "dateStarted": "2021-04-14T11:43:14+0300",
-      "dateFinished": "2021-04-14T11:43:14+0300",
+      "dateStarted": "2021-07-30T14:52:50+0300",
+      "dateFinished": "2021-07-30T14:52:50+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:546"
+      "$$hashKey": "object:19179"
     },
     {
       "text": "import org.apache.hadoop.fs.Path\n\nval fs = org.apache.hadoop.fs.FileSystem.get(spark.sparkContext.hadoopConfiguration)\nif (fs.exists(new org.apache.hadoop.fs.Path(modelPath)))\n      fs.delete(new Path(modelPath), true)",
       "user": "anonymous",
-      "dateUpdated": "2021-04-14T11:43:15+0300",
+      "dateUpdated": "2021-07-30T14:52:50+0300",
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -770,6 +805,9 @@
         "params": {
           "bdtMeta": {
             "inlay": {
+              "size": {
+                "height": 174
+              },
               "state": {}
             }
           }
@@ -781,7 +819,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "import org.apache.hadoop.fs.Path\n\u001b[1m\u001b[34mfs\u001b[0m: \u001b[1m\u001b[32morg.apache.hadoop.fs.FileSystem\u001b[0m = org.apache.hadoop.hive.ql.io.ProxyLocalFileSystem@3649af26\n\u001b[1m\u001b[34mres129\u001b[0m: \u001b[1m\u001b[32mAnyVal\u001b[0m = true\n"
+            "data": "import org.apache.hadoop.fs.Path\n\u001b[1m\u001b[34mfs\u001b[0m: \u001b[1m\u001b[32morg.apache.hadoop.fs.FileSystem\u001b[0m = org.apache.hadoop.hive.ql.io.ProxyLocalFileSystem@52811ee2\n\u001b[1m\u001b[34mres43\u001b[0m: \u001b[1m\u001b[32mAnyVal\u001b[0m = true\n"
           }
         ]
       },
@@ -791,15 +829,15 @@
       "jobName": "paragraph_1612616490333_1659528747",
       "id": "paragraph_1612616490333_1659528747",
       "dateCreated": "2021-02-06T16:01:30+0300",
-      "dateStarted": "2021-04-14T11:43:15+0300",
-      "dateFinished": "2021-04-14T11:43:15+0300",
+      "dateStarted": "2021-07-30T14:52:50+0300",
+      "dateFinished": "2021-07-30T14:52:50+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:547"
+      "$$hashKey": "object:19180"
     },
     {
       "text": "model.save(sc, modelPath)",
       "user": "anonymous",
-      "dateUpdated": "2021-04-14T11:43:15+0300",
+      "dateUpdated": "2021-07-30T14:52:50+0300",
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -830,12 +868,12 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=8013",
-              "$$hashKey": "object:1743"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2245",
+              "$$hashKey": "object:20554"
             },
             {
-              "jobUrl": "http://192.168.0.130:4040/jobs/job?id=8014",
-              "$$hashKey": "object:1744"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2246",
+              "$$hashKey": "object:20555"
             }
           ],
           "interpreterSettingId": "spark"
@@ -845,15 +883,15 @@
       "jobName": "paragraph_1612615976960_1837982448",
       "id": "paragraph_1612615607467_1647978632",
       "dateCreated": "2021-02-06T15:52:56+0300",
-      "dateStarted": "2021-04-14T11:43:15+0300",
-      "dateFinished": "2021-04-14T11:43:15+0300",
+      "dateStarted": "2021-07-30T14:52:50+0300",
+      "dateFinished": "2021-07-30T14:52:51+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:548"
+      "$$hashKey": "object:19181"
     },
     {
       "text": "",
       "user": "anonymous",
-      "dateUpdated": "2021-04-14T11:43:15+0300",
+      "dateUpdated": "2021-07-30T14:52:51+0300",
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -878,7 +916,7 @@
       "id": "paragraph_1612632816483_1105260016",
       "dateCreated": "2021-02-06T20:33:36+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:549"
+      "$$hashKey": "object:19182"
     }
   ],
   "name": "IrisMLlib",
@@ -896,5 +934,5 @@
   "info": {
     "isRunning": false
   },
-  "path": "/IrisMLlib"
+  "path": "/otus/IrisMLlib"
 }
