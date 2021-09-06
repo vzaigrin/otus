@@ -39,6 +39,8 @@ object ProdML {
       case e: Exception =>
         println(s"ERROR: ${e.getMessage}")
         sys.exit(-1)
+    } finally {
+      spark.stop()
     }
   }
 }
