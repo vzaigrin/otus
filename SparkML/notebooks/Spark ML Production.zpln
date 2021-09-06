@@ -4,7 +4,8 @@
       "title": "Spark ML Production",
       "text": "%md\n# Spark ML Production",
       "user": "anonymous",
-      "dateUpdated": "2021-07-30T14:48:18+0300",
+      "dateUpdated": "2021-09-06T20:20:36+0300",
+      "progress": 0,
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -16,7 +17,7 @@
         "colWidth": 12,
         "editorMode": "ace/mode/markdown",
         "fontSize": 9,
-        "editorHide": true,
+        "editorHide": false,
         "title": true,
         "results": {},
         "enabled": true
@@ -26,7 +27,7 @@
           "bdtMeta": {
             "inlay": {
               "size": {
-                "height": 87
+                "height": 91
               },
               "state": {}
             }
@@ -46,20 +47,21 @@
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1606995930958_1482052156",
+      "jobName": "paragraph_1630909809878_1711119225",
       "id": "paragraph_1606995930958_1482052156",
-      "dateCreated": "2020-12-03T14:45:30+0300",
-      "dateStarted": "2021-07-30T14:48:18+0300",
-      "dateFinished": "2021-07-30T14:48:18+0300",
+      "dateCreated": "2021-09-06T09:30:09+0300",
+      "dateStarted": "2021-09-06T20:20:32+0300",
+      "dateFinished": "2021-09-06T20:20:32+0300",
       "status": "FINISHED",
       "focus": true,
-      "$$hashKey": "object:17490"
+      "$$hashKey": "object:19284"
     },
     {
       "title": "Загружаем данные",
       "text": "%md\n## Загружаем данные",
       "user": "anonymous",
-      "dateUpdated": "2021-07-30T14:48:18+0300",
+      "dateUpdated": "2021-09-06T20:20:33+0300",
+      "progress": 0,
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -101,18 +103,19 @@
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1606995964724_1574639267",
+      "jobName": "paragraph_1630909809878_1655729185",
       "id": "paragraph_1606995964724_1574639267",
-      "dateCreated": "2020-12-03T14:46:04+0300",
-      "dateStarted": "2021-07-30T14:48:18+0300",
-      "dateFinished": "2021-07-30T14:48:18+0300",
+      "dateCreated": "2021-09-06T09:30:09+0300",
+      "dateStarted": "2021-09-06T20:20:33+0300",
+      "dateFinished": "2021-09-06T20:20:33+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:17491"
+      "$$hashKey": "object:19285"
     },
     {
       "text": "val basePath = \"/home/vadim/Projects/otus/SparkML\"",
       "user": "anonymous",
-      "dateUpdated": "2021-07-30T14:48:18+0300",
+      "dateUpdated": "2021-09-06T20:20:33+0300",
+      "progress": 0,
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -151,18 +154,19 @@
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1618238626984_1729274874",
+      "jobName": "paragraph_1630909809878_354922704",
       "id": "paragraph_1618238626984_1729274874",
-      "dateCreated": "2021-04-12T17:43:46+0300",
-      "dateStarted": "2021-07-30T14:48:18+0300",
-      "dateFinished": "2021-07-30T14:48:18+0300",
+      "dateCreated": "2021-09-06T09:30:09+0300",
+      "dateStarted": "2021-09-06T20:20:33+0300",
+      "dateFinished": "2021-09-06T20:20:33+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:17492"
+      "$$hashKey": "object:19286"
     },
     {
-      "text": "val data = spark\n        .read\n        .option(\"header\", \"true\")\n        .option(\"inferSchema\", \"true\")\n        .csv(basePath + \"/data/BankChurners.csv\")",
+      "text": "val data = spark\n        .read\n        .option(\"header\", \"true\")\n        .option(\"inferSchema\", \"true\")\n        .csv(s\"$basePath/data/BankChurners.csv\")",
       "user": "anonymous",
-      "dateUpdated": "2021-07-30T14:48:19+0300",
+      "dateUpdated": "2021-09-06T20:20:33+0300",
+      "progress": 0,
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -207,31 +211,32 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=2183",
-              "$$hashKey": "object:18054"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2618",
+              "$$hashKey": "object:19853"
             },
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=2184",
-              "$$hashKey": "object:18055"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2619",
+              "$$hashKey": "object:19854"
             }
           ],
           "interpreterSettingId": "spark"
         }
       },
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1606995986350_99406471",
+      "jobName": "paragraph_1630909809878_374111263",
       "id": "paragraph_1606995986350_99406471",
-      "dateCreated": "2020-12-03T14:46:26+0300",
-      "dateStarted": "2021-07-30T14:48:19+0300",
-      "dateFinished": "2021-07-30T14:48:19+0300",
+      "dateCreated": "2021-09-06T09:30:09+0300",
+      "dateStarted": "2021-09-06T20:20:33+0300",
+      "dateFinished": "2021-09-06T20:20:33+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:17493"
+      "$$hashKey": "object:19287"
     },
     {
       "title": "Загружаем модель",
       "text": "%md\n## Загружаем модель",
       "user": "anonymous",
-      "dateUpdated": "2021-07-30T14:48:19+0300",
+      "dateUpdated": "2021-09-06T20:20:33+0300",
+      "progress": 0,
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -273,18 +278,19 @@
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1606996237633_1836911260",
+      "jobName": "paragraph_1630909809878_2078112061",
       "id": "paragraph_1606996237633_1836911260",
-      "dateCreated": "2020-12-03T14:50:37+0300",
-      "dateStarted": "2021-07-30T14:48:19+0300",
-      "dateFinished": "2021-07-30T14:48:19+0300",
+      "dateCreated": "2021-09-06T09:30:09+0300",
+      "dateStarted": "2021-09-06T20:20:33+0300",
+      "dateFinished": "2021-09-06T20:20:33+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:17494"
+      "$$hashKey": "object:19288"
     },
     {
-      "text": "import org.apache.spark.ml.PipelineModel\n\nval model = PipelineModel.load(basePath + \"/pipelineModel\")",
+      "text": "import org.apache.spark.ml.PipelineModel\n\nval model = PipelineModel.load(s\"$basePath/pipelineModel\")",
       "user": "anonymous",
-      "dateUpdated": "2021-07-30T14:48:19+0300",
+      "dateUpdated": "2021-09-06T20:20:59+0300",
+      "progress": 100,
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -303,7 +309,7 @@
           "bdtMeta": {
             "inlay": {
               "size": {
-                "height": 93
+                "height": 94
               },
               "state": {}
             }
@@ -316,7 +322,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "import org.apache.spark.ml.PipelineModel\n\u001b[1m\u001b[34mmodel\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.ml.PipelineModel\u001b[0m = pipeline_5b9103a4cc2a\n"
+            "data": "import org.apache.spark.ml.PipelineModel\n\u001b[1m\u001b[34mmodel\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.ml.PipelineModel\u001b[0m = pipeline_1e3f05069002\n"
           }
         ]
       },
@@ -329,115 +335,116 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=2185",
-              "$$hashKey": "object:18163"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2620",
+              "$$hashKey": "object:19962"
             },
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=2186",
-              "$$hashKey": "object:18164"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2621",
+              "$$hashKey": "object:19963"
             },
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=2187",
-              "$$hashKey": "object:18165"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2622",
+              "$$hashKey": "object:19964"
             },
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=2188",
-              "$$hashKey": "object:18166"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2623",
+              "$$hashKey": "object:19965"
             },
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=2189",
-              "$$hashKey": "object:18167"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2624",
+              "$$hashKey": "object:19966"
             },
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=2190",
-              "$$hashKey": "object:18168"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2625",
+              "$$hashKey": "object:19967"
             },
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=2191",
-              "$$hashKey": "object:18169"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2626",
+              "$$hashKey": "object:19968"
             },
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=2192",
-              "$$hashKey": "object:18170"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2627",
+              "$$hashKey": "object:19969"
             },
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=2193",
-              "$$hashKey": "object:18171"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2628",
+              "$$hashKey": "object:19970"
             },
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=2194",
-              "$$hashKey": "object:18172"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2629",
+              "$$hashKey": "object:19971"
             },
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=2195",
-              "$$hashKey": "object:18173"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2630",
+              "$$hashKey": "object:19972"
             },
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=2196",
-              "$$hashKey": "object:18174"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2631",
+              "$$hashKey": "object:19973"
             },
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=2197",
-              "$$hashKey": "object:18175"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2632",
+              "$$hashKey": "object:19974"
             },
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=2198",
-              "$$hashKey": "object:18176"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2633",
+              "$$hashKey": "object:19975"
             },
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=2199",
-              "$$hashKey": "object:18177"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2634",
+              "$$hashKey": "object:19976"
             },
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=2200",
-              "$$hashKey": "object:18178"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2635",
+              "$$hashKey": "object:19977"
             },
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=2201",
-              "$$hashKey": "object:18179"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2636",
+              "$$hashKey": "object:19978"
             },
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=2202",
-              "$$hashKey": "object:18180"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2637",
+              "$$hashKey": "object:19979"
             },
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=2203",
-              "$$hashKey": "object:18181"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2638",
+              "$$hashKey": "object:19980"
             },
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=2204",
-              "$$hashKey": "object:18182"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2639",
+              "$$hashKey": "object:19981"
             },
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=2205",
-              "$$hashKey": "object:18183"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2640",
+              "$$hashKey": "object:19982"
             },
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=2206",
-              "$$hashKey": "object:18184"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2641",
+              "$$hashKey": "object:19983"
             },
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=2207",
-              "$$hashKey": "object:18185"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2642",
+              "$$hashKey": "object:19984"
             }
           ],
           "interpreterSettingId": "spark"
         }
       },
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1606996253065_739575313",
+      "jobName": "paragraph_1630909809878_1350267026",
       "id": "paragraph_1606996253065_739575313",
-      "dateCreated": "2020-12-03T14:50:53+0300",
-      "dateStarted": "2021-07-30T14:48:19+0300",
-      "dateFinished": "2021-07-30T14:48:20+0300",
+      "dateCreated": "2021-09-06T09:30:09+0300",
+      "dateStarted": "2021-09-06T20:20:33+0300",
+      "dateFinished": "2021-09-06T20:20:34+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:17495"
+      "$$hashKey": "object:19289"
     },
     {
       "title": "Вычисляем",
       "text": "%md\n## Вычисляем",
       "user": "anonymous",
-      "dateUpdated": "2021-07-30T14:48:20+0300",
+      "dateUpdated": "2021-09-06T20:20:34+0300",
+      "progress": 0,
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -479,18 +486,19 @@
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1606996429008_1428308820",
+      "jobName": "paragraph_1630909809878_280433607",
       "id": "paragraph_1606996429008_1428308820",
-      "dateCreated": "2020-12-03T14:53:49+0300",
-      "dateStarted": "2021-07-30T14:48:20+0300",
-      "dateFinished": "2021-07-30T14:48:20+0300",
+      "dateCreated": "2021-09-06T09:30:09+0300",
+      "dateStarted": "2021-09-06T20:20:34+0300",
+      "dateFinished": "2021-09-06T20:20:34+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:17496"
+      "$$hashKey": "object:19290"
     },
     {
       "text": "val prediction = model.transform(data)",
       "user": "anonymous",
-      "dateUpdated": "2021-07-30T14:48:20+0300",
+      "dateUpdated": "2021-09-06T20:20:34+0300",
+      "progress": 0,
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -529,18 +537,19 @@
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1606996336667_144207425",
+      "jobName": "paragraph_1630909809878_808570921",
       "id": "paragraph_1606996336667_144207425",
-      "dateCreated": "2020-12-03T14:52:16+0300",
-      "dateStarted": "2021-07-30T14:48:20+0300",
-      "dateFinished": "2021-07-30T14:48:20+0300",
+      "dateCreated": "2021-09-06T09:30:09+0300",
+      "dateStarted": "2021-09-06T20:20:34+0300",
+      "dateFinished": "2021-09-06T20:20:34+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:17497"
+      "$$hashKey": "object:19291"
     },
     {
       "text": "prediction.show(10)",
       "user": "anonymous",
-      "dateUpdated": "2021-07-30T14:48:26+0300",
+      "dateUpdated": "2021-09-06T20:21:03+0300",
+      "progress": 0,
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -559,8 +568,8 @@
               "optionOpen": false,
               "keys": [
                 {
-                  "name": "Attrition_Flag",
-                  "index": 1,
+                  "name": "prediction",
+                  "index": 38,
                   "aggr": "sum"
                 }
               ],
@@ -585,7 +594,7 @@
           "bdtMeta": {
             "inlay": {
               "size": {
-                "height": 390
+                "height": 387
               },
               "state": {
                 "currentPage": "Table"
@@ -600,7 +609,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "+---------+-----------------+------------+------+---------------+---------------+--------------+---------------+-------------+--------------+------------------------+----------------------+---------------------+------------+-------------------+---------------+--------------------+---------------+--------------+-------------------+---------------------+----------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+----------------------+-----------------------+--------------+-----------------------+---------------------+-----------------------------+----------------------------+--------------------+-----------------------------+---------------------------+--------------------+--------------------+--------------------+--------------------+--------------------+----------+\n|CLIENTNUM|   Attrition_Flag|Customer_Age|Gender|Dependent_count|Education_Level|Marital_Status|Income_Category|Card_Category|Months_on_book|Total_Relationship_Count|Months_Inactive_12_mon|Contacts_Count_12_mon|Credit_Limit|Total_Revolving_Bal|Avg_Open_To_Buy|Total_Amt_Chng_Q4_Q1|Total_Trans_Amt|Total_Trans_Ct|Total_Ct_Chng_Q4_Q1|Avg_Utilization_Ratio|Naive_Bayes_Classifier_Attrition_Flag_Card_Category_Contacts_Count_12_mon_Dependent_count_Education_Level_Months_Inactive_12_mon_1|Naive_Bayes_Classifier_Attrition_Flag_Card_Category_Contacts_Count_12_mon_Dependent_count_Education_Level_Months_Inactive_12_mon_2|Marital_Status_Indexed|Income_Category_Indexed|Gender_Indexed|Education_Level_Indexed|Card_Category_Indexed|Income_Category_Indexed_Coded|Marital_Status_Indexed_Coded|Gender_Indexed_Coded|Education_Level_Indexed_Coded|Card_Category_Indexed_Coded|            features|      scaledFeatures|    selectedFeatures|       rawPrediction|         probability|prediction|\n+---------+-----------------+------------+------+---------------+---------------+--------------+---------------+-------------+--------------+------------------------+----------------------+---------------------+------------+-------------------+---------------+--------------------+---------------+--------------+-------------------+---------------------+----------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+----------------------+-----------------------+--------------+-----------------------+---------------------+-----------------------------+----------------------------+--------------------+-----------------------------+---------------------------+--------------------+--------------------+--------------------+--------------------+--------------------+----------+\n|768805383|Existing Customer|          45|     M|              3|    High School|       Married|    $60K - $80K|         Blue|            39|                       5|                     1|                    3|     12691.0|                777|        11914.0|               1.335|           1144|            42|              1.625|                0.061|                                                                                                                         9.3448E-5|                                                                                                                           0.99991|                   0.0|                    3.0|           1.0|                    1.0|                  0.0|                (5,[3],[1.0])|               (3,[0],[1.0])|           (1,[],[])|                (6,[1],[1.0])|              (3,[0],[1.0])|(28,[0,1,2,3,4,5,...|(28,[0,1,2,3,4,5,...|(10,[0,1,2,3,4,5,...|[3.73883838030296...|[0.97677071966609...|       0.0|\n|818770008|Existing Customer|          49|     F|              5|       Graduate|        Single| Less than $40K|         Blue|            44|                       6|                     1|                    2|      8256.0|                864|         7392.0|               1.541|           1291|            33|              3.714|                0.105|                                                                                                                         5.6861E-5|                                                                                                                           0.99994|                   1.0|                    0.0|           0.0|                    0.0|                  0.0|                (5,[0],[1.0])|               (3,[1],[1.0])|       (1,[0],[1.0])|                (6,[0],[1.0])|              (3,[0],[1.0])|(28,[0,1,2,3,4,5,...|(28,[0,1,2,3,4,5,...|(10,[0,1,2,3,4,5,...|[10.5707194436098...|[0.99997434430797...|       0.0|\n|713982108|Existing Customer|          51|     M|              3|       Graduate|       Married|   $80K - $120K|         Blue|            36|                       4|                     1|                    0|      3418.0|                  0|         3418.0|               2.594|           1887|            20|              2.333|                  0.0|                                                                                                                         2.1081E-5|                                                                                                                           0.99998|                   0.0|                    2.0|           1.0|                    0.0|                  0.0|                (5,[2],[1.0])|               (3,[0],[1.0])|           (1,[],[])|                (6,[0],[1.0])|              (3,[0],[1.0])|(28,[0,1,2,3,5,6,...|(28,[0,1,2,3,5,6,...|(10,[0,1,3,4,5,8]...|[7.04115048005465...|[0.99912564598823...|       0.0|\n|769911858|Existing Customer|          40|     F|              4|    High School|       Unknown| Less than $40K|         Blue|            34|                       3|                     4|                    1|      3313.0|               2517|          796.0|               1.405|           1171|            20|              2.333|                 0.76|                                                                                                                         1.3366E-4|                                                                                                                           0.99987|                   2.0|                    0.0|           0.0|                    1.0|                  0.0|                (5,[0],[1.0])|               (3,[2],[1.0])|       (1,[0],[1.0])|                (6,[1],[1.0])|              (3,[0],[1.0])|(28,[0,1,2,3,4,5,...|(28,[0,1,2,3,4,5,...|(10,[0,1,2,3,4,5,...|[5.65071334772444...|[0.99649730355055...|       0.0|\n|709106358|Existing Customer|          40|     M|              3|     Uneducated|       Married|    $60K - $80K|         Blue|            21|                       5|                     1|                    0|      4716.0|                  0|         4716.0|               2.175|            816|            28|                2.5|                  0.0|                                                                                                                         2.1676E-5|                                                                                                                           0.99998|                   0.0|                    3.0|           1.0|                    3.0|                  0.0|                (5,[3],[1.0])|               (3,[0],[1.0])|           (1,[],[])|                (6,[3],[1.0])|              (3,[0],[1.0])|(28,[0,1,2,3,5,6,...|(28,[0,1,2,3,5,6,...|(10,[0,1,3,4,5,8,...|[7.80682219202901...|[0.99959321633865...|       0.0|\n|713061558|Existing Customer|          44|     M|              2|       Graduate|       Married|    $40K - $60K|         Blue|            36|                       3|                     1|                    2|      4010.0|               1247|         2763.0|               1.376|           1088|            24|              0.846|                0.311|                                                                                                                         5.5077E-5|                                                                                                                           0.99994|                   0.0|                    1.0|           1.0|                    0.0|                  0.0|                (5,[1],[1.0])|               (3,[0],[1.0])|           (1,[],[])|                (6,[0],[1.0])|              (3,[0],[1.0])|(28,[0,1,2,3,4,5,...|(28,[0,1,2,3,4,5,...|(10,[0,1,2,3,4,5,...|[1.42256781934313...|[0.80574065387361...|       0.0|\n|810347208|Existing Customer|          51|     M|              4|        Unknown|       Married|        $120K +|         Gold|            46|                       6|                     1|                    3|     34516.0|               2264|        32252.0|               1.975|           1330|            31|              0.722|                0.066|                                                                                                                         1.2303E-4|                                                                                                                           0.99988|                   0.0|                    5.0|           1.0|                    2.0|                  2.0|                    (5,[],[])|               (3,[0],[1.0])|           (1,[],[])|                (6,[2],[1.0])|              (3,[2],[1.0])|(28,[0,1,2,3,4,5,...|(28,[0,1,2,3,4,5,...|(10,[0,1,2,3,4,5,...|[1.22868932756836...|[0.77358909361475...|       0.0|\n|818906208|Existing Customer|          32|     M|              0|    High School|       Unknown|    $60K - $80K|       Silver|            27|                       2|                     2|                    2|     29081.0|               1396|        27685.0|               2.204|           1538|            36|              0.714|                0.048|                                                                                                                         8.5795E-5|                                                                                                                           0.99991|                   2.0|                    3.0|           1.0|                    1.0|                  1.0|                (5,[3],[1.0])|               (3,[2],[1.0])|           (1,[],[])|                (6,[1],[1.0])|              (3,[1],[1.0])|(28,[0,2,3,4,5,6,...|(28,[0,2,3,4,5,6,...|(10,[0,1,2,3,4,5,...|[-0.0731517020792...|[0.48172022527076...|       1.0|\n|710930508|Existing Customer|          37|     M|              3|     Uneducated|        Single|    $60K - $80K|         Blue|            36|                       5|                     2|                    0|     22352.0|               2517|        19835.0|               3.355|           1350|            24|              1.182|                0.113|                                                                                                                         4.4796E-5|                                                                                                                           0.99996|                   1.0|                    3.0|           1.0|                    3.0|                  0.0|                (5,[3],[1.0])|               (3,[1],[1.0])|           (1,[],[])|                (6,[3],[1.0])|              (3,[0],[1.0])|(28,[0,1,2,3,5,6,...|(28,[0,1,2,3,5,6,...|(10,[0,1,3,4,5,6,...|[3.55520453339197...|[0.97221834581489...|       0.0|\n|719661558|Existing Customer|          48|     M|              2|       Graduate|        Single|   $80K - $120K|         Blue|            36|                       6|                     3|                    3|     11656.0|               1677|         9979.0|               1.524|           1441|            32|              0.882|                0.144|                                                                                                                         3.0251E-4|                                                                                                                            0.9997|                   1.0|                    2.0|           1.0|                    0.0|                  0.0|                (5,[2],[1.0])|               (3,[1],[1.0])|           (1,[],[])|                (6,[0],[1.0])|              (3,[0],[1.0])|(28,[0,1,2,3,4,5,...|(28,[0,1,2,3,4,5,...|(10,[0,1,2,3,4,5,...|[0.86528517004175...|[0.70376369380631...|       0.0|\n+---------+-----------------+------------+------+---------------+---------------+--------------+---------------+-------------+--------------+------------------------+----------------------+---------------------+------------+-------------------+---------------+--------------------+---------------+--------------+-------------------+---------------------+----------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+----------------------+-----------------------+--------------+-----------------------+---------------------+-----------------------------+----------------------------+--------------------+-----------------------------+---------------------------+--------------------+--------------------+--------------------+--------------------+--------------------+----------+\nonly showing top 10 rows\n\n"
+            "data": "+---------+-----------------+------------+------+---------------+---------------+--------------+---------------+-------------+--------------+------------------------+----------------------+---------------------+------------+-------------------+---------------+--------------------+---------------+--------------+-------------------+---------------------+----------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+----------------------+-----------------------+--------------+-----------------------+---------------------+-----------------------------+----------------------------+--------------------+-----------------------------+---------------------------+--------------------+--------------------+--------------------+--------------------+--------------------+----------+\n|CLIENTNUM|   Attrition_Flag|Customer_Age|Gender|Dependent_count|Education_Level|Marital_Status|Income_Category|Card_Category|Months_on_book|Total_Relationship_Count|Months_Inactive_12_mon|Contacts_Count_12_mon|Credit_Limit|Total_Revolving_Bal|Avg_Open_To_Buy|Total_Amt_Chng_Q4_Q1|Total_Trans_Amt|Total_Trans_Ct|Total_Ct_Chng_Q4_Q1|Avg_Utilization_Ratio|Naive_Bayes_Classifier_Attrition_Flag_Card_Category_Contacts_Count_12_mon_Dependent_count_Education_Level_Months_Inactive_12_mon_1|Naive_Bayes_Classifier_Attrition_Flag_Card_Category_Contacts_Count_12_mon_Dependent_count_Education_Level_Months_Inactive_12_mon_2|Marital_Status_Indexed|Income_Category_Indexed|Gender_Indexed|Education_Level_Indexed|Card_Category_Indexed|Income_Category_Indexed_Coded|Marital_Status_Indexed_Coded|Gender_Indexed_Coded|Education_Level_Indexed_Coded|Card_Category_Indexed_Coded|            features|      scaledFeatures|    selectedFeatures|       rawPrediction|         probability|prediction|\n+---------+-----------------+------------+------+---------------+---------------+--------------+---------------+-------------+--------------+------------------------+----------------------+---------------------+------------+-------------------+---------------+--------------------+---------------+--------------+-------------------+---------------------+----------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+----------------------+-----------------------+--------------+-----------------------+---------------------+-----------------------------+----------------------------+--------------------+-----------------------------+---------------------------+--------------------+--------------------+--------------------+--------------------+--------------------+----------+\n|768805383|Existing Customer|          45|     M|              3|    High School|       Married|    $60K - $80K|         Blue|            39|                       5|                     1|                    3|     12691.0|                777|        11914.0|               1.335|           1144|            42|              1.625|                0.061|                                                                                                                         9.3448E-5|                                                                                                                           0.99991|                   0.0|                    3.0|           1.0|                    1.0|                  0.0|                (5,[3],[1.0])|               (3,[0],[1.0])|           (1,[],[])|                (6,[1],[1.0])|              (3,[0],[1.0])|(28,[0,1,2,3,4,5,...|(28,[0,1,2,3,4,5,...|(21,[0,1,2,3,4,5,...|[3.80023517501469...|[0.97812376182671...|       0.0|\n|818770008|Existing Customer|          49|     F|              5|       Graduate|        Single| Less than $40K|         Blue|            44|                       6|                     1|                    2|      8256.0|                864|         7392.0|               1.541|           1291|            33|              3.714|                0.105|                                                                                                                         5.6861E-5|                                                                                                                           0.99994|                   1.0|                    0.0|           0.0|                    0.0|                  0.0|                (5,[0],[1.0])|               (3,[1],[1.0])|       (1,[0],[1.0])|                (6,[0],[1.0])|              (3,[0],[1.0])|(28,[0,1,2,3,4,5,...|(28,[0,1,2,3,4,5,...|(21,[0,1,2,3,4,5,...|[10.8273709791065...|[0.99998015167282...|       0.0|\n|713982108|Existing Customer|          51|     M|              3|       Graduate|       Married|   $80K - $120K|         Blue|            36|                       4|                     1|                    0|      3418.0|                  0|         3418.0|               2.594|           1887|            20|              2.333|                  0.0|                                                                                                                         2.1081E-5|                                                                                                                           0.99998|                   0.0|                    2.0|           1.0|                    0.0|                  0.0|                (5,[2],[1.0])|               (3,[0],[1.0])|           (1,[],[])|                (6,[0],[1.0])|              (3,[0],[1.0])|(28,[0,1,2,3,5,6,...|(28,[0,1,2,3,5,6,...|(21,[0,1,2,3,5,6,...|[7.25204091946045...|[0.99929177547928...|       0.0|\n|769911858|Existing Customer|          40|     F|              4|    High School|       Unknown| Less than $40K|         Blue|            34|                       3|                     4|                    1|      3313.0|               2517|          796.0|               1.405|           1171|            20|              2.333|                 0.76|                                                                                                                         1.3366E-4|                                                                                                                           0.99987|                   2.0|                    0.0|           0.0|                    1.0|                  0.0|                (5,[0],[1.0])|               (3,[2],[1.0])|       (1,[0],[1.0])|                (6,[1],[1.0])|              (3,[0],[1.0])|(28,[0,1,2,3,4,5,...|(28,[0,1,2,3,4,5,...|(21,[0,1,2,3,4,5,...|[5.90527865832718...|[0.99728238324157...|       0.0|\n|709106358|Existing Customer|          40|     M|              3|     Uneducated|       Married|    $60K - $80K|         Blue|            21|                       5|                     1|                    0|      4716.0|                  0|         4716.0|               2.175|            816|            28|                2.5|                  0.0|                                                                                                                         2.1676E-5|                                                                                                                           0.99998|                   0.0|                    3.0|           1.0|                    3.0|                  0.0|                (5,[3],[1.0])|               (3,[0],[1.0])|           (1,[],[])|                (6,[3],[1.0])|              (3,[0],[1.0])|(28,[0,1,2,3,5,6,...|(28,[0,1,2,3,5,6,...|(21,[0,1,2,3,5,6,...|[7.90379412318342...|[0.99963079680242...|       0.0|\n|713061558|Existing Customer|          44|     M|              2|       Graduate|       Married|    $40K - $60K|         Blue|            36|                       3|                     1|                    2|      4010.0|               1247|         2763.0|               1.376|           1088|            24|              0.846|                0.311|                                                                                                                         5.5077E-5|                                                                                                                           0.99994|                   0.0|                    1.0|           1.0|                    0.0|                  0.0|                (5,[1],[1.0])|               (3,[0],[1.0])|           (1,[],[])|                (6,[0],[1.0])|              (3,[0],[1.0])|(28,[0,1,2,3,4,5,...|(28,[0,1,2,3,4,5,...|(21,[0,1,2,3,4,5,...|[1.45016999857662...|[0.81002459555192...|       0.0|\n|810347208|Existing Customer|          51|     M|              4|        Unknown|       Married|        $120K +|         Gold|            46|                       6|                     1|                    3|     34516.0|               2264|        32252.0|               1.975|           1330|            31|              0.722|                0.066|                                                                                                                         1.2303E-4|                                                                                                                           0.99988|                   0.0|                    5.0|           1.0|                    2.0|                  2.0|                    (5,[],[])|               (3,[0],[1.0])|           (1,[],[])|                (6,[2],[1.0])|              (3,[2],[1.0])|(28,[0,1,2,3,4,5,...|(28,[0,1,2,3,4,5,...|(21,[0,1,2,3,4,5,...|[1.08761305929079...|[0.74793197868112...|       0.0|\n|818906208|Existing Customer|          32|     M|              0|    High School|       Unknown|    $60K - $80K|       Silver|            27|                       2|                     2|                    2|     29081.0|               1396|        27685.0|               2.204|           1538|            36|              0.714|                0.048|                                                                                                                         8.5795E-5|                                                                                                                           0.99991|                   2.0|                    3.0|           1.0|                    1.0|                  1.0|                (5,[3],[1.0])|               (3,[2],[1.0])|           (1,[],[])|                (6,[1],[1.0])|              (3,[1],[1.0])|(28,[0,2,3,4,5,6,...|(28,[0,2,3,4,5,6,...|(21,[0,2,3,4,5,6,...|[0.20614631933494...|[0.55135484259297...|       0.0|\n|710930508|Existing Customer|          37|     M|              3|     Uneducated|        Single|    $60K - $80K|         Blue|            36|                       5|                     2|                    0|     22352.0|               2517|        19835.0|               3.355|           1350|            24|              1.182|                0.113|                                                                                                                         4.4796E-5|                                                                                                                           0.99996|                   1.0|                    3.0|           1.0|                    3.0|                  0.0|                (5,[3],[1.0])|               (3,[1],[1.0])|           (1,[],[])|                (6,[3],[1.0])|              (3,[0],[1.0])|(28,[0,1,2,3,5,6,...|(28,[0,1,2,3,5,6,...|(21,[0,1,2,3,5,6,...|[3.55017288633681...|[0.97208211847013...|       0.0|\n|719661558|Existing Customer|          48|     M|              2|       Graduate|        Single|   $80K - $120K|         Blue|            36|                       6|                     3|                    3|     11656.0|               1677|         9979.0|               1.524|           1441|            32|              0.882|                0.144|                                                                                                                         3.0251E-4|                                                                                                                            0.9997|                   1.0|                    2.0|           1.0|                    0.0|                  0.0|                (5,[2],[1.0])|               (3,[1],[1.0])|           (1,[],[])|                (6,[0],[1.0])|              (3,[0],[1.0])|(28,[0,1,2,3,4,5,...|(28,[0,1,2,3,4,5,...|(21,[0,1,2,3,4,5,...|[0.99948188158073...|[0.73095669817153...|       0.0|\n+---------+-----------------+------------+------+---------------+---------------+--------------+---------------+-------------+--------------+------------------------+----------------------+---------------------+------------+-------------------+---------------+--------------------+---------------+--------------+-------------------+---------------------+----------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+----------------------+-----------------------+--------------+-----------------------+---------------------+-----------------------------+----------------------------+--------------------+-----------------------------+---------------------------+--------------------+--------------------+--------------------+--------------------+--------------------+----------+\nonly showing top 10 rows\n\n"
           }
         ]
       },
@@ -613,27 +622,28 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=2208",
-              "$$hashKey": "object:18429"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2643",
+              "$$hashKey": "object:20228"
             }
           ],
           "interpreterSettingId": "spark"
         }
       },
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1606996380000_1057447451",
+      "jobName": "paragraph_1630909809878_1354190193",
       "id": "paragraph_1606996380000_1057447451",
-      "dateCreated": "2020-12-03T14:53:00+0300",
-      "dateStarted": "2021-07-30T14:48:20+0300",
-      "dateFinished": "2021-07-30T14:48:21+0300",
+      "dateCreated": "2021-09-06T09:30:09+0300",
+      "dateStarted": "2021-09-06T20:20:34+0300",
+      "dateFinished": "2021-09-06T20:20:34+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:17498"
+      "$$hashKey": "object:19292"
     },
     {
       "title": "Проверяем результат",
       "text": "%md\n## Проверяем результат",
       "user": "anonymous",
-      "dateUpdated": "2021-07-30T14:48:21+0300",
+      "dateUpdated": "2021-09-06T20:20:34+0300",
+      "progress": 0,
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -675,18 +685,19 @@
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1606996389512_1541632525",
+      "jobName": "paragraph_1630909809878_1129757747",
       "id": "paragraph_1606996389512_1541632525",
-      "dateCreated": "2020-12-03T14:53:09+0300",
-      "dateStarted": "2021-07-30T14:48:21+0300",
-      "dateFinished": "2021-07-30T14:48:21+0300",
+      "dateCreated": "2021-09-06T09:30:09+0300",
+      "dateStarted": "2021-09-06T20:20:34+0300",
+      "dateFinished": "2021-09-06T20:20:34+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:17499"
+      "$$hashKey": "object:19293"
     },
     {
       "text": "val tp = prediction.filter(($\"Attrition_Flag\" === \"Attrited Customer\") and ($\"prediction\" === 1)).count\nval tn = prediction.filter(($\"Attrition_Flag\" === \"Existing Customer\") and ($\"prediction\" === 0)).count\nval fp = prediction.filter(($\"Attrition_Flag\" === \"Existing Customer\") and ($\"prediction\" === 1)).count\nval fn = prediction.filter(($\"Attrition_Flag\" === \"Attrited Customer\") and ($\"prediction\" === 0)).count\n\nprintln(s\"Confusion Matrix:\\n$tp\\t$fp\\n$fn\\t\\t$tn\\n\")",
       "user": "anonymous",
-      "dateUpdated": "2021-07-30T14:48:30+0300",
+      "dateUpdated": "2021-09-06T20:20:34+0300",
+      "progress": 0,
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -718,7 +729,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "Confusion Matrix:\n1199\t1896\n428\t\t6604\n\n\u001b[1m\u001b[34mtp\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 1199\n\u001b[1m\u001b[34mtn\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 6604\n\u001b[1m\u001b[34mfp\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 1896\n\u001b[1m\u001b[34mfn\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 428\n"
+            "data": "Confusion Matrix:\n1199\t1893\n428\t\t6607\n\n\u001b[1m\u001b[34mtp\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 1199\n\u001b[1m\u001b[34mtn\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 6607\n\u001b[1m\u001b[34mfp\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 1893\n\u001b[1m\u001b[34mfn\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 428\n"
           }
         ]
       },
@@ -731,38 +742,39 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=2209",
-              "$$hashKey": "object:18533"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2644",
+              "$$hashKey": "object:20332"
             },
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=2210",
-              "$$hashKey": "object:18534"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2645",
+              "$$hashKey": "object:20333"
             },
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=2211",
-              "$$hashKey": "object:18535"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2646",
+              "$$hashKey": "object:20334"
             },
             {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id=2212",
-              "$$hashKey": "object:18536"
+              "jobUrl": "http://ubuntu:4040/jobs/job?id=2647",
+              "$$hashKey": "object:20335"
             }
           ],
           "interpreterSettingId": "spark"
         }
       },
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1606996537225_1288745764",
+      "jobName": "paragraph_1630909809878_314924341",
       "id": "paragraph_1606996537225_1288745764",
-      "dateCreated": "2020-12-03T14:55:37+0300",
-      "dateStarted": "2021-07-30T14:48:21+0300",
-      "dateFinished": "2021-07-30T14:48:22+0300",
+      "dateCreated": "2021-09-06T09:30:09+0300",
+      "dateStarted": "2021-09-06T20:20:34+0300",
+      "dateFinished": "2021-09-06T20:20:36+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:17500"
+      "$$hashKey": "object:19294"
     },
     {
       "text": "val accuracy = (tp + tn) / (tp + tn + fp + fn).toDouble\nval precision = tp / (tp + fp).toDouble\nval recall = tp / (tp + fn).toDouble\n\nprintln(s\"Accuracy = $accuracy\")\nprintln(s\"Precision = $precision\")\nprintln(s\"Recall = $recall\\n\")",
       "user": "anonymous",
-      "dateUpdated": "2021-07-30T14:48:35+0300",
+      "dateUpdated": "2021-09-06T20:21:10+0300",
+      "progress": 0,
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -781,7 +793,7 @@
           "bdtMeta": {
             "inlay": {
               "size": {
-                "height": 203
+                "height": 197
               },
               "state": {}
             }
@@ -794,25 +806,26 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "Accuracy = 0.770514466278266\nPrecision = 0.3873990306946688\nRecall = 0.7369391518131531\n\n\u001b[1m\u001b[34maccuracy\u001b[0m: \u001b[1m\u001b[32mDouble\u001b[0m = 0.770514466278266\n\u001b[1m\u001b[34mprecision\u001b[0m: \u001b[1m\u001b[32mDouble\u001b[0m = 0.3873990306946688\n\u001b[1m\u001b[34mrecall\u001b[0m: \u001b[1m\u001b[32mDouble\u001b[0m = 0.7369391518131531\n"
+            "data": "Accuracy = 0.7708107040584576\nPrecision = 0.38777490297542044\nRecall = 0.7369391518131531\n\n\u001b[1m\u001b[34maccuracy\u001b[0m: \u001b[1m\u001b[32mDouble\u001b[0m = 0.7708107040584576\n\u001b[1m\u001b[34mprecision\u001b[0m: \u001b[1m\u001b[32mDouble\u001b[0m = 0.38777490297542044\n\u001b[1m\u001b[34mrecall\u001b[0m: \u001b[1m\u001b[32mDouble\u001b[0m = 0.7369391518131531\n"
           }
         ]
       },
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1606996842960_2062621536",
+      "jobName": "paragraph_1630909809878_1228052473",
       "id": "paragraph_1606996842960_2062621536",
-      "dateCreated": "2020-12-03T15:00:42+0300",
-      "dateStarted": "2021-07-30T14:48:22+0300",
-      "dateFinished": "2021-07-30T14:48:22+0300",
+      "dateCreated": "2021-09-06T09:30:09+0300",
+      "dateStarted": "2021-09-06T20:20:36+0300",
+      "dateFinished": "2021-09-06T20:20:36+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:17501"
+      "$$hashKey": "object:19295"
     },
     {
       "text": "",
       "user": "anonymous",
-      "dateUpdated": "2021-07-30T14:48:22+0300",
+      "dateUpdated": "2021-09-06T20:20:36+0300",
+      "progress": 0,
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -833,17 +846,17 @@
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1606996888015_885751589",
+      "jobName": "paragraph_1630909809878_411762950",
       "id": "paragraph_1606996888015_885751589",
-      "dateCreated": "2020-12-03T15:01:28+0300",
+      "dateCreated": "2021-09-06T09:30:09+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:17502"
+      "$$hashKey": "object:19296"
     }
   ],
   "name": "Spark ML Production",
-  "id": "2FREY6DUF",
+  "id": "2GESZAJB5",
   "defaultInterpreterGroup": "spark",
-  "version": "0.9.0-preview2",
+  "version": "0.9.0",
   "noteParams": {},
   "noteForms": {},
   "angularObjects": {},
