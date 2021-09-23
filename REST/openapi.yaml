@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: Iris Predicition API
+  title: Iris Prediction API
   description: Predict Iris Class
   version: 0.1.0
 
@@ -22,7 +22,7 @@ paths:
                   accuracy:
                     type: number
                     example: 0.8
-  /predicition:
+  /predict:
     post:
       summary: Predict Iris Class by attributes
       responses:
