@@ -3,6 +3,7 @@ package ru.otus.spark
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.expressions.Window
 import org.apache.spark.sql.functions._
+import scala.io.StdIn
 
 object NYCTaxi {
   def main(args: Array[String]): Unit = {
@@ -16,6 +17,7 @@ object NYCTaxi {
     val spark = SparkSession
       .builder()
       .appName("NYCTaxi")
+      .config("spark.sql.debug.maxToStringFields", "150")
       .getOrCreate()
 
     import spark.implicits._
@@ -221,6 +223,10 @@ object NYCTaxi {
           ): _*
         )
         .show(numRows = 12, truncate = false)
+
+      // Ожидаем ввода для подтверждения окончания
+      println("Всё\nДля завершения работы нажмите Ввод")
+      StdIn.readLine()
 
     } catch {
       // Если что-то пошло не так

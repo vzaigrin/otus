@@ -10,4 +10,4 @@
 
 ## Запуск
 
-*spark-submit --driver-memory 2G --executor-memory 2G NYCTaxi.jar data/trips data/payment_type.csv data/taxi_zone_lookup.csv*
+*spark-submit --driver-memory 2G --executor-memory 2G target/scala-2.12/NYCTaxi-assembly-2.0.jar data/trips data/payment_type.csv data/taxi_zone_lookup.csv*
