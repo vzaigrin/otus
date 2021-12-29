@@ -13,3 +13,4 @@
 **/target/streams/
 **/target/.history3
 Spark/NYCTaxi/data
+SparkStreaming/MLStructuredStreaming/checkpoint
