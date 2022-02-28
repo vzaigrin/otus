@@ -22,7 +22,7 @@ object NetworkWordCountWindowed {
     val pairs = words.map(word => (word, 1))
     // Reduce last 30 seconds of data, every 10 seconds
     val windowedWordCounts =
-      pairs.reduceByKeyAndWindow((a: Int, b: Int) => (a + b), Seconds(30), Seconds(10))
+      pairs.reduceByKeyAndWindow((a: Int, b: Int) => a + b, Seconds(30), Seconds(10))
 
     windowedWordCounts.print()
     ssc.start()
