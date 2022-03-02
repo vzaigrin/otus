@@ -4,18 +4,18 @@ version := "1.0"
 
 scalaVersion := "2.12.12"
 
-lazy val sparkVersion = "3.1.2"
-lazy val kafkaVersion = "2.8.0"
+lazy val sparkVersion = "3.2.1"
+lazy val kafkaVersion = "3.1.0"
 
 libraryDependencies ++= Seq(
-  "com.typesafe"      % "config"                    % "1.4.0",
+  "com.typesafe"      % "config"                    % "1.4.2",
   "org.apache.spark" %% "spark-sql"                 % sparkVersion % "provided",
   "org.apache.spark" %% "spark-mllib"               % sparkVersion % "provided",
   "org.apache.spark"  % "spark-sql-kafka-0-10_2.12" % sparkVersion,
   "org.apache.kafka"  % "kafka-clients"             % kafkaVersion
 )
 
-assemblyMergeStrategy in assembly := {
+assembly / assemblyMergeStrategy := {
   case m if m.toLowerCase.endsWith("manifest.mf")       => MergeStrategy.discard
   case m if m.toLowerCase.matches("meta-inf.*\\.sf$")   => MergeStrategy.discard
   case "reference.conf"                                 => MergeStrategy.concat
