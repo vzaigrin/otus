@@ -2,8 +2,8 @@ name := "SparkML"
 
 version := "1.0"
 
-scalaVersion := "2.12.10"
-lazy val sparkVersion = "3.1.2"
+scalaVersion := "2.12.15"
+lazy val sparkVersion = "3.2.1"
 
 libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-sql"   % sparkVersion % "provided",
