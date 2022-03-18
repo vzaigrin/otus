@@ -15,3 +15,5 @@
 Spark/NYCTaxi/data
 SparkStreaming/MLStructuredStreaming/checkpoint
 **/.ipynb_checkpoints/
+SparkML/pipelineModel
+SparkML/result
