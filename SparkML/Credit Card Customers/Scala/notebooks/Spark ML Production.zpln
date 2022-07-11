@@ -1,0 +1,826 @@
+{
+  "paragraphs": [
+    {
+      "title": "Spark ML Production",
+      "text": "%md\n# Spark ML Production",
+      "user": "anonymous",
+      "dateUpdated": "2022-07-11 15:39:22.751",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 130.0
+              }
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003eSpark ML Production\u003c/h1\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1646816880895_65038137",
+      "id": "paragraph_1606995930958_1482052156",
+      "dateCreated": "2022-03-09 12:08:00.895",
+      "dateStarted": "2022-07-11 15:39:22.753",
+      "dateFinished": "2022-07-11 15:39:22.764",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Загружаем данные",
+      "text": "%md\n## Загружаем данные",
+      "user": "anonymous",
+      "dateUpdated": "2022-07-11 15:39:22.853",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 113.0
+              }
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eЗагружаем данные\u003c/h2\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1646816880895_786472490",
+      "id": "paragraph_1606995964724_1574639267",
+      "dateCreated": "2022-03-09 12:08:00.896",
+      "dateStarted": "2022-07-11 15:39:22.854",
+      "dateFinished": "2022-07-11 15:39:22.856",
+      "status": "FINISHED"
+    },
+    {
+      "text": "val basePath \u003d \"/home/vadim/Projects/otus/SparkML/Credit Card Customers\"",
+      "user": "anonymous",
+      "dateUpdated": "2022-07-11 15:39:22.954",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 103.0
+              },
+              "state": {}
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mbasePath\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m \u003d /home/vadim/Projects/otus/SparkML/Credit Card Customers\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1646816880896_2122589141",
+      "id": "paragraph_1618238626984_1729274874",
+      "dateCreated": "2022-03-09 12:08:00.896",
+      "dateStarted": "2022-07-11 15:39:22.955",
+      "dateFinished": "2022-07-11 15:39:23.053",
+      "status": "FINISHED"
+    },
+    {
+      "text": "val data \u003d spark\n        .read\n        .option(\"header\", \"true\")\n        .option(\"inferSchema\", \"true\")\n        .csv(s\"$basePath/data/BankChurners.csv\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-07-11 15:39:23.055",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 105.0
+              }
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mdata\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [CLIENTNUM: int, Attrition_Flag: string ... 21 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1588"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1589"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1646816880896_1400345791",
+      "id": "paragraph_1606995986350_99406471",
+      "dateCreated": "2022-03-09 12:08:00.896",
+      "dateStarted": "2022-07-11 15:39:23.056",
+      "dateFinished": "2022-07-11 15:39:23.241",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Загружаем модель",
+      "text": "%md\n## Загружаем модель",
+      "user": "anonymous",
+      "dateUpdated": "2022-07-11 15:39:23.256",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 115.0
+              }
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eЗагружаем модель\u003c/h2\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1646816880896_2013713741",
+      "id": "paragraph_1606996237633_1836911260",
+      "dateCreated": "2022-03-09 12:08:00.896",
+      "dateStarted": "2022-07-11 15:39:23.257",
+      "dateFinished": "2022-07-11 15:39:23.260",
+      "status": "FINISHED"
+    },
+    {
+      "text": "import org.apache.spark.ml.PipelineModel\n\nval model \u003d PipelineModel.load(s\"$basePath/Scala/pipelineModel\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-07-11 15:39:23.357",
+      "progress": 100,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 94.0
+              },
+              "state": {}
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import org.apache.spark.ml.PipelineModel\n\u001b[1m\u001b[34mmodel\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.ml.PipelineModel\u001b[0m \u003d pipeline_44202587a83c\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1590"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1591"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1592"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1593"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1594"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1595"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1596"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1597"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1598"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1599"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1600"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1601"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1602"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1603"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1604"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1605"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1606"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1607"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1608"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1609"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1610"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1611"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1612"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1646816880896_1583874591",
+      "id": "paragraph_1606996253065_739575313",
+      "dateCreated": "2022-03-09 12:08:00.896",
+      "dateStarted": "2022-07-11 15:39:23.359",
+      "dateFinished": "2022-07-11 15:39:24.113",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Вычисляем",
+      "text": "%md\n## Вычисляем",
+      "user": "anonymous",
+      "dateUpdated": "2022-07-11 15:39:24.159",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 127.0
+              }
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eВычисляем\u003c/h2\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1646816880896_1448323258",
+      "id": "paragraph_1606996429008_1428308820",
+      "dateCreated": "2022-03-09 12:08:00.896",
+      "dateStarted": "2022-07-11 15:39:24.160",
+      "dateFinished": "2022-07-11 15:39:24.164",
+      "status": "FINISHED"
+    },
+    {
+      "text": "val predicted \u003d model.transform(data)",
+      "user": "anonymous",
+      "dateUpdated": "2022-07-11 15:39:24.260",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 142.0
+              }
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mpredicted\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [CLIENTNUM: int, Attrition_Flag: string ... 37 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1646816880896_949129285",
+      "id": "paragraph_1606996336667_144207425",
+      "dateCreated": "2022-03-09 12:08:00.896",
+      "dateStarted": "2022-07-11 15:39:24.261",
+      "dateFinished": "2022-07-11 15:39:24.429",
+      "status": "FINISHED"
+    },
+    {
+      "text": "predicted.show(10)",
+      "user": "anonymous",
+      "dateUpdated": "2022-07-11 15:39:24.461",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": [
+          {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "keys": [
+                {
+                  "name": "prediction",
+                  "index": 38.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "CLIENTNUM",
+                  "index": 0.0,
+                  "aggr": "avg"
+                }
+              ],
+              "setting": {
+                "lineChart": {}
+              }
+            }
+          }
+        ],
+        "enabled": true
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 482.0
+              }
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---------+-----------------+------------+------+---------------+---------------+--------------+---------------+-------------+--------------+------------------------+----------------------+---------------------+------------+-------------------+---------------+--------------------+---------------+--------------+-------------------+---------------------+----------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+--------------+-----------------------+----------------------+-----------------------+---------------------+--------------------+-----------------------------+----------------------------+-----------------------------+---------------------------+--------------------+--------------------+--------------------+--------------------+--------------------+----------+\n|CLIENTNUM|   Attrition_Flag|Customer_Age|Gender|Dependent_count|Education_Level|Marital_Status|Income_Category|Card_Category|Months_on_book|Total_Relationship_Count|Months_Inactive_12_mon|Contacts_Count_12_mon|Credit_Limit|Total_Revolving_Bal|Avg_Open_To_Buy|Total_Amt_Chng_Q4_Q1|Total_Trans_Amt|Total_Trans_Ct|Total_Ct_Chng_Q4_Q1|Avg_Utilization_Ratio|Naive_Bayes_Classifier_Attrition_Flag_Card_Category_Contacts_Count_12_mon_Dependent_count_Education_Level_Months_Inactive_12_mon_1|Naive_Bayes_Classifier_Attrition_Flag_Card_Category_Contacts_Count_12_mon_Dependent_count_Education_Level_Months_Inactive_12_mon_2|Gender_Indexed|Education_Level_Indexed|Marital_Status_Indexed|Income_Category_Indexed|Card_Category_Indexed|Gender_Indexed_Coded|Education_Level_Indexed_Coded|Marital_Status_Indexed_Coded|Income_Category_Indexed_Coded|Card_Category_Indexed_Coded|            features|      scaledFeatures|    selectedFeatures|       rawPrediction|         probability|prediction|\n+---------+-----------------+------------+------+---------------+---------------+--------------+---------------+-------------+--------------+------------------------+----------------------+---------------------+------------+-------------------+---------------+--------------------+---------------+--------------+-------------------+---------------------+----------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+--------------+-----------------------+----------------------+-----------------------+---------------------+--------------------+-----------------------------+----------------------------+-----------------------------+---------------------------+--------------------+--------------------+--------------------+--------------------+--------------------+----------+\n|768805383|Existing Customer|          45|     M|              3|    High School|       Married|    $60K - $80K|         Blue|            39|                       5|                     1|                    3|     12691.0|                777|        11914.0|               1.335|           1144|            42|              1.625|                0.061|                                                                                                                         9.3448E-5|                                                                                                                           0.99991|           1.0|                    1.0|                   0.0|                    3.0|                  0.0|           (1,[],[])|                (6,[1],[1.0])|               (3,[0],[1.0])|                (5,[3],[1.0])|              (3,[0],[1.0])|(28,[0,1,2,3,4,5,...|(28,[0,1,2,3,4,5,...|(21,[0,1,2,3,4,5,...|[3.74977110674967...|[0.97701749101036...|       0.0|\n|818770008|Existing Customer|          49|     F|              5|       Graduate|        Single| Less than $40K|         Blue|            44|                       6|                     1|                    2|      8256.0|                864|         7392.0|               1.541|           1291|            33|              3.714|                0.105|                                                                                                                         5.6861E-5|                                                                                                                           0.99994|           0.0|                    0.0|                   1.0|                    0.0|                  0.0|       (1,[0],[1.0])|                (6,[0],[1.0])|               (3,[1],[1.0])|                (5,[0],[1.0])|              (3,[0],[1.0])|(28,[0,1,2,3,4,5,...|(28,[0,1,2,3,4,5,...|(21,[0,1,2,3,4,5,...|[10.4293130507498...|[0.99997044751147...|       0.0|\n|713982108|Existing Customer|          51|     M|              3|       Graduate|       Married|   $80K - $120K|         Blue|            36|                       4|                     1|                    0|      3418.0|                  0|         3418.0|               2.594|           1887|            20|              2.333|                  0.0|                                                                                                                         2.1081E-5|                                                                                                                           0.99998|           1.0|                    0.0|                   0.0|                    2.0|                  0.0|           (1,[],[])|                (6,[0],[1.0])|               (3,[0],[1.0])|                (5,[2],[1.0])|              (3,[0],[1.0])|(28,[0,1,2,3,5,6,...|(28,[0,1,2,3,5,6,...|(21,[0,1,2,3,5,6,...|[7.11107134433303...|[0.99918464506124...|       0.0|\n|769911858|Existing Customer|          40|     F|              4|    High School|       Unknown| Less than $40K|         Blue|            34|                       3|                     4|                    1|      3313.0|               2517|          796.0|               1.405|           1171|            20|              2.333|                 0.76|                                                                                                                         1.3366E-4|                                                                                                                           0.99987|           0.0|                    1.0|                   2.0|                    0.0|                  0.0|       (1,[0],[1.0])|                (6,[1],[1.0])|               (3,[2],[1.0])|                (5,[0],[1.0])|              (3,[0],[1.0])|(28,[0,1,2,3,4,5,...|(28,[0,1,2,3,4,5,...|(21,[0,1,2,3,4,5,...|[5.44775615159249...|[0.99571250598865...|       0.0|\n|709106358|Existing Customer|          40|     M|              3|     Uneducated|       Married|    $60K - $80K|         Blue|            21|                       5|                     1|                    0|      4716.0|                  0|         4716.0|               2.175|            816|            28|                2.5|                  0.0|                                                                                                                         2.1676E-5|                                                                                                                           0.99998|           1.0|                    3.0|                   0.0|                    3.0|                  0.0|           (1,[],[])|                (6,[3],[1.0])|               (3,[0],[1.0])|                (5,[3],[1.0])|              (3,[0],[1.0])|(28,[0,1,2,3,5,6,...|(28,[0,1,2,3,5,6,...|(21,[0,1,2,3,5,6,...|[7.74610431127382...|[0.99956776305732...|       0.0|\n|713061558|Existing Customer|          44|     M|              2|       Graduate|       Married|    $40K - $60K|         Blue|            36|                       3|                     1|                    2|      4010.0|               1247|         2763.0|               1.376|           1088|            24|              0.846|                0.311|                                                                                                                         5.5077E-5|                                                                                                                           0.99994|           1.0|                    0.0|                   0.0|                    1.0|                  0.0|           (1,[],[])|                (6,[0],[1.0])|               (3,[0],[1.0])|                (5,[1],[1.0])|              (3,[0],[1.0])|(28,[0,1,2,3,4,5,...|(28,[0,1,2,3,4,5,...|(21,[0,1,2,3,4,5,...|[1.49786847250348...|[0.81725635120573...|       0.0|\n|810347208|Existing Customer|          51|     M|              4|        Unknown|       Married|        $120K +|         Gold|            46|                       6|                     1|                    3|     34516.0|               2264|        32252.0|               1.975|           1330|            31|              0.722|                0.066|                                                                                                                         1.2303E-4|                                                                                                                           0.99988|           1.0|                    2.0|                   0.0|                    5.0|                  2.0|           (1,[],[])|                (6,[2],[1.0])|               (3,[0],[1.0])|                    (5,[],[])|              (3,[2],[1.0])|(28,[0,1,2,3,4,5,...|(28,[0,1,2,3,4,5,...|(21,[0,1,2,3,4,5,...|[1.15063473503185...|[0.75962683479697...|       0.0|\n|818906208|Existing Customer|          32|     M|              0|    High School|       Unknown|    $60K - $80K|       Silver|            27|                       2|                     2|                    2|     29081.0|               1396|        27685.0|               2.204|           1538|            36|              0.714|                0.048|                                                                                                                         8.5795E-5|                                                                                                                           0.99991|           1.0|                    1.0|                   2.0|                    3.0|                  1.0|           (1,[],[])|                (6,[1],[1.0])|               (3,[2],[1.0])|                (5,[3],[1.0])|              (3,[1],[1.0])|(28,[0,2,3,4,5,6,...|(28,[0,2,3,4,5,6,...|(21,[0,2,3,4,5,6,...|[-0.0960780401530...|[0.47599894990925...|       1.0|\n|710930508|Existing Customer|          37|     M|              3|     Uneducated|        Single|    $60K - $80K|         Blue|            36|                       5|                     2|                    0|     22352.0|               2517|        19835.0|               3.355|           1350|            24|              1.182|                0.113|                                                                                                                         4.4796E-5|                                                                                                                           0.99996|           1.0|                    3.0|                   1.0|                    3.0|                  0.0|           (1,[],[])|                (6,[3],[1.0])|               (3,[1],[1.0])|                (5,[3],[1.0])|              (3,[0],[1.0])|(28,[0,1,2,3,5,6,...|(28,[0,1,2,3,5,6,...|(21,[0,1,2,3,5,6,...|[3.47245540894612...|[0.96989379879080...|       0.0|\n|719661558|Existing Customer|          48|     M|              2|       Graduate|        Single|   $80K - $120K|         Blue|            36|                       6|                     3|                    3|     11656.0|               1677|         9979.0|               1.524|           1441|            32|              0.882|                0.144|                                                                                                                         3.0251E-4|                                                                                                                            0.9997|           1.0|                    0.0|                   1.0|                    2.0|                  0.0|           (1,[],[])|                (6,[0],[1.0])|               (3,[1],[1.0])|                (5,[2],[1.0])|              (3,[0],[1.0])|(28,[0,1,2,3,4,5,...|(28,[0,1,2,3,4,5,...|(21,[0,1,2,3,4,5,...|[0.95644064278421...|[0.72240859685483...|       0.0|\n+---------+-----------------+------------+------+---------------+---------------+--------------+---------------+-------------+--------------+------------------------+----------------------+---------------------+------------+-------------------+---------------+--------------------+---------------+--------------+-------------------+---------------------+----------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+--------------+-----------------------+----------------------+-----------------------+---------------------+--------------------+-----------------------------+----------------------------+-----------------------------+---------------------------+--------------------+--------------------+--------------------+--------------------+--------------------+----------+\nonly showing top 10 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1613"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1646816880896_677386255",
+      "id": "paragraph_1606996380000_1057447451",
+      "dateCreated": "2022-03-09 12:08:00.896",
+      "dateStarted": "2022-07-11 15:39:24.462",
+      "dateFinished": "2022-07-11 15:39:24.655",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Проверяем результат",
+      "text": "%md\n## Проверяем результат",
+      "user": "anonymous",
+      "dateUpdated": "2022-07-11 15:39:24.662",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 115.0
+              }
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eПроверяем результат\u003c/h2\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1646816880896_324943696",
+      "id": "paragraph_1606996389512_1541632525",
+      "dateCreated": "2022-03-09 12:08:00.896",
+      "dateStarted": "2022-07-11 15:39:24.663",
+      "dateFinished": "2022-07-11 15:39:24.666",
+      "status": "FINISHED"
+    },
+    {
+      "text": "val tp \u003d predicted.filter(($\"Attrition_Flag\" \u003d\u003d\u003d \"Attrited Customer\") and ($\"prediction\" \u003d\u003d\u003d 1)).count\nval tn \u003d predicted.filter(($\"Attrition_Flag\" \u003d\u003d\u003d \"Existing Customer\") and ($\"prediction\" \u003d\u003d\u003d 0)).count\nval fp \u003d predicted.filter(($\"Attrition_Flag\" \u003d\u003d\u003d \"Existing Customer\") and ($\"prediction\" \u003d\u003d\u003d 1)).count\nval fn \u003d predicted.filter(($\"Attrition_Flag\" \u003d\u003d\u003d \"Attrited Customer\") and ($\"prediction\" \u003d\u003d\u003d 0)).count\n\nprintln(s\"Confusion Matrix:\\n$tp\\t$fp\\n$fn\\t\\t$tn\\n\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-07-11 15:39:24.763",
+      "progress": 50,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 329.0
+              }
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Confusion Matrix:\n1197\t1883\n430\t\t6617\n\n\u001b[1m\u001b[34mtp\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m \u003d 1197\n\u001b[1m\u001b[34mtn\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m \u003d 6617\n\u001b[1m\u001b[34mfp\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m \u003d 1883\n\u001b[1m\u001b[34mfn\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m \u003d 430\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1614"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1615"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1616"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1617"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1618"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1619"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1620"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1621"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1646816880896_1822817279",
+      "id": "paragraph_1606996537225_1288745764",
+      "dateCreated": "2022-03-09 12:08:00.896",
+      "dateStarted": "2022-07-11 15:39:24.764",
+      "dateFinished": "2022-07-11 15:39:25.610",
+      "status": "FINISHED"
+    },
+    {
+      "text": "val accuracy \u003d (tp + tn) / (tp + tn + fp + fn).toDouble\nval precision \u003d tp / (tp + fp).toDouble\nval recall \u003d tp / (tp + fn).toDouble\n\nprintln(s\"Accuracy \u003d $accuracy\")\nprintln(s\"Precision \u003d $precision\")\nprintln(s\"Recall \u003d $recall\\n\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-07-11 15:39:25.665",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 289.0
+              }
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Accuracy \u003d 0.7716006714723017\nPrecision \u003d 0.3886363636363636\nRecall \u003d 0.7357098955132145\n\n\u001b[1m\u001b[34maccuracy\u001b[0m: \u001b[1m\u001b[32mDouble\u001b[0m \u003d 0.7716006714723017\n\u001b[1m\u001b[34mprecision\u001b[0m: \u001b[1m\u001b[32mDouble\u001b[0m \u003d 0.3886363636363636\n\u001b[1m\u001b[34mrecall\u001b[0m: \u001b[1m\u001b[32mDouble\u001b[0m \u003d 0.7357098955132145\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1646816880896_1734875244",
+      "id": "paragraph_1606996842960_2062621536",
+      "dateCreated": "2022-03-09 12:08:00.896",
+      "dateStarted": "2022-07-11 15:39:25.666",
+      "dateFinished": "2022-07-11 15:39:25.757",
+      "status": "FINISHED"
+    },
+    {
+      "text": "",
+      "user": "anonymous",
+      "dateUpdated": "2022-07-11 15:39:25.766",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1646816880896_1196651071",
+      "id": "paragraph_1606996888015_885751589",
+      "dateCreated": "2022-03-09 12:08:00.896",
+      "status": "FINISHED"
+    }
+  ],
+  "name": "Spark ML Production",
+  "id": "2GYNEY4HN",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {
+    "isRunning": true
+  }
+}
