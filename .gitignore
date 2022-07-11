@@ -18,3 +18,5 @@ SparkStreaming/MLStructuredStreaming/checkpoint
 **/pipelineModel
 **/result
 **/.ipynb_checkpoints
+**/.metals/
+**/.vscode/

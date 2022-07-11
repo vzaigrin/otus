@@ -4,7 +4,7 @@
       "title": "Spark ML для задачи оттока",
       "text": "%md\n# Spark ML для задачи оттока\n\nИсточник данных: [Kaggle](https://www.kaggle.com/sakshigoyal7/credit-card-customers)\n\nОписания полей:\n\n | Название        | Описание                                                                                                                            |\n |:----------------|:------------------------------------------------------------------------------------------------------------------------------------|\n | CLIENTNUM       | Client number. Unique identifier for the customer holding the account                                                               |\n | Attrition_Flag  | Internal event (customer activity) variable                                                                                         |\n | Customer_Age    | Demographic variable - Customer\u0027s Age in Years                                                                                      |\n | Gender          | Demographic variable - M\u003dMale, F\u003dFemale                                                                                             |\n | Dependent_count | Demographic variable - Number of dependents                                                                                         |\n | Education_Level | Demographic variable - Educational Qualification of the account holder (example: high school, college graduate, etc.)               |\n | Marital_Status  | Demographic variable - Married, Single, Divorced, Unknown                                                                           |\n | Income_Category | Demographic variable - Annual Income Category of the account holder (\u003c $40K, $40K - 60K, $60K - $80K, $80K-$120K, \u003e $120K, Unknown) |\n | Card_Category   | Product Variable - Type of Card (Blue, Silver, Gold, Platinum)                                                                      |\n | Months_on_book  | Period of relationship with bank                                                                                                    |",
       "user": "anonymous",
-      "dateUpdated": "2022-07-11 14:54:03.985",
+      "dateUpdated": "2022-07-11 21:24:43.102",
       "progress": 0,
       "config": {
         "tableHide": true,
@@ -1481,9 +1481,9 @@
       "status": "FINISHED"
     },
     {
-      "text": "val pairs \u003d numericColumnsPairs\n        .filter { p \u003d\u003e !p._1.equals(p._2) }\n        .map { p \u003d\u003e if (p._1 \u003c p._2) (p._1, p._2) else (p._2, p._1) }\n        .distinct\n\nval corr \u003d pairs\n        .map { p \u003d\u003e (p._1, p._2, data.stat.corr(p._1, p._2)) }\n        .filter(_._3 \u003e 0.6)",
+      "text": "val pairs \u003d numericColumnsPairs\n        .filter { p \u003d\u003e !p._1.equals(p._2) }\n        .map { p \u003d\u003e if (p._1 \u003c p._2) (p._1, p._2) else (p._2, p._1) }\n        .distinct\n\nval corr \u003d pairs\n        .map { p \u003d\u003e (p._1, p._2, data.stat.corr(p._1, p._2)) }\n        .filter(p \u003d\u003e math.abs(p._3) \u003e 0.6)",
       "user": "anonymous",
-      "dateUpdated": "2022-07-11 14:54:08.659",
+      "dateUpdated": "2022-07-11 21:22:17.610",
       "progress": 100,
       "config": {
         "editorSetting": {
@@ -1984,117 +1984,9 @@
       "status": "FINISHED"
     },
     {
-      "text": "numeric.show(5, truncate \u003d false)",
+      "text": "val corr2 \u003d matrix.toArray\n        .zip(numericColumnsPairs)\n        .map(cnn \u003d\u003e (cnn._2._1, cnn._2._2, cnn._1))\n        .filter(p \u003d\u003e math.abs(p._3) \u003e 0.6 \u0026\u0026 p._3 \u003c 1.0)\n        .map { p \u003d\u003e if (p._1 \u003c p._2) (p._1, p._2, p._3) else (p._2, p._1, p._3) }\n        .distinct",
       "user": "anonymous",
-      "dateUpdated": "2022-07-11 14:54:15.479",
-      "progress": 0,
-      "config": {},
-      "settings": {
-        "params": {
-          "bdtMeta": {
-            "inlay": {
-              "size": {
-                "height": 300.0
-              }
-            }
-          }
-        },
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "+-----------------+------------+------+---------------+---------------+--------------+---------------+-------------+--------------+------------------------+----------------------+---------------------+------------+-------------------+---------------+--------------------+---------------+--------------+-------------------+---------------------+------+-------------------------------------------------------------------------------+\n|Attrition_Flag   |Customer_Age|Gender|Dependent_count|Education_Level|Marital_Status|Income_Category|Card_Category|Months_on_book|Total_Relationship_Count|Months_Inactive_12_mon|Contacts_Count_12_mon|Credit_Limit|Total_Revolving_Bal|Avg_Open_To_Buy|Total_Amt_Chng_Q4_Q1|Total_Trans_Amt|Total_Trans_Ct|Total_Ct_Chng_Q4_Q1|Avg_Utilization_Ratio|target|features                                                                       |\n+-----------------+------------+------+---------------+---------------+--------------+---------------+-------------+--------------+------------------------+----------------------+---------------------+------------+-------------------+---------------+--------------------+---------------+--------------+-------------------+---------------------+------+-------------------------------------------------------------------------------+\n|Existing Customer|45          |M     |3              |High School    |Married       |$60K - $80K    |Blue         |39            |5                       |1                     |3                    |12691.0     |777                |11914.0        |1.335               |1144           |42            |1.625              |0.061                |0     |[45.0,3.0,39.0,5.0,1.0,3.0,12691.0,777.0,11914.0,1.335,1144.0,42.0,1.625,0.061]|\n|Existing Customer|49          |F     |5              |Graduate       |Single        |Less than $40K |Blue         |44            |6                       |1                     |2                    |8256.0      |864                |7392.0         |1.541               |1291           |33            |3.714              |0.105                |0     |[49.0,5.0,44.0,6.0,1.0,2.0,8256.0,864.0,7392.0,1.541,1291.0,33.0,3.714,0.105]  |\n|Existing Customer|51          |M     |3              |Graduate       |Married       |$80K - $120K   |Blue         |36            |4                       |1                     |0                    |3418.0      |0                  |3418.0         |2.594               |1887           |20            |2.333              |0.0                  |0     |[51.0,3.0,36.0,4.0,1.0,0.0,3418.0,0.0,3418.0,2.594,1887.0,20.0,2.333,0.0]      |\n|Existing Customer|40          |F     |4              |High School    |Unknown       |Less than $40K |Blue         |34            |3                       |4                     |1                    |3313.0      |2517               |796.0          |1.405               |1171           |20            |2.333              |0.76                 |0     |[40.0,4.0,34.0,3.0,4.0,1.0,3313.0,2517.0,796.0,1.405,1171.0,20.0,2.333,0.76]   |\n|Existing Customer|40          |M     |3              |Uneducated     |Married       |$60K - $80K    |Blue         |21            |5                       |1                     |0                    |4716.0      |0                  |4716.0         |2.175               |816            |28            |2.5                |0.0                  |0     |[40.0,3.0,21.0,5.0,1.0,0.0,4716.0,0.0,4716.0,2.175,816.0,28.0,2.5,0.0]         |\n+-----------------+------------+------+---------------+---------------+--------------+---------------+-------------+--------------+------------------------+----------------------+---------------------+------------+-------------------+---------------+--------------------+---------------+--------------+-------------------+---------------------+------+-------------------------------------------------------------------------------+\nonly showing top 5 rows\n\n"
-          }
-        ]
-      },
-      "apps": [],
-      "runtimeInfos": {
-        "jobUrl": {
-          "propertyName": "jobUrl",
-          "label": "SPARK JOB",
-          "tooltip": "View in Spark web UI",
-          "group": "spark",
-          "values": [
-            {
-              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d925"
-            }
-          ],
-          "interpreterSettingId": "spark"
-        }
-      },
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1652895497866_2095638648",
-      "id": "paragraph_1652895497866_2095638648",
-      "dateCreated": "2022-05-18 20:38:17.866",
-      "dateStarted": "2022-07-11 14:54:15.482",
-      "dateFinished": "2022-07-11 14:54:15.654",
-      "status": "FINISHED"
-    },
-    {
-      "text": "matrix",
-      "user": "anonymous",
-      "dateUpdated": "2022-07-11 14:54:15.682",
-      "progress": 0,
-      "config": {},
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "\u001b[1m\u001b[34mres59\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.ml.linalg.Matrix\u001b[0m \u003d\n1.0                    -0.13575515707704905   ... (14 total)\n-0.13575515707704905   1.0                    ...\n0.780504770689084      -0.11728062823959522   ...\n-0.026525310066416643  -0.032664177863511015  ...\n0.13116552936201348    -0.010657501150598976  ...\n-0.019944405497176732  -0.02566496168277401   ...\n0.016657097778483475   0.06002070339266479    ...\n-0.002841536593767456  0.0018723592997836101  ...\n0.016929170875654043   0.05981512203616065    ...\n-0.020559135165498028  -0.04794367154504479   ...\n-0.06586475313340742   0.0070043054050316685  ...\n-0.07815083273365253   0.025513406218718206   ...\n-0.016568818333932693  -0.019666216088456825  ...\n-0.010985827540562288  -0.03300255953641679   ...\n"
-          }
-        ]
-      },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1652895443696_2050976825",
-      "id": "paragraph_1652895443696_2050976825",
-      "dateCreated": "2022-05-18 20:37:23.697",
-      "dateStarted": "2022-07-11 14:54:15.685",
-      "dateFinished": "2022-07-11 14:54:15.751",
-      "status": "FINISHED"
-    },
-    {
-      "text": "matrix.toArray",
-      "user": "anonymous",
-      "dateUpdated": "2022-07-11 14:54:15.785",
-      "progress": 0,
-      "config": {},
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "\u001b[1m\u001b[34mres60\u001b[0m: \u001b[1m\u001b[32mArray[Double]\u001b[0m \u003d Array(1.0, -0.13575515707704905, 0.780504770689084, -0.026525310066416643, 0.13116552936201348, -0.019944405497176732, 0.016657097778483475, -0.002841536593767456, 0.016929170875654043, -0.020559135165498028, -0.06586475313340742, -0.07815083273365253, -0.016568818333932693, -0.010985827540562288, -0.13575515707704905, 1.0, -0.11728062823959522, -0.032664177863511015, -0.010657501150598976, -0.02566496168277401, 0.06002070339266479, 0.0018723592997836101, 0.05981512203616065, -0.04794367154504479, 0.0070043054050316685, 0.025513406218718206, -0.019666216088456825, -0.03300255953641679, 0.780504770689084, -0.11728062823959522, 1.0, -0.017395648588812148, 0.17573226369307368, -0.018581210990133486, 0.01736017181943523, 0.002027784037740437,...\n"
-          }
-        ]
-      },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1652895462182_700686232",
-      "id": "paragraph_1652895462182_700686232",
-      "dateCreated": "2022-05-18 20:37:42.182",
-      "dateStarted": "2022-07-11 14:54:15.788",
-      "dateFinished": "2022-07-11 14:54:15.852",
-      "status": "FINISHED"
-    },
-    {
-      "text": "val corr2 \u003d matrix.toArray\n        .zip(numericColumnsPairs)\n        .map(cnn \u003d\u003e (cnn._2._1, cnn._2._2, cnn._1))\n        .filter(_._3 \u003c 1.0)\n        .filter(_._3 \u003e 0.6)\n        .map { p \u003d\u003e if (p._1 \u003c p._2) (p._1, p._2, p._3) else (p._2, p._1, p._3) }\n        .distinct",
-      "user": "anonymous",
-      "dateUpdated": "2022-07-11 14:54:15.888",
+      "dateUpdated": "2022-07-11 21:24:41.212",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -2245,6 +2137,49 @@
       "dateCreated": "2022-03-09 12:07:27.230",
       "dateStarted": "2022-07-11 14:54:16.206",
       "dateFinished": "2022-07-11 14:54:16.287",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n#### Оставляем числовые колонки с низкой кореляцией",
+      "user": "anonymous",
+      "dateUpdated": "2022-07-11 17:32:55.845",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch4\u003eОставляем числовые колонки с низкой кореляцией\u003c/h4\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1657549969945_908690787",
+      "id": "paragraph_1657549969945_908690787",
+      "dateCreated": "2022-07-11 17:32:49.945",
+      "dateStarted": "2022-07-11 17:32:55.846",
+      "dateFinished": "2022-07-11 17:32:55.853",
       "status": "FINISHED"
     },
     {
