@@ -1,0 +1,2858 @@
+{
+  "paragraphs": [
+    {
+      "text": "import org.graphframes._\n\nsc.setCheckpointDir(\"/tmp\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:11.847",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import org.graphframes._\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661078456851_734211070",
+      "id": "paragraph_1661078456851_734211070",
+      "dateCreated": "2022-08-21 13:40:56.851",
+      "dateStarted": "2022-08-22 13:47:11.851",
+      "dateFinished": "2022-08-22 13:47:12.014",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n# Creating GraphFrames\n\nUsers can create GraphFrames from vertex and edge DataFrames.\n\n* Vertex DataFrame: A vertex DataFrame should contain a special column named “id” which specifies unique IDs for each vertex in the graph.\n* Edge DataFrame: An edge DataFrame should contain two special columns: “src” (source vertex ID of edge) and “dst” (destination vertex ID of edge).\n\nBoth DataFrames can have arbitrary other columns. Those columns can represent vertex and edge attributes.\n\nA GraphFrame can also be constructed from a single DataFrame containing edge information. The vertices will be inferred from the sources and destinations of the edges.\n\nThe following example demonstrates how to create a GraphFrame from vertex and edge DataFrames. ",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:12.051",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003eCreating GraphFrames\u003c/h1\u003e\n\u003cp\u003eUsers can create GraphFrames from vertex and edge DataFrames.\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eVertex DataFrame: A vertex DataFrame should contain a special column named “id” which specifies unique IDs for each vertex in the graph.\u003c/li\u003e\n\u003cli\u003eEdge DataFrame: An edge DataFrame should contain two special columns: “src” (source vertex ID of edge) and “dst” (destination vertex ID of edge).\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eBoth DataFrames can have arbitrary other columns. Those columns can represent vertex and edge attributes.\u003c/p\u003e\n\u003cp\u003eA GraphFrame can also be constructed from a single DataFrame containing edge information. The vertices will be inferred from the sources and destinations of the edges.\u003c/p\u003e\n\u003cp\u003eThe following example demonstrates how to create a GraphFrame from vertex and edge DataFrames.\u003c/p\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661079056513_32502229",
+      "id": "paragraph_1661079056513_32502229",
+      "dateCreated": "2022-08-21 13:50:56.513",
+      "dateStarted": "2022-08-22 13:47:12.053",
+      "dateFinished": "2022-08-22 13:47:12.055",
+      "status": "FINISHED"
+    },
+    {
+      "text": "// Vertex DataFrame\nval v \u003d spark.createDataFrame(List(\n  (\"a\", \"Alice\", 34),\n  (\"b\", \"Bob\", 36),\n  (\"c\", \"Charlie\", 30),\n  (\"d\", \"David\", 29),\n  (\"e\", \"Esther\", 32),\n  (\"f\", \"Fanny\", 36),\n  (\"g\", \"Gabby\", 60)\n)).toDF(\"id\", \"name\", \"age\")\n\n// Edge DataFrame\nval e \u003d spark.createDataFrame(List(\n  (\"a\", \"b\", \"friend\"),\n  (\"b\", \"c\", \"follow\"),\n  (\"c\", \"b\", \"follow\"),\n  (\"f\", \"c\", \"follow\"),\n  (\"e\", \"f\", \"follow\"),\n  (\"e\", \"d\", \"friend\"),\n  (\"d\", \"a\", \"friend\"),\n  (\"a\", \"e\", \"friend\")\n)).toDF(\"src\", \"dst\", \"relationship\")\n\n// Create a GraphFrame\nval g \u003d GraphFrame(v, e)",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:12.152",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mv\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [id: string, name: string ... 1 more field]\n\u001b[1m\u001b[34me\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [src: string, dst: string ... 1 more field]\n\u001b[1m\u001b[34mg\u001b[0m: \u001b[1m\u001b[32morg.graphframes.GraphFrame\u001b[0m \u003d GraphFrame(v:[id: string, name: string ... 1 more field], e:[src: string, dst: string ... 1 more field])\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661078466406_2068008628",
+      "id": "paragraph_1661078466406_2068008628",
+      "dateCreated": "2022-08-21 13:41:06.406",
+      "dateStarted": "2022-08-22 13:47:12.154",
+      "dateFinished": "2022-08-22 13:47:12.440",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\nThe GraphFrame constructed above is available in the GraphFrames package:",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:12.454",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eThe GraphFrame constructed above is available in the GraphFrames package:\u003c/p\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661080233439_1789555500",
+      "id": "paragraph_1661080233439_1789555500",
+      "dateCreated": "2022-08-21 14:10:33.439",
+      "dateStarted": "2022-08-22 13:47:12.456",
+      "dateFinished": "2022-08-22 13:47:12.458",
+      "status": "FINISHED"
+    },
+    {
+      "text": "val g: GraphFrame \u003d examples.Graphs.friends",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:12.556",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mg\u001b[0m: \u001b[1m\u001b[32morg.graphframes.GraphFrame\u001b[0m \u003d GraphFrame(v:[id: string, name: string ... 1 more field], e:[src: string, dst: string ... 1 more field])\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661080240808_2066213120",
+      "id": "paragraph_1661080240808_2066213120",
+      "dateCreated": "2022-08-21 14:10:40.808",
+      "dateStarted": "2022-08-22 13:47:12.557",
+      "dateFinished": "2022-08-22 13:47:12.725",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n# Basic graph and DataFrame queries\n\nGraphFrames provide several simple graph queries, such as node degree.\n\nAlso, since GraphFrames represent graphs as pairs of vertex and edge DataFrames, it is easy to make powerful queries directly on the vertex and edge DataFrames. Those DataFrames are made available as vertices and edges fields in the GraphFrame.",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:12.757",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003eBasic graph and DataFrame queries\u003c/h1\u003e\n\u003cp\u003eGraphFrames provide several simple graph queries, such as node degree.\u003c/p\u003e\n\u003cp\u003eAlso, since GraphFrames represent graphs as pairs of vertex and edge DataFrames, it is easy to make powerful queries directly on the vertex and edge DataFrames. Those DataFrames are made available as vertices and edges fields in the GraphFrame.\u003c/p\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661078823372_977718370",
+      "id": "paragraph_1661078823372_977718370",
+      "dateCreated": "2022-08-21 13:47:03.372",
+      "dateStarted": "2022-08-22 13:47:12.759",
+      "dateFinished": "2022-08-22 13:47:12.761",
+      "status": "FINISHED"
+    },
+    {
+      "text": "// Display the vertex and edge DataFrames\ng.vertices.show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:12.859",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+-------+---+\n| id|   name|age|\n+---+-------+---+\n|  a|  Alice| 34|\n|  b|    Bob| 36|\n|  c|Charlie| 30|\n|  d|  David| 29|\n|  e| Esther| 32|\n|  f|  Fanny| 36|\n|  g|  Gabby| 60|\n+---+-------+---+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661079082186_1152371068",
+      "id": "paragraph_1661079082186_1152371068",
+      "dateCreated": "2022-08-21 13:51:22.186",
+      "dateStarted": "2022-08-22 13:47:12.861",
+      "dateFinished": "2022-08-22 13:47:13.090",
+      "status": "FINISHED"
+    },
+    {
+      "text": "g.edges.show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:13.161",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+---+------------+\n|src|dst|relationship|\n+---+---+------------+\n|  a|  b|      friend|\n|  b|  c|      follow|\n|  c|  b|      follow|\n|  f|  c|      follow|\n|  e|  f|      follow|\n|  e|  d|      friend|\n|  d|  a|      friend|\n|  a|  e|      friend|\n+---+---+------------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661079106741_1371684048",
+      "id": "paragraph_1661079106741_1371684048",
+      "dateCreated": "2022-08-21 13:51:46.741",
+      "dateStarted": "2022-08-22 13:47:13.162",
+      "dateFinished": "2022-08-22 13:47:13.328",
+      "status": "FINISHED"
+    },
+    {
+      "text": "// Get a DataFrame with columns \"id\" and \"inDeg\" (in-degree)\nval vertexInDegrees \u003d g.inDegrees\nvertexInDegrees.show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:13.362",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+--------+\n| id|inDegree|\n+---+--------+\n|  b|       2|\n|  c|       2|\n|  f|       1|\n|  d|       1|\n|  a|       1|\n|  e|       1|\n+---+--------+\n\n\u001b[1m\u001b[34mvertexInDegrees\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [id: string, inDegree: int]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1198"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1199"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661079156005_1880432732",
+      "id": "paragraph_1661079156005_1880432732",
+      "dateCreated": "2022-08-21 13:52:36.006",
+      "dateStarted": "2022-08-22 13:47:13.364",
+      "dateFinished": "2022-08-22 13:47:13.634",
+      "status": "FINISHED"
+    },
+    {
+      "text": "// Find the youngest user\u0027s age in the graph.\n// This queries the vertex DataFrame.\ng.vertices.groupBy().min(\"age\").show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:13.664",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------+\n|min(age)|\n+--------+\n|      29|\n+--------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1200"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1201"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661079189608_1655300916",
+      "id": "paragraph_1661079189608_1655300916",
+      "dateCreated": "2022-08-21 13:53:09.608",
+      "dateStarted": "2022-08-22 13:47:13.666",
+      "dateFinished": "2022-08-22 13:47:13.909",
+      "status": "FINISHED"
+    },
+    {
+      "text": "// Count the number of \"follows\" in the graph.\n// This queries the edge DataFrame.\nval numFollows \u003d g.edges.filter(\"relationship \u003d \u0027follow\u0027\").count()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:13.966",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mnumFollows\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m \u003d 4\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1202"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1203"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661079198418_1347332705",
+      "id": "paragraph_1661079198418_1347332705",
+      "dateCreated": "2022-08-21 13:53:18.418",
+      "dateStarted": "2022-08-22 13:47:13.968",
+      "dateFinished": "2022-08-22 13:47:14.243",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n# Motif finding\n\nMotif finding refers to searching for structural patterns in a graph.\n\nGraphFrame motif finding uses a simple Domain-Specific Language (DSL) for expressing structural queries. For example, graph.find(\"(a)-[e]-\u003e(b); (b)-[e2]-\u003e(a)\") will search for pairs of vertices a,b connected by edges in both directions. It will return a DataFrame of all such structures in the graph, with columns for each of the named elements (vertices or edges) in the motif. In this case, the returned columns will be “a, b, e, e2.”\n\nDSL for expressing structural patterns:\n\n* The basic unit of a pattern is an edge. For example, \"(a)-[e]-\u003e(b)\" expresses an edge e from vertex a to vertex b. Note that vertices are denoted by parentheses (a), while edges are denoted by square brackets [e].\n* A pattern is expressed as a union of edges. Edge patterns can be joined with semicolons. Motif \"(a)-[e]-\u003e(b); (b)-[e2]-\u003e(c)\" specifies two edges from a to b to c.\n* Within a pattern, names can be assigned to vertices and edges. For example, \"(a)-[e]-\u003e(b)\" has three named elements: vertices a,b and edge e. These names serve two purposes:\n    - The names can identify common elements among edges. For example, \"(a)-[e]-\u003e(b); (b)-[e2]-\u003e(c)\" specifies that the same vertex b is the destination of edge e and source of edge e2.\n    - The names are used as column names in the result DataFrame. If a motif contains named vertex a, then the result DataFrame will contain a column “a” which is a StructType with sub-fields equivalent to the schema (columns) of GraphFrame.vertices. Similarly, an edge e in a motif will produce a column “e” in the result DataFrame with sub-fields equivalent to the schema (columns) of GraphFrame.edges.\n    - Be aware that names do not identify distinct elements: two elements with different names may refer to the same graph element. For example, in the motif \"(a)-[e]-\u003e(b); (b)-[e2]-\u003e(c)\", the names a and c could refer to the same vertex. To restrict named elements to be distinct vertices or edges, use post-hoc filters such as resultDataframe.filter(\"a.id !\u003d c.id\").\n* It is acceptable to omit names for vertices or edges in motifs when not needed. E.g., \"(a)-[]-\u003e(b)\" expresses an edge between vertices a,b but does not assign a name to the edge. There will be no column for the anonymous edge in the result DataFrame. Similarly, \"(a)-[e]-\u003e()\" indicates an out-edge of vertex a but does not name the destination vertex. These are called anonymous vertices and edges.\n* An edge can be negated to indicate that the edge should not be present in the graph. E.g., \"(a)-[]-\u003e(b); !(b)-[]-\u003e(a)\" finds edges from a to b for which there is no edge from b to a.\n\nRestrictions:\n\n* Motifs are not allowed to contain edges without any named elements: \"()-[]-\u003e()\" and \"!()-[]-\u003e()\" are prohibited terms.\n* Motifs are not allowed to contain named edges within negated terms (since these named edges would never appear within results). E.g., \"!(a)-[ab]-\u003e(b)\" is invalid, but \"!(a)-[]-\u003e(b)\" is valid.\n\nMore complex queries, such as queries which operate on vertex or edge attributes, can be expressed by applying filters to the result DataFrame.\n\nThis can return duplicate rows. E.g., a query \"(u)-[]-\u003e()\" will return a result for each matching edge, even if those edges share the same vertex u.",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:14.268",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003eMotif finding\u003c/h1\u003e\n\u003cp\u003eMotif finding refers to searching for structural patterns in a graph.\u003c/p\u003e\n\u003cp\u003eGraphFrame motif finding uses a simple Domain-Specific Language (DSL) for expressing structural queries. For example, graph.find(\u0026ldquo;(a)-[e]-\u0026gt;(b); (b)-[e2]-\u0026gt;(a)\u0026rdquo;) will search for pairs of vertices a,b connected by edges in both directions. It will return a DataFrame of all such structures in the graph, with columns for each of the named elements (vertices or edges) in the motif. In this case, the returned columns will be “a, b, e, e2.”\u003c/p\u003e\n\u003cp\u003eDSL for expressing structural patterns:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eThe basic unit of a pattern is an edge. For example, \u0026ldquo;(a)-[e]-\u0026gt;(b)\u0026rdquo; expresses an edge e from vertex a to vertex b. Note that vertices are denoted by parentheses (a), while edges are denoted by square brackets [e].\u003c/li\u003e\n\u003cli\u003eA pattern is expressed as a union of edges. Edge patterns can be joined with semicolons. Motif \u0026ldquo;(a)-[e]-\u0026gt;(b); (b)-[e2]-\u0026gt;(c)\u0026rdquo; specifies two edges from a to b to c.\u003c/li\u003e\n\u003cli\u003eWithin a pattern, names can be assigned to vertices and edges. For example, \u0026ldquo;(a)-[e]-\u0026gt;(b)\u0026rdquo; has three named elements: vertices a,b and edge e. These names serve two purposes:\n\u003cul\u003e\n\u003cli\u003eThe names can identify common elements among edges. For example, \u0026ldquo;(a)-[e]-\u0026gt;(b); (b)-[e2]-\u0026gt;(c)\u0026rdquo; specifies that the same vertex b is the destination of edge e and source of edge e2.\u003c/li\u003e\n\u003cli\u003eThe names are used as column names in the result DataFrame. If a motif contains named vertex a, then the result DataFrame will contain a column “a” which is a StructType with sub-fields equivalent to the schema (columns) of GraphFrame.vertices. Similarly, an edge e in a motif will produce a column “e” in the result DataFrame with sub-fields equivalent to the schema (columns) of GraphFrame.edges.\u003c/li\u003e\n\u003cli\u003eBe aware that names do not identify distinct elements: two elements with different names may refer to the same graph element. For example, in the motif \u0026ldquo;(a)-[e]-\u0026gt;(b); (b)-[e2]-\u0026gt;(c)\u0026rdquo;, the names a and c could refer to the same vertex. To restrict named elements to be distinct vertices or edges, use post-hoc filters such as resultDataframe.filter(\u0026ldquo;a.id !\u003d c.id\u0026rdquo;).\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003eIt is acceptable to omit names for vertices or edges in motifs when not needed. E.g., \u0026ldquo;(a)-[]-\u0026gt;(b)\u0026rdquo; expresses an edge between vertices a,b but does not assign a name to the edge. There will be no column for the anonymous edge in the result DataFrame. Similarly, \u0026ldquo;(a)-[e]-\u0026gt;()\u0026rdquo; indicates an out-edge of vertex a but does not name the destination vertex. These are called anonymous vertices and edges.\u003c/li\u003e\n\u003cli\u003eAn edge can be negated to indicate that the edge should not be present in the graph. E.g., \u0026ldquo;(a)-[]-\u0026gt;(b); !(b)-[]-\u0026gt;(a)\u0026rdquo; finds edges from a to b for which there is no edge from b to a.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eRestrictions:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eMotifs are not allowed to contain edges without any named elements: \u0026ldquo;()-[]-\u0026gt;()\u0026rdquo; and \u0026ldquo;!()-[]-\u0026gt;()\u0026rdquo; are prohibited terms.\u003c/li\u003e\n\u003cli\u003eMotifs are not allowed to contain named edges within negated terms (since these named edges would never appear within results). E.g., \u0026ldquo;!(a)-[ab]-\u0026gt;(b)\u0026rdquo; is invalid, but \u0026ldquo;!(a)-[]-\u0026gt;(b)\u0026rdquo; is valid.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eMore complex queries, such as queries which operate on vertex or edge attributes, can be expressed by applying filters to the result DataFrame.\u003c/p\u003e\n\u003cp\u003eThis can return duplicate rows. E.g., a query \u0026ldquo;(u)-[]-\u0026gt;()\u0026rdquo; will return a result for each matching edge, even if those edges share the same vertex u.\u003c/p\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661079268862_903759557",
+      "id": "paragraph_1661079268862_903759557",
+      "dateCreated": "2022-08-21 13:54:28.862",
+      "dateStarted": "2022-08-22 13:47:14.270",
+      "dateFinished": "2022-08-22 13:47:14.276",
+      "status": "FINISHED"
+    },
+    {
+      "text": "// Search for pairs of vertices with edges in both directions between them.\nval motifs \u003d g.find(\"(a)-[e]-\u003e(b); (b)-[e2]-\u003e(a)\")\nmotifs.show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:14.370",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----------------+--------------+----------------+--------------+\n|               a|             e|               b|            e2|\n+----------------+--------------+----------------+--------------+\n|    {b, Bob, 36}|{b, c, follow}|{c, Charlie, 30}|{c, b, follow}|\n|{c, Charlie, 30}|{c, b, follow}|    {b, Bob, 36}|{b, c, follow}|\n+----------------+--------------+----------------+--------------+\n\n\u001b[1m\u001b[34mmotifs\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [a: struct\u003cid: string, name: string ... 1 more field\u003e, e: struct\u003csrc: string, dst: string ... 1 more field\u003e ... 2 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1206"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1207"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1208"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661079336266_1733008396",
+      "id": "paragraph_1661079336266_1733008396",
+      "dateCreated": "2022-08-21 13:55:36.266",
+      "dateStarted": "2022-08-22 13:47:14.371",
+      "dateFinished": "2022-08-22 13:47:14.652",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\nMany motif queries are stateless and simple to express, as in the examples above. The next examples demonstrate more complex queries which carry state along a path in the motif. These queries can be expressed by combining GraphFrame motif finding with filters on the result, where the filters use sequence operations to construct a series of DataFrame Columns.\n\nFor example, suppose one wishes to identify a chain of 4 vertices with some property defined by a sequence of functions. That is, among chains of 4 vertices a-\u003eb-\u003ec-\u003ed, identify the subset of chains matching this complex filter:\n\n* Initialize state on path.\n* Update state based on vertex a.\n* Update state based on vertex b.\n* Etc. for c and d.\n* If final state matches some condition, then the chain is accepted by the filter.\n\nThe below code snippets demonstrate this process, where we identify chains of 4 vertices such that at least 2 of the 3 edges are “friend” relationships. In this example, the state is the current count of “friend” edges; in general, it could be any DataFrame Column.",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:14.671",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eMany motif queries are stateless and simple to express, as in the examples above. The next examples demonstrate more complex queries which carry state along a path in the motif. These queries can be expressed by combining GraphFrame motif finding with filters on the result, where the filters use sequence operations to construct a series of DataFrame Columns.\u003c/p\u003e\n\u003cp\u003eFor example, suppose one wishes to identify a chain of 4 vertices with some property defined by a sequence of functions. That is, among chains of 4 vertices a-\u0026gt;b-\u0026gt;c-\u0026gt;d, identify the subset of chains matching this complex filter:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eInitialize state on path.\u003c/li\u003e\n\u003cli\u003eUpdate state based on vertex a.\u003c/li\u003e\n\u003cli\u003eUpdate state based on vertex b.\u003c/li\u003e\n\u003cli\u003eEtc. for c and d.\u003c/li\u003e\n\u003cli\u003eIf final state matches some condition, then the chain is accepted by the filter.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eThe below code snippets demonstrate this process, where we identify chains of 4 vertices such that at least 2 of the 3 edges are “friend” relationships. In this example, the state is the current count of “friend” edges; in general, it could be any DataFrame Column.\u003c/p\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661080438025_225264804",
+      "id": "paragraph_1661080438025_225264804",
+      "dateCreated": "2022-08-21 14:13:58.025",
+      "dateStarted": "2022-08-22 13:47:14.673",
+      "dateFinished": "2022-08-22 13:47:14.677",
+      "status": "FINISHED"
+    },
+    {
+      "text": "// More complex queries can be expressed by applying filters.\nmotifs.filter(\"b.age \u003e 30\").show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:14.773",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----------------+--------------+------------+--------------+\n|               a|             e|           b|            e2|\n+----------------+--------------+------------+--------------+\n|{c, Charlie, 30}|{c, b, follow}|{b, Bob, 36}|{b, c, follow}|\n+----------------+--------------+------------+--------------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1212"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1213"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1214"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661079396356_1100352779",
+      "id": "paragraph_1661079396356_1100352779",
+      "dateCreated": "2022-08-21 13:56:36.356",
+      "dateStarted": "2022-08-22 13:47:14.775",
+      "dateFinished": "2022-08-22 13:47:15.018",
+      "status": "FINISHED"
+    },
+    {
+      "text": "import org.apache.spark.sql.Column\nimport org.apache.spark.sql.functions.{col, when}\n\n// Find chains of 4 vertices.\nval chain4 \u003d g.find(\"(a)-[ab]-\u003e(b); (b)-[bc]-\u003e(c); (c)-[cd]-\u003e(d)\")\n\n// Query on sequence, with state (cnt)\n//  (a) Define method for updating state given the next element of the motif.\ndef sumFriends(cnt: Column, relationship: Column): Column \u003d {\n  when(relationship \u003d\u003d\u003d \"friend\", cnt + 1).otherwise(cnt)\n}\n\n//  (b) Use sequence operation to apply method to sequence of elements in motif.\n//      In this case, the elements are the 3 edges.\nval condition \u003d { Seq(\"ab\", \"bc\", \"cd\")\n  .foldLeft(lit(0))((cnt, e) \u003d\u003e sumFriends(cnt, col(e)(\"relationship\"))) }\n\n//  (c) Apply filter to DataFrame.\nval chainWith2Friends2 \u003d chain4.where(condition \u003e\u003d 2)\nchainWith2Friends2.show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:15.075",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---------------+--------------+---------------+--------------+---------------+--------------+----------------+\n|              a|            ab|              b|            bc|              c|            cd|               d|\n+---------------+--------------+---------------+--------------+---------------+--------------+----------------+\n|{e, Esther, 32}|{e, d, friend}| {d, David, 29}|{d, a, friend}| {a, Alice, 34}|{a, e, friend}| {e, Esther, 32}|\n|{e, Esther, 32}|{e, d, friend}| {d, David, 29}|{d, a, friend}| {a, Alice, 34}|{a, b, friend}|    {b, Bob, 36}|\n| {d, David, 29}|{d, a, friend}| {a, Alice, 34}|{a, e, friend}|{e, Esther, 32}|{e, d, friend}|  {d, David, 29}|\n| {d, David, 29}|{d, a, friend}| {a, Alice, 34}|{a, e, friend}|{e, Esther, 32}|{e, f, follow}|  {f, Fanny, 36}|\n| {d, David, 29}|{d, a, friend}| {a, Alice, 34}|{a, b, friend}|   {b, Bob, 36}|{b, c, follow}|{c, Charlie, 30}|\n| {a, Alice, 34}|{a, e, friend}|{e, Esther, 32}|{e, d, friend}| {d, David, 29}|{d, a, friend}|  {a, Alice, 34}|\n+---------------+--------------+---------------+--------------+---------------+--------------+----------------+\n\nimport org.apache.spark.sql.Column\nimport org.apache.spark.sql.functions.{col, when}\n\u001b[1m\u001b[34mchain4\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [a: struct\u003cid: string, name: string ... 1 more field\u003e, ab: struct\u003csrc: string, dst: string ... 1 more field\u003e ... 5 more fields]\n\u001b[1m\u001b[34msumFriends\u001b[0m: \u001b[1m\u001b[32m(cnt: org.apache.spark.sql.Column, relationship: org.apache.spark.sql.Column)org.apache.spark.sql.Column\u001b[0m\n\u001b[1m\u001b[34mcondition\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Column\u001b[0m \u003d CASE WHEN (cd[relationship] \u003d friend) THEN (CASE WHEN (bc[relationship] \u003d friend) THEN (CASE WHEN (ab[relationship] \u003d friend) THEN (0 + 1) ELSE 0 END + 1) ELSE CASE WHEN (ab[relationship] \u003d friend) THEN (0 + 1) ELSE 0 END END + 1) ELSE CASE WHEN (bc[relationship] \u003d friend) THEN (CASE WHEN (ab[relationship]...\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1217"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1218"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1219"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661079434697_855260781",
+      "id": "paragraph_1661079434697_855260781",
+      "dateCreated": "2022-08-21 13:57:14.697",
+      "dateStarted": "2022-08-22 13:47:15.077",
+      "dateFinished": "2022-08-22 13:47:15.454",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\nThe above example demonstrated a stateful motif for a fixed-length chain. Currently, in order to search for variable-length motifs, users need to run one query for each possible length. However, the above query patterns allow users to re-use the same code for each length, with the only change being to update the sequence of motif elements (“ab”, “bc”, “cd” above).",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:15.477",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eThe above example demonstrated a stateful motif for a fixed-length chain. Currently, in order to search for variable-length motifs, users need to run one query for each possible length. However, the above query patterns allow users to re-use the same code for each length, with the only change being to update the sequence of motif elements (“ab”, “bc”, “cd” above).\u003c/p\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661080479964_1230384211",
+      "id": "paragraph_1661080479964_1230384211",
+      "dateCreated": "2022-08-21 14:14:39.964",
+      "dateStarted": "2022-08-22 13:47:15.480",
+      "dateFinished": "2022-08-22 13:47:15.482",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n# Subgraphs\n\nIn GraphX, the subgraph() method takes an edge triplet (edge, src vertex, and dst vertex, plus attributes) and allows the user to select a subgraph based on triplet and vertex filters.\n\nGraphFrames provide an even more powerful way to select subgraphs based on a combination of motif finding and DataFrame filters. We provide three helper methods for subgraph selection. filterVertices(condition), filterEdges(condition), and dropIsolatedVertices().",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:15.579",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003eSubgraphs\u003c/h1\u003e\n\u003cp\u003eIn GraphX, the subgraph() method takes an edge triplet (edge, src vertex, and dst vertex, plus attributes) and allows the user to select a subgraph based on triplet and vertex filters.\u003c/p\u003e\n\u003cp\u003eGraphFrames provide an even more powerful way to select subgraphs based on a combination of motif finding and DataFrame filters. We provide three helper methods for subgraph selection. filterVertices(condition), filterEdges(condition), and dropIsolatedVertices().\u003c/p\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661079494782_814469603",
+      "id": "paragraph_1661079494782_814469603",
+      "dateCreated": "2022-08-21 13:58:14.783",
+      "dateStarted": "2022-08-22 13:47:15.582",
+      "dateFinished": "2022-08-22 13:47:15.585",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n**Simple subgraph: vertex and edge filters:** The following example shows how to select a subgraph based upon vertex and edge filters.",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:15.682",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003cstrong\u003eSimple subgraph: vertex and edge filters:\u003c/strong\u003e The following example shows how to select a subgraph based upon vertex and edge filters.\u003c/p\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661079619669_1259075502",
+      "id": "paragraph_1661079619669_1259075502",
+      "dateCreated": "2022-08-21 14:00:19.669",
+      "dateStarted": "2022-08-22 13:47:15.684",
+      "dateFinished": "2022-08-22 13:47:15.687",
+      "status": "FINISHED"
+    },
+    {
+      "text": "// Select subgraph of users older than 30, and relationships of type \"friend\".\n// Drop isolated vertices (users) which are not contained in any edges (relationships).\n\nval g1 \u003d g.filterVertices(\"age \u003e 30\").filterEdges(\"relationship \u003d \u0027friend\u0027\").dropIsolatedVertices()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:15.784",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mg1\u001b[0m: \u001b[1m\u001b[32morg.graphframes.GraphFrame\u001b[0m \u003d GraphFrame(v:[id: string, name: string ... 1 more field], e:[src: string, dst: string ... 1 more field])\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661079561234_1167408710",
+      "id": "paragraph_1661079561234_1167408710",
+      "dateCreated": "2022-08-21 13:59:21.234",
+      "dateStarted": "2022-08-22 13:47:15.786",
+      "dateFinished": "2022-08-22 13:47:15.954",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n**Complex subgraph: triplet filters:** The following example shows how to select a subgraph based upon triplet filters which operate on an edge and its src and dst vertices. This example could be extended to go beyond triplets by using more complex motifs.",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:15.985",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003cstrong\u003eComplex subgraph: triplet filters:\u003c/strong\u003e The following example shows how to select a subgraph based upon triplet filters which operate on an edge and its src and dst vertices. This example could be extended to go beyond triplets by using more complex motifs.\u003c/p\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661079574963_1899555761",
+      "id": "paragraph_1661079574963_1899555761",
+      "dateCreated": "2022-08-21 13:59:34.963",
+      "dateStarted": "2022-08-22 13:47:15.987",
+      "dateFinished": "2022-08-22 13:47:15.989",
+      "status": "FINISHED"
+    },
+    {
+      "text": "// Select subgraph based on edges \"e\" of type \"follow\"\n// pointing from a younger user \"a\" to an older user \"b\".\nval paths \u003d { g.find(\"(a)-[e]-\u003e(b)\")\n  .filter(\"e.relationship \u003d \u0027follow\u0027\")\n  .filter(\"a.age \u003c b.age\") }\n  \n// \"paths\" contains vertex info. Extract the edges.\nval e2 \u003d paths.select(\"e.src\", \"e.dst\", \"e.relationship\")\n\n// In Spark 1.5+, the user may simplify this call:\n//  val e2 \u003d paths.select(\"e.*\")\n\n// Construct the subgraph\nval g2 \u003d GraphFrame(g.vertices, e2)",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:16.087",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mpaths\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m \u003d [a: struct\u003cid: string, name: string ... 1 more field\u003e, e: struct\u003csrc: string, dst: string ... 1 more field\u003e ... 1 more field]\n\u001b[1m\u001b[34me2\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [src: string, dst: string ... 1 more field]\n\u001b[1m\u001b[34mg2\u001b[0m: \u001b[1m\u001b[32morg.graphframes.GraphFrame\u001b[0m \u003d GraphFrame(v:[id: string, name: string ... 1 more field], e:[src: string, dst: string ... 1 more field])\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661079640936_372424853",
+      "id": "paragraph_1661079640936_372424853",
+      "dateCreated": "2022-08-21 14:00:40.936",
+      "dateStarted": "2022-08-22 13:47:16.089",
+      "dateFinished": "2022-08-22 13:47:16.346",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n# Graph algorithms\n\nGraphFrames provides the same suite of standard graph algorithms as GraphX, plus some new ones. We provide brief descriptions and code snippets below. See the API docs for more details.\n\nSome of the algorithms are currently wrappers around GraphX implementations, so they may not be more scalable than GraphX. More algorithms will be migrated to native GraphFrames implementations in the future.",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:16.389",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003eGraph algorithms\u003c/h1\u003e\n\u003cp\u003eGraphFrames provides the same suite of standard graph algorithms as GraphX, plus some new ones. We provide brief descriptions and code snippets below. See the API docs for more details.\u003c/p\u003e\n\u003cp\u003eSome of the algorithms are currently wrappers around GraphX implementations, so they may not be more scalable than GraphX. More algorithms will be migrated to native GraphFrames implementations in the future.\u003c/p\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661079719180_1876369053",
+      "id": "paragraph_1661079719180_1876369053",
+      "dateCreated": "2022-08-21 14:01:59.180",
+      "dateStarted": "2022-08-22 13:47:16.391",
+      "dateFinished": "2022-08-22 13:47:16.394",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n## Breadth-first search (BFS)\n\nBreadth-first search (BFS) finds the shortest path(s) from one vertex (or a set of vertices) to another vertex (or a set of vertices). The beginning and end vertices are specified as Spark DataFrame expressions.\n\nSee [Wikipedia on BFS](https://en.wikipedia.org/wiki/Breadth-first_search) for more background.\n\nThe following code snippets uses BFS to find path between vertex with name \"Esther\" to a vertex with age \u003c 32.\n\nFor API details, refer to the API docs.",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:16.491",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eBreadth-first search (BFS)\u003c/h2\u003e\n\u003cp\u003eBreadth-first search (BFS) finds the shortest path(s) from one vertex (or a set of vertices) to another vertex (or a set of vertices). The beginning and end vertices are specified as Spark DataFrame expressions.\u003c/p\u003e\n\u003cp\u003eSee \u003ca href\u003d\"https://en.wikipedia.org/wiki/Breadth-first_search\"\u003eWikipedia on BFS\u003c/a\u003e for more background.\u003c/p\u003e\n\u003cp\u003eThe following code snippets uses BFS to find path between vertex with name \u0026ldquo;Esther\u0026rdquo; to a vertex with age \u0026lt; 32.\u003c/p\u003e\n\u003cp\u003eFor API details, refer to the API docs.\u003c/p\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661079785938_953327562",
+      "id": "paragraph_1661079785938_953327562",
+      "dateCreated": "2022-08-21 14:03:05.938",
+      "dateStarted": "2022-08-22 13:47:16.493",
+      "dateFinished": "2022-08-22 13:47:16.495",
+      "status": "FINISHED"
+    },
+    {
+      "text": "// Search from \"Esther\" for users of age \u003c 32.\nval paths \u003d g.bfs.fromExpr(\"name \u003d \u0027Esther\u0027\").toExpr(\"age \u003c 32\").run()\npaths.show()\n\n// Specify edge filters or max path lengths.\n{ g.bfs.fromExpr(\"name \u003d \u0027Esther\u0027\").toExpr(\"age \u003c 32\")\n  .edgeFilter(\"relationship !\u003d \u0027friend\u0027\")\n  .maxPathLength(3).run() }",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:16.592",
+      "progress": 100,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---------------+--------------+--------------+\n|           from|            e0|            to|\n+---------------+--------------+--------------+\n|{e, Esther, 32}|{e, d, friend}|{d, David, 29}|\n+---------------+--------------+--------------+\n\n\u001b[1m\u001b[34mpaths\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [from: struct\u003cid: string, name: string ... 1 more field\u003e, e0: struct\u003csrc: string, dst: string ... 1 more field\u003e ... 1 more field]\n\u001b[1m\u001b[34mres135\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [from: struct\u003cid: string, name: string ... 1 more field\u003e, e0: struct\u003csrc: string, dst: string ... 1 more field\u003e ... 3 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1222"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1223"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1224"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1227"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1230"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1231"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1237"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1238"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661079859266_108954637",
+      "id": "paragraph_1661079859266_108954637",
+      "dateCreated": "2022-08-21 14:04:19.266",
+      "dateStarted": "2022-08-22 13:47:16.594",
+      "dateFinished": "2022-08-22 13:47:17.286",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n## Connected components\n\nComputes the connected component membership of each vertex and returns a graph with each vertex assigned a component ID.\n\nSee [Wikipedia](https://en.wikipedia.org/wiki/Connected_component_(graph_theory)) for background.\n\nNOTE: With GraphFrames 0.3.0 and later releases, the default Connected Components algorithm requires setting a Spark checkpoint directory. Users can revert to the old algorithm using ``connectedComponents.setAlgorithm(\"graphx\")``.",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:17.295",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eConnected components\u003c/h2\u003e\n\u003cp\u003eComputes the connected component membership of each vertex and returns a graph with each vertex assigned a component ID.\u003c/p\u003e\n\u003cp\u003eSee \u003ca href\u003d\"https://en.wikipedia.org/wiki/Connected_component_(graph_theory)\"\u003eWikipedia\u003c/a\u003e for background.\u003c/p\u003e\n\u003cp\u003eNOTE: With GraphFrames 0.3.0 and later releases, the default Connected Components algorithm requires setting a Spark checkpoint directory. Users can revert to the old algorithm using \u003ccode\u003econnectedComponents.setAlgorithm(\u0026quot;graphx\u0026quot;)\u003c/code\u003e.\u003c/p\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661079896666_539822853",
+      "id": "paragraph_1661079896666_539822853",
+      "dateCreated": "2022-08-21 14:04:56.666",
+      "dateStarted": "2022-08-22 13:47:17.297",
+      "dateFinished": "2022-08-22 13:47:17.299",
+      "status": "FINISHED"
+    },
+    {
+      "text": "val result \u003d g.connectedComponents.run()\nresult.select(\"id\", \"component\").orderBy(\"component\").show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:17.397",
+      "progress": 100,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+------------+\n| id|   component|\n+---+------------+\n|  g|146028888064|\n|  a|412316860416|\n|  c|412316860416|\n|  d|412316860416|\n|  b|412316860416|\n|  f|412316860416|\n|  e|412316860416|\n+---+------------+\n\n\u001b[1m\u001b[34mresult\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [id: string, name: string ... 2 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1239"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1240"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1241"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1242"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1243"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1244"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1245"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1246"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1247"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1248"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1250"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1251"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1252"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1253"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1254"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1257"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661079928469_857307467",
+      "id": "paragraph_1661079928469_857307467",
+      "dateCreated": "2022-08-21 14:05:28.469",
+      "dateStarted": "2022-08-22 13:47:17.399",
+      "dateFinished": "2022-08-22 13:47:22.602",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n## Strongly connected components\n\nCompute the strongly connected component (SCC) of each vertex and return a graph with each vertex assigned to the SCC containing that vertex.\n\nSee [Wikipedia](https://en.wikipedia.org/wiki/Strongly_connected_component) for background.",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:22.603",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eStrongly connected components\u003c/h2\u003e\n\u003cp\u003eCompute the strongly connected component (SCC) of each vertex and return a graph with each vertex assigned to the SCC containing that vertex.\u003c/p\u003e\n\u003cp\u003eSee \u003ca href\u003d\"https://en.wikipedia.org/wiki/Strongly_connected_component\"\u003eWikipedia\u003c/a\u003e for background.\u003c/p\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661079956595_1477332102",
+      "id": "paragraph_1661079956595_1477332102",
+      "dateCreated": "2022-08-21 14:05:56.595",
+      "dateStarted": "2022-08-22 13:47:22.606",
+      "dateFinished": "2022-08-22 13:47:22.608",
+      "status": "FINISHED"
+    },
+    {
+      "text": "val result \u003d g.stronglyConnectedComponents.maxIter(10).run()\nresult.select(\"id\", \"component\").orderBy(\"component\").show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:22.706",
+      "progress": 2,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+-------------+\n| id|    component|\n+---+-------------+\n|  g| 146028888064|\n|  f| 412316860416|\n|  a| 670014898176|\n|  d| 670014898176|\n|  e| 670014898176|\n|  c|1047972020224|\n|  b|1047972020224|\n+---+-------------+\n\n\u001b[1m\u001b[34mresult\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [id: string, name: string ... 2 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1262"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1263"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1264"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1265"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1266"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1267"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1268"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1269"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1270"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1271"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1272"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1273"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1274"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1275"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1276"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1277"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1278"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1279"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1280"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1281"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1282"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1283"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1284"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1285"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1286"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1287"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1288"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1289"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1290"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1291"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1292"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1293"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1294"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1295"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1296"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1297"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1298"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1299"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1300"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1301"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1302"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1303"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1304"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1305"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1306"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1307"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1308"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1309"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1310"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1313"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661080092985_634767465",
+      "id": "paragraph_1661080092985_634767465",
+      "dateCreated": "2022-08-21 14:08:12.986",
+      "dateStarted": "2022-08-22 13:47:22.707",
+      "dateFinished": "2022-08-22 13:47:25.327",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n## Label Propagation Algorithm (LPA)\n\nRun static Label Propagation Algorithm for detecting communities in networks.\n\nEach node in the network is initially assigned to its own community. At every superstep, nodes send their community affiliation to all neighbors and update their state to the mode community affiliation of incoming messages.\n\nLPA is a standard community detection algorithm for graphs. It is very inexpensive computationally, although (1) convergence is not guaranteed and (2) one can end up with trivial solutions (all nodes are identified into a single community).\n\nSee [Wikipedia](https://en.wikipedia.org/wiki/Label_Propagation_Algorithm) for background.",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:25.409",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eLabel Propagation Algorithm (LPA)\u003c/h2\u003e\n\u003cp\u003eRun static Label Propagation Algorithm for detecting communities in networks.\u003c/p\u003e\n\u003cp\u003eEach node in the network is initially assigned to its own community. At every superstep, nodes send their community affiliation to all neighbors and update their state to the mode community affiliation of incoming messages.\u003c/p\u003e\n\u003cp\u003eLPA is a standard community detection algorithm for graphs. It is very inexpensive computationally, although (1) convergence is not guaranteed and (2) one can end up with trivial solutions (all nodes are identified into a single community).\u003c/p\u003e\n\u003cp\u003eSee \u003ca href\u003d\"https://en.wikipedia.org/wiki/Label_Propagation_Algorithm\"\u003eWikipedia\u003c/a\u003e for background.\u003c/p\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661080106551_755532236",
+      "id": "paragraph_1661080106551_755532236",
+      "dateCreated": "2022-08-21 14:08:26.551",
+      "dateStarted": "2022-08-22 13:47:25.411",
+      "dateFinished": "2022-08-22 13:47:25.413",
+      "status": "FINISHED"
+    },
+    {
+      "text": "val result \u003d g.labelPropagation.maxIter(5).run()\nresult.select(\"id\", \"label\").show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:25.511",
+      "progress": 18,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+-------------+\n| id|        label|\n+---+-------------+\n|  b|1047972020224|\n|  e|1460288880640|\n|  a|1460288880640|\n|  f|1460288880640|\n|  g| 146028888064|\n|  d|1460288880640|\n|  c|1382979469312|\n+---+-------------+\n\n\u001b[1m\u001b[34mresult\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [id: string, name: string ... 2 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1314"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1315"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1316"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1317"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1318"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1319"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1322"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1323"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1324"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661080136173_1002235700",
+      "id": "paragraph_1661080136173_1002235700",
+      "dateCreated": "2022-08-21 14:08:56.173",
+      "dateStarted": "2022-08-22 13:47:25.512",
+      "dateFinished": "2022-08-22 13:47:26.304",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n## PageRank\n\nThere are two implementations of PageRank.\n\n* The first one uses the org.apache.spark.graphx.graph interface with aggregateMessages and runs PageRank for a fixed number of iterations. This can be executed by setting maxIter.\n* The second implementation uses the org.apache.spark.graphx.Pregel interface and runs PageRank until convergence and this can be run by setting tol.\n\nBoth implementations support non-personalized and personalized PageRank, where setting a sourceId personalizes the results for that vertex.\n\nSee [Wikipedia](https://en.wikipedia.org/wiki/PageRank) for background.",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:26.313",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003ePageRank\u003c/h2\u003e\n\u003cp\u003eThere are two implementations of PageRank.\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eThe first one uses the org.apache.spark.graphx.graph interface with aggregateMessages and runs PageRank for a fixed number of iterations. This can be executed by setting maxIter.\u003c/li\u003e\n\u003cli\u003eThe second implementation uses the org.apache.spark.graphx.Pregel interface and runs PageRank until convergence and this can be run by setting tol.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eBoth implementations support non-personalized and personalized PageRank, where setting a sourceId personalizes the results for that vertex.\u003c/p\u003e\n\u003cp\u003eSee \u003ca href\u003d\"https://en.wikipedia.org/wiki/PageRank\"\u003eWikipedia\u003c/a\u003e for background.\u003c/p\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661080842535_1904800827",
+      "id": "paragraph_1661080842535_1904800827",
+      "dateCreated": "2022-08-21 14:20:42.536",
+      "dateStarted": "2022-08-22 13:47:26.314",
+      "dateFinished": "2022-08-22 13:47:26.316",
+      "status": "FINISHED"
+    },
+    {
+      "text": "// Run PageRank until convergence to tolerance \"tol\".\nval results \u003d g.pageRank.resetProbability(0.15).tol(0.01).run()\n\n// Display resulting pageranks and final edge weights\n// Note that the displayed pagerank may be truncated, e.g., missing the E notation.\n// In Spark 1.5+, you can use show(truncate\u003dfalse) to avoid truncation.\nresults.vertices.select(\"id\", \"pagerank\").show()\nresults.edges.select(\"src\", \"dst\", \"weight\").show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:26.414",
+      "progress": 1,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "editorHide": false,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 85.0,
+              "optionOpen": false
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+-------------------+\n| id|           pagerank|\n+---+-------------------+\n|  b|  2.655507832863289|\n|  e|0.37085233187676075|\n|  a|0.44910633706538744|\n|  f| 0.3283606792049851|\n|  g| 0.1799821386239711|\n|  d| 0.3283606792049851|\n|  c| 2.6878300011606218|\n+---+-------------------+\n\n+---+---+------+\n|src|dst|weight|\n+---+---+------+\n|  f|  c|   1.0|\n|  e|  f|   0.5|\n|  e|  d|   0.5|\n|  d|  a|   1.0|\n|  c|  b|   1.0|\n|  b|  c|   1.0|\n|  a|  e|   0.5|\n|  a|  b|   0.5|\n+---+---+------+\n\n\u001b[1m\u001b[34mresults\u001b[0m: \u001b[1m\u001b[32morg.graphframes.GraphFrame\u001b[0m \u003d GraphFrame(v:[id: string, name: string ... 2 more fields], e:[src: string, dst: string ... 2 more fields])\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1325"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1326"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1327"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1328"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1329"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1330"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1331"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1332"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1333"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1334"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1335"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1336"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1337"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1338"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1339"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1340"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1341"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1342"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1343"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1344"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1345"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1346"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1347"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1348"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1349"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1350"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1351"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1352"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1353"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1356"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1357"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1358"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1361"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1363"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1364"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661080892069_1555908410",
+      "id": "paragraph_1661080892069_1555908410",
+      "dateCreated": "2022-08-21 14:21:32.069",
+      "dateStarted": "2022-08-22 13:47:26.417",
+      "dateFinished": "2022-08-22 13:47:29.170",
+      "status": "FINISHED"
+    },
+    {
+      "text": "// Run PageRank for a fixed number of iterations.\nval results2 \u003d g.pageRank.resetProbability(0.15).maxIter(10).run()\n\nresults2.vertices.show()\nresults2.edges.show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:29.224",
+      "progress": 4,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+-------+---+-------------------+\n| id|   name|age|           pagerank|\n+---+-------+---+-------------------+\n|  b|    Bob| 36| 2.7025217677349773|\n|  e| Esther| 32| 0.3613490987992571|\n|  a|  Alice| 34| 0.4485115093698443|\n|  f|  Fanny| 36|0.32504910549694244|\n|  g|  Gabby| 60|0.17073170731707318|\n|  d|  David| 29|0.32504910549694244|\n|  c|Charlie| 30| 2.6667877057849627|\n+---+-------+---+-------------------+\n\n+---+---+------------+------+\n|src|dst|relationship|weight|\n+---+---+------------+------+\n|  f|  c|      follow|   1.0|\n|  e|  f|      follow|   0.5|\n|  e|  d|      friend|   0.5|\n|  d|  a|      friend|   1.0|\n|  c|  b|      follow|   1.0|\n|  b|  c|      follow|   1.0|\n|  a|  e|      friend|   0.5|\n|  a|  b|      friend|   0.5|\n+---+---+------------+------+\n\n\u001b[1m\u001b[34mresults2\u001b[0m: \u001b[1m\u001b[32morg.graphframes.GraphFrame\u001b[0m \u003d GraphFrame(v:[id: string, name: string ... 2 more fields], e:[src: string, dst: string ... 2 more fields])\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1365"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1366"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1367"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1368"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1369"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1370"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1371"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1372"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1373"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1374"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1375"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1376"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1379"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1380"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1381"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1382"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1386"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1387"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661080907186_85522219",
+      "id": "paragraph_1661080907186_85522219",
+      "dateCreated": "2022-08-21 14:21:47.186",
+      "dateStarted": "2022-08-22 13:47:29.226",
+      "dateFinished": "2022-08-22 13:47:30.678",
+      "status": "FINISHED"
+    },
+    {
+      "text": "// Run PageRank personalized for vertex \"a\"\nval results3 \u003d g.pageRank.resetProbability(0.15).maxIter(10).sourceId(\"a\").run()\n\nresults3.vertices.show()\nresults3.edges.show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:30.727",
+      "progress": 100,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+-------+---+-------------------+\n| id|   name|age|           pagerank|\n+---+-------+---+-------------------+\n|  b|    Bob| 36| 0.3366143039702568|\n|  e| Esther| 32|0.07657840357273027|\n|  a|  Alice| 34|0.17710831642683564|\n|  f|  Fanny| 36|0.03189213697274781|\n|  g|  Gabby| 60|                0.0|\n|  d|  David| 29|0.03189213697274781|\n|  c|Charlie| 30| 0.3459147020846817|\n+---+-------+---+-------------------+\n\n+---+---+------------+------+\n|src|dst|relationship|weight|\n+---+---+------------+------+\n|  f|  c|      follow|   1.0|\n|  e|  f|      follow|   0.5|\n|  e|  d|      friend|   0.5|\n|  d|  a|      friend|   1.0|\n|  c|  b|      follow|   1.0|\n|  b|  c|      follow|   1.0|\n|  a|  e|      friend|   0.5|\n|  a|  b|      friend|   0.5|\n+---+---+------------+------+\n\n\u001b[1m\u001b[34mresults3\u001b[0m: \u001b[1m\u001b[32morg.graphframes.GraphFrame\u001b[0m \u003d GraphFrame(v:[id: string, name: string ... 2 more fields], e:[src: string, dst: string ... 2 more fields])\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1389"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1390"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1391"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1392"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1393"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1394"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1395"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1396"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1397"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1398"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1399"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1400"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1401"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1402"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1403"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1404"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1407"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1408"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1409"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1411"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1414"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1415"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661080992195_822782862",
+      "id": "paragraph_1661080992195_822782862",
+      "dateCreated": "2022-08-21 14:23:12.195",
+      "dateStarted": "2022-08-22 13:47:30.729",
+      "dateFinished": "2022-08-22 13:47:32.272",
+      "status": "FINISHED"
+    },
+    {
+      "text": "// Run PageRank personalized for vertex [\"a\", \"b\", \"c\", \"d\"] in parallel\nval results4 \u003d g.parallelPersonalizedPageRank.resetProbability(0.15).maxIter(10).sourceIds(Array(\"a\", \"b\", \"c\", \"d\")).run()\n\nresults4.vertices.show()\nresults4.edges.show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:32.330",
+      "progress": 3,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+-------+---+--------------------+\n| id|   name|age|           pageranks|\n+---+-------+---+--------------------+\n|  b|    Bob| 36|(4,[0,1,2,3],[0.2...|\n|  e| Esther| 32|(4,[0,1,2,3],[0.0...|\n|  a|  Alice| 34|(4,[0,1,2,3],[0.1...|\n|  f|  Fanny| 36|(4,[0,1,2,3],[0.0...|\n|  g|  Gabby| 60|(4,[0,1,2,3],[0.0...|\n|  d|  David| 29|(4,[0,1,2,3],[0.0...|\n|  c|Charlie| 30|(4,[0,1,2,3],[0.3...|\n+---+-------+---+--------------------+\n\n+---+---+------------+------+\n|src|dst|relationship|weight|\n+---+---+------------+------+\n|  f|  c|      follow|   1.0|\n|  e|  f|      follow|   0.5|\n|  e|  d|      friend|   0.5|\n|  d|  a|      friend|   1.0|\n|  c|  b|      follow|   1.0|\n|  b|  c|      follow|   1.0|\n|  a|  e|      friend|   0.5|\n|  a|  b|      friend|   0.5|\n+---+---+------------+------+\n\n\u001b[1m\u001b[34mresults4\u001b[0m: \u001b[1m\u001b[32morg.graphframes.GraphFrame\u001b[0m \u003d GraphFrame(v:[id: string, name: string ... 2 more fields], e:[src: string, dst: string ... 2 more fields])\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1417"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1418"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1419"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1420"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1421"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1423"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1424"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1425"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1426"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1427"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1429"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1430"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1431"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1432"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1434"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1435"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1436"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1437"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1438"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1439"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1440"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1441"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1442"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1443"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1444"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1445"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1446"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1447"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1448"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1451"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1452"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1453"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1454"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1458"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1459"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661081021283_947959304",
+      "id": "paragraph_1661081021283_947959304",
+      "dateCreated": "2022-08-21 14:23:41.283",
+      "dateStarted": "2022-08-22 13:47:32.332",
+      "dateFinished": "2022-08-22 13:47:34.449",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n## Shortest paths\n\nComputes shortest paths from each vertex to the given set of landmark vertices, where landmarks are specified by vertex ID. Note that this takes edge direction into account.\n\nSee [Wikipedia](https://en.wikipedia.org/wiki/Shortest_path_problem) for background.",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:34.541",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eShortest paths\u003c/h2\u003e\n\u003cp\u003eComputes shortest paths from each vertex to the given set of landmark vertices, where landmarks are specified by vertex ID. Note that this takes edge direction into account.\u003c/p\u003e\n\u003cp\u003eSee \u003ca href\u003d\"https://en.wikipedia.org/wiki/Shortest_path_problem\"\u003eWikipedia\u003c/a\u003e for background.\u003c/p\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661081034449_1064589542",
+      "id": "paragraph_1661081034449_1064589542",
+      "dateCreated": "2022-08-21 14:23:54.449",
+      "dateStarted": "2022-08-22 13:47:34.543",
+      "dateFinished": "2022-08-22 13:47:34.545",
+      "status": "FINISHED"
+    },
+    {
+      "text": "val results \u003d g.shortestPaths.landmarks(Seq(\"a\", \"d\")).run()\nresults.select(\"id\", \"distances\").show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:34.643",
+      "progress": 2,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+----------------+\n| id|       distances|\n+---+----------------+\n|  b|              {}|\n|  e|{a -\u003e 2, d -\u003e 1}|\n|  a|{a -\u003e 0, d -\u003e 2}|\n|  f|              {}|\n|  g|              {}|\n|  d|{a -\u003e 1, d -\u003e 0}|\n|  c|              {}|\n+---+----------------+\n\n\u001b[1m\u001b[34mresults\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [id: string, name: string ... 2 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1461"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1462"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1463"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1464"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1465"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1467"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1468"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1469"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1470"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1471"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1472"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1473"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1474"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1475"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1476"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1477"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1480"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1481"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1482"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661081080723_776447113",
+      "id": "paragraph_1661081080723_776447113",
+      "dateCreated": "2022-08-21 14:24:40.723",
+      "dateStarted": "2022-08-22 13:47:34.645",
+      "dateFinished": "2022-08-22 13:47:35.688",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n## Triangle count\n\nComputes the number of triangles passing through each vertex.",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:35.745",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eTriangle count\u003c/h2\u003e\n\u003cp\u003eComputes the number of triangles passing through each vertex.\u003c/p\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661081095973_192371421",
+      "id": "paragraph_1661081095973_192371421",
+      "dateCreated": "2022-08-21 14:24:55.973",
+      "dateStarted": "2022-08-22 13:47:35.747",
+      "dateFinished": "2022-08-22 13:47:35.749",
+      "status": "FINISHED"
+    },
+    {
+      "text": "val results \u003d g.triangleCount.run()\nresults.select(\"id\", \"count\").show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:35.847",
+      "progress": 100,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+-----+\n| id|count|\n+---+-----+\n|  a|    1|\n|  b|    0|\n|  c|    0|\n|  d|    1|\n|  e|    1|\n|  f|    0|\n|  g|    0|\n+---+-----+\n\n\u001b[1m\u001b[34mresults\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [count: bigint, id: string ... 2 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1483"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1488"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1491"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1493"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661081246149_778689400",
+      "id": "paragraph_1661081246149_778689400",
+      "dateCreated": "2022-08-21 14:27:26.149",
+      "dateStarted": "2022-08-22 13:47:35.849",
+      "dateFinished": "2022-08-22 13:47:37.077",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n# Saving and loading GraphFrames\n\nSince GraphFrames are built around DataFrames, they automatically support saving and loading to and from the same set of datasources. Refer to the Spark SQL User Guide on datasources for more details.\n\nThe below example shows how to save and then load a graph.",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:37.150",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003eSaving and loading GraphFrames\u003c/h1\u003e\n\u003cp\u003eSince GraphFrames are built around DataFrames, they automatically support saving and loading to and from the same set of datasources. Refer to the Spark SQL User Guide on datasources for more details.\u003c/p\u003e\n\u003cp\u003eThe below example shows how to save and then load a graph.\u003c/p\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661081257063_1858043698",
+      "id": "paragraph_1661081257063_1858043698",
+      "dateCreated": "2022-08-21 14:27:37.063",
+      "dateStarted": "2022-08-22 13:47:37.152",
+      "dateFinished": "2022-08-22 13:47:37.154",
+      "status": "FINISHED"
+    },
+    {
+      "text": "import org.apache.hadoop.fs.Path\n\nval fs \u003d org.apache.hadoop.fs.FileSystem.get(spark.sparkContext.hadoopConfiguration)\n\nval verticesPath \u003d \"/tmp/vertices\"\nval edgesPath \u003d \"/tmp/edges\"\n\nif (fs.exists(new org.apache.hadoop.fs.Path(verticesPath))) fs.delete(new Path(verticesPath), true)\nif (fs.exists(new org.apache.hadoop.fs.Path(edgesPath))) fs.delete(new Path(edgesPath), true)\n\n// Save vertices and edges as Parquet to some location.\ng.vertices.write.parquet(verticesPath)\ng.edges.write.parquet(edgesPath)\n\n// Load the vertices and edges back.\nval sameV \u003d sqlContext.read.parquet(verticesPath)\nval sameE \u003d sqlContext.read.parquet(edgesPath)\n\n// Create an identical GraphFrame.\nval sameG \u003d GraphFrame(sameV, sameE)",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:37.252",
+      "progress": 100,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import org.apache.hadoop.fs.Path\n\u001b[1m\u001b[34mfs\u001b[0m: \u001b[1m\u001b[32morg.apache.hadoop.fs.FileSystem\u001b[0m \u003d org.apache.hadoop.hive.ql.io.ProxyLocalFileSystem@7c5aed48\n\u001b[1m\u001b[34mverticesPath\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m \u003d /tmp/vertices\n\u001b[1m\u001b[34medgesPath\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m \u003d /tmp/edges\n\u001b[1m\u001b[34msameV\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [id: string, name: string ... 1 more field]\n\u001b[1m\u001b[34msameE\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [src: string, dst: string ... 1 more field]\n\u001b[1m\u001b[34msameG\u001b[0m: \u001b[1m\u001b[32morg.graphframes.GraphFrame\u001b[0m \u003d GraphFrame(v:[id: string, name: string ... 1 more field], e:[src: string, dst: string ... 1 more field])\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1494"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1495"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1496"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1497"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661081337216_976359738",
+      "id": "paragraph_1661081337216_976359738",
+      "dateCreated": "2022-08-21 14:28:57.216",
+      "dateStarted": "2022-08-22 13:47:37.254",
+      "dateFinished": "2022-08-22 13:47:37.782",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\n# Message passing via AggregateMessages\n\nLike GraphX, GraphFrames provides primitives for developing graph algorithms. The two key components are:\n\n* ``aggregateMessages``: Send messages between vertices, and aggregate messages for each vertex. GraphFrames provides a native aggregateMessages method implemented using DataFrame operations. This may be used analogously to the GraphX API.\n* ``joins``: Join message aggregates with the original graph. GraphFrames rely on DataFrame joins, which provide the full functionality of GraphX joins.\n\nThe below code snippets show how to use aggregateMessages to compute the sum of the ages of adjacent users.",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:37.854",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003eMessage passing via AggregateMessages\u003c/h1\u003e\n\u003cp\u003eLike GraphX, GraphFrames provides primitives for developing graph algorithms. The two key components are:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e\u003ccode\u003eaggregateMessages\u003c/code\u003e: Send messages between vertices, and aggregate messages for each vertex. GraphFrames provides a native aggregateMessages method implemented using DataFrame operations. This may be used analogously to the GraphX API.\u003c/li\u003e\n\u003cli\u003e\u003ccode\u003ejoins\u003c/code\u003e: Join message aggregates with the original graph. GraphFrames rely on DataFrame joins, which provide the full functionality of GraphX joins.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eThe below code snippets show how to use aggregateMessages to compute the sum of the ages of adjacent users.\u003c/p\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661081386746_1436254203",
+      "id": "paragraph_1661081386746_1436254203",
+      "dateCreated": "2022-08-21 14:29:46.746",
+      "dateStarted": "2022-08-22 13:47:37.856",
+      "dateFinished": "2022-08-22 13:47:37.858",
+      "status": "FINISHED"
+    },
+    {
+      "text": "import org.graphframes.lib.AggregateMessages\n\n// We will use AggregateMessages utilities later, so name it \"AM\" for short.\nval AM \u003d AggregateMessages\n\n// For each user, sum the ages of the adjacent users.\nval msgToSrc \u003d AM.dst(\"age\")\nval msgToDst \u003d AM.src(\"age\")\nval agg \u003d { g.aggregateMessages\n  .sendToSrc(msgToSrc)  // send destination user\u0027s age to source\n  .sendToDst(msgToDst)  // send source user\u0027s age to destination\n  .agg(sum(AM.msg).as(\"summedAges\")) } // sum up ages, stored in AM.msg column\nagg.show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:37.955",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+----------+\n| id|summedAges|\n+---+----------+\n|  a|        97|\n|  b|        94|\n|  c|       108|\n|  f|        62|\n|  e|        99|\n|  d|        66|\n+---+----------+\n\nimport org.graphframes.lib.AggregateMessages\n\u001b[1m\u001b[34mAM\u001b[0m: \u001b[1m\u001b[32morg.graphframes.lib.AggregateMessages.type\u001b[0m \u003d org.graphframes.lib.AggregateMessages$@57feabd6\n\u001b[1m\u001b[34mmsgToSrc\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Column\u001b[0m \u003d dst[age]\n\u001b[1m\u001b[34mmsgToDst\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Column\u001b[0m \u003d src[age]\n\u001b[1m\u001b[34magg\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [id: string, summedAges: bigint]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1500"
+            },
+            {
+              "jobUrl": "http://ubuntu:4040/jobs/job?id\u003d1501"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661081416662_1031733959",
+      "id": "paragraph_1661081416662_1031733959",
+      "dateCreated": "2022-08-21 14:30:16.662",
+      "dateStarted": "2022-08-22 13:47:37.957",
+      "dateFinished": "2022-08-22 13:47:38.331",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\nFor a more complex example, look at the code used to implement the [Belief Propagation example](https://github.com/graphframes/graphframes/blob/master/src/main/scala/org/graphframes/examples/BeliefPropagation.scala).",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:38.358",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eFor a more complex example, look at the code used to implement the \u003ca href\u003d\"https://github.com/graphframes/graphframes/blob/master/src/main/scala/org/graphframes/examples/BeliefPropagation.scala\"\u003eBelief Propagation example\u003c/a\u003e.\u003c/p\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661081424829_1945933151",
+      "id": "paragraph_1661081424829_1945933151",
+      "dateCreated": "2022-08-21 14:30:24.829",
+      "dateStarted": "2022-08-22 13:47:38.359",
+      "dateFinished": "2022-08-22 13:47:38.362",
+      "status": "FINISHED"
+    },
+    {
+      "user": "anonymous",
+      "dateUpdated": "2022-08-22 13:47:38.459",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661082217997_1201650067",
+      "id": "paragraph_1661082217997_1201650067",
+      "dateCreated": "2022-08-21 14:43:37.998",
+      "status": "FINISHED"
+    }
+  ],
+  "name": "GraphFrames",
+  "id": "2HCHRUM1X",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {
+    "isRunning": true
+  }
+}
