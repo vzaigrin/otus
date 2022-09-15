@@ -9,5 +9,5 @@
 * Запускаем Kafka
 * Создаем темы *input* и *prediction*
 * В первом терминале запускаем *kafka-console-consumer.sh --topic prediction --bootstrap-server localhost:9092*
-* Во втором терминале запускаем *spark-submit MLStreaming-assembly-1.0.jar ~/work/otus/sparkml/pipelineModel localhost:9092 group1 input prediction*
-* В третьем терминале запускаем *awk -F ',' 'NR > 1 { print $0 }' < ~/work/otus/sparkml/BankChurners.csv | kafka-console-producer.sh --topic input --bootstrap-server localhost:9092*
+* Во втором терминале запускаем *spark-submit MLStreaming-assembly-1.0.jar <path-to-model>/pipelineModel localhost:9092 group1 input prediction*
+* В третьем терминале запускаем *awk -F ',' 'NR > 1 { print $0 }' < <path-to-data>/BankChurners.csv | kafka-console-producer.sh --topic input --bootstrap-server localhost:9092*
