@@ -21,3 +21,7 @@ SparkStreaming/MLStructuredStreaming/checkpoint
 **/.ipynb_checkpoints
 **/.metals/
 **/.vscode/
+Spark/HelloSpark/notebooks/bar.parquet
+Spark/HelloSpark/notebooks/foo.csv
+Spark/HelloSpark/notebooks/zoo.orc
+Spark/HelloSpark/notebooks/result
