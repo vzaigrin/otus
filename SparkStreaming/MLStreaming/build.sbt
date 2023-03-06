@@ -2,8 +2,8 @@ name := "MLStreaming"
 version := "1.0"
 scalaVersion := "2.12.15"
 
-lazy val sparkVersion = "3.3.1"
-lazy val kafkaVersion = "3.3.1"
+lazy val sparkVersion = "3.3.2"
+lazy val kafkaVersion = "3.4.0"
 
 libraryDependencies ++= Seq(
   "org.apache.spark" % "spark-mllib_2.12"                % sparkVersion % "provided",
