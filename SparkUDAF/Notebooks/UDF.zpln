@@ -1,0 +1,504 @@
+﻿{
+  "paragraphs": [
+    {
+      "text": "%md\n# Примеры UDF",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-26T16:43:02+0300",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h1>Примеры UDF</h1>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687784935743_1387331594",
+      "id": "paragraph_1687784935743_1387331594",
+      "dateCreated": "2023-06-26T16:08:55+0300",
+      "dateStarted": "2023-06-26T16:34:53+0300",
+      "dateFinished": "2023-06-26T16:34:53+0300",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:1502"
+    },
+    {
+      "text": "val data = Seq((1, \"Michael\", 3000), (1, \"Andy\", 4500), (3, \"Justin\", 3500), (4, \"Berta\", 4000)).toDF(\"id\", \"name\", \"salary\")\ndata.show()",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-26T16:34:53+0300",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 231
+              }
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+-------+------+\n| id|   name|salary|\n+---+-------+------+\n|  1|Michael|  3000|\n|  1|   Andy|  4500|\n|  3| Justin|  3500|\n|  4|  Berta|  4000|\n+---+-------+------+\n\n\u001b[1m\u001b[34mdata\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [id: int, name: string ... 1 more field]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687784946869_885890125",
+      "id": "paragraph_1687784946869_885890125",
+      "dateCreated": "2023-06-26T16:09:06+0300",
+      "dateStarted": "2023-06-26T16:34:53+0300",
+      "dateFinished": "2023-06-26T16:34:54+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:1503"
+    },
+    {
+      "text": "%md\n## UDF без аргументов",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-26T16:34:54+0300",
+      "progress": 0,
+      "config": {
+        "editorHide": true,
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>UDF без аргументов</h2>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687786207344_1677775878",
+      "id": "paragraph_1687786207344_1677775878",
+      "dateCreated": "2023-06-26T16:30:07+0300",
+      "dateStarted": "2023-06-26T16:34:54+0300",
+      "dateFinished": "2023-06-26T16:34:54+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:1504"
+    },
+    {
+      "text": "val random = udf(() => Math.random())\ndata.withColumn(\"random\", random()).show",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-26T16:34:54+0300",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 232
+              }
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+-------+------+--------------------+\n| id|   name|salary|              random|\n+---+-------+------+--------------------+\n|  1|Michael|  3000|  0.3029882813243756|\n|  1|   Andy|  4500|0.002000287541574...|\n|  3| Justin|  3500|  0.7121020117640326|\n|  4|  Berta|  4000| 0.18636399246556035|\n+---+-------+------+--------------------+\n\n\u001b[1m\u001b[34mrandom\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.expressions.UserDefinedFunction\u001b[0m = SparkUserDefinedFunction($Lambda$5121/1887206438@3a80a654,DoubleType,List(),Some(class[value[0]: double]),None,false,true)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687784996123_445925281",
+      "id": "paragraph_1687784996123_445925281",
+      "dateCreated": "2023-06-26T16:09:56+0300",
+      "dateStarted": "2023-06-26T16:34:54+0300",
+      "dateFinished": "2023-06-26T16:34:54+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:1505"
+    },
+    {
+      "text": "%md\n## UDF с одним аргументом",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-26T16:34:54+0300",
+      "progress": 0,
+      "config": {
+        "editorHide": true,
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>UDF с одним аргументом</h2>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687786220539_29932800",
+      "id": "paragraph_1687786220539_29932800",
+      "dateCreated": "2023-06-26T16:30:20+0300",
+      "dateStarted": "2023-06-26T16:34:54+0300",
+      "dateFinished": "2023-06-26T16:34:54+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:1506"
+    },
+    {
+      "text": "val plusOne = udf((x: Int) => x + 1)\ndata.select($\"name\", $\"salary\", plusOne($\"salary\").as(\"new_salary\")).show",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-26T16:34:54+0300",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 278
+              }
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------+------+----------+\n|   name|salary|new_salary|\n+-------+------+----------+\n|Michael|  3000|      3001|\n|   Andy|  4500|      4501|\n| Justin|  3500|      3501|\n|  Berta|  4000|      4001|\n+-------+------+----------+\n\n\u001b[1m\u001b[34mplusOne\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.expressions.UserDefinedFunction\u001b[0m = SparkUserDefinedFunction($Lambda$5122/917749248@210537a5,IntegerType,List(Some(class[value[0]: int])),Some(class[value[0]: int]),None,false,true)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687785054442_974690697",
+      "id": "paragraph_1687785054442_974690697",
+      "dateCreated": "2023-06-26T16:10:54+0300",
+      "dateStarted": "2023-06-26T16:34:54+0300",
+      "dateFinished": "2023-06-26T16:34:54+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:1507"
+    },
+    {
+      "text": "%md\n## UDF с двумя аргументами",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-26T16:34:54+0300",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>UDF с двумя аргументами</h2>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687786282316_1180572042",
+      "id": "paragraph_1687786282316_1180572042",
+      "dateCreated": "2023-06-26T16:31:22+0300",
+      "dateStarted": "2023-06-26T16:34:54+0300",
+      "dateFinished": "2023-06-26T16:34:54+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:1508"
+    },
+    {
+      "text": "val strLen = udf((x: String, y: Int) => x.length + y)\ndata.select($\"name\", length($\"name\"), strLen($\"name\", lit(1)).as(\"nameLenPlus1\")).show",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-26T16:34:55+0300",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 243
+              }
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------+------------+------------+\n|   name|length(name)|nameLenPlus1|\n+-------+------------+------------+\n|Michael|           7|           8|\n|   Andy|           4|           5|\n| Justin|           6|           7|\n|  Berta|           5|           6|\n+-------+------------+------------+\n\n\u001b[1m\u001b[34mstrLen\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.expressions.UserDefinedFunction\u001b[0m = SparkUserDefinedFunction($Lambda$5123/337056335@22715bc6,IntegerType,List(Some(class[value[0]: string]), Some(class[value[0]: int])),Some(class[value[0]: int]),None,false,true)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687785122962_358592425",
+      "id": "paragraph_1687785122962_358592425",
+      "dateCreated": "2023-06-26T16:12:02+0300",
+      "dateStarted": "2023-06-26T16:34:55+0300",
+      "dateFinished": "2023-06-26T16:34:55+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:1509"
+    },
+    {
+      "text": "%md\n## UDF для выражений WHERE",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-26T16:34:55+0300",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>UDF для выражений WHERE</h2>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687785955923_793267281",
+      "id": "paragraph_1687785955923_793267281",
+      "dateCreated": "2023-06-26T16:25:55+0300",
+      "dateStarted": "2023-06-26T16:34:55+0300",
+      "dateFinished": "2023-06-26T16:34:55+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:1510"
+    },
+    {
+      "text": "val oneArgFilter= udf((n: Int) => { n > 2 })\ndata.where(oneArgFilter($\"id\")).show",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-26T16:34:55+0300",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 226
+              }
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+------+------+\n| id|  name|salary|\n+---+------+------+\n|  3|Justin|  3500|\n|  4| Berta|  4000|\n+---+------+------+\n\n\u001b[1m\u001b[34moneArgFilter\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.expressions.UserDefinedFunction\u001b[0m = SparkUserDefinedFunction($Lambda$5124/27374840@16a8fee3,BooleanType,List(Some(class[value[0]: int])),Some(class[value[0]: boolean]),None,false,true)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687786342099_1033568593",
+      "id": "paragraph_1687786342099_1033568593",
+      "dateCreated": "2023-06-26T16:32:22+0300",
+      "dateStarted": "2023-06-26T16:34:55+0300",
+      "dateFinished": "2023-06-26T16:34:55+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:1511"
+    },
+    {
+      "text": "",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-26T16:34:55+0300",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687786481455_1654187379",
+      "id": "paragraph_1687786481455_1654187379",
+      "dateCreated": "2023-06-26T16:34:41+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:1512"
+    }
+  ],
+  "name": "UDF",
+  "id": "2J6JKTX5M",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {
+    "isRunning": false
+  },
+  "path": "/otus/UDF"
+}

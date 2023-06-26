@@ -1,0 +1,318 @@
+﻿{
+  "paragraphs": [
+    {
+      "text": "val data = Seq(\n    (\"Jean-Georges\", \"Perrin\", \"NC\", 1, 300, 1551903533),\n    (\"Jean-Georges\", \"Perrin\", \"NC\", 2, 120, 1551903567),\n    (\"Jean-Georges\", \"Perrin\", \"CA\" ,4, 75, 1551903599),\n    (\"Holden\", \"Karau\", \"CA\" , 6, 37, 1551904299),\n    (\"Ginni\", \"Rometty\", \"NY\", 7, 91, 1551916792),\n    (\"Holden\", \"Karau\", \"CA\", 4, 153, 1552876129)\n).toDF(\"firstName\", \"lastName\", \"state\", \"quantity\", \"revenue\", \"timestamp\")\ndata.show()",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-26T17:40:01+0300",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 312
+              }
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+------------+--------+-----+--------+-------+----------+\n|   firstName|lastName|state|quantity|revenue| timestamp|\n+------------+--------+-----+--------+-------+----------+\n|Jean-Georges|  Perrin|   NC|       1|    300|1551903533|\n|Jean-Georges|  Perrin|   NC|       2|    120|1551903567|\n|Jean-Georges|  Perrin|   CA|       4|     75|1551903599|\n|      Holden|   Karau|   CA|       6|     37|1551904299|\n|       Ginni| Rometty|   NY|       7|     91|1551916792|\n|      Holden|   Karau|   CA|       4|    153|1552876129|\n+------------+--------+-----+--------+-------+----------+\n\n\u001b[1m\u001b[34mdata\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [firstName: string, lastName: string ... 4 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687790065416_1870594118",
+      "id": "paragraph_1687790065416_1870594118",
+      "dateCreated": "2023-06-26T17:34:25+0300",
+      "dateStarted": "2023-06-26T17:39:56+0300",
+      "dateFinished": "2023-06-26T17:39:57+0300",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:2793"
+    },
+    {
+      "text": "import org.apache.spark.sql.{Encoder, Encoders}\nimport org.apache.spark.sql.expressions.Aggregator\n\ncase class Buffer(var value: Int) \n\nclass PointAttribution extends Aggregator[Int, Buffer, Int] {\n  val MAX_POINT_PER_ORDER = 3\n  // Начальное значение. Должно соответствовать свойству: любое b + zero = b\n  def zero: Buffer = Buffer(0)\n  // Объединение двух значений в новое значение.\n  // Для повышения производительности функция может изменять `buffer` и \n  // возвращать его вместо создания нового объекта.\n  def reduce(buffer: Buffer, data: Int): Buffer = {\n    val outputValue = if (data < MAX_POINT_PER_ORDER) data else MAX_POINT_PER_ORDER\n    buffer.value += outputValue\n    buffer\n  }\n  // Объединение двух промежуточных значения\n  def merge(b1: Buffer, b2: Buffer): Buffer = {\n    b1.value += b2.value\n    b1\n  }\n  // Преобразование выходных данных\n  def finish(reduction: Buffer): Int = reduction.value\n  // Кодировщик для типа промежуточного значения\n  def bufferEncoder: Encoder[Buffer] = Encoders.product\n  // Кодировщик для типа выходного значения\n  def outputEncoder: Encoder[Int] = Encoders.scalaInt\n}",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-26T18:10:10+0300",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import org.apache.spark.sql.{Encoder, Encoders}\nimport org.apache.spark.sql.expressions.Aggregator\ndefined class Buffer\ndefined class PointAttribution\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687790396452_1757618035",
+      "id": "paragraph_1687790396452_1757618035",
+      "dateCreated": "2023-06-26T17:39:56+0300",
+      "dateStarted": "2023-06-26T18:10:10+0300",
+      "dateFinished": "2023-06-26T18:10:10+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:2794"
+    },
+    {
+      "text": "val pointAttribution = new PointAttribution\nval pointAttributionUdf = udaf(pointAttribution)",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-26T18:10:15+0300",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mpointAttribution\u001b[0m: \u001b[1m\u001b[32mPointAttribution\u001b[0m = PointAttribution@2731817e\n\u001b[1m\u001b[34mpointAttributionUdf\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.expressions.UserDefinedFunction\u001b[0m = UserDefinedAggregator(PointAttribution@2731817e,class[value[0]: int],None,true,true)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687791622350_1347876576",
+      "id": "paragraph_1687791622350_1347876576",
+      "dateCreated": "2023-06-26T18:00:22+0300",
+      "dateStarted": "2023-06-26T18:10:15+0300",
+      "dateFinished": "2023-06-26T18:10:16+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:2795"
+    },
+    {
+      "text": "val pointDf = data\n      .groupBy(col(\"firstName\"), col(\"lastName\"), col(\"state\"))\n      .agg(sum(\"quantity\"), pointAttributionUdf($\"quantity\").as(\"point\"))\n\npointDf.show()",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-26T19:37:45+0300",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 231
+              }
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+------------+--------+-----+-------------+-----+\n|   firstName|lastName|state|sum(quantity)|point|\n+------------+--------+-----+-------------+-----+\n|Jean-Georges|  Perrin|   NC|            3|    3|\n|Jean-Georges|  Perrin|   CA|            4|    3|\n|      Holden|   Karau|   CA|           10|    6|\n|       Ginni| Rometty|   NY|            7|    3|\n+------------+--------+-----+-------------+-----+\n\n\u001b[1m\u001b[34mpointDf\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [firstName: string, lastName: string ... 3 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.88.21:4040/jobs/job?id=56",
+              "$$hashKey": "object:3147"
+            },
+            {
+              "jobUrl": "http://192.168.88.21:4040/jobs/job?id=57",
+              "$$hashKey": "object:3148"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687791530940_1571632948",
+      "id": "paragraph_1687791530940_1571632948",
+      "dateCreated": "2023-06-26T17:58:50+0300",
+      "dateStarted": "2023-06-26T18:10:18+0300",
+      "dateFinished": "2023-06-26T18:10:18+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:2796"
+    },
+    {
+      "text": "val max = pointAttribution.MAX_POINT_PER_ORDER\nval eachOrderDf = data\n        .withColumn(\"point\", when(col(\"quantity\").$greater(max), max).otherwise(col(\"quantity\")))\n        .groupBy(col(\"firstName\"), col(\"lastName\"), col(\"state\"))\n        .agg(sum(\"quantity\"), sum(\"point\").as(\"point\"))\n\neachOrderDf.show()",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-26T19:37:49+0300",
+      "progress": 100,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {
+          "bdtMeta": {
+            "inlay": {
+              "size": {
+                "height": 269
+              }
+            }
+          }
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+------------+--------+-----+-------------+-----+\n|   firstName|lastName|state|sum(quantity)|point|\n+------------+--------+-----+-------------+-----+\n|Jean-Georges|  Perrin|   NC|            3|    3|\n|Jean-Georges|  Perrin|   CA|            4|    3|\n|      Holden|   Karau|   CA|           10|    6|\n|       Ginni| Rometty|   NY|            7|    3|\n+------------+--------+-----+-------------+-----+\n\n\u001b[1m\u001b[34mmax\u001b[0m: \u001b[1m\u001b[32mInt\u001b[0m = 3\n\u001b[1m\u001b[34meachOrderDf\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [firstName: string, lastName: string ... 3 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.88.21:4040/jobs/job?id=52",
+              "$$hashKey": "object:3210"
+            },
+            {
+              "jobUrl": "http://192.168.88.21:4040/jobs/job?id=53",
+              "$$hashKey": "object:3211"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687791729566_1954595138",
+      "id": "paragraph_1687791729566_1954595138",
+      "dateCreated": "2023-06-26T18:02:09+0300",
+      "dateStarted": "2023-06-26T18:04:00+0300",
+      "dateFinished": "2023-06-26T18:04:00+0300",
+      "status": "FINISHED",
+      "$$hashKey": "object:2797"
+    },
+    {
+      "user": "anonymous",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687791840269_159665654",
+      "id": "paragraph_1687791840269_159665654",
+      "dateCreated": "2023-06-26T18:04:00+0300",
+      "status": "READY",
+      "$$hashKey": "object:2798"
+    }
+  ],
+  "name": "UDAF",
+  "id": "2J44ERPR8",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {},
+  "path": "/otus/UDAF"
+}
