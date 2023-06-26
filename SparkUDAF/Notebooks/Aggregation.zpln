@@ -1,0 +1,199 @@
+﻿{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687800929440_524997833",
+      "id": "paragraph_1687800929440_524997833",
+      "dateCreated": "2023-06-26T20:35:29+0300",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:3720",
+      "text": "%md\n# Пример агрегирования данных",
+      "dateUpdated": "2023-06-26T20:35:53+0300",
+      "dateFinished": "2023-06-26T20:35:53+0300",
+      "dateStarted": "2023-06-26T20:35:53+0300",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h1>Пример агрегирования данных</h1>\n\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "text": "val data = Seq(\n    (\"Jean-Georges\", \"Perrin\", \"NC\", 1, 300, 1551903533),\n    (\"Jean-Georges\", \"Perrin\", \"NC\", 2, 120, 1551903567),\n    (\"Jean-Georges\", \"Perrin\", \"CA\" ,4, 75, 1551903599),\n    (\"Holden\", \"Karau\", \"CA\" , 6, 37, 1551904299),\n    (\"Ginni\", \"Rometty\", \"NY\", 7, 91, 1551916792),\n    (\"Holden\", \"Karau\", \"CA\", 4, 153, 1552876129)\n).toDF(\"firstName\", \"lastName\", \"state\", \"quantity\", \"revenue\", \"timestamp\")\ndata.show()",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-26T20:36:25+0300",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687800953142_1087994248",
+      "id": "paragraph_1687800953142_1087994248",
+      "dateCreated": "2023-06-26T20:35:53+0300",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:3800",
+      "dateFinished": "2023-06-26T20:36:26+0300",
+      "dateStarted": "2023-06-26T20:36:25+0300",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+------------+--------+-----+--------+-------+----------+\n|   firstName|lastName|state|quantity|revenue| timestamp|\n+------------+--------+-----+--------+-------+----------+\n|Jean-Georges|  Perrin|   NC|       1|    300|1551903533|\n|Jean-Georges|  Perrin|   NC|       2|    120|1551903567|\n|Jean-Georges|  Perrin|   CA|       4|     75|1551903599|\n|      Holden|   Karau|   CA|       6|     37|1551904299|\n|       Ginni| Rometty|   NY|       7|     91|1551916792|\n|      Holden|   Karau|   CA|       4|    153|1552876129|\n+------------+--------+-----+--------+-------+----------+\n\n\u001b[1m\u001b[34mdata\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [firstName: string, lastName: string ... 4 more fields]\n"
+          }
+        ]
+      }
+    },
+    {
+      "user": "anonymous",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.88.21:4040/jobs/job?id=62",
+              "$$hashKey": "object:4216"
+            },
+            {
+              "jobUrl": "http://192.168.88.21:4040/jobs/job?id=63",
+              "$$hashKey": "object:4217"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687800985774_138730118",
+      "id": "paragraph_1687800985774_138730118",
+      "dateCreated": "2023-06-26T20:36:25+0300",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:3884",
+      "text": "val aggDf = data.groupBy($\"firstName\", $\"lastName\", $\"state\").agg(sum(\"quantity\").as(\"sum_qty\"), sum(\"revenue\").as(\"sum_rev\"), avg(\"revenue\").as(\"avg_rev\"))\naggDf.show",
+      "dateUpdated": "2023-06-26T20:45:01+0300",
+      "dateFinished": "2023-06-26T20:45:01+0300",
+      "dateStarted": "2023-06-26T20:45:01+0300",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+------------+--------+-----+-------+-------+-------+\n|   firstName|lastName|state|sum_qty|sum_rev|avg_rev|\n+------------+--------+-----+-------+-------+-------+\n|Jean-Georges|  Perrin|   NC|      3|    420|  210.0|\n|Jean-Georges|  Perrin|   CA|      4|     75|   75.0|\n|      Holden|   Karau|   CA|     10|    190|   95.0|\n|       Ginni| Rometty|   NY|      7|     91|   91.0|\n+------------+--------+-----+-------+-------+-------+\n\n\u001b[1m\u001b[34maggDf\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [firstName: string, lastName: string ... 4 more fields]\n"
+          }
+        ]
+      }
+    },
+    {
+      "user": "anonymous",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687801161837_37330489",
+      "id": "paragraph_1687801161837_37330489",
+      "dateCreated": "2023-06-26T20:39:21+0300",
+      "status": "READY",
+      "focus": true,
+      "$$hashKey": "object:3978",
+      "text": "",
+      "dateUpdated": "2023-06-26T20:40:36+0300"
+    }
+  ],
+  "name": "Aggregation",
+  "id": "2J6M5PSJD",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {},
+  "path": "/otus/Aggregation"
+}

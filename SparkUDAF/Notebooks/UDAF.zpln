@@ -1,6 +1,51 @@
 ﻿{
   "paragraphs": [
     {
+      "user": "anonymous",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1687800991820_330213828",
+      "id": "paragraph_1687800991820_330213828",
+      "dateCreated": "2023-06-26T20:36:31+0300",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:902",
+      "text": "%md\n# Пример UDAF",
+      "dateUpdated": "2023-06-26T20:36:46+0300",
+      "dateFinished": "2023-06-26T20:36:46+0300",
+      "dateStarted": "2023-06-26T20:36:46+0300",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h1>Пример UDAF</h1>\n\n</div>"
+          }
+        ]
+      }
+    },
+    {
       "text": "val data = Seq(\n    (\"Jean-Georges\", \"Perrin\", \"NC\", 1, 300, 1551903533),\n    (\"Jean-Georges\", \"Perrin\", \"NC\", 2, 120, 1551903567),\n    (\"Jean-Georges\", \"Perrin\", \"CA\" ,4, 75, 1551903599),\n    (\"Holden\", \"Karau\", \"CA\" , 6, 37, 1551904299),\n    (\"Ginni\", \"Rometty\", \"NY\", 7, 91, 1551916792),\n    (\"Holden\", \"Karau\", \"CA\", 4, 153, 1552876129)\n).toDF(\"firstName\", \"lastName\", \"state\", \"quantity\", \"revenue\", \"timestamp\")\ndata.show()",
       "user": "anonymous",
       "dateUpdated": "2023-06-26T17:40:01+0300",
@@ -49,7 +94,7 @@
       "dateFinished": "2023-06-26T17:39:57+0300",
       "status": "FINISHED",
       "focus": true,
-      "$$hashKey": "object:2793"
+      "$$hashKey": "object:385"
     },
     {
       "text": "import org.apache.spark.sql.{Encoder, Encoders}\nimport org.apache.spark.sql.expressions.Aggregator\n\ncase class Buffer(var value: Int) \n\nclass PointAttribution extends Aggregator[Int, Buffer, Int] {\n  val MAX_POINT_PER_ORDER = 3\n  // Начальное значение. Должно соответствовать свойству: любое b + zero = b\n  def zero: Buffer = Buffer(0)\n  // Объединение двух значений в новое значение.\n  // Для повышения производительности функция может изменять `buffer` и \n  // возвращать его вместо создания нового объекта.\n  def reduce(buffer: Buffer, data: Int): Buffer = {\n    val outputValue = if (data < MAX_POINT_PER_ORDER) data else MAX_POINT_PER_ORDER\n    buffer.value += outputValue\n    buffer\n  }\n  // Объединение двух промежуточных значения\n  def merge(b1: Buffer, b2: Buffer): Buffer = {\n    b1.value += b2.value\n    b1\n  }\n  // Преобразование выходных данных\n  def finish(reduction: Buffer): Int = reduction.value\n  // Кодировщик для типа промежуточного значения\n  def bufferEncoder: Encoder[Buffer] = Encoders.product\n  // Кодировщик для типа выходного значения\n  def outputEncoder: Encoder[Int] = Encoders.scalaInt\n}",
@@ -91,7 +136,7 @@
       "dateStarted": "2023-06-26T18:10:10+0300",
       "dateFinished": "2023-06-26T18:10:10+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:2794"
+      "$$hashKey": "object:386"
     },
     {
       "text": "val pointAttribution = new PointAttribution\nval pointAttributionUdf = udaf(pointAttribution)",
@@ -133,25 +178,25 @@
       "dateStarted": "2023-06-26T18:10:15+0300",
       "dateFinished": "2023-06-26T18:10:16+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:2795"
+      "$$hashKey": "object:387"
     },
     {
-      "text": "val pointDf = data\n      .groupBy(col(\"firstName\"), col(\"lastName\"), col(\"state\"))\n      .agg(sum(\"quantity\"), pointAttributionUdf($\"quantity\").as(\"point\"))\n\npointDf.show()",
+      "text": "val pointDf = data\n      .groupBy($\"firstName\", $\"lastName\", $\"state\")\n      .agg(sum(\"quantity\"), pointAttributionUdf($\"quantity\").as(\"point\"))\n\npointDf.show()",
       "user": "anonymous",
-      "dateUpdated": "2023-06-26T19:37:45+0300",
+      "dateUpdated": "2023-06-26T20:48:38+0300",
       "progress": 0,
       "config": {
-        "colWidth": 12,
-        "fontSize": 9,
-        "enabled": true,
-        "results": {},
         "editorSetting": {
           "language": "scala",
           "editOnDblClick": false,
           "completionKey": "TAB",
           "completionSupport": true
         },
-        "editorMode": "ace/mode/scala"
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
       },
       "settings": {
         "params": {
@@ -184,11 +229,11 @@
           "values": [
             {
               "jobUrl": "http://192.168.88.21:4040/jobs/job?id=56",
-              "$$hashKey": "object:3147"
+              "$$hashKey": "object:990"
             },
             {
               "jobUrl": "http://192.168.88.21:4040/jobs/job?id=57",
-              "$$hashKey": "object:3148"
+              "$$hashKey": "object:991"
             }
           ],
           "interpreterSettingId": "spark"
@@ -201,25 +246,25 @@
       "dateStarted": "2023-06-26T18:10:18+0300",
       "dateFinished": "2023-06-26T18:10:18+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:2796"
+      "$$hashKey": "object:388"
     },
     {
-      "text": "val max = pointAttribution.MAX_POINT_PER_ORDER\nval eachOrderDf = data\n        .withColumn(\"point\", when(col(\"quantity\").$greater(max), max).otherwise(col(\"quantity\")))\n        .groupBy(col(\"firstName\"), col(\"lastName\"), col(\"state\"))\n        .agg(sum(\"quantity\"), sum(\"point\").as(\"point\"))\n\neachOrderDf.show()",
+      "text": "val max = pointAttribution.MAX_POINT_PER_ORDER\nval eachOrderDf = data\n        .withColumn(\"point\", when($\"quantity\".$greater(max), max).otherwise($\"quantity\"))\n        .groupBy($\"firstName\", $\"lastName\", $\"state\")\n        .agg(sum(\"quantity\"), sum(\"point\").as(\"point\"))\n\neachOrderDf.show()",
       "user": "anonymous",
-      "dateUpdated": "2023-06-26T19:37:49+0300",
+      "dateUpdated": "2023-06-26T20:49:36+0300",
       "progress": 100,
       "config": {
-        "colWidth": 12,
-        "fontSize": 9,
-        "enabled": true,
-        "results": {},
         "editorSetting": {
           "language": "scala",
           "editOnDblClick": false,
           "completionKey": "TAB",
           "completionSupport": true
         },
-        "editorMode": "ace/mode/scala"
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
       },
       "settings": {
         "params": {
@@ -251,12 +296,12 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://192.168.88.21:4040/jobs/job?id=52",
-              "$$hashKey": "object:3210"
+              "jobUrl": "http://192.168.88.21:4040/jobs/job?id=64",
+              "$$hashKey": "object:1050"
             },
             {
-              "jobUrl": "http://192.168.88.21:4040/jobs/job?id=53",
-              "$$hashKey": "object:3211"
+              "jobUrl": "http://192.168.88.21:4040/jobs/job?id=65",
+              "$$hashKey": "object:1051"
             }
           ],
           "interpreterSettingId": "spark"
@@ -266,10 +311,10 @@
       "jobName": "paragraph_1687791729566_1954595138",
       "id": "paragraph_1687791729566_1954595138",
       "dateCreated": "2023-06-26T18:02:09+0300",
-      "dateStarted": "2023-06-26T18:04:00+0300",
-      "dateFinished": "2023-06-26T18:04:00+0300",
+      "dateStarted": "2023-06-26T20:49:36+0300",
+      "dateFinished": "2023-06-26T20:49:36+0300",
       "status": "FINISHED",
-      "$$hashKey": "object:2797"
+      "$$hashKey": "object:389"
     },
     {
       "user": "anonymous",
@@ -298,7 +343,7 @@
       "id": "paragraph_1687791840269_159665654",
       "dateCreated": "2023-06-26T18:04:00+0300",
       "status": "READY",
-      "$$hashKey": "object:2798"
+      "$$hashKey": "object:390"
     }
   ],
   "name": "UDAF",
