@@ -1,6 +1,6 @@
 package ru.otus.spark
 
-import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.{Dataset, SparkSession, TypedColumn}
 
 object MyTypedAverage {
   def main(args: Array[String]): Unit = {
@@ -11,7 +11,7 @@ object MyTypedAverage {
 
     import spark.implicits._
 
-    val ds = Seq(
+    val ds: Dataset[Employee] = Seq(
       Employee("Michael", 3000),
       Employee("Andy", 4500),
       Employee("Justin", 3500),
@@ -19,8 +19,8 @@ object MyTypedAverage {
     ).toDS()
     ds.show()
 
-    val averageSalary = MyAverage.toColumn.name("average_salary")
-    val result = ds.select(averageSalary)
+    val averageSalary: TypedColumn[Employee, Double] = MyAverage.toColumn.name("average_salary")
+    val result: Dataset[Double] = ds.select(averageSalary)
     result.show()
 
     spark.stop()

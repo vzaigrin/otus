@@ -11,8 +11,7 @@ class PointAttribution extends Aggregator[Int, Buffer, Int] {
   // Для повышения производительности функция может изменять `buffer` и
   // возвращать его вместо создания нового объекта.
   def reduce(buffer: Buffer, data: Int): Buffer = {
-    val outputValue =
-      if (data < MAX_POINT_PER_ORDER) data else MAX_POINT_PER_ORDER
+    val outputValue = if (data < MAX_POINT_PER_ORDER) data else MAX_POINT_PER_ORDER
     buffer.value += outputValue
     buffer
   }

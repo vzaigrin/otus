@@ -1,7 +1,7 @@
 package ru.otus.spark
 
 import org.apache.spark.sql.functions._
-import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.{DataFrame, SparkSession}
 
 object PointsPerOrder {
   def main(args: Array[String]): Unit = {
