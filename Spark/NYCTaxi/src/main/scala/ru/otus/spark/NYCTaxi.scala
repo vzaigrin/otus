@@ -8,8 +8,8 @@ import scala.io.StdIn
 object NYCTaxi {
   def main(args: Array[String]): Unit = {
     // Проверяем аргументы вызова
-    if (args.length != 3) {
-      println("Usage: NYCTaxi <trips> <payments> <zones>")
+    if (args.length != 2) {
+      println("Usage: NYCTaxi <trips> <zones>")
       sys.exit(-1)
     }
 
@@ -24,10 +24,7 @@ object NYCTaxi {
 
     try {
       // Читаем данные о поездках
-      val tripsRaw = spark.read
-        .option("header", "true")
-        .option("inferSchema", "true")
-        .csv(args(0))
+      val tripsRaw = spark.read.parquet(args(0))
 
       // Отфильтровываем некорректные данные, удаляем лишние колонки, преобразуем время
       val trips = tripsRaw
@@ -59,26 +56,19 @@ object NYCTaxi {
         .withColumn("dropoff_dayofweek", dayofweek($"dropoff_dt"))
         .withColumn("dropoff_weekofyear", weekofyear($"dropoff_dt"))
         .withColumn("dropoff_hour", hour($"dropoff_dt"))
-        .filter($"pickup_year" > 2018 && $"pickup_year" < 2021)
-        .filter($"dropoff_year" > 2018 && $"dropoff_year" < 2021)
-
-      // Загружаем типы платежей
-      val paymentType =
-        spark.read.option("header", "true").option("inferSchema", "true").csv(args(1))
+        .filter($"pickup_year" > 2020 && $"pickup_year" < 2023)
+        .filter($"dropoff_year" > 2020 && $"dropoff_year" < 2023)
 
       // Загружаем информацию о зонах
       val zoneLookup = spark.read
         .option("header", "true")
         .option("inferSchema", "true")
-        .csv(args(2))
+        .csv(args(1))
         .drop("service_zone")
 
       // Формируем наборы данных
       // "Базовый" набор
       val data = trips
-        .join(paymentType, trips("payment_type") === paymentType("type_id"))
-        .drop("payment_type", "type_id")
-        .withColumnRenamed("type", "payment_type")
         .join(zoneLookup, trips("PULocationID") === zoneLookup("LocationID"))
         .drop("LocationID")
         .withColumnRenamed("Borough", "PUBorough")
@@ -199,7 +189,7 @@ object NYCTaxi {
         .pivot("year")
         .sum("trips")
 
-      println("Суммарное количество поездок в каждый месяц 2019 и 2020 годов")
+      println("Суммарное количество поездок в каждый месяц")
       tripsByYM.orderBy("month").show(numRows = 12, truncate = false)
       println
 
@@ -214,7 +204,7 @@ object NYCTaxi {
         Array($"month") ++ tripsByYMBorough.columns.tail.map(col).map(c => round(c, 2)): _*
       )
 
-      println("Изменение количества поездок в каждый месяц 2019 и 2020 годов по районам")
+      println("Изменение количества поездок в каждый месяц по районам")
 
       tripsByYMBoroughDev
         .toDF(

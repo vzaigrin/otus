@@ -1,11 +1,7 @@
 name := "NYCTaxi"
-
-version := "3.4.0"
-
+version := "3.4.1"
 scalaVersion := "2.12.17"
 
-lazy val sparkVersion = "3.4.0"
-
 libraryDependencies ++= Seq(
-  "org.apache.spark" %% "spark-sql" % sparkVersion % "provided"
+  "org.apache.spark" %% "spark-sql" % "3.4.1" % "provided"
 )
