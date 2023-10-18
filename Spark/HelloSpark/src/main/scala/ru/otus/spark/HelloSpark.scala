@@ -4,6 +4,7 @@ import org.apache.spark.sql._
 import org.apache.spark.sql.functions._
 import java.time._
 import java.sql.Timestamp
+import scala.io.StdIn
 
 case class Person(name: String, age: Long)
 
